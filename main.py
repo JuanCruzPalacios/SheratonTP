@@ -19,6 +19,7 @@ def iniciar_sesion():
     print(f"Correo: {correo}")
     print(f"Contraseña: {contrasena}")
     # Aquí puedes añadir el código para manejar la autenticación.
+    cambiar_pagina()
 
 def alternar_pantalla_completa(event=None):
     global pantalla_completa
@@ -53,6 +54,15 @@ def crear_imagen_con_texto(texto, fuente, tamaño, color, ancho , alto):
     
     return imagen
 
+def cambiar_pagina():
+    # Destruir todos los widgets de la ventana actual para simular un cambio de página
+    for widget in ventana.winfo_children():
+        widget.destroy()
+
+    # Aquí puedes añadir el contenido de la nueva "página"
+    nuevo_label = tk.Label(ventana, text="Bienvenido a la siguiente página", font=("Helvetica", 24), bg=color_fondo)
+    nuevo_label.pack(pady=20)
+
 # Crear ventana principal
 ventana = tk.Tk()
 ventana.title("Inicio de Sesión")
@@ -60,7 +70,7 @@ ventana.attributes("-fullscreen", pantalla_completa)
 ventana.configure(bg=color_fondo)
 
 # Asignar la tecla "F11" para alternar pantalla completa
-#ventana.bind("<F11>", alternar_pantalla_completa)
+ventana.bind("<F11>", alternar_pantalla_completa)
 
 # Cargar la imagen del logo
 imagen_logo = Image.open("imagenes/logo.png")  # Ruta de la imagen
@@ -78,17 +88,16 @@ canvas_recuadro.place(relx=0.5, rely=0.85, anchor="center")
 # Dibujar el recuadro redondeado
 dibujar_recuadro_redondeado(canvas_recuadro, 75, 0, 450, 250, 20, color_recuadro)
 
-
 # Crear campos de entrada directamente en el Canvas para que se alineen correctamente
-entrada_correo = tk.Entry(ventana, bg=color_fondo, bd=0, highlightthickness=2, highlightbackground=marron, relief= "solid" , font=("Helvetica", 14), width=35)
+entrada_correo = tk.Entry(ventana, bg=color_fondo, bd=0, highlightthickness=2, highlightbackground=marron, relief="solid", font=("Helvetica", 14), width=35)
 entrada_correo.place(relx=0.5, rely=0.70, anchor="center")
 
-entrada_contrasena = tk.Entry(ventana, bg=color_fondo, bd=0, highlightthickness=2, highlightbackground=marron,relief= "solid",  show="*", font=("Helvetica", 14), width=35)
+entrada_contrasena = tk.Entry(ventana, bg=color_fondo, bd=0, highlightthickness=2, highlightbackground=marron, relief="solid", show="*", font=("Helvetica", 14), width=35)
 entrada_contrasena.place(relx=0.5, rely=0.83, anchor="center")
 
 # Crear imágenes para las etiquetas
-imagen_correo = ImageTk.PhotoImage(crear_imagen_con_texto("Correo electrónico", ruta_fuente, 32, marron , 300 , 30))
-imagen_contrasena = ImageTk.PhotoImage(crear_imagen_con_texto("Contraseña", ruta_fuente, 32, marron , 300 , 30))
+imagen_correo = ImageTk.PhotoImage(crear_imagen_con_texto("Correo electrónico", ruta_fuente, 32, marron, 300, 30))
+imagen_contrasena = ImageTk.PhotoImage(crear_imagen_con_texto("Contraseña", ruta_fuente, 32, marron, 300, 30))
 
 # Crear etiquetas con las imágenes
 label_correo = tk.Label(ventana, image=imagen_correo, bg=color_recuadro)
@@ -96,6 +105,15 @@ label_correo.place(relx=0.5, rely=0.65, anchor="center")
 
 label_contrasena = tk.Label(ventana, image=imagen_contrasena, bg=color_recuadro)
 label_contrasena.place(relx=0.5, rely=0.78, anchor="center")
+
+# Cargar la imagen para el botón "Enter"
+imagen_boton_enter = Image.open("imagenes/enter.png")  # Ruta de la imagen de botón
+imagen_boton_enter = imagen_boton_enter.resize((44 , 44), Image.LANCZOS)
+boton_enter_img = ImageTk.PhotoImage(imagen_boton_enter)
+
+# Crear el botón "Enter"
+boton_enter = tk.Button(ventana, image=boton_enter_img, bg=color_recuadro, bd=0, command=iniciar_sesion)
+boton_enter.place(relx=0.64, rely=0.88, anchor="center")
 
 # Iniciar la interfaz
 ventana.mainloop()

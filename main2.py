@@ -9,10 +9,9 @@ running = True
 
 
 
-fondo_iniciar_sesion = pygame.image.load("imagenes/Sheraton_page-0001.jpg")
-fondo_registrarse = pygame.image.load("imagenes/Sheraton_page-0002.jpg"
-                                      )
-fondo_estacionamiento = pygame.image.load("imagenes/Sheraton_page-0003.jpg")
+fondo_iniciar_sesion = pygame.image.load("imagenes/iniciar_sesion.jpg")
+fondo_registrarse = pygame.image.load("imagenes/registrarse.jpg")
+fondo_estacionamiento = pygame.image.load("imagenes/estacionamiento.jpg")
 fondo_habitacion = pygame.image.load("imagenes/Sheraton_page-0004.jpg")
 fondo_reservar = pygame.image.load("imagenes/Sheraton_page-0005.jpg")
 fondo_pagar = pygame.image.load("imagenes/Sheraton_page-0006.jpg")
@@ -35,13 +34,17 @@ fondo_recepcinista_limpieza = pygame.image.load("imagenes/Sheraton_page-0017.jpg
 
 
 
-fondo = ["iniciar sesion", 1]
+fondo_actual = ["iniciar sesion", 0]
 fondos = [ fondo_iniciar_sesion, fondo_registrarse, 
            fondo_estacionamiento, fondo_habitacion, fondo_reservar,fondo_pagar, fondo_menu_habitaciones,
            fondo_menu_amenities, fondo_menu_salones, fondo_datos_usuario,fondo_menu_mantenimiento,
            fondo_mantenimiento_stock, fondo_mantenimiento_notificaciones, 
            fondo_mantenimiento_notificaciones_archivadas, fondo_menu_recepcionista, fondo_recepcionista_notificar,
            fondo_recepcinista_eventos, fondo_recepcinista_limpieza]
+
+
+
+
 
 while running:
 
@@ -86,8 +89,8 @@ while running:
 
 
 
-    if fondo == "registrarse":
-        screen.blit()
+    if fondo_actual[0] == "iniciar sesion": 
+        
 
 
     pygame.display.flip()

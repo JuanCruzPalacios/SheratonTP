@@ -1,0 +1,16 @@
+{
+    "-1" :{
+        "Tipo" : "Si es cliente, empleado de mantenimiento, etc",  
+        "Nombre" : "Pepe" ,
+        "Apellido" : "Palacios" , 
+        "DNI" : "47873319" , 
+        "NumeroTelefono" : "+54 9 11 5920-3842" , 
+        "CorreoElectronico" : "pepito123@gmail.com" , 
+        "CodigoPostal" : "1993" ,
+        "IdContrataciones": ["Aca van las id de contrataciones que tenga el usuario, si no tiene ninguna la lista va vacia."], 
+        "IdHabitacion" : ["Aca van las id de habitaciones que tenga el usuario, si no tiene ninguna la lista va vacia."] 
+    } 
+}
+
+
+

@@ -46,8 +46,12 @@ fondos = [ fondo_iniciar_sesion, fondo_registrarse,
 
 
 
+def mostrar_fondo(fondo):
+    if fondo_actual[0] == fondo:
+        screen.blit (fondos[fondo_actual[1]] , (0 , 0))
 
 
+mostrar_fondo("iniciar sesion")
 while running:
 
 
@@ -85,9 +89,6 @@ while running:
             else:                                    
             # Agregar caracteres al texto ingresado
                 texto_ingresado += event.unicode
-
-
-
 
 
 

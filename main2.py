@@ -10,8 +10,7 @@ running = True
 
 
 fondo_iniciar_sesion = pygame.image.load("imagenes/iniciar_sesion.jpg")
-fondo_registrarse = pygame.image.load("imagenes/registrarse.jpg"
-                                      )
+fondo_registrarse = pygame.image.load("imagenes/registrarse.jpg")
 fondo_estacionamiento = pygame.image.load("imagenes/estacionamiento.jpg")
 fondo_habitacion = pygame.image.load("imagenes/habitacion.jpg")
 fondo_reservar = pygame.image.load("imagenes/suite_parking.jpg")

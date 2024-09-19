@@ -36,11 +36,12 @@ fondo_recepcinista_limpieza = pygame.image.load("imagenes/Sheraton_page-0017.jpg
 
 
 fondo = ["iniciar sesion", 1]
-Fondos = [ fondo_iniciar_sesion, fondo_registrarse, fondo_estacionamiento, fondo_habitacion, fondo_reservar,
-          fondo_pagar, fondo_menu_habitaciones, fondo_menu_amenities, fondo_menu_salones, fondo_datos_usuario,
-            fondo_menu_mantenimiento, fondo_mantenimiento_stock, fondo_mantenimiento_notificaciones, 
-            fondo_mantenimiento_notificaciones_archivadas, fondo_menu_recepcionista, fondo_recepcionista_notificar,
-            fondo_recepcinista_eventos, fondo_recepcinista_limpieza]
+fondos = [ fondo_iniciar_sesion, fondo_registrarse, 
+           fondo_estacionamiento, fondo_habitacion, fondo_reservar,fondo_pagar, fondo_menu_habitaciones,
+           fondo_menu_amenities, fondo_menu_salones, fondo_datos_usuario,fondo_menu_mantenimiento,
+           fondo_mantenimiento_stock, fondo_mantenimiento_notificaciones, 
+           fondo_mantenimiento_notificaciones_archivadas, fondo_menu_recepcionista, fondo_recepcionista_notificar,
+           fondo_recepcinista_eventos, fondo_recepcinista_limpieza]
 
 while running:
 

@@ -9,28 +9,28 @@ running = True
 
 
 
-fondo_iniciar_sesion = pygame.image.load("imagenes/Sheraton_page-0001.jpg")
-fondo_registrarse = pygame.image.load("imagenes/Sheraton_page-0002.jpg"
+fondo_iniciar_sesion = pygame.image.load("imagenes/iniciar_sesion.jpg")
+fondo_registrarse = pygame.image.load("imagenes/registrarse.jpg"
                                       )
-fondo_estacionamiento = pygame.image.load("imagenes/Sheraton_page-0003.jpg")
-fondo_habitacion = pygame.image.load("imagenes/Sheraton_page-0004.jpg")
-fondo_reservar = pygame.image.load("imagenes/Sheraton_page-0005.jpg")
-fondo_pagar = pygame.image.load("imagenes/Sheraton_page-0006.jpg")
+fondo_estacionamiento = pygame.image.load("imagenes/estacionamiento.jpg")
+fondo_habitacion = pygame.image.load("imagenes/habitacion.jpg")
+fondo_reservar = pygame.image.load("imagenes/suite_parking.jpg")
+fondo_pagar = pygame.image.load("imagenes/reserva_de_habitacion.jpg")
 
-fondo_menu_habitaciones = pygame.image.load("imagenes/Sheraton_page-0007.jpg")
-fondo_menu_amenities = pygame.image.load("imagenes/Sheraton_page-0008.jpg")
-fondo_menu_salones = pygame.image.load("imagenes/Sheraton_page-0009.jpg")
-fondo_datos_usuario = pygame.image.load("imagenes/Sheraton_page-0010.jpg")
-fondo_menu_mantenimiento = pygame.image.load("imagenes/Sheraton_page-0011.jpg")
+fondo_menu_habitaciones = pygame.image.load("imagenes/menu_habitaciones.jpg")
+fondo_menu_amenities = pygame.image.load("imagenes/reserva_de_amenities.jpg")
+fondo_menu_salones = pygame.image.load("imagenes/reserva_de_salon.jpg")
+fondo_datos_usuario = pygame.image.load("imagenes/datos_usuario.jpg")
+fondo_menu_mantenimiento = pygame.image.load("imagenes/menu_mantenimiento.jpg")
 
-fondo_mantenimiento_stock = pygame.image.load("imagenes/Sheraton_page-0012.jpg")
-fondo_mantenimiento_notificaciones = pygame.image.load("imagenes/Sheraton_page-0015.jpg")
-fondo_mantenimiento_notificaciones_archivadas = pygame.image.load("imagenes/Sheraton_page-0018.jpg")
+fondo_mantenimiento_stock = pygame.image.load("imagenes/stock_mantenimiento.jpg")
+fondo_mantenimiento_notificaciones = pygame.image.load("imagenes/notificaciones_mantenimiento.jpg")
+fondo_mantenimiento_notificaciones_archivadas = pygame.image.load("imagenes/mantenimiento_notificaciones_archivadas.jpg")
 
-fondo_menu_recepcionista = pygame.image.load("imagenes/Sheraton_page-0013.jpg")
-fondo_recepcionista_notificar = pygame.image.load("imagenes/Sheraton_page-0014.jpg")
-fondo_recepcinista_eventos = pygame.image.load("imagenes/Sheraton_page-0016.jpg")
-fondo_recepcinista_limpieza = pygame.image.load("imagenes/Sheraton_page-0017.jpg")
+fondo_menu_recepcionista = pygame.image.load("imagenes/menu_recepcionista.jpg")
+fondo_recepcionista_notificar = pygame.image.load("imagenes/recepcionista_notificar.jpg")
+fondo_recepcinista_eventos = pygame.image.load("imagenes/recepcionista_eventos.jpg")
+fondo_recepcinista_limpieza = pygame.image.load("imagenes/recepcionista_limpieza.jpg")
 
 
 

@@ -9,12 +9,14 @@ running = True
 
 
 
-fondo_iniciar_sesion = pygame.image.load("imagenes/Sheraton_page-0001.jpg")
-fondo_registrarse = pygame.image.load("imagenes/Sheraton_page-0002.jpg")
-fondo_estacionamiento = pygame.image.load("imagenes/Sheraton_page-0003.jpg")
-fondo_habitacion = pygame.image.load("imagenes/Sheraton_page-0004.jpg")
-fondo_reservar = pygame.image.load("imagenes/Sheraton_page-0005.jpg")
-fondo_pagar = pygame.image.load("imagenes/Sheraton_page-0006.jpg")
+
+
+fondo_iniciar_sesion = pygame.image.load("imagenes/iniciar_sesion.jpg")
+fondo_registrarse = pygame.image.load("imagenes/registrarse.jpg")
+fondo_estacionamiento = pygame.image.load("imagenes/estacionamiento.jpg")
+fondo_habitacion = pygame.image.load("imagenes/habitacion.jpg")
+fondo_reservar = pygame.image.load("imagenes/suite_parking.jpg")
+fondo_pagar = pygame.image.load("imagenes/reserva_de_habitacion.jpg")
 
 fondo_menu_habitaciones = pygame.image.load("imagenes/menu_habitaciones.jpg")
 fondo_menu_amenities = pygame.image.load("imagenes/reserva_de_amenities.jpg")
@@ -89,8 +91,6 @@ while running:
 
 
 
-    if fondo_actual[0] == "iniciar sesion": 
-        
 
 
     pygame.display.flip()

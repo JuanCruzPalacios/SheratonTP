@@ -1,0 +1,15 @@
+{
+
+"-1" : {
+
+"FechasOcupadas" : [ ["FechaInicio" , "FechaFinal"] , ["FechaInicio" , "FechaFinal"] ],
+"UltimaLimpieza" : "19/09/2024" , 
+"Estado" : "No molestar" , 
+"ServiciosIncluidos" : ["GYM"] , 
+"EstadoActual" : "Ocupada" ,  
+"IdClienteOcupante" : "1" , 
+"Precio" : "2000"
+}
+
+}
+

@@ -1,0 +1,12 @@
+{
+
+"1" :{
+
+"Capacidad" : "200" , 
+"Precio" : "2000" , 
+"FechasOcupadas" : [ ["FechaInicio" , "FechaFinal"] , ["FechaInicio" , "FechaFinal"] ],
+"IdReservasPendientes" : [] 
+
+}
+
+}

@@ -3,7 +3,6 @@
 import json
 
 def leer_json(archivo):
-    """Lee un archivo JSON y devuelve su contenido como un diccionario."""
     try:
         with open(archivo, 'r', encoding='utf-8') as f:
             contenido = json.load(f)
@@ -19,7 +18,6 @@ def leer_json(archivo):
         return None
 
 def actualizar_json(archivo, datos):
-    """Actualiza un archivo JSON, borrando su contenido y escribiendo nuevos datos."""
     try:
         # Escribir el nuevo contenido en el archivo
         with open(archivo, 'w', encoding='utf-8') as f:

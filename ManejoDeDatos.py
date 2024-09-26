@@ -18,6 +18,16 @@ def leer_json(archivo):
         print(f"Ocurrió un error: {e}")
         return None
 
+def actualizar_json(archivo, datos):
+    """Actualiza un archivo JSON, borrando su contenido y escribiendo nuevos datos."""
+    try:
+        # Escribir el nuevo contenido en el archivo
+        with open(archivo, 'w', encoding='utf-8') as f:
+            json.dump(datos, f, indent=4)
+        print(f"Archivo {archivo} actualizado correctamente.")
+    except Exception as e:
+        print(f"Ocurrió un error al actualizar el archivo: {e}")
+
 def ExisteUsuario(correo):  
     usuarios = leer_json("Usuario.json") 
     try:

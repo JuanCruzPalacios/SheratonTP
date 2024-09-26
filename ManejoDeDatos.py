@@ -56,7 +56,7 @@ def VerificarContraseña(Usuario , contraseña):
     try:
         usuarios[Usuario] != None
         print("El usuario existe.")
-        if usuarios[Usuario]["Contraseña"] == contraseña:
+        if usuarios[Usuario]["Password"] == contraseña:
             print("La contraseña es correcta.")
         else:
             print("La contraseña es incorrecta.")

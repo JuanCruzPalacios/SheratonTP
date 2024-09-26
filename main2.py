@@ -39,8 +39,8 @@ fondo_recepcinista_limpieza = pygame.transform.scale(pygame.image.load("imagenes
 
 fondo_actual = ["iniciar sesion", 0]
 fondos = [ fondo_iniciar_sesion, fondo_registrarse, 
-           fondo_estacionamiento, fondo_habitacion, fondo_reservar,fondo_pagar, fondo_menu_habitaciones,
-           fondo_menu_amenities, fondo_menu_salones, fondo_datos_usuario,fondo_menu_mantenimiento,
+           fondo_estacionamiento, fondo_habitacion, fondo_reservar, fondo_pagar , fondo_menu_habitaciones,
+           fondo_menu_amenities, fondo_menu_salones, fondo_datos_usuario, fondo_menu_mantenimiento,
            fondo_mantenimiento_stock, fondo_mantenimiento_notificaciones, 
            fondo_mantenimiento_notificaciones_archivadas, fondo_menu_recepcionista, fondo_recepcionista_notificar,
            fondo_recepcinista_eventos, fondo_recepcinista_limpieza]
@@ -65,27 +65,52 @@ texto_ingresado = ""
 
 
 
-
-
-
-
-
-
-
-
 def cursor(mouse_pos):
     
 
     if fondo_actual[0] == "iniciar sesion":
 
-        if mouse_pos[0] <= 845 and mouse_pos[0] >= 439 and mouse_pos[1] <= 525 and mouse_pos[1] >= 484:
+
+        if mouse_pos[0] <= 845 and mouse_pos[0] >= 439 and mouse_pos[1] <= 525 and mouse_pos[1] >= 484: #-----> Usuario
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
         
-        elif mouse_pos[0] <= 845 and mouse_pos[0] >= 439 and mouse_pos[1] <= 631 and mouse_pos[1] >= 587:
+        elif mouse_pos[0] <= 845 and mouse_pos[0] >= 439 and mouse_pos[1] <= 631 and mouse_pos[1] >= 587:#-----> Contraseña
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+
+
+        elif mouse_pos[0] <= 900 and mouse_pos[0] >= 862 and mouse_pos[1] <= 660 and mouse_pos[1] >= 630:#-----> Siguiente
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+        elif mouse_pos[0] <= 744 and mouse_pos[0] >= 539 and mouse_pos[1] <= 682 and mouse_pos[1] >= 673:#-----> Crear cuenta
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
 
         else:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+    elif fondo_actual[0] == "registrarse":
+
+
+        if mouse_pos[0] <= 844 and mouse_pos[0] >= 440 and mouse_pos[1] <= 500 and mouse_pos[1] >= 470: #-----> Usuario
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+        
+        elif mouse_pos[0] <= 844 and mouse_pos[0] >= 440 and mouse_pos[1] <= 581 and mouse_pos[1] >= 551:#-----> Correo Electronico
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+
+        elif mouse_pos[0] <= 844 and mouse_pos[0] >= 440 and mouse_pos[1] <= 653 and mouse_pos[1] >= 621: #-----> Contraseña
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+
+
+        elif mouse_pos[0] <= 908 and mouse_pos[0] >= 852 and mouse_pos[1] <= 675 and mouse_pos[1] >= 630:#-----> Siguiente
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+        elif mouse_pos[0] <= 748 and mouse_pos[0] >= 522 and mouse_pos[1] <= 683 and mouse_pos[1] >= 673:#-----> Crear cuenta
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        else:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
 
 
 
@@ -117,21 +142,19 @@ while running:
             elif event.key == pygame.K_ESCAPE:
                 texto_seleccionado[0] = ""
                 
-            else:                                    
-            # Agregar caracteres al texto ingresado
-                texto_ingresado += event.unicode
+            else:                 
+                if len(texto_ingresado) < 23:           
+                    # Agregar caracteres al texto ingresado
+                    texto_ingresado += event.unicode
             texto_seleccionado[1][1] = texto_ingresado
             
                 
-
-
-
 
         if event.type == pygame.MOUSEBUTTONDOWN :
             print(mouse_pos)
             if fondo_actual[0] == "iniciar sesion":
                
-                if mouse_pos[0] <= 845 and mouse_pos[0] >= 439 and mouse_pos[1] <= 525 and mouse_pos[1] >= 484:
+                if mouse_pos[0] <= 845 and mouse_pos[0] >= 439 and mouse_pos[1] <= 525 and mouse_pos[1] >= 484: #-----> Usuario
                     texto_ingresado = texto1[1]
                     texto_seleccionado[0] = "Usuario / iniciar sesion"
                     texto_seleccionado[1] = texto1
@@ -139,10 +162,22 @@ while running:
                    
 
                 
-                elif mouse_pos[0] <= 845 and mouse_pos[0] >= 439 and mouse_pos[1] <= 631 and mouse_pos[1] >= 587:
+                elif mouse_pos[0] <= 845 and mouse_pos[0] >= 439 and mouse_pos[1] <= 631 and mouse_pos[1] >= 587: #-----> Contraseña
                     texto_ingresado = texto2[1]
                     texto_seleccionado[0] = "Contraseña / iniciar sesion"
                     texto_seleccionado[1] = texto2
+
+
+
+                elif mouse_pos[0] <= 900 and mouse_pos[0] >= 862 and mouse_pos[1] <= 660 and mouse_pos[1] >= 630:#-----> Siguiente
+                    fondo_actual[0] = "menu habitaciones"
+                    fondo_actual[1] = 6
+
+
+
+                elif mouse_pos[0] <= 744 and mouse_pos[0] >= 539 and mouse_pos[1] <= 682 and mouse_pos[1] >= 673:#-----> Crear cuenta
+                    fondo_actual[0] = "registrarse"
+                    fondo_actual[1] = 1
 
 
             
@@ -151,11 +186,20 @@ while running:
 
     #fondos :)
     if fondo_actual[0] == "iniciar sesion":
-        texto1[0] = ( 439, 484 )
-        texto2[0] = ( 439, 587 )
+        texto1[0] = ( 445, 484 )
+        texto2[0] = ( 445, 587 )
         screen.blit (fondos[fondo_actual[1]] , (0 , 0))       
         screen.blit( fuente.render(texto1[1] , 0 , (0,0,0) ), texto1[0] )
         screen.blit( fuente.render(texto2[1] , 0 , (0,0,0) ), texto2[0] )
+
+    
+    elif fondo_actual[0] == "registrarse":
+        screen.blit (fondos[fondo_actual[1]] , (0 , 0))              
+
+
+    elif fondo_actual[0] == "menu habitaciones":
+        screen.blit (fondos[fondo_actual[1]] , (0 , 0))       
+
 
 
 

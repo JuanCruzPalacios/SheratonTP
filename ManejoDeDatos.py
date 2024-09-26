@@ -101,6 +101,32 @@ def ver_notificacion(numero_de_notificacion):
         print("No existe ninguna notificacion con ese numero.")
         return False
 
+def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal , IdContrataciones , IdHabitacion):
+    #Agrega una nueva notificación al archivo JSON.
+    contenido_actual = leer_json("Usuario.json")
+    
+    # Generar una nueva clave para la notificación
+    nueva_clave = str(len(contenido_actual))  # Usa la longitud actual como nueva clave
 
+    # Crear nuevo usuario
+    nuevo_usuario = {
+        "Correo" : Correo , 
+        "Tipo" : Tipo,  
+        "Nombre" : Nombre ,
+        "Apellido" : Apellido , 
+        "Password" : Contraseña , 
+        "DNI" : DNI , 
+        "NumeroTelefono" : NumeroTelefono , 
+        "NumeroDeCliente": nueva_clave , 
+        "CodigoPostal" : CodigoPostal ,
+        "IdContrataciones": IdContrataciones, 
+        "IdHabitacion" : IdHabitacion
+    }
+
+    # Agregar la nueva notificación al contenido
+    contenido_actual[Usuario] = nuevo_usuario
+    
+    # Actualizar el archivo con el nuevo contenido
+    actualizar_json("Usuario.json", contenido_actual)
 
 

@@ -84,8 +84,8 @@ def cursor(mouse_pos):
         elif mouse_pos[0] <= 845 and mouse_pos[0] >= 439 and mouse_pos[1] <= 631 and mouse_pos[1] >= 587:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
-    else:
-        pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+        else:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
 
 

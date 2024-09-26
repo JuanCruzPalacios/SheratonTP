@@ -41,22 +41,22 @@ def actualizar_json(archivo, datos):
     except Exception as e:
         print(f"Ocurrió un error al actualizar el archivo: {e}")
 
-def ExisteUsuario(correo):  
+def ExisteUsuario(Usuario):  
     usuarios = leer_json("Usuario.json") 
     try:
-        usuarios[correo] != None
+        usuarios[Usuario] != None
         print("El usuario existe.")
         return True
     except:
         print("El usuario no existe.")
         return False
 
-def VerificarContraseña(correo , contraseña): 
+def VerificarContraseña(Usuario , contraseña): 
     usuarios = leer_json("Usuario.json")
     try:
-        usuarios[correo] != None
+        usuarios[Usuario] != None
         print("El usuario existe.")
-        if usuarios[correo]["Contraseña"] == contraseña:
+        if usuarios[Usuario]["Contraseña"] == contraseña:
             print("La contraseña es correcta.")
         else:
             print("La contraseña es incorrecta.")

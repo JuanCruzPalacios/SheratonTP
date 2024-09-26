@@ -1,5 +1,6 @@
 {
-    "pepito123@gmail.com" :{
+    "Pepe" :{
+        "Correo" : "pepito123@gmail.com" , 
         "Tipo" : "Si es cliente, empleado de mantenimiento, etc",  
         "Nombre" : "Pepe" ,
         "Apellido" : "Palacios" , 

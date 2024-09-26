@@ -56,7 +56,7 @@ def VerificarContraseña(Usuario , contraseña):
     try:
         usuarios[Usuario] != None
         print("El usuario existe.")
-        if usuarios[Usuario]["Password"] == contraseña:
+        if usuarios[Usuario]["Contraseña"] == contraseña:
             print("La contraseña es correcta.")
         else:
             print("La contraseña es incorrecta.")
@@ -106,7 +106,10 @@ def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contrase
     contenido_actual = leer_json("Usuario.json")
     
     # Generar una nueva clave para la notificación
-    nueva_clave = str(len(contenido_actual))  # Usa la longitud actual como nueva clave
+    try: 
+        nueva_clave = contenido_actual[Usuario]["NumeroDeCliente"]
+    except:
+        nueva_clave = str(len(contenido_actual))  # Usa la longitud actual como nueva clave
 
     # Crear nuevo usuario
     nuevo_usuario = {

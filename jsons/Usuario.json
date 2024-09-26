@@ -4,7 +4,7 @@
         "Tipo" : "Si es cliente, empleado de mantenimiento, etc",  
         "Nombre" : "Pepe" ,
         "Apellido" : "Palacios" , 
-        "Contraseña" : "pepito123" , 
+        "Password" : "pepito123" , 
         "DNI" : "47873319" , 
         "NumeroTelefono" : "+54 9 11 5920-3842" , 
         "NumeroDeCliente": -1 , 

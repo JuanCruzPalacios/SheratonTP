@@ -41,7 +41,11 @@ def ActualizarJson(archivo, datos):
         print(f"Ocurrió un error al actualizar el archivo: {e}")
 
 def ExisteUsuario(Usuario):  
+<<<<<<< Updated upstream
     usuarios = LeerJson("Usuario.json") 
+=======
+    usuarios = leer_json("jsons/Usuario.json") 
+>>>>>>> Stashed changes
     try:
         usuarios[Usuario] != None
         print("El usuario existe.")
@@ -51,7 +55,11 @@ def ExisteUsuario(Usuario):
         return False
 
 def VerificarContraseña(Usuario , contraseña): 
+<<<<<<< Updated upstream
     usuarios = LeerJson("Usuario.json")
+=======
+    usuarios = leer_json("jsons/Usuario.json")
+>>>>>>> Stashed changes
     try:
         usuarios[Usuario] != None
         print("El usuario existe.")
@@ -96,6 +104,11 @@ def VerNotificacion(numero_de_notificacion):
         return False
 
 def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal , IdContrataciones , IdHabitacion):
+<<<<<<< Updated upstream
+=======
+    #Agrega una nueva notificación al archivo JSON.
+    contenido_actual = leer_json("jsons/Usuario.json")
+>>>>>>> Stashed changes
     
     contenido_actual = LeerJson("Usuario.json")
 
@@ -119,6 +132,7 @@ def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contrase
     }
 
     contenido_actual[Usuario] = nuevo_usuario
+<<<<<<< Updated upstream
 
     ActualizarJson("Usuario.json", contenido_actual)
 
@@ -150,5 +164,10 @@ def InformacionHabitacion (numero_de_habitacion):
     except: 
         print("Esa habitacion no existe.")
         return None
+=======
+    
+    # Actualizar el archivo con el nuevo contenido
+    actualizar_json("jsons/Usuario.json", contenido_actual)
+>>>>>>> Stashed changes
 
 

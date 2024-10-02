@@ -44,8 +44,6 @@ def ExisteUsuario(Usuario):
 
     usuarios = LeerJson("Usuario.json") 
 
-  
-
     try:
         usuarios[Usuario] != None
         print("El usuario existe.")

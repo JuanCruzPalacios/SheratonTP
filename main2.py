@@ -198,8 +198,7 @@ while running:
 
 
                 elif mouse_pos[0] <= 900 and mouse_pos[0] >= 862 and mouse_pos[1] <= 660 and mouse_pos[1] >= 630:#-----> Siguiente
-                    fondo_actual[0] = "menu habitaciones"
-                    fondo_actual[1] = 6
+                    
 
                     if ExisteUsuario(texto1[1]):
 

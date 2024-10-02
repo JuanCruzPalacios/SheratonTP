@@ -142,4 +142,14 @@ def AgregarEliminarStock (nombre_stock , cantidad) :
     except:
         print ("Hubo un error al agregar o eliminar el stock, verifique que el stock ingresado exista.")
         return False
-    
+      
+def InformacionHabitacion (numero_de_habitacion):
+    habitaciones = LeerJson("habitaciones.json")
+    try:
+        return habitaciones[str(numero_de_habitacion)]
+    except: 
+        print("Esa habitacion no existe.")
+        return None
+
+
+print (InformacionHabitacion(-1))

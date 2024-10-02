@@ -1,16 +1,8 @@
 {
-
-"Stock1" : { 
-
-    "Cantidad" : "32"  
-
-},
-
-"Stock2" : { 
-
-    "Cantidad" : "321"  
-
-}
-
-
+    "Stock1": {
+        "Cantidad": 32
+    },
+    "Stock2": {
+        "Cantidad": 321
+    }
 }

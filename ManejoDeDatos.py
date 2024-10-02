@@ -165,5 +165,5 @@ def InformacionHabitacion (numero_de_habitacion):
     
     # Actualizar el archivo con el nuevo contenido
     actualizar_json("jsons/Usuario.json", contenido_actual)
-
+ExisteUsuario("Pepe")
 

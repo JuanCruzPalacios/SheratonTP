@@ -38,12 +38,20 @@ fondo_recepcinista_limpieza = pygame.transform.scale(pygame.image.load("imagenes
 
 
 fondo_actual = ["iniciar sesion", 0]
-fondos = [ fondo_iniciar_sesion, fondo_registrarse, 
-           fondo_estacionamiento, fondo_habitacion, fondo_reservar, fondo_pagar , fondo_menu_habitaciones,
-           fondo_menu_amenities, fondo_menu_salones, fondo_datos_usuario, fondo_menu_mantenimiento,
-           fondo_mantenimiento_stock, fondo_mantenimiento_notificaciones, 
-           fondo_mantenimiento_notificaciones_archivadas, fondo_menu_recepcionista, fondo_recepcionista_notificar,
-           fondo_recepcinista_eventos, fondo_recepcinista_limpieza]
+fondos = [  fondo_iniciar_sesion, fondo_registrarse, 
+            #0                    #1
+            fondo_estacionamiento, fondo_habitacion,
+            #2                     #3
+            fondo_reservar, fondo_pagar , fondo_menu_habitaciones,
+            #4              #5            #6
+            fondo_menu_amenities, fondo_menu_salones, fondo_datos_usuario, fondo_menu_mantenimiento,
+            #7                   #7                  #8                   #9
+            fondo_mantenimiento_stock, fondo_mantenimiento_notificaciones, 
+            #10                        #11
+            fondo_mantenimiento_notificaciones_archivadas, fondo_menu_recepcionista, fondo_recepcionista_notificar,
+            #12                                            #13                       #14
+            fondo_recepcinista_eventos, fondo_recepcinista_limpieza]
+            #15                         #16
 
 fuente = pygame.font.Font("fuentes/Averia_Libre/AveriaLibre-Regular.ttf", 31)
 
@@ -55,15 +63,7 @@ texto5 = [(0,0), ""]
 texto6 = [(0,0), ""]
 texto7 = [(0,0), ""]
 texto8 = [(0,0), ""]
-def vaciar():
-    texto1 = [(0,0), ""]
-    texto2 = [(0,0), ""]
-    texto3 = [(0,0), ""]
-    texto4 = [(0,0), ""]
-    texto5 = [(0,0), ""]
-    texto6 = [(0,0), ""]
-    texto7 = [(0,0), ""]
-    texto8 = [(0,0), ""]
+
 
 
 
@@ -124,6 +124,29 @@ def cursor(mouse_pos):
         else:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
+
+
+    elif fondo_actual[0] == "menu habitaciones":
+
+
+        if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif mouse_pos[0] < 560 and mouse_pos[0] > 435 and mouse_pos[1] < 100 and mouse_pos[1] > 15:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif mouse_pos[0] < 710 and mouse_pos[0] > 590 and mouse_pos[1] < 100 and mouse_pos[1] > 15:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif mouse_pos[0] < 860 and mouse_pos[0] > 745 and mouse_pos[1] < 100 and mouse_pos[1] > 15:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        else:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
 
 
@@ -267,8 +290,6 @@ while running:
                         texto4[1] = "usuario o mail muy cortos"
 
                           
-                    
-
                 elif mouse_pos[0] <= 748 and mouse_pos[0] >= 522 and mouse_pos[1] <= 683 and mouse_pos[1] >= 673:#-----> Iniciar Sesion
                     fondo_actual[0] = "iniciar sesion"
                     fondo_actual[1] = 0
@@ -276,8 +297,33 @@ while running:
                     texto1 = [(0,0),""]
                     texto2 = [(0,0),""]               
 
-            
-        
+
+
+
+            elif fondo_actual[0] == "menu habitaciones":
+
+
+                if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15:
+                    fondo_actual[0] = "menu habitaciones"
+                    fondo_actual[1] = 6
+
+
+                elif mouse_pos[0] < 560 and mouse_pos[0] > 435 and mouse_pos[1] < 100 and mouse_pos[1] > 15:
+                    fondo_actual[0] = "menu parking"
+                    fondo_actual[1] = 2
+
+
+                elif mouse_pos[0] < 710 and mouse_pos[0] > 590 and mouse_pos[1] < 100 and mouse_pos[1] > 15:
+                    fondo_actual[0] = "menu bedroom"
+                    fondo_actual[1] = 3
+
+
+
+                elif mouse_pos[0] < 860 and mouse_pos[0] > 745 and mouse_pos[1] < 100 and mouse_pos[1] > 15:
+                    fondo_actual[0] = "menu amenities"
+                    fondo_actual[1] = 7
+
+   
         cursor(mouse_pos)
 
     #fondos :)
@@ -307,7 +353,16 @@ while running:
         screen.blit (fondos[fondo_actual[1]] , (0 , 0))       
 
 
+    elif fondo_actual[0] == "menu parking":
+        screen.blit (fondos[fondo_actual[1]] , (0 , 0))
 
+
+    elif fondo_actual[0] == "menu bedroom":
+        screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+
+        
+    elif fondo_actual[0] == "menu amenities":
+        screen.blit (fondos[fondo_actual[1]] , (0 , 0))
 
 
 

@@ -152,4 +152,3 @@ def InformacionHabitacion (numero_de_habitacion):
         return None
 
 
-print (InformacionHabitacion(-1))

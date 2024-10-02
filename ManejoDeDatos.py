@@ -16,7 +16,7 @@ from datetime import datetime
 def leer_json(archivo):
     """Lee un archivo JSON y devuelve su contenido como un diccionario."""
     try:
-        with open(archivo, 'r', encoding='utf-8') as f:
+        with open("jsons/" + archivo, 'r', encoding='utf-8') as f:
             contenido = json.load(f)
             if contenido is None: 
                 contenido = {}
@@ -132,4 +132,13 @@ def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contrase
     # Actualizar el archivo con el nuevo contenido
     actualizar_json("Usuario.json", contenido_actual)
 
+def VerStock(): 
+    Stock = leer_json("Stock.json")
+    lista_stock = []
+    for clave  in Stock: 
+        print (clave)
+        lista_stock.append([clave , Stock[clave]["Cantidad"]])
+        
+    return lista_stock
 
+print(VerStock())

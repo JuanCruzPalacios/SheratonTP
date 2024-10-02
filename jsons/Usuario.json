@@ -1,32 +1,18 @@
 {
-    "Pepe": {
-        "Correo": "pepito123@gmail.com",
-        "Tipo": "Si es cliente, empleado de mantenimiento, etc",
-        "Nombre": "Pepe",
-        "Apellido": "Palacios",
-        "Password": "pepito123",
-        "DNI": "47873319",
-        "NumeroTelefono": "+54 9 11 5920-3842",
-        "NumeroDeCliente": -1,
-        "CodigoPostal": "1993",
-        "IdContrataciones": [
-            "Aca van las id de contrataciones que tenga el usuario, si no tiene ninguna la lista va vacia."
-        ],
-        "IdHabitacion": [
-            "Aca van las id de habitaciones que tenga el usuario, si no tiene ninguna la lista va vacia."
-        ]
-    },
-    "nick": {
-        "Correo": "nick@gmail.com",
-        "Tipo": "",
-        "Nombre": "",
-        "Apellido": "",
-        "Password": "aaa111___",
-        "DNI": "",
-        "NumeroTelefono": "",
-        "NumeroDeCliente": "1",
-        "CodigoPostal": "",
-        "IdContrataciones": "",
-        "IdHabitacion": ""
-    }
+    "Pepe" :{
+        "Correo" : "pepito123@gmail.com" , 
+        "Tipo" : "Si es cliente, empleado de mantenimiento, etc",  
+        "Nombre" : "Pepe" ,
+        "Apellido" : "Palacios" , 
+        "Password" : "pepito123" , 
+        "DNI" : "47873319" , 
+        "NumeroTelefono" : "+54 9 11 5920-3842" , 
+        "NumeroDeCliente": -1 , 
+        "CodigoPostal" : "1993" ,
+        "IdContrataciones": ["Aca van las id de contrataciones que tenga el usuario, si no tiene ninguna la lista va vacia."], 
+        "IdHabitacion" : ["Aca van las id de habitaciones que tenga el usuario, si no tiene ninguna la lista va vacia."] 
+    } 
 }
+
+
+

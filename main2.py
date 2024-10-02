@@ -55,6 +55,16 @@ texto5 = [(0,0), ""]
 texto6 = [(0,0), ""]
 texto7 = [(0,0), ""]
 texto8 = [(0,0), ""]
+def vaciar():
+    texto1 = [(0,0), ""]
+    texto2 = [(0,0), ""]
+    texto3 = [(0,0), ""]
+    texto4 = [(0,0), ""]
+    texto5 = [(0,0), ""]
+    texto6 = [(0,0), ""]
+    texto7 = [(0,0), ""]
+    texto8 = [(0,0), ""]
+
 
 
 texto_seleccionado = ["", texto1 ]
@@ -67,6 +77,7 @@ texto_ingresado = ""
 
 def cursor(mouse_pos):
     
+
 
     if fondo_actual[0] == "iniciar sesion":
 
@@ -87,6 +98,8 @@ def cursor(mouse_pos):
 
         else:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
 
     elif fondo_actual[0] == "registrarse":
 
@@ -114,6 +127,17 @@ def cursor(mouse_pos):
 
 
 
+def chequeo_contraseña(conteraseña):
+    if len(conteraseña) > 8:
+        if  any( caracter in conteraseña for caracter in ["@", "#", "$", "*", "%", "&", "/", "!", "?", "-", "_"] ):
+            if any( caracter in conteraseña for caracter in ["1","2","3","4","5","6","7","8","9","0"] ):
+                return "aprobado"
+            else:   
+                return "Debe haber algun numero"
+        else:
+            return "Debe haber algun caracteres especiales"    
+    else:
+        return "La contraseña debe ser de al menos 8 caracteres"
 
 
 
@@ -151,7 +175,11 @@ while running:
                 
 
         if event.type == pygame.MOUSEBUTTONDOWN :
+
+
             print(mouse_pos)
+
+
             if fondo_actual[0] == "iniciar sesion":
                
                 if mouse_pos[0] <= 845 and mouse_pos[0] >= 439 and mouse_pos[1] <= 525 and mouse_pos[1] >= 484: #-----> Usuario
@@ -162,7 +190,7 @@ while running:
                    
 
                 
-                elif mouse_pos[0] <= 845 and mouse_pos[0] >= 439 and mouse_pos[1] <= 631 and mouse_pos[1] >= 587: #-----> Contraseña
+                elif mouse_pos[0] <= 845 and mouse_pos[0] >= 439 and mouse_pos[1] <= 631 and mouse_pos[1] >= 587: #-----> Contraseña                    
                     texto_ingresado = texto2[1]
                     texto_seleccionado[0] = "Contraseña / iniciar sesion"
                     texto_seleccionado[1] = texto2
@@ -173,12 +201,81 @@ while running:
                     fondo_actual[0] = "menu habitaciones"
                     fondo_actual[1] = 6
 
+                    if ExisteUsuario(texto1[1]):
 
+                        if VerificarContraseña(texto1[1],texto2[1]):
+
+                            fondo_actual[0] = "menu habitaciones"
+                            fondo_actual[1] = 6
+                            texto_ingresado = ""
+                            texto1 = [(0,0),""]
+                            texto2 = [(0,0),""]
+                        else:
+                            texto3[1] = "Contraseña erronea"
+                    else:
+                        texto3[1] = "Usuario inexistente"
 
                 elif mouse_pos[0] <= 744 and mouse_pos[0] >= 539 and mouse_pos[1] <= 682 and mouse_pos[1] >= 673:#-----> Crear cuenta
                     fondo_actual[0] = "registrarse"
                     fondo_actual[1] = 1
+                    texto_ingresado = ""
+                    texto1 = [(0,0),""]
+                    texto2 = [(0,0),""]
+                
 
+   
+
+            elif fondo_actual[0] == "registrarse":   
+
+
+                if mouse_pos[0] <= 844 and mouse_pos[0] >= 440 and mouse_pos[1] <= 500 and mouse_pos[1] >= 470: #-----> Usuario
+                    texto_seleccionado[0] = "usuario / registrarse"
+                    texto_seleccionado[1] = texto1
+                    texto_ingresado = texto1[1]
+
+
+                elif mouse_pos[0] <= 844 and mouse_pos[0] >= 440 and mouse_pos[1] <= 581 and mouse_pos[1] >= 551:#-----> Correo Electronico
+                    texto_seleccionado[0] = "mail / registrarse"
+                    texto_seleccionado[1] = texto2
+                    texto_ingresado = texto2[1]
+
+
+                elif mouse_pos[0] <= 844 and mouse_pos[0] >= 440 and mouse_pos[1] <= 653 and mouse_pos[1] >= 621: #-----> Contraseña
+                    texto_seleccionado[0] = "contraseña / registrarse"
+                    texto_seleccionado[1] = texto3
+                    texto_ingresado = texto3[1]
+
+
+                elif mouse_pos[0] <= 908 and mouse_pos[0] >= 852 and mouse_pos[1] <= 675 and mouse_pos[1] >= 630:#-----> Siguiente / Registrarse
+            
+                    if len(texto1[1]) > 3 and len(texto2[1]) > 3 :
+                        if not(ExisteUsuario(texto1[1])) :
+
+                            if chequeo_contraseña(texto3[1]) == "aprobado":
+
+                                CrearActualizarUsuario(texto1[1] , texto2[1] , "" , "" , "" , texto3[1] , "" , "" , "" , "" , "")
+                                fondo_actual[0] = "menu habitaciones"
+                                fondo_actual[1] = 6
+                                texto_ingresado = ""
+                                texto1 = [(0,0),""]
+                                texto2 = [(0,0),""]  
+
+                            else:                       
+                                texto4[1] = chequeo_contraseña(texto3[1])    
+                        else:
+                            texto4[1] = "El usuario ingresado ya existe"
+                    else:
+                        texto4[1] = "usuario o mail muy cortos"
+
+                          
+                    
+
+                elif mouse_pos[0] <= 748 and mouse_pos[0] >= 522 and mouse_pos[1] <= 683 and mouse_pos[1] >= 673:#-----> Iniciar Sesion
+                    fondo_actual[0] = "iniciar sesion"
+                    fondo_actual[1] = 0
+                    texto_ingresado = ""
+                    texto1 = [(0,0),""]
+                    texto2 = [(0,0),""]               
 
             
         
@@ -186,15 +283,25 @@ while running:
 
     #fondos :)
     if fondo_actual[0] == "iniciar sesion":
-        texto1[0] = ( 445, 484 )
-        texto2[0] = ( 445, 587 )
+        texto1[0] = ( 445 , 484 )
+        texto2[0] = ( 445 , 587 )
+        texto3[0] = ( 350 , 375 )
         screen.blit (fondos[fondo_actual[1]] , (0 , 0))       
         screen.blit( fuente.render(texto1[1] , 0 , (0,0,0) ), texto1[0] )
         screen.blit( fuente.render(texto2[1] , 0 , (0,0,0) ), texto2[0] )
+        screen.blit( fuente.render(texto3[1] , 0 , (0,0,0) ), texto3[0] )
 
     
     elif fondo_actual[0] == "registrarse":
-        screen.blit (fondos[fondo_actual[1]] , (0 , 0))              
+        screen.blit (fondos[fondo_actual[1]] , (0 , 0)) 
+        texto1[0] = ( 445 , 465 )
+        texto2[0] = ( 445 , 545 )    
+        texto3[0] = ( 445 , 615 ) 
+        texto4[0] = ( 350 , 375 )
+        screen.blit( fuente.render(texto1[1] , 0 , (0,0,0) ), texto1[0] )
+        screen.blit( fuente.render(texto2[1] , 0 , (0,0,0) ), texto2[0] )  
+        screen.blit( fuente.render(texto3[1] , 0 , (0,0,0) ), texto3[0] )
+        screen.blit( fuente.render(texto4[1] , 0 , (0,0,0) ), texto4[0] )        
 
 
     elif fondo_actual[0] == "menu habitaciones":

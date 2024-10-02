@@ -34,7 +34,6 @@ def leer_json(archivo):
 def actualizar_json(archivo, datos):
     """Actualiza un archivo JSON, borrando su contenido y escribiendo nuevos datos."""
     try:
-        # Escribir el nuevo contenido en el archivo
         with open(archivo, 'w', encoding='utf-8') as f:
             json.dump(datos, f, indent=4)
         print(f"Archivo {archivo} actualizado correctamente.")
@@ -69,16 +68,13 @@ def VerificarContraseña(Usuario , contraseña):
         return False
     
 def agregar_notificacion(texto):
-    #Agrega una nueva notificación al archivo JSON.
+   
     contenido_actual = leer_json("Notificaciones.json")
     
-    # Generar una nueva clave para la notificación
-    nueva_clave = str(len(contenido_actual))  # Usa la longitud actual como nueva clave
+    nueva_clave = str(len(contenido_actual))  
 
-    # Obtener la fecha actual en formato dd/mm/yyyy
     fecha_enviada = datetime.now().strftime("%d/%m/%Y")
 
-    # Crear la nueva notificación
     nueva_notificacion = {
         "Archivada": 0,
         "Fijada": 0,
@@ -86,10 +82,8 @@ def agregar_notificacion(texto):
         "FechaEnviada": fecha_enviada
     }
 
-    # Agregar la nueva notificación al contenido
     contenido_actual[nueva_clave] = nueva_notificacion
-    
-    # Actualizar el archivo con el nuevo contenido
+
     actualizar_json("Notificaciones.json", contenido_actual)
 
 def ver_notificacion(numero_de_notificacion):
@@ -102,16 +96,14 @@ def ver_notificacion(numero_de_notificacion):
         return False
 
 def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal , IdContrataciones , IdHabitacion):
-    #Agrega una nueva notificación al archivo JSON.
-    contenido_actual = leer_json("Usuario.json")
     
-    # Generar una nueva clave para la notificación
+    contenido_actual = leer_json("Usuario.json")
+
     try: 
         nueva_clave = contenido_actual[Usuario]["NumeroDeCliente"]
     except:
-        nueva_clave = str(len(contenido_actual))  # Usa la longitud actual como nueva clave
+        nueva_clave = str(len(contenido_actual)) 
 
-    # Crear nuevo usuario
     nuevo_usuario = {
         "Correo" : Correo , 
         "Tipo" : Tipo,  
@@ -126,10 +118,8 @@ def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contrase
         "IdHabitacion" : IdHabitacion
     }
 
-    # Agregar la nueva notificación al contenido
     contenido_actual[Usuario] = nuevo_usuario
-    
-    # Actualizar el archivo con el nuevo contenido
+
     actualizar_json("Usuario.json", contenido_actual)
 
 def VerStock(): 

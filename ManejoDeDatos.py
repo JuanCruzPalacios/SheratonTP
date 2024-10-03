@@ -175,7 +175,8 @@ def NotificarIngresoEgreso(id_estacionamiento):
 
 NotificarIngresoEgreso("-1")
 
-
-
+def Filtros(huespedes, precio_min, precio_max):
+    filtro = LeerJson("habitaciones.json")
+    if precio_min
     
 

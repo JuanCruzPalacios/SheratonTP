@@ -161,7 +161,3 @@ def InformacionHabitacion (numero_de_habitacion):
     except: 
         print("Esa habitacion no existe.")
         return None
-
-    
-
-

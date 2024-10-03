@@ -161,3 +161,19 @@ def InformacionHabitacion (numero_de_habitacion):
     except: 
         print("Esa habitacion no existe.")
         return None
+
+def NotificarIngresoEgreso(id_estacionamiento):
+    ahora = datetime.now()
+    estacionamiento = LeerJson("Estacionamiento.json")
+    if estacionamiento[id_estacionamiento]["Ocupado"] == 0:
+        estacionamiento[id_estacionamiento]["Ocupado"] = 1
+        estacionamiento[id_estacionamiento]["UltimoIngreso"] = [str(ahora.day) + "/" + str(ahora.month) + "/" + str(ahora.year), str(ahora.hour) + ":" + str(ahora.minute) + ":" + str(ahora.second)]
+    else:
+        estacionamiento[id_estacionamiento]["Ocupado"] = 0
+        estacionamiento[id_estacionamiento]["UltimoEgreso"] = [str(ahora.day) + "/" + str(ahora.month) + "/" + str(ahora.year), str(ahora.hour) + ":" + str(ahora.minute) + ":" + str(ahora.second)]
+    ActualizarJson("Estacionamiento.json", estacionamiento )
+
+NotificarIngresoEgreso("-1")
+
+    
+

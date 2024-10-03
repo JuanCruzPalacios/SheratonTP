@@ -177,6 +177,21 @@ NotificarIngresoEgreso("-1")
 
 def Filtros(huespedes, precio_min, precio_max):
     filtro = LeerJson("habitaciones.json")
-    if precio_min
+    resultado_ocupado = []
+    resultado_precio = []
+    resultado_final = []
+    for habitacion in filtro: 
+        if filtro[habitacion]["Ocupada"] == "No" :
+            resultado_ocupado.append(habitacion)
+    for habitacion in resultado_ocupado:
+        if int(filtro[habitacion]["Precio"]) >= precio_min and int(filtro[habitacion]["Precio"]) <= precio_max : 
+            resultado_precio.append(habitacion)
+    for habitacion in resultado_precio:
+        if int(filtro[habitacion]["RangoHuespedes"]) == huespedes: 
+            resultado_final.append(habitacion)
+    return resultado_final 
+
+
+
     
 

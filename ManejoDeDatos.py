@@ -142,7 +142,7 @@ def AgregarEliminarStock (nombre_stock , cantidad) :
         cantidad_actual = Stock[nombre_stock]["Cantidad"] 
         Stock[nombre_stock]["Cantidad"] = int(cantidad_actual) + int(cantidad) 
         ActualizarJson("Stock.json" , Stock)
-        print (nombre_stock , "sumo " , cantidad , " de stock.")
+        print (nombre_stock , "añadio" , cantidad , " de stock.")
         return True
     except:
         print ("Hubo un error al agregar o eliminar el stock, verifique que el stock ingresado exista.")

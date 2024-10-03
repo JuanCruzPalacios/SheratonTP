@@ -372,6 +372,8 @@ while running:
                     alter_usuario = not(alter_usuario)
                     print(alter_usuario)
 
+
+
             elif fondo_actual[0] == "menu habitaciones":
 
 

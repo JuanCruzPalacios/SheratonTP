@@ -19,7 +19,7 @@
 "ServiciosIncluidos" : ["SPA","GYM"] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
-"Precio" : "250",
+"Precio" : "255",
 "RangoHuespedes": 3
 },
 
@@ -43,7 +43,7 @@
 "ServiciosIncluidos" : ["GYM","SPA","PISCINA"] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
-"Precio" : "400",
+"Precio" : "410",
 "RangoHuespedes": 2
 },
 
@@ -103,7 +103,7 @@
 "ServiciosIncluidos" : ["PISCINA"] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
-"Precio" : "210",
+"Precio" : "215",
 "RangoHuespedes": 2
 }
 

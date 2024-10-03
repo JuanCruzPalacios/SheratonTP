@@ -18,7 +18,7 @@ fondo_habitacion = pygame.transform.scale(pygame.image.load("imagenes/habitacion
 fondo_reservar = pygame.transform.scale(pygame.image.load("imagenes/suite_parking.jpg"), (1280, 720))
 fondo_pagar = pygame.transform.scale(pygame.image.load("imagenes/reserva_de_habitacion.jpg"), (1280, 720))
 
-fondo_menu_habitaciones = pygame.transform.scale(pygame.image.load("imagenes/menu_habitaciones.jpg"), (1280, 720))
+fondo_menu_habitaciones = pygame.image.load("imagenes/Menu_habitaciones.png")
 fondo_menu_amenities = pygame.transform.scale(pygame.image.load("imagenes/reserva_de_amenities.jpg"), (1280, 720))
 fondo_menu_salones = pygame.transform.scale(pygame.image.load("imagenes/reserva_de_salon.jpg"), (1280, 720))
 fondo_datos_usuario = pygame.transform.scale(pygame.image.load("imagenes/datos_usuario.jpg"), (1280, 720))
@@ -457,11 +457,15 @@ while running:
     elif fondo_actual[0] == "menu amenities":
         screen.blit (fondos[fondo_actual[1]] , (0 , 0))
 
+
+
+
     if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon"]:
         screen.blit (barra_arriba, (0,0))
 
+
     if alter_usuario:
-        screen.blit (imagen_usuario , (958, 111))  
+        screen.blit (imagen_usuario , (958, 129))
 
 
 

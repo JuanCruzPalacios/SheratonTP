@@ -8,7 +8,8 @@
 "ServiciosIncluidos" : [""] , 
 "EstadoActual" : "Ocupada" ,  
 "IdClienteOcupante" : "1" , 
-"Precio" : "240500"
+"Precio" : "240,5",
+"RangoHuespedes": [1,2]
 },
 "Habitacion_triple" : {
 
@@ -18,7 +19,8 @@
 "ServiciosIncluidos" : ["SPA","GYM"] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
-"Precio" : "250000"
+"Precio" : "250",
+"RangoHuespedes": [1,3]
 },
 
 "habitacion_doble" : {
@@ -29,7 +31,8 @@
 "ServiciosIncluidos" : [""] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
-"Precio" : "200000"
+"Precio" : "200",
+"RangoHuespedes": [1,2]
 },
 
 "habitacion_lujo" : {
@@ -40,7 +43,8 @@
 "ServiciosIncluidos" : ["GYM","SPA","PISCINA"] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
-"Precio" : "400500"
+"Precio" : "400,5",
+"RangoHuespedes": [1,2]
 },
 
 "habitacion_cuadruple" : {
@@ -51,7 +55,8 @@
 "ServiciosIncluidos" : [] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
-"Precio" : "297500"
+"Precio" : "297,5",
+"RangoHuespedes": [1,4]
 },
 
 "suite_rio" : {
@@ -62,7 +67,8 @@
 "ServiciosIncluidos" : ["PISCINA"] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
-"Precio" : "290000"
+"Precio" : "290",
+"RangoHuespedes": [1,2]
 },
 
 "habitacion_individual" : {
@@ -73,7 +79,8 @@
 "ServiciosIncluidos" : ["PISCINA"] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
-"Precio" : "180000"
+"Precio" : "180",
+"RangoHuespedes": [1]
 },
 
 "suite_jacuzzi" : {
@@ -84,7 +91,8 @@
 "ServiciosIncluidos" : ["PISCINA"] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
-"Precio" : "325000"
+"Precio" : "325",
+"RangoHuespedes": [1,2]
 },
 
 "suite" : {
@@ -95,7 +103,8 @@
 "ServiciosIncluidos" : ["PISCINA"] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
-"Precio" : "210000"
+"Precio" : "210",
+"RangoHuespedes": [1,2]
 }
 
 }

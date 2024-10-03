@@ -1,6 +1,6 @@
 {
     "-1": {
-        "Ocupado": 0,
+        "Ocupado": 1,
         "Ocupante": "pepe",
         "EstadoActual": "Fuera",
         "Vencimiento": "11/10/2024",

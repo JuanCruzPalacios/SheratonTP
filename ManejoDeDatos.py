@@ -13,10 +13,10 @@
 import json
 from datetime import datetime
 
-def leer_json(archivo):
-    """Lee un archivo JSON y devuelve su contenido como un diccionario."""
+def LeerJson(archivo):
+    #Lee un archivo JSON y devuelve su contenido como un diccionario.
     try:
-        with open(archivo, 'r', encoding='utf-8') as f:
+        with open("jsons/" + archivo, 'r', encoding='utf-8') as f:
             contenido = json.load(f)
             if contenido is None: 
                 contenido = {}
@@ -31,18 +31,19 @@ def leer_json(archivo):
         print(f"Ocurrió un error: {e}")
         return None
 
-def actualizar_json(archivo, datos):
+def ActualizarJson(archivo, datos):
     """Actualiza un archivo JSON, borrando su contenido y escribiendo nuevos datos."""
     try:
-        # Escribir el nuevo contenido en el archivo
-        with open(archivo, 'w', encoding='utf-8') as f:
+        with open("jsons/" + archivo, 'w', encoding='utf-8') as f:
             json.dump(datos, f, indent=4)
         print(f"Archivo {archivo} actualizado correctamente.")
     except Exception as e:
         print(f"Ocurrió un error al actualizar el archivo: {e}")
 
 def ExisteUsuario(Usuario):  
-    usuarios = leer_json("Usuario.json") 
+
+    usuarios = LeerJson("Usuario.json") 
+
     try:
         usuarios[Usuario] != None
         print("El usuario existe.")
@@ -52,11 +53,14 @@ def ExisteUsuario(Usuario):
         return False
 
 def VerificarContraseña(Usuario , contraseña): 
-    usuarios = leer_json("Usuario.json")
+
+    usuarios = LeerJson("Usuario.json")
+
+
     try:
         usuarios[Usuario] != None
         print("El usuario existe.")
-        if usuarios[Usuario]["Contraseña"] == contraseña:
+        if usuarios[Usuario]["Password"] == contraseña:
             print("La contraseña es correcta.")
         else:
             print("La contraseña es incorrecta.")
@@ -68,17 +72,14 @@ def VerificarContraseña(Usuario , contraseña):
         print("El usuario no existe.")
         return False
     
-def agregar_notificacion(texto):
-    #Agrega una nueva notificación al archivo JSON.
-    contenido_actual = leer_json("Notificaciones.json")
+def AgregarNotificacion(texto):
+   
+    contenido_actual = LeerJson("Notificaciones.json")
     
-    # Generar una nueva clave para la notificación
-    nueva_clave = str(len(contenido_actual))  # Usa la longitud actual como nueva clave
+    nueva_clave = str(len(contenido_actual))  
 
-    # Obtener la fecha actual en formato dd/mm/yyyy
     fecha_enviada = datetime.now().strftime("%d/%m/%Y")
 
-    # Crear la nueva notificación
     nueva_notificacion = {
         "Archivada": 0,
         "Fijada": 0,
@@ -86,15 +87,13 @@ def agregar_notificacion(texto):
         "FechaEnviada": fecha_enviada
     }
 
-    # Agregar la nueva notificación al contenido
     contenido_actual[nueva_clave] = nueva_notificacion
-    
-    # Actualizar el archivo con el nuevo contenido
-    actualizar_json("Notificaciones.json", contenido_actual)
 
-def ver_notificacion(numero_de_notificacion):
+    ActualizarJson("Notificaciones.json", contenido_actual)
+
+def VerNotificacion(numero_de_notificacion):
     numero_de_notificacion = str(numero_de_notificacion) 
-    Notificaciones = leer_json("Notificaciones.json")
+    Notificaciones = LeerJson("Notificaciones.json")
     try:
         return Notificaciones[numero_de_notificacion]["Archivada"] , Notificaciones[numero_de_notificacion]["Fijada"] , Notificaciones[numero_de_notificacion]["Texto"] , Notificaciones[numero_de_notificacion]["FechaEnviada"]
     except: 
@@ -102,16 +101,19 @@ def ver_notificacion(numero_de_notificacion):
         return False
 
 def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal , IdContrataciones , IdHabitacion):
+
+
     #Agrega una nueva notificación al archivo JSON.
-    contenido_actual = leer_json("Usuario.json")
+
+
     
-    # Generar una nueva clave para la notificación
+    contenido_actual = LeerJson("Usuario.json")
+
     try: 
         nueva_clave = contenido_actual[Usuario]["NumeroDeCliente"]
     except:
-        nueva_clave = str(len(contenido_actual))  # Usa la longitud actual como nueva clave
+        nueva_clave = str(len(contenido_actual)) 
 
-    # Crear nuevo usuario
     nuevo_usuario = {
         "Correo" : Correo , 
         "Tipo" : Tipo,  
@@ -126,10 +128,42 @@ def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contrase
         "IdHabitacion" : IdHabitacion
     }
 
-    # Agregar la nueva notificación al contenido
     contenido_actual[Usuario] = nuevo_usuario
+
+
+    ActualizarJson("Usuario.json", contenido_actual)
+
+def VerStock(): 
+    Stock = LeerJson("Stock.json")
+    lista_stock = []
+    for clave  in Stock: 
+        print (clave)
+        lista_stock.append([clave , Stock[clave]["Cantidad"]])
+        
+    return lista_stock
+
+def AgregarEliminarStock (nombre_stock , cantidad) : 
+    Stock = LeerJson("Stock.json")
+    try: 
+        cantidad_actual = Stock[nombre_stock]["Cantidad"] 
+        Stock[nombre_stock]["Cantidad"] = int(cantidad_actual) + int(cantidad) 
+        ActualizarJson("Stock.json" , Stock)
+        print (nombre_stock , "sumo " , cantidad , " de stock.")
+        return True
+    except:
+        print ("Hubo un error al agregar o eliminar el stock, verifique que el stock ingresado exista.")
+        return False
+      
+def InformacionHabitacion (numero_de_habitacion):
+    habitaciones = LeerJson("habitaciones.json")
+    try:
+        return habitaciones[str(numero_de_habitacion)]
+    except: 
+        print("Esa habitacion no existe.")
+        return None
+
     
     # Actualizar el archivo con el nuevo contenido
-    actualizar_json("Usuario.json", contenido_actual)
-
+    actualizar_json("jsons/Usuario.json", contenido_actual)
+ExisteUsuario("Pepe")
 

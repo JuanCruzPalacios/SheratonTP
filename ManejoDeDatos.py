@@ -153,7 +153,7 @@ def AgregarEliminarStock (nombre_stock , cantidad) :
     except:
         print ("Hubo un error al agregar o eliminar el stock, verifique que el stock ingresado exista.")
         return False
-      
+
 def InformacionHabitacion (numero_de_habitacion):
     habitaciones = LeerJson("habitaciones.json")
     try:
@@ -162,8 +162,21 @@ def InformacionHabitacion (numero_de_habitacion):
         print("Esa habitacion no existe.")
         return None
 
+def NotificarIngresoEgreso(id_estacionamiento):
+    ahora = datetime.now()
+    estacionamiento = LeerJson("Estacionamiento.json")
+    if estacionamiento[id_estacionamiento]["Ocupado"] == 0:
+        estacionamiento[id_estacionamiento]["Ocupado"] = 1
+        estacionamiento[id_estacionamiento]["UltimoIngreso"] = [str(ahora.day) + "/" + str(ahora.month) + "/" + str(ahora.year), str(ahora.hour) + ":" + str(ahora.minute) + ":" + str(ahora.second)]
+    else:
+        estacionamiento[id_estacionamiento]["Ocupado"] = 0
+        estacionamiento[id_estacionamiento]["UltimoEgreso"] = [str(ahora.day) + "/" + str(ahora.month) + "/" + str(ahora.year), str(ahora.hour) + ":" + str(ahora.minute) + ":" + str(ahora.second)]
+    ActualizarJson("Estacionamiento.json", estacionamiento )
+
+NotificarIngresoEgreso("-1")
+
+def Filtros(huespedes, precio_min, precio_max):
+    filtro = LeerJson("habitaciones.json")
+    if precio_min
     
-    # Actualizar el archivo con el nuevo contenido
-    actualizar_json("jsons/Usuario.json", contenido_actual)
-ExisteUsuario("Pepe")
 

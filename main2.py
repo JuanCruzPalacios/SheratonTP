@@ -54,7 +54,7 @@ fondos = [  fondo_iniciar_sesion, fondo_registrarse,
             #15                         #16
 
 fuente = pygame.font.Font("fuentes/Averia_Libre/AveriaLibre-Regular.ttf", 31)
-
+limite = 13
 texto1 = [(0,0), ""]
 texto2 = [(0,0), ""]
 texto3 = [(0,0), ""]
@@ -67,7 +67,7 @@ texto8 = [(0,0), ""]
 
 
 
-texto_seleccionado = ["", texto1 ]
+texto_seleccionado =  texto1 
 texto_ingresado = ""
 
 
@@ -129,24 +129,39 @@ def cursor(mouse_pos):
     elif fondo_actual[0] == "menu habitaciones":
 
 
-        if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15:
+        if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15: #Home
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
 
-        elif mouse_pos[0] < 560 and mouse_pos[0] > 435 and mouse_pos[1] < 100 and mouse_pos[1] > 15:
+        elif mouse_pos[0] < 560 and mouse_pos[0] > 435 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#parking
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
 
-        elif mouse_pos[0] < 710 and mouse_pos[0] > 590 and mouse_pos[1] < 100 and mouse_pos[1] > 15:
+        elif mouse_pos[0] < 710 and mouse_pos[0] > 590 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#bedroom
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
 
-        elif mouse_pos[0] < 860 and mouse_pos[0] > 745 and mouse_pos[1] < 100 and mouse_pos[1] > 15:
+        elif mouse_pos[0] < 860 and mouse_pos[0] > 745 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#services
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif mouse_pos[0] < 295 and mouse_pos[0] > 195 and mouse_pos[1] < 290 and mouse_pos[1] > 260:#personas        
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif mouse_pos[0] < 150 and mouse_pos[0] > 55 and mouse_pos[1] < 417 and mouse_pos[1] > 385:#precio "desde"
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif mouse_pos[0] < 290 and mouse_pos[0] > 195 and mouse_pos[1] < 417 and mouse_pos[1] > 385:#precio "hasta"
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
 
         else:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
+
 
 
 
@@ -161,6 +176,9 @@ def chequeo_contraseña(conteraseña):
             return "Debe haber algun caracteres especiales"    
     else:
         return "La contraseña debe ser de al menos 8 caracteres"
+
+
+
 
 
 
@@ -187,13 +205,13 @@ while running:
                 
     
             elif event.key == pygame.K_ESCAPE:
-                texto_seleccionado[0] = ""
+                texto_seleccionado = ""
                 
             else:                 
-                if len(texto_ingresado) < 23:           
+                if len(texto_ingresado) < limite:           
                     # Agregar caracteres al texto ingresado
                     texto_ingresado += event.unicode
-            texto_seleccionado[1][1] = texto_ingresado
+            texto_seleccionado[1] = texto_ingresado
             
                 
 
@@ -207,16 +225,16 @@ while running:
                
                 if mouse_pos[0] <= 845 and mouse_pos[0] >= 439 and mouse_pos[1] <= 525 and mouse_pos[1] >= 484: #-----> Usuario
                     texto_ingresado = texto1[1]
-                    texto_seleccionado[0] = "Usuario / iniciar sesion"
-                    texto_seleccionado[1] = texto1
- 
+                    texto_seleccionado = texto1 #Usuario / iniciar sesion
+                    limite = 13
+
                    
 
                 
                 elif mouse_pos[0] <= 845 and mouse_pos[0] >= 439 and mouse_pos[1] <= 631 and mouse_pos[1] >= 587: #-----> Contraseña                    
                     texto_ingresado = texto2[1]
-                    texto_seleccionado[0] = "Contraseña / iniciar sesion"
-                    texto_seleccionado[1] = texto2
+                    texto_seleccionado = texto2 #Contraseña / iniciar sesion
+                    limite = 13
 
 
 
@@ -232,10 +250,13 @@ while running:
                             texto_ingresado = ""
                             texto1 = [(0,0),""]
                             texto2 = [(0,0),""]
+                            texto3 = [(0,0),""]
                         else:
                             texto3[1] = "Contraseña erronea"
                     else:
                         texto3[1] = "Usuario inexistente"
+
+
 
                 elif mouse_pos[0] <= 744 and mouse_pos[0] >= 539 and mouse_pos[1] <= 682 and mouse_pos[1] >= 673:#-----> Crear cuenta
                     fondo_actual[0] = "registrarse"
@@ -243,29 +264,36 @@ while running:
                     texto_ingresado = ""
                     texto1 = [(0,0),""]
                     texto2 = [(0,0),""]
-                
+                    texto3 = [(0,0),""]                
 
    
+
 
             elif fondo_actual[0] == "registrarse":   
 
 
                 if mouse_pos[0] <= 844 and mouse_pos[0] >= 440 and mouse_pos[1] <= 500 and mouse_pos[1] >= 470: #-----> Usuario
-                    texto_seleccionado[0] = "usuario / registrarse"
-                    texto_seleccionado[1] = texto1
+
+                    texto_seleccionado = texto1 #usuario / registrarse
                     texto_ingresado = texto1[1]
+                    limite = 13
+
 
 
                 elif mouse_pos[0] <= 844 and mouse_pos[0] >= 440 and mouse_pos[1] <= 581 and mouse_pos[1] >= 551:#-----> Correo Electronico
-                    texto_seleccionado[0] = "mail / registrarse"
-                    texto_seleccionado[1] = texto2
+
+                    texto_seleccionado = texto2 #mail / registrarse
                     texto_ingresado = texto2[1]
+                    limite = 13
+
 
 
                 elif mouse_pos[0] <= 844 and mouse_pos[0] >= 440 and mouse_pos[1] <= 653 and mouse_pos[1] >= 621: #-----> Contraseña
-                    texto_seleccionado[0] = "contraseña / registrarse"
-                    texto_seleccionado[1] = texto3
+ 
+                    texto_seleccionado = texto3 #contraseña / registrarse
                     texto_ingresado = texto3[1]
+                    limite = 13
+
 
 
                 elif mouse_pos[0] <= 908 and mouse_pos[0] >= 852 and mouse_pos[1] <= 675 and mouse_pos[1] >= 630:#-----> Siguiente / Registrarse
@@ -289,6 +317,8 @@ while running:
                     else:
                         texto4[1] = "usuario o mail muy cortos"
 
+
+
                           
                 elif mouse_pos[0] <= 748 and mouse_pos[0] >= 522 and mouse_pos[1] <= 683 and mouse_pos[1] >= 673:#-----> Iniciar Sesion
                     fondo_actual[0] = "iniciar sesion"
@@ -303,27 +333,146 @@ while running:
             elif fondo_actual[0] == "menu habitaciones":
 
 
-                if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15:
+                if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15: #Home 
                     fondo_actual[0] = "menu habitaciones"
                     fondo_actual[1] = 6
 
 
-                elif mouse_pos[0] < 560 and mouse_pos[0] > 435 and mouse_pos[1] < 100 and mouse_pos[1] > 15:
+
+                elif mouse_pos[0] < 560 and mouse_pos[0] > 435 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Parking
                     fondo_actual[0] = "menu parking"
                     fondo_actual[1] = 2
 
 
-                elif mouse_pos[0] < 710 and mouse_pos[0] > 590 and mouse_pos[1] < 100 and mouse_pos[1] > 15:
+
+                elif mouse_pos[0] < 710 and mouse_pos[0] > 590 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Bedroom
                     fondo_actual[0] = "menu bedroom"
                     fondo_actual[1] = 3
 
 
 
-                elif mouse_pos[0] < 860 and mouse_pos[0] > 745 and mouse_pos[1] < 100 and mouse_pos[1] > 15:
+                elif mouse_pos[0] < 860 and mouse_pos[0] > 745 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Services
                     fondo_actual[0] = "menu amenities"
                     fondo_actual[1] = 7
 
    
+
+                elif mouse_pos[0] < 295 and mouse_pos[0] > 195 and mouse_pos[1] < 290 and mouse_pos[1] > 260:#personas        
+                    texto_seleccionado = texto1
+                    texto_ingresado = texto1[1]
+                    limite = 3
+
+
+
+                elif mouse_pos[0] < 150 and mouse_pos[0] > 55 and mouse_pos[1] < 417 and mouse_pos[1] > 385:#precio "desde"
+                    texto_seleccionado = texto2
+                    texto_ingresado = texto2[1]
+                    limite = 6
+
+
+
+                elif mouse_pos[0] < 290 and mouse_pos[0] > 195 and mouse_pos[1] < 417 and mouse_pos[1] > 385:#precio "hasta"
+                    texto_seleccionado = texto3
+                    texto_ingresado = texto3[1]
+                    limite = 6
+
+
+
+
+            elif fondo_actual[0] == "menu parking":
+
+
+                if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15: #Home 
+                    fondo_actual[0] = "menu habitaciones"
+                    fondo_actual[1] = 6
+
+
+
+                elif mouse_pos[0] < 560 and mouse_pos[0] > 435 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Parking
+                    fondo_actual[0] = "menu parking"
+                    fondo_actual[1] = 2
+
+
+
+                elif mouse_pos[0] < 710 and mouse_pos[0] > 590 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Bedroom
+                    fondo_actual[0] = "menu bedroom"
+                    fondo_actual[1] = 3
+
+
+
+                elif mouse_pos[0] < 860 and mouse_pos[0] > 745 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Services
+                    fondo_actual[0] = "menu amenities"
+                    fondo_actual[1] = 7
+
+
+
+
+            elif fondo_actual[0] == "menu bedroom":
+
+
+                if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15: #Home 
+                    fondo_actual[0] = "menu habitaciones"
+                    fondo_actual[1] = 6
+
+
+
+                elif mouse_pos[0] < 560 and mouse_pos[0] > 435 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Parking
+                    fondo_actual[0] = "menu parking"
+                    fondo_actual[1] = 2
+
+
+
+                elif mouse_pos[0] < 710 and mouse_pos[0] > 590 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Bedroom
+                    fondo_actual[0] = "menu bedroom"
+                    fondo_actual[1] = 3
+
+
+
+                elif mouse_pos[0] < 860 and mouse_pos[0] > 745 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Services
+                    fondo_actual[0] = "menu amenities"
+                    fondo_actual[1] = 7
+
+
+
+
+            elif fondo_actual[0] == "menu amenities":
+    
+                if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15: #Home 
+                    fondo_actual[0] = "menu habitaciones"
+                    fondo_actual[1] = 6
+
+
+
+                elif mouse_pos[0] < 560 and mouse_pos[0] > 435 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Parking
+                    fondo_actual[0] = "menu parking"
+                    fondo_actual[1] = 2
+
+
+
+                elif mouse_pos[0] < 710 and mouse_pos[0] > 590 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Bedroom
+                    fondo_actual[0] = "menu bedroom"
+                    fondo_actual[1] = 3
+
+
+
+                elif mouse_pos[0] < 860 and mouse_pos[0] > 745 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Services
+                    fondo_actual[0] = "menu amenities"
+                    fondo_actual[1] = 7
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         cursor(mouse_pos)
 
     #fondos :)
@@ -350,7 +499,13 @@ while running:
 
 
     elif fondo_actual[0] == "menu habitaciones":
-        screen.blit (fondos[fondo_actual[1]] , (0 , 0))       
+        screen.blit (fondos[fondo_actual[1]] , (0 , 0))   
+        texto1[0] = ( 200 , 255 )
+        texto2[0] = ( 60  , 383 )    
+        texto3[0] = ( 198 , 383 ) 
+        screen.blit( fuente.render(texto1[1] , 0 , (0,0,0) ), texto1[0] )
+        screen.blit( fuente.render(texto2[1] , 0 , (0,0,0) ), texto2[0] )  
+        screen.blit( fuente.render(texto3[1] , 0 , (0,0,0) ), texto3[0] )   
 
 
     elif fondo_actual[0] == "menu parking":

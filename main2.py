@@ -156,6 +156,8 @@ def cursor(mouse_pos):
         elif mouse_pos[0] < 290 and mouse_pos[0] > 195 and mouse_pos[1] < 417 and mouse_pos[1] > 385:#precio "hasta"
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
+        elif mouse_pos[0] < 252 and mouse_pos[0] > 92 and mouse_pos[1] < 495 and mouse_pos[1] > 463:#buscar
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
         else:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
@@ -229,8 +231,7 @@ while running:
                     limite = 13
 
                    
-
-                
+           
                 elif mouse_pos[0] <= 845 and mouse_pos[0] >= 439 and mouse_pos[1] <= 631 and mouse_pos[1] >= 587: #-----> Contraseña                    
                     texto_ingresado = texto2[1]
                     texto_seleccionado = texto2 #Contraseña / iniciar sesion
@@ -367,14 +368,14 @@ while running:
                 elif mouse_pos[0] < 150 and mouse_pos[0] > 55 and mouse_pos[1] < 417 and mouse_pos[1] > 385:#precio "desde"
                     texto_seleccionado = texto2
                     texto_ingresado = texto2[1]
-                    limite = 6
+                    limite = 3
 
 
 
                 elif mouse_pos[0] < 290 and mouse_pos[0] > 195 and mouse_pos[1] < 417 and mouse_pos[1] > 385:#precio "hasta"
                     texto_seleccionado = texto3
                     texto_ingresado = texto3[1]
-                    limite = 6
+                    limite = 3
 
 
 

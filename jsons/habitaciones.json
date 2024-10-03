@@ -95,7 +95,7 @@
 "RangoHuespedes": [1,2]
 },
 
-"suite" : {
+"suite_estandar" : {
 
 "FechasOcupadas" : [ ["FechaInicio" , "FechaFinal"] , ["FechaInicio" , "FechaFinal"] ],
 "UltimaLimpieza" : "02/10/2024" , 

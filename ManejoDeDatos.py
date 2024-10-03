@@ -100,13 +100,7 @@ def VerNotificacion(numero_de_notificacion):
         print("No existe ninguna notificacion con ese numero.")
         return False
 
-def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal , IdContrataciones , IdHabitacion):
-
-
-    #Agrega una nueva notificación al archivo JSON.
-
-
-    
+def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal , IdContrataciones , IdHabitacion):    
     contenido_actual = LeerJson("Usuario.json")
 
     try: 

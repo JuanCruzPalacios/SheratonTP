@@ -1,16 +1,16 @@
 {
 
-"-1" : {
+"Suite_balcon" : {
 
 "FechasOcupadas" : [ ["FechaInicio" , "FechaFinal"] , ["FechaInicio" , "FechaFinal"] ],
 "UltimaLimpieza" : "19/09/2024" , 
 "Estado" : "No molestar" , 
-"ServiciosIncluidos" : ["GYM"] , 
+"ServiciosIncluidos" : [""] , 
 "EstadoActual" : "Ocupada" ,  
 "IdClienteOcupante" : "1" , 
-"Precio" : "2000"
+"Precio" : "240500"
 },
-"1" : {
+"Habitacion_triple" : {
 
 "FechasOcupadas" : [ ["FechaInicio" , "FechaFinal"] , ["FechaInicio" , "FechaFinal"] ],
 "UltimaLimpieza" : "02/10/2024" , 
@@ -18,19 +18,21 @@
 "ServiciosIncluidos" : ["SPA","GYM"] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
-"Precio" : "4000"
+"Precio" : "250000"
 },
-"2" : {
+
+"habitacion_doble" : {
 
 "FechasOcupadas" : [ ["FechaInicio" , "FechaFinal"] , ["FechaInicio" , "FechaFinal"] ],
 "UltimaLimpieza" : "01 /10/2024" , 
 "Estado" : "Ninguno" , 
-"ServiciosIncluidos" : [] , 
+"ServiciosIncluidos" : [""] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
-"Precio" : "1000"
+"Precio" : "200000"
 },
-"3" : {
+
+"habitacion_lujo" : {
 
 "FechasOcupadas" : [ ["FechaInicio" , "FechaFinal"] , ["FechaInicio" , "FechaFinal"] ],
 "UltimaLimpieza" : "19/09/2024" , 
@@ -38,9 +40,10 @@
 "ServiciosIncluidos" : ["GYM","SPA","PISCINA"] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
-"Precio" : "7000"
+"Precio" : "400500"
 },
-"4" : {
+
+"habitacion_cuadruple" : {
 
 "FechasOcupadas" : [ ["FechaInicio" , "FechaFinal"] , ["FechaInicio" , "FechaFinal"] ],
 "UltimaLimpieza" : "19/09/2024" , 
@@ -48,9 +51,10 @@
 "ServiciosIncluidos" : [] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
-"Precio" : "3500"
+"Precio" : "297500"
 },
-"5" : {
+
+"suite_rio" : {
 
 "FechasOcupadas" : [ ["FechaInicio" , "FechaFinal"] , ["FechaInicio" , "FechaFinal"] ],
 "UltimaLimpieza" : "02/10/2024" , 
@@ -58,7 +62,40 @@
 "ServiciosIncluidos" : ["PISCINA"] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
-"Precio" : "2500"
+"Precio" : "290000"
+},
+
+"habitacion_individual" : {
+
+"FechasOcupadas" : [ ["FechaInicio" , "FechaFinal"] , ["FechaInicio" , "FechaFinal"] ],
+"UltimaLimpieza" : "02/10/2024" , 
+"Estado" : "No molestar" , 
+"ServiciosIncluidos" : ["PISCINA"] , 
+"EstadoActual" : "Desocupada" ,  
+"IdClienteOcupante" : "" , 
+"Precio" : "180000"
+},
+
+"suite_jacuzzi" : {
+
+"FechasOcupadas" : [ ["FechaInicio" , "FechaFinal"] , ["FechaInicio" , "FechaFinal"] ],
+"UltimaLimpieza" : "02/10/2024" , 
+"Estado" : "No molestar" , 
+"ServiciosIncluidos" : ["PISCINA"] , 
+"EstadoActual" : "Desocupada" ,  
+"IdClienteOcupante" : "" , 
+"Precio" : "325000"
+},
+
+"suite" : {
+
+"FechasOcupadas" : [ ["FechaInicio" , "FechaFinal"] , ["FechaInicio" , "FechaFinal"] ],
+"UltimaLimpieza" : "02/10/2024" , 
+"Estado" : "No molestar" , 
+"ServiciosIncluidos" : ["PISCINA"] , 
+"EstadoActual" : "Desocupada" ,  
+"IdClienteOcupante" : "" , 
+"Precio" : "210000"
 }
 
 }

@@ -2,7 +2,7 @@
 
 "Suite_balcon" : {
 
-"FechasOcupadas" : [ ["FechaInicio" , "FechaFinal"] , ["FechaInicio" , "FechaFinal"] ],
+"Ocupada" : "No",
 "UltimaLimpieza" : "19/09/2024" , 
 "Estado" : "No molestar" , 
 "ServiciosIncluidos" : [""] , 
@@ -13,7 +13,7 @@
 },
 "Habitacion_triple" : {
 
-"FechasOcupadas" : [ ["FechaInicio" , "FechaFinal"] , ["FechaInicio" , "FechaFinal"] ],
+"Ocupada" : "No",
 "UltimaLimpieza" : "02/10/2024" , 
 "Estado" : "Ninguno" , 
 "ServiciosIncluidos" : ["SPA","GYM"] , 
@@ -25,7 +25,7 @@
 
 "habitacion_doble" : {
 
-"FechasOcupadas" : [ ["FechaInicio" , "FechaFinal"] , ["FechaInicio" , "FechaFinal"] ],
+"Ocupada" : "No",
 "UltimaLimpieza" : "01 /10/2024" , 
 "Estado" : "Ninguno" , 
 "ServiciosIncluidos" : [""] , 
@@ -37,7 +37,7 @@
 
 "habitacion_lujo" : {
 
-"FechasOcupadas" : [ ["FechaInicio" , "FechaFinal"] , ["FechaInicio" , "FechaFinal"] ],
+"Ocupada" : "No",
 "UltimaLimpieza" : "19/09/2024" , 
 "Estado" : "No molestar" , 
 "ServiciosIncluidos" : ["GYM","SPA","PISCINA"] , 
@@ -49,7 +49,7 @@
 
 "habitacion_cuadruple" : {
 
-"FechasOcupadas" : [ ["FechaInicio" , "FechaFinal"] , ["FechaInicio" , "FechaFinal"] ],
+"Ocupada" : "No",
 "UltimaLimpieza" : "19/09/2024" , 
 "Estado" : "Ninguno" , 
 "ServiciosIncluidos" : [] , 
@@ -61,7 +61,7 @@
 
 "suite_rio" : {
 
-"FechasOcupadas" : [ ["FechaInicio" , "FechaFinal"] , ["FechaInicio" , "FechaFinal"] ],
+"Ocupada" : "No",
 "UltimaLimpieza" : "02/10/2024" , 
 "Estado" : "No molestar" , 
 "ServiciosIncluidos" : ["PISCINA"] , 
@@ -73,7 +73,7 @@
 
 "habitacion_individual" : {
 
-"FechasOcupadas" : [ ["FechaInicio" , "FechaFinal"] , ["FechaInicio" , "FechaFinal"] ],
+"Ocupada" : "No",
 "UltimaLimpieza" : "02/10/2024" , 
 "Estado" : "No molestar" , 
 "ServiciosIncluidos" : ["PISCINA"] , 
@@ -85,19 +85,19 @@
 
 "suite_jacuzzi" : {
 
-"FechasOcupadas" : [ ["FechaInicio" , "FechaFinal"] , ["FechaInicio" , "FechaFinal"] ],
+"Ocupada" : "No",
 "UltimaLimpieza" : "02/10/2024" , 
 "Estado" : "No molestar" , 
 "ServiciosIncluidos" : ["PISCINA"] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
 "Precio" : "325",
-"RangoHuespedes": [1,2]
+"RangoHuespedes": 2
 },
 
 "suite_estandar" : {
 
-"FechasOcupadas" : [ ["FechaInicio" , "FechaFinal"] , ["FechaInicio" , "FechaFinal"] ],
+"Ocupada" : "No" ,
 "UltimaLimpieza" : "02/10/2024" , 
 "Estado" : "No molestar" , 
 "ServiciosIncluidos" : ["PISCINA"] , 

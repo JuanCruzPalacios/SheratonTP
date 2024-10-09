@@ -18,7 +18,7 @@ fondo_habitacion = pygame.transform.scale(pygame.image.load("imagenes/habitacion
 fondo_reservar = pygame.transform.scale(pygame.image.load("imagenes/suite_parking.jpg"), (1280, 720))
 fondo_pagar = pygame.transform.scale(pygame.image.load("imagenes/reserva_de_habitacion.jpg"), (1280, 720))
 
-fondo_menu_habitaciones = pygame.transform.scale(pygame.image.load("imagenes/menu_habitaciones.jpg"), (1280, 720))
+fondo_menu_habitaciones = pygame.image.load("imagenes/Menu_habitaciones.png")
 fondo_menu_amenities = pygame.transform.scale(pygame.image.load("imagenes/reserva_de_amenities.jpg"), (1280, 720))
 fondo_menu_salones = pygame.transform.scale(pygame.image.load("imagenes/reserva_de_salon.jpg"), (1280, 720))
 fondo_datos_usuario = pygame.transform.scale(pygame.image.load("imagenes/datos_usuario.jpg"), (1280, 720))
@@ -33,7 +33,10 @@ fondo_recepcionista_notificar = pygame.transform.scale(pygame.image.load("imagen
 fondo_recepcinista_eventos = pygame.transform.scale(pygame.image.load("imagenes/recepcionista_eventos.jpg"), (1280, 720))
 fondo_recepcinista_limpieza = pygame.transform.scale(pygame.image.load("imagenes/recepcionista_limpieza.jpg"), (1280, 720))
 
+barra_arriba = pygame.image.load("imagenes/barra_arriba.png")
+
 imagen_usuario = pygame.transform.scale(pygame.image.load("imagenes/usuario.png"), (321, 394))
+imagen_filtro = pygame.image.load("imagenes/NICOLAS.png")
 alter_usuario = False
 
 
@@ -64,7 +67,7 @@ texto6 = [(0,0), ""]
 texto7 = [(0,0), ""]
 texto8 = [(0,0), ""]
 
-
+posicion = 0
 
 
 texto_seleccionado =  texto1 
@@ -77,7 +80,6 @@ texto_ingresado = ""
 
 def cursor(mouse_pos):
     
-
 
     if fondo_actual[0] == "iniciar sesion":
 
@@ -99,30 +101,6 @@ def cursor(mouse_pos):
         else:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
-
-    elif fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon"]:
-
-
-        if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15: #Home
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-
-
-        elif mouse_pos[0] < 560 and mouse_pos[0] > 435 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#parking
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-
-
-        elif mouse_pos[0] < 710 and mouse_pos[0] > 590 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#bedroom
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-
-
-        elif mouse_pos[0] < 860 and mouse_pos[0] > 745 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#services
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-
-        elif mouse_pos[0] < 1220 and mouse_pos[0] > 1140 and mouse_pos[1] < 90 and mouse_pos[1] > 18:#boton usuario
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-
-        else:
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
 
     elif fondo_actual[0] == "registrarse":
@@ -172,6 +150,47 @@ def cursor(mouse_pos):
 
         else:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
+
+    if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon"]:
+
+
+            if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15: #Home
+                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+            elif mouse_pos[0] < 560 and mouse_pos[0] > 435 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#parking
+                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+            elif mouse_pos[0] < 710 and mouse_pos[0] > 590 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#bedroom
+                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+            elif mouse_pos[0] < 860 and mouse_pos[0] > 745 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#services
+                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+            elif mouse_pos[0] < 1220 and mouse_pos[0] > 1140 and mouse_pos[1] < 90 and mouse_pos[1] > 18:#boton usuario
+                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+    if alter_usuario:
+
+        if mouse_pos[0] < 1245 and mouse_pos[0] > 992 and mouse_pos[1] < 310 and mouse_pos[1] > 261: #ver datos 
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif mouse_pos[0] < 1245 and mouse_pos[0] > 992 and mouse_pos[1] < 395 and mouse_pos[1] > 350: #reservar eventos
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif mouse_pos[0] < 1205  and mouse_pos[0] > 1030 and mouse_pos[1] < 478 and mouse_pos[1] > 431: #salir
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+
+
 
 
 
@@ -230,8 +249,15 @@ while running:
 
         if event.type == pygame.MOUSEBUTTONDOWN :
 
+            if event.button == 4:  # Rueda hacia arriba   
 
-            print(mouse_pos)
+                if posicion < 0:
+                    posicion += 25
+
+            elif event.button == 5:  # Rueda hacia abajo
+
+                if posicion < 720:
+                    posicion -= 25
 
 
             if fondo_actual[0] == "iniciar sesion":
@@ -342,7 +368,32 @@ while running:
 
 
 
-            elif fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon"]:
+            elif fondo_actual[0] == "menu habitaciones":
+
+
+                if mouse_pos[0] < 295 and mouse_pos[0] > 195 and mouse_pos[1] < 290 and mouse_pos[1] > 260:#personas        
+                    texto_seleccionado = texto1
+                    texto_ingresado = texto1[1]
+                    limite = 3
+
+
+
+                elif mouse_pos[0] < 150 and mouse_pos[0] > 55 and mouse_pos[1] < 417 and mouse_pos[1] > 385:#precio "desde"
+                    texto_seleccionado = texto2
+                    texto_ingresado = texto2[1]
+                    limite = 3
+
+
+
+                elif mouse_pos[0] < 290 and mouse_pos[0] > 195 and mouse_pos[1] < 417 and mouse_pos[1] > 385:#precio "hasta"
+                    texto_seleccionado = texto3
+                    texto_ingresado = texto3[1]
+                    limite = 3
+
+
+
+
+            if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon"]:
 
 
                 if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15: #Home 
@@ -373,39 +424,13 @@ while running:
                     print(alter_usuario)
 
 
-
-            elif fondo_actual[0] == "menu habitaciones":
-
-
-                if mouse_pos[0] < 295 and mouse_pos[0] > 195 and mouse_pos[1] < 290 and mouse_pos[1] > 260:#personas        
-                    texto_seleccionado = texto1
-                    texto_ingresado = texto1[1]
-                    limite = 3
-
-
-
-                elif mouse_pos[0] < 150 and mouse_pos[0] > 55 and mouse_pos[1] < 417 and mouse_pos[1] > 385:#precio "desde"
-                    texto_seleccionado = texto2
-                    texto_ingresado = texto2[1]
-                    limite = 3
-
-
-
-                elif mouse_pos[0] < 290 and mouse_pos[0] > 195 and mouse_pos[1] < 417 and mouse_pos[1] > 385:#precio "hasta"
-                    texto_seleccionado = texto3
-                    texto_ingresado = texto3[1]
-                    limite = 3
-
-
-
-
-
-
+        
 
 
 
 
         cursor(mouse_pos)
+
 
     #fondos :)
 
@@ -435,7 +460,8 @@ while running:
 
 
     elif fondo_actual[0] == "menu habitaciones":
-        screen.blit (fondos[fondo_actual[1]] , (0 , 0))   
+        screen.blit (fondos[fondo_actual[1]] , (0 , posicion)) 
+        screen.blit (imagen_filtro , (30, 160 ))        
         texto1[0] = ( 200 , 255 )
         texto2[0] = ( 60  , 383 )    
         texto3[0] = ( 198 , 383 ) 
@@ -455,9 +481,15 @@ while running:
     elif fondo_actual[0] == "menu amenities":
         screen.blit (fondos[fondo_actual[1]] , (0 , 0))
 
+    
+
+
+    if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon"]:
+        screen.blit (barra_arriba, (0,0))
+
 
     if alter_usuario:
-        screen.blit (imagen_usuario , (958, 111))  
+        screen.blit (imagen_usuario , (958, 129))
 
 
 

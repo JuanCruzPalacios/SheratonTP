@@ -1,6 +1,6 @@
 {
     "-1":
-    {"ServiciosContratados": ["GYM", "SPA"],
+    {"ServiciosContratados": ["GYM", "SPA", "PISCINA"],
      "FechaContratada": ["01/01/2024", "07/01/2024"],
      "Estado": "NoVencido",
      "Precio": "100"        

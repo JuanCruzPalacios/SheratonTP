@@ -1,8 +1,16 @@
 # Funciones requeridas : 
 
-
 import json
 from datetime import datetime
+ 
+def VerStock(): 
+    Stock = LeerJson("Stock.json")
+    lista_stock = []
+    for clave  in Stock: 
+        print (clave)
+        lista_stock.append([clave , Stock[clave]["Cantidad"]])
+        
+    return lista_stock
 
 def LeerJson(archivo):
     #Lee un archivo JSON y devuelve su contenido como un diccionario.
@@ -21,160 +29,6 @@ def LeerJson(archivo):
     except Exception as e:
         print(f"Ocurrió un error: {e}")
         return None
-
-def ActualizarJson(archivo, datos):
-    """Actualiza un archivo JSON, borrando su contenido y escribiendo nuevos datos."""
-    try:
-        with open("jsons/" + archivo, 'w', encoding='utf-8') as f:
-            json.dump(datos, f, indent=4)
-        print(f"Archivo {archivo} actualizado correctamente.")
-    except Exception as e:
-        print(f"Ocurrió un error al actualizar el archivo: {e}")
-
-def ExisteUsuario(Usuario):  
-
-    usuarios = LeerJson("Usuario.json") 
-
-    try:
-        usuarios[Usuario] != None
-        print("El usuario existe.")
-        return True
-    except:
-        print("El usuario no existe.")
-        return False
-
-def VerificarContraseña(Usuario , contraseña): 
-
-    usuarios = LeerJson("Usuario.json")
-
-
-    try:
-        usuarios[Usuario] != None
-        print("El usuario existe.")
-        if usuarios[Usuario]["Password"] == contraseña:
-            print("La contraseña es correcta.")
-        else:
-            print("La contraseña es incorrecta.")
-            return False
-
-        return True
-
-    except:
-        print("El usuario no existe.")
-        return False
-    
-def AgregarNotificacion(texto):
-   
-    contenido_actual = LeerJson("Notificaciones.json")
-    
-    nueva_clave = str(len(contenido_actual))  
-
-    fecha_enviada = datetime.now().strftime("%d/%m/%Y")
-
-    nueva_notificacion = {
-        "Archivada": 0,
-        "Fijada": 0,
-        "Texto": texto,
-        "FechaEnviada": fecha_enviada
-    }
-
-    contenido_actual[nueva_clave] = nueva_notificacion
-
-    ActualizarJson("Notificaciones.json", contenido_actual)
-
-def VerNotificacion(numero_de_notificacion):
-    numero_de_notificacion = str(numero_de_notificacion) 
-    Notificaciones = LeerJson("Notificaciones.json")
-    try:
-        return Notificaciones[numero_de_notificacion]["Archivada"] , Notificaciones[numero_de_notificacion]["Fijada"] , Notificaciones[numero_de_notificacion]["Texto"] , Notificaciones[numero_de_notificacion]["FechaEnviada"]
-    except: 
-        print("No existe ninguna notificacion con ese numero.")
-        return False
-
-def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal , IdContrataciones , IdHabitacion):    
-    contenido_actual = LeerJson("Usuario.json")
-
-    try: 
-        nueva_clave = contenido_actual[Usuario]["NumeroDeCliente"]
-    except:
-        nueva_clave = str(len(contenido_actual)) 
-
-    nuevo_usuario = {
-        "Correo" : Correo , 
-        "Tipo" : Tipo,  
-        "Nombre" : Nombre ,
-        "Apellido" : Apellido , 
-        "Password" : Contraseña , 
-        "DNI" : DNI , 
-        "NumeroTelefono" : NumeroTelefono , 
-        "NumeroDeCliente": nueva_clave , 
-        "CodigoPostal" : CodigoPostal ,
-        "IdContrataciones": IdContrataciones, 
-        "IdHabitacion" : IdHabitacion
-    }
-
-    contenido_actual[Usuario] = nuevo_usuario
-
-
-    ActualizarJson("Usuario.json", contenido_actual)
-
-def VerStock(): 
-    Stock = LeerJson("Stock.json")
-    lista_stock = []
-    for clave  in Stock: 
-        print (clave)
-        lista_stock.append([clave , Stock[clave]["Cantidad"]])
-        
-    return lista_stock
-
-def AgregarEliminarStock (nombre_stock , cantidad) : 
-    Stock = LeerJson("Stock.json")
-    try: 
-        cantidad_actual = Stock[nombre_stock]["Cantidad"] 
-        Stock[nombre_stock]["Cantidad"] = int(cantidad_actual) + int(cantidad) 
-        ActualizarJson("Stock.json" , Stock)
-        print (nombre_stock , "añadio" , cantidad , " de stock.")
-        return True
-    except:
-        print ("Hubo un error al agregar o eliminar el stock, verifique que el stock ingresado exista.")
-        return False
-
-def InformacionHabitacion (numero_de_habitacion):
-    habitaciones = LeerJson("habitaciones.json")
-    try:
-        return habitaciones[str(numero_de_habitacion)]
-    except: 
-        print("Esa habitacion no existe.")
-        return None
-
-def NotificarIngresoEgreso(id_estacionamiento):
-    ahora = datetime.now()
-    estacionamiento = LeerJson("Estacionamiento.json")
-    if estacionamiento[id_estacionamiento]["EstadoActual"] == "Fuera":
-        estacionamiento[id_estacionamiento]["EstadoActual"] = "Adentro"
-        estacionamiento[id_estacionamiento]["UltimoIngreso"].append([str(ahora.day) + "/" + str(ahora.month) + "/" + str(ahora.year), str(ahora.hour) + ":" + str(ahora.minute) + ":" + str(ahora.second)])
-    else:
-        estacionamiento[id_estacionamiento]["EstadoActual"] = "Fuera"
-        estacionamiento[id_estacionamiento]["UltimoEgreso"].append ([str(ahora.day) + "/" + str(ahora.month) + "/" + str(ahora.year), str(ahora.hour) + ":" + str(ahora.minute) + ":" + str(ahora.second)])
-    ActualizarJson("Estacionamiento.json", estacionamiento )
-
-def Filtros(huespedes, precio_min, precio_max):
-    filtro = LeerJson("habitaciones.json")
-    resultado_ocupado = []
-    resultado_precio = []
-    resultado_final = []
-    for habitacion in filtro: 
-        if filtro[habitacion]["Ocupada"] == "No" :
-            resultado_ocupado.append(habitacion)
-    for habitacion in resultado_ocupado:
-        if int(filtro[habitacion]["Precio"]) >= precio_min and int(filtro[habitacion]["Precio"]) <= precio_max : 
-            resultado_precio.append(habitacion)
-    for habitacion in resultado_precio:
-        if int(filtro[habitacion]["RangoHuespedes"]) == huespedes: 
-            resultado_final.append(habitacion)
-    return resultado_final 
-
-#def ArchivarDesarchivarNotificaciones(id_notificacion):
 
 def VerUsuario(usuario): 
     usuario_json = LeerJson("Usuario.json")
@@ -220,34 +74,18 @@ def TieneServicio(usuario):
         contr.append([False])
     
     return contr
-    
-def TieneEstacionamiento(usuario): 
+
+def ExisteUsuario(Usuario):  
+
+    usuarios = LeerJson("Usuario.json") 
+
     try:
-        usuarios_json = LeerJson("Usuario.json")
-        Estacionamiento = usuarios_json[usuario]["IdEstacionamiento"] 
-        if len(Estacionamiento) >= 1: 
-            return True , Estacionamiento
-        else:
-            return False , False
+        usuarios[Usuario] != None
+        print("El usuario existe.")
+        return True
     except:
-        print("El usuario no existe o hubo un error al hacer la operacion")
-        return False , False
-
-def ArchivarDesarchivarNotificaciones (id_notificacion):
-    contenido = LeerJson("Notificaciones.json")
-    if contenido[id_notificacion]["Archivada"] == 0:
-        contenido[id_notificacion]["Archivada"] = 1
-    else:
-        contenido[id_notificacion]["Archivada"] = 0
-    ActualizarJson("Notificaciones.json", contenido)
-
-def FijarDesfijarNotificaciones (id_notificacion):
-    contenido = LeerJson("Notificaciones.json")
-    if contenido[id_notificacion]["Fijada"] == 0:
-        contenido[id_notificacion]["Fijada"] = 1
-    else:
-        contenido[id_notificacion]["Fijada"] = 0
-    ActualizarJson("Notificaciones.json", contenido)
+        print("El usuario no existe.")
+        return False
 
 def TieneHabitacion(usuario): 
     try:
@@ -261,5 +99,162 @@ def TieneHabitacion(usuario):
         print("El usuario no existe o hubo un error al hacer la operacion")
         return False , False
 
+def AgregarNotificacion(texto):
+   
+    contenido_actual = LeerJson("Notificaciones.json")
     
+    nueva_clave = str(len(contenido_actual))  
+
+    fecha_enviada = datetime.now().strftime("%d/%m/%Y")
+
+    nueva_notificacion = {
+        "Archivada": 0,
+        "Fijada": 0,
+        "Texto": texto,
+        "FechaEnviada": fecha_enviada
+    }
+
+    contenido_actual[nueva_clave] = nueva_notificacion
+
+    ActualizarJson("Notificaciones.json", contenido_actual)
+
+def TieneEstacionamiento(usuario): 
+    try:
+        usuarios_json = LeerJson("Usuario.json")
+        Estacionamiento = usuarios_json[usuario]["IdEstacionamiento"] 
+        if len(Estacionamiento) >= 1: 
+            return True , Estacionamiento
+        else:
+            return False , False
+    except:
+        print("El usuario no existe o hubo un error al hacer la operacion")
+        return False , False
+
+def ActualizarJson(archivo, datos):
+    """Actualiza un archivo JSON, borrando su contenido y escribiendo nuevos datos."""
+    try:
+        with open("jsons/" + archivo, 'w', encoding='utf-8') as f:
+            json.dump(datos, f, indent=4)
+        print(f"Archivo {archivo} actualizado correctamente.")
+    except Exception as e:
+        print(f"Ocurrió un error al actualizar el archivo: {e}")
+
+def VerNotificacion(numero_de_notificacion):
+    numero_de_notificacion = str(numero_de_notificacion) 
+    Notificaciones = LeerJson("Notificaciones.json")
+    try:
+        return Notificaciones[numero_de_notificacion]["Archivada"] , Notificaciones[numero_de_notificacion]["Fijada"] , Notificaciones[numero_de_notificacion]["Texto"] , Notificaciones[numero_de_notificacion]["FechaEnviada"]
+    except: 
+        print("No existe ninguna notificacion con ese numero.")
+        return False
+
+def VerificarContraseña(Usuario , contraseña): 
+
+    usuarios = LeerJson("Usuario.json")
+
+
+    try:
+        usuarios[Usuario] != None
+        print("El usuario existe.")
+        if usuarios[Usuario]["Password"] == contraseña:
+            print("La contraseña es correcta.")
+        else:
+            print("La contraseña es incorrecta.")
+            return False
+
+        return True
+
+    except:
+        print("El usuario no existe.")
+        return False
+
+def NotificarIngresoEgreso(id_estacionamiento):
+    ahora = datetime.now()
+    estacionamiento = LeerJson("Estacionamiento.json")
+    if estacionamiento[id_estacionamiento]["EstadoActual"] == "Fuera":
+        estacionamiento[id_estacionamiento]["EstadoActual"] = "Adentro"
+        estacionamiento[id_estacionamiento]["UltimoIngreso"].append([str(ahora.day) + "/" + str(ahora.month) + "/" + str(ahora.year), str(ahora.hour) + ":" + str(ahora.minute) + ":" + str(ahora.second)])
+    else:
+        estacionamiento[id_estacionamiento]["EstadoActual"] = "Fuera"
+        estacionamiento[id_estacionamiento]["UltimoEgreso"].append ([str(ahora.day) + "/" + str(ahora.month) + "/" + str(ahora.year), str(ahora.hour) + ":" + str(ahora.minute) + ":" + str(ahora.second)])
+    ActualizarJson("Estacionamiento.json", estacionamiento )
+
+def Filtros(huespedes, precio_min, precio_max):
+    filtro = LeerJson("habitaciones.json")
+    resultado_ocupado = []
+    resultado_precio = []
+    resultado_final = []
+    for habitacion in filtro: 
+        if filtro[habitacion]["Ocupada"] == "No" :
+            resultado_ocupado.append(habitacion)
+    for habitacion in resultado_ocupado:
+        if int(filtro[habitacion]["Precio"]) >= precio_min and int(filtro[habitacion]["Precio"]) <= precio_max : 
+            resultado_precio.append(habitacion)
+    for habitacion in resultado_precio:
+        if int(filtro[habitacion]["RangoHuespedes"]) == huespedes: 
+            resultado_final.append(habitacion)
+    return resultado_final 
+
+def InformacionHabitacion (numero_de_habitacion):
+    habitaciones = LeerJson("habitaciones.json")
+    try:
+        return habitaciones[str(numero_de_habitacion)]
+    except: 
+        print("Esa habitacion no existe.")
+        return None
+
+def FijarDesfijarNotificaciones (id_notificacion):
+    contenido = LeerJson("Notificaciones.json")
+    if contenido[id_notificacion]["Fijada"] == 0:
+        contenido[id_notificacion]["Fijada"] = 1
+    else:
+        contenido[id_notificacion]["Fijada"] = 0
+    ActualizarJson("Notificaciones.json", contenido)
+
+def AgregarEliminarStock (nombre_stock , cantidad) : 
+    Stock = LeerJson("Stock.json")
+    try: 
+        cantidad_actual = Stock[nombre_stock]["Cantidad"] 
+        Stock[nombre_stock]["Cantidad"] = int(cantidad_actual) + int(cantidad) 
+        ActualizarJson("Stock.json" , Stock)
+        print (nombre_stock , "añadio" , cantidad , " de stock.")
+        return True
+    except:
+        print ("Hubo un error al agregar o eliminar el stock, verifique que el stock ingresado exista.")
+        return False
+
+def ArchivarDesarchivarNotificaciones (id_notificacion):
+    contenido = LeerJson("Notificaciones.json")
+    if contenido[id_notificacion]["Archivada"] == 0:
+        contenido[id_notificacion]["Archivada"] = 1
+    else:
+        contenido[id_notificacion]["Archivada"] = 0
+    ActualizarJson("Notificaciones.json", contenido)
+
+def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal , IdContrataciones , IdHabitacion):    
+    contenido_actual = LeerJson("Usuario.json")
+
+    try: 
+        nueva_clave = contenido_actual[Usuario]["NumeroDeCliente"]
+    except:
+        nueva_clave = str(len(contenido_actual)) 
+
+    nuevo_usuario = {
+        "Correo" : Correo , 
+        "Tipo" : Tipo,  
+        "Nombre" : Nombre ,
+        "Apellido" : Apellido , 
+        "Password" : Contraseña , 
+        "DNI" : DNI , 
+        "NumeroTelefono" : NumeroTelefono , 
+        "NumeroDeCliente": nueva_clave , 
+        "CodigoPostal" : CodigoPostal ,
+        "IdContrataciones": IdContrataciones, 
+        "IdHabitacion" : IdHabitacion
+    }
+
+    contenido_actual[Usuario] = nuevo_usuario
+
+
+    ActualizarJson("Usuario.json", contenido_actual)
 

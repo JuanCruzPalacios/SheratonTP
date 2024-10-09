@@ -36,6 +36,7 @@ fondo_recepcinista_limpieza = pygame.transform.scale(pygame.image.load("imagenes
 barra_arriba = pygame.image.load("imagenes/barra_arriba.png")
 
 imagen_usuario = pygame.transform.scale(pygame.image.load("imagenes/usuario.png"), (321, 394))
+imagen_filtro = pygame.image.load("imagenes/NICOLAS.png")
 alter_usuario = False
 
 
@@ -66,7 +67,7 @@ texto6 = [(0,0), ""]
 texto7 = [(0,0), ""]
 texto8 = [(0,0), ""]
 
-
+posicion = 0
 
 
 texto_seleccionado =  texto1 
@@ -175,6 +176,21 @@ def cursor(mouse_pos):
                 pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
 
+    if alter_usuario:
+
+        if mouse_pos[0] < 1245 and mouse_pos[0] > 992 and mouse_pos[1] < 310 and mouse_pos[1] > 261: #ver datos 
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif mouse_pos[0] < 1245 and mouse_pos[0] > 992 and mouse_pos[1] < 395 and mouse_pos[1] > 350: #reservar eventos
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif mouse_pos[0] < 1205  and mouse_pos[0] > 1030 and mouse_pos[1] < 478 and mouse_pos[1] > 431: #salir
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+
+
 
 
 
@@ -233,8 +249,15 @@ while running:
 
         if event.type == pygame.MOUSEBUTTONDOWN :
 
+            if event.button == 4:  # Rueda hacia arriba   
 
-            print(mouse_pos)
+                if posicion < 0:
+                    posicion += 25
+
+            elif event.button == 5:  # Rueda hacia abajo
+
+                if posicion < 720:
+                    posicion -= 25
 
 
             if fondo_actual[0] == "iniciar sesion":
@@ -401,7 +424,7 @@ while running:
                     print(alter_usuario)
 
 
-
+        
 
 
 
@@ -437,7 +460,8 @@ while running:
 
 
     elif fondo_actual[0] == "menu habitaciones":
-        screen.blit (fondos[fondo_actual[1]] , (0 , 0))   
+        screen.blit (fondos[fondo_actual[1]] , (0 , posicion)) 
+        screen.blit (imagen_filtro , (30, 160 ))        
         texto1[0] = ( 200 , 255 )
         texto2[0] = ( 60  , 383 )    
         texto3[0] = ( 198 , 383 ) 
@@ -457,7 +481,7 @@ while running:
     elif fondo_actual[0] == "menu amenities":
         screen.blit (fondos[fondo_actual[1]] , (0 , 0))
 
-
+    
 
 
     if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon"]:

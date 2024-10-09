@@ -1,0 +1,16 @@
+{
+    "-1": {
+        "Ocupado": 0,
+        "Ocupante": "pepe",
+        "EstadoActual": "Fuera",
+        "Vencimiento": "11/10/2024",
+        "UltimoIngreso": [
+            "7/10/2024",
+            "15:8:26"
+        ],
+        "UltimoEgreso": [
+            "7/10/2024",
+            "15:9:2"
+        ]
+    }
+}

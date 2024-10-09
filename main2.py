@@ -11,8 +11,8 @@ running = True
 
 
 
-fondo_iniciar_sesion = pygame.transform.scale(pygame.image.load("imagenes/iniciar_sesion.jpg"), (1280,720))
-fondo_registrarse = pygame.transform.scale(pygame.image.load("imagenes/registrarse.jpg"),(1280,720))
+fondo_iniciar_sesion = pygame.transform.scale(pygame.image.load("imagenes/iniciar_sesion.png"), (1280,720))
+fondo_registrarse = pygame.transform.scale(pygame.image.load("imagenes/registrarse.png"),(1280,720))
 fondo_estacionamiento = pygame.transform.scale(pygame.image.load("imagenes/estacionamiento.jpg"), (1280, 720))
 fondo_habitacion = pygame.transform.scale(pygame.image.load("imagenes/habitacion.jpg"), (1280, 720))
 fondo_reservar = pygame.transform.scale(pygame.image.load("imagenes/suite_parking.jpg"), (1280, 720))
@@ -84,17 +84,17 @@ def cursor(mouse_pos):
     if fondo_actual[0] == "iniciar sesion":
 
 
-        if mouse_pos[0] <= 845 and mouse_pos[0] >= 439 and mouse_pos[1] <= 525 and mouse_pos[1] >= 484: #-----> Usuario
+        if mouse_pos[0] <= 819 and mouse_pos[0] >= 459 and mouse_pos[1] <= 525 and mouse_pos[1] >= 488: #-----> Usuario
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
         
-        elif mouse_pos[0] <= 845 and mouse_pos[0] >= 439 and mouse_pos[1] <= 631 and mouse_pos[1] >= 587:#-----> Contraseña
+        elif mouse_pos[0] <= 819 and mouse_pos[0] >= 459 and mouse_pos[1] <= 630 and mouse_pos[1] >= 593:#-----> Contraseña
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
 
-        elif mouse_pos[0] <= 900 and mouse_pos[0] >= 862 and mouse_pos[1] <= 660 and mouse_pos[1] >= 630:#-----> Siguiente
+        elif mouse_pos[0] <= 871 and mouse_pos[0] >= 830 and mouse_pos[1] <= 669 and mouse_pos[1] >= 634:#-----> Siguiente
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
-        elif mouse_pos[0] <= 744 and mouse_pos[0] >= 539 and mouse_pos[1] <= 682 and mouse_pos[1] >= 673:#-----> Crear cuenta
+        elif mouse_pos[0] <= 755 and mouse_pos[0] >= 522 and mouse_pos[1] <= 682 and mouse_pos[1] >= 669:#-----> Crear cuenta
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
 
@@ -106,20 +106,20 @@ def cursor(mouse_pos):
     elif fondo_actual[0] == "registrarse":
 
 
-        if mouse_pos[0] <= 844 and mouse_pos[0] >= 440 and mouse_pos[1] <= 500 and mouse_pos[1] >= 470: #-----> Usuario
+        if mouse_pos[0] <= 821 and mouse_pos[0] >= 460 and mouse_pos[1] <= 505 and mouse_pos[1] >= 467: #-----> Usuario
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
         
-        elif mouse_pos[0] <= 844 and mouse_pos[0] >= 440 and mouse_pos[1] <= 581 and mouse_pos[1] >= 551:#-----> Correo Electronico
+        elif mouse_pos[0] <= 821 and mouse_pos[0] >= 460 and mouse_pos[1] <= 583 and mouse_pos[1] >= 544:#-----> Correo Electronico
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
-        elif mouse_pos[0] <= 844 and mouse_pos[0] >= 440 and mouse_pos[1] <= 653 and mouse_pos[1] >= 621: #-----> Contraseña
+        elif mouse_pos[0] <= 821 and mouse_pos[0] >= 460 and mouse_pos[1] <= 661 and mouse_pos[1] >= 621: #-----> Contraseña
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
 
-        elif mouse_pos[0] <= 908 and mouse_pos[0] >= 852 and mouse_pos[1] <= 675 and mouse_pos[1] >= 630:#-----> Siguiente
+        elif mouse_pos[0] <= 871 and mouse_pos[0] >= 832 and mouse_pos[1] <= 669 and mouse_pos[1] >= 633:#-----> Siguiente
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
-        elif mouse_pos[0] <= 748 and mouse_pos[0] >= 522 and mouse_pos[1] <= 683 and mouse_pos[1] >= 673:#-----> Crear cuenta
+        elif mouse_pos[0] <= 748 and mouse_pos[0] >= 519 and mouse_pos[1] <= 682 and mouse_pos[1] >= 670:#-----> Iniciar Sesion
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
 
@@ -176,6 +176,7 @@ def cursor(mouse_pos):
                 pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
 
+
     if alter_usuario:
 
         if mouse_pos[0] < 1245 and mouse_pos[0] > 992 and mouse_pos[1] < 310 and mouse_pos[1] > 261: #ver datos 
@@ -205,9 +206,9 @@ def chequeo_contraseña(conteraseña):
             else:   
                 return "Debe haber algun numero"
         else:
-            return "Debe haber algun caracteres especiales"    
+            return "Debe haber caracteres especiales"    
     else:
-        return "La contraseña debe ser de al menos 8 caracteres"
+        return "Deben haber al menos 8 caracteres"
 
 
 
@@ -261,24 +262,26 @@ while running:
 
             if event.button == 1:
 
-                print(mouse_pos)           
+
+                print(mouse_pos)   
+
                 if fondo_actual[0] == "iniciar sesion":
                 
-                    if mouse_pos[0] <= 845 and mouse_pos[0] >= 439 and mouse_pos[1] <= 525 and mouse_pos[1] >= 484: #-----> Usuario
+                    if mouse_pos[0] <= 819 and mouse_pos[0] >= 459 and mouse_pos[1] <= 525 and mouse_pos[1] >= 488: #-----> Usuario
                         texto_ingresado = texto1[1]
                         texto_seleccionado = texto1 #Usuario / iniciar sesion
                         limite = 13
 
                     
             
-                    elif mouse_pos[0] <= 845 and mouse_pos[0] >= 439 and mouse_pos[1] <= 631 and mouse_pos[1] >= 587: #-----> Contraseña                    
+                    elif mouse_pos[0] <= 819 and mouse_pos[0] >= 459 and mouse_pos[1] <= 630 and mouse_pos[1] >= 593:#-----> Contraseña                    
                         texto_ingresado = texto2[1]
                         texto_seleccionado = texto2 #Contraseña / iniciar sesion
                         limite = 13
 
 
 
-                    elif mouse_pos[0] <= 900 and mouse_pos[0] >= 862 and mouse_pos[1] <= 660 and mouse_pos[1] >= 630:#-----> Siguiente
+                    elif mouse_pos[0] <= 871 and mouse_pos[0] >= 830 and mouse_pos[1] <= 669 and mouse_pos[1] >= 634:#-----> Siguiente
                         
 
                         if ExisteUsuario(texto1[1]):
@@ -298,7 +301,7 @@ while running:
 
 
 
-                    elif mouse_pos[0] <= 744 and mouse_pos[0] >= 539 and mouse_pos[1] <= 682 and mouse_pos[1] >= 673:#-----> Crear cuenta
+                    elif mouse_pos[0] <= 755 and mouse_pos[0] >= 522 and mouse_pos[1] <= 682 and mouse_pos[1] >= 669:#-----> Crear cuenta
                         fondo_actual[0] = "registrarse"
                         fondo_actual[1] = 1
                         texto_ingresado = ""
@@ -312,7 +315,7 @@ while running:
                 elif fondo_actual[0] == "registrarse":   
 
 
-                    if mouse_pos[0] <= 844 and mouse_pos[0] >= 440 and mouse_pos[1] <= 500 and mouse_pos[1] >= 470: #-----> Usuario
+                    if mouse_pos[0] <= 821 and mouse_pos[0] >= 460 and mouse_pos[1] <= 505 and mouse_pos[1] >= 467: #-----> Usuario
 
                         texto_seleccionado = texto1 #usuario / registrarse
                         texto_ingresado = texto1[1]
@@ -320,7 +323,7 @@ while running:
 
 
 
-                    elif mouse_pos[0] <= 844 and mouse_pos[0] >= 440 and mouse_pos[1] <= 581 and mouse_pos[1] >= 551:#-----> Correo Electronico
+                    elif mouse_pos[0] <= 821 and mouse_pos[0] >= 460 and mouse_pos[1] <= 583 and mouse_pos[1] >= 544:#-----> Correo Electronico
 
                         texto_seleccionado = texto2 #mail / registrarse
                         texto_ingresado = texto2[1]
@@ -328,7 +331,7 @@ while running:
 
 
 
-                    elif mouse_pos[0] <= 844 and mouse_pos[0] >= 440 and mouse_pos[1] <= 653 and mouse_pos[1] >= 621: #-----> Contraseña
+                    elif mouse_pos[0] <= 821 and mouse_pos[0] >= 460 and mouse_pos[1] <= 661 and mouse_pos[1] >= 621: #-----> Contraseña
     
                         texto_seleccionado = texto3 #contraseña / registrarse
                         texto_ingresado = texto3[1]
@@ -336,7 +339,7 @@ while running:
 
 
 
-                    elif mouse_pos[0] <= 908 and mouse_pos[0] >= 852 and mouse_pos[1] <= 675 and mouse_pos[1] >= 630:#-----> Siguiente / Registrarse
+                    elif mouse_pos[0] <= 871 and mouse_pos[0] >= 832 and mouse_pos[1] <= 669 and mouse_pos[1] >= 633:#-----> Siguiente
                 
                         if len(texto1[1]) > 3 and len(texto2[1]) > 3 :
                             if not(ExisteUsuario(texto1[1])) :
@@ -360,12 +363,13 @@ while running:
 
 
                             
-                    elif mouse_pos[0] <= 748 and mouse_pos[0] >= 522 and mouse_pos[1] <= 683 and mouse_pos[1] >= 673:#-----> Iniciar Sesion
+                    elif mouse_pos[0] <= 748 and mouse_pos[0] >= 519 and mouse_pos[1] <= 682 and mouse_pos[1] >= 670:#-----> Iniciar Sesion
                         fondo_actual[0] = "iniciar sesion"
                         fondo_actual[1] = 0
                         texto_ingresado = ""
                         texto1 = [(0,0),""]
-                        texto2 = [(0,0),""]               
+                        texto2 = [(0,0),""]
+                        texto3 = [(0,0),""]                  
 
 
 
@@ -380,14 +384,14 @@ while running:
 
 
 
-                    elif mouse_pos[0] < 150 and mouse_pos[0] > 55 and mouse_pos[1] < 417 and mouse_pos[1] > 385:#precio "desde"
+                    elif mouse_pos[0] < 142 and mouse_pos[0] > 46 and mouse_pos[1] < 450 and mouse_pos[1] > 415:#precio "desde"
                         texto_seleccionado = texto2
                         texto_ingresado = texto2[1]
                         limite = 3
 
 
 
-                    elif mouse_pos[0] < 290 and mouse_pos[0] > 195 and mouse_pos[1] < 417 and mouse_pos[1] > 385:#precio "hasta"
+                    elif mouse_pos[0] < 284 and mouse_pos[0] > 185 and mouse_pos[1] < 450 and mouse_pos[1] > 416:#precio "hasta"
                         texto_seleccionado = texto3
                         texto_ingresado = texto3[1]
                         limite = 3
@@ -440,9 +444,9 @@ while running:
 
 
     if fondo_actual[0] == "iniciar sesion":
-        texto1[0] = ( 445 , 484 )
-        texto2[0] = ( 445 , 587 )
-        texto3[0] = ( 350 , 375 )
+        texto1[0] = ( 467 , 486 )
+        texto2[0] = ( 467 , 592 )
+        texto3[0] = ( 420 , 377 )
         screen.blit (fondos[fondo_actual[1]] , (0 , 0))       
         screen.blit( fuente.render(texto1[1] , 0 , (0,0,0) ), texto1[0] )
         screen.blit( fuente.render(texto2[1] , 0 , (0,0,0) ), texto2[0] )
@@ -451,10 +455,10 @@ while running:
     
     elif fondo_actual[0] == "registrarse":
         screen.blit (fondos[fondo_actual[1]] , (0 , 0)) 
-        texto1[0] = ( 445 , 465 )
-        texto2[0] = ( 445 , 545 )    
-        texto3[0] = ( 445 , 615 ) 
-        texto4[0] = ( 350 , 375 )
+        texto1[0] = ( 467 , 465 )
+        texto2[0] = ( 467 , 541 )    
+        texto3[0] = ( 467 , 617 ) 
+        texto4[0] = ( 415 , 375 )
         screen.blit( fuente.render(texto1[1] , 0 , (0,0,0) ), texto1[0] )
         screen.blit( fuente.render(texto2[1] , 0 , (0,0,0) ), texto2[0] )  
         screen.blit( fuente.render(texto3[1] , 0 , (0,0,0) ), texto3[0] )
@@ -464,9 +468,9 @@ while running:
     elif fondo_actual[0] == "menu habitaciones":
         screen.blit (fondos[fondo_actual[1]] , (0 , posicion)) 
         screen.blit (imagen_filtro , (30, 160 ))        
-        texto1[0] = ( 200 , 255 )
-        texto2[0] = ( 60  , 383 )    
-        texto3[0] = ( 198 , 383 ) 
+        texto1[0] = ( 186 , 264 )
+        texto2[0] = ( 47 , 411 )    
+        texto3[0] = ( 186 , 411 )
         screen.blit( fuente.render(texto1[1] , 0 , (0,0,0) ), texto1[0] )
         screen.blit( fuente.render(texto2[1] , 0 , (0,0,0) ), texto2[0] )  
         screen.blit( fuente.render(texto3[1] , 0 , (0,0,0) ), texto3[0] )   

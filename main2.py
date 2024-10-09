@@ -132,19 +132,19 @@ def cursor(mouse_pos):
 
 
 
-        if mouse_pos[0] < 295 and mouse_pos[0] > 195 and mouse_pos[1] < 290 and mouse_pos[1] > 260:#personas        
+        if mouse_pos[0] < 282 and mouse_pos[0] > 185 and mouse_pos[1] < 302 and mouse_pos[1] > 267:#personas        
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
 
-        elif mouse_pos[0] < 150 and mouse_pos[0] > 55 and mouse_pos[1] < 417 and mouse_pos[1] > 385:#precio "desde"
+        elif mouse_pos[0] < 142 and mouse_pos[0] > 46 and mouse_pos[1] < 450 and mouse_pos[1] > 415:#precio "desde"
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
 
-        elif mouse_pos[0] < 290 and mouse_pos[0] > 195 and mouse_pos[1] < 417 and mouse_pos[1] > 385:#precio "hasta"
+        elif mouse_pos[0] < 284 and mouse_pos[0] > 185 and mouse_pos[1] < 450 and mouse_pos[1] > 416:#precio "hasta"
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
 
-        elif mouse_pos[0] < 252 and mouse_pos[0] > 92 and mouse_pos[1] < 495 and mouse_pos[1] > 463:#buscar
+        elif mouse_pos[0] < 243 and mouse_pos[0] > 85 and mouse_pos[1] < 538 and mouse_pos[1] > 504:#buscar
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
 
@@ -251,177 +251,179 @@ while running:
 
             if event.button == 4:  # Rueda hacia arriba   
 
-                if posicion < 0:
+                if posicion <= 0:
                     posicion += 25
 
             elif event.button == 5:  # Rueda hacia abajo
 
-                if posicion < 720:
+                if posicion >= -700:
                     posicion -= 25
 
+            if event.button == 1:
 
-            if fondo_actual[0] == "iniciar sesion":
-               
-                if mouse_pos[0] <= 845 and mouse_pos[0] >= 439 and mouse_pos[1] <= 525 and mouse_pos[1] >= 484: #-----> Usuario
-                    texto_ingresado = texto1[1]
-                    texto_seleccionado = texto1 #Usuario / iniciar sesion
-                    limite = 13
+                print(mouse_pos)           
+                if fondo_actual[0] == "iniciar sesion":
+                
+                    if mouse_pos[0] <= 845 and mouse_pos[0] >= 439 and mouse_pos[1] <= 525 and mouse_pos[1] >= 484: #-----> Usuario
+                        texto_ingresado = texto1[1]
+                        texto_seleccionado = texto1 #Usuario / iniciar sesion
+                        limite = 13
 
-                   
-           
-                elif mouse_pos[0] <= 845 and mouse_pos[0] >= 439 and mouse_pos[1] <= 631 and mouse_pos[1] >= 587: #-----> Contraseña                    
-                    texto_ingresado = texto2[1]
-                    texto_seleccionado = texto2 #Contraseña / iniciar sesion
-                    limite = 13
-
-
-
-                elif mouse_pos[0] <= 900 and mouse_pos[0] >= 862 and mouse_pos[1] <= 660 and mouse_pos[1] >= 630:#-----> Siguiente
                     
-
-                    if ExisteUsuario(texto1[1]):
-
-                        if VerificarContraseña(texto1[1],texto2[1]):
-
-                            fondo_actual[0] = "menu habitaciones"
-                            fondo_actual[1] = 6
-                            texto_ingresado = ""
-                            texto1 = [(0,0),""]
-                            texto2 = [(0,0),""]
-                            texto3 = [(0,0),""]
-                        else:
-                            texto3[1] = "Contraseña erronea"
-                    else:
-                        texto3[1] = "Usuario inexistente"
-
-
-
-                elif mouse_pos[0] <= 744 and mouse_pos[0] >= 539 and mouse_pos[1] <= 682 and mouse_pos[1] >= 673:#-----> Crear cuenta
-                    fondo_actual[0] = "registrarse"
-                    fondo_actual[1] = 1
-                    texto_ingresado = ""
-                    texto1 = [(0,0),""]
-                    texto2 = [(0,0),""]
-                    texto3 = [(0,0),""]                
-
-   
-
-
-            elif fondo_actual[0] == "registrarse":   
-
-
-                if mouse_pos[0] <= 844 and mouse_pos[0] >= 440 and mouse_pos[1] <= 500 and mouse_pos[1] >= 470: #-----> Usuario
-
-                    texto_seleccionado = texto1 #usuario / registrarse
-                    texto_ingresado = texto1[1]
-                    limite = 13
-
-
-
-                elif mouse_pos[0] <= 844 and mouse_pos[0] >= 440 and mouse_pos[1] <= 581 and mouse_pos[1] >= 551:#-----> Correo Electronico
-
-                    texto_seleccionado = texto2 #mail / registrarse
-                    texto_ingresado = texto2[1]
-                    limite = 13
-
-
-
-                elif mouse_pos[0] <= 844 and mouse_pos[0] >= 440 and mouse_pos[1] <= 653 and mouse_pos[1] >= 621: #-----> Contraseña
- 
-                    texto_seleccionado = texto3 #contraseña / registrarse
-                    texto_ingresado = texto3[1]
-                    limite = 13
-
-
-
-                elif mouse_pos[0] <= 908 and mouse_pos[0] >= 852 and mouse_pos[1] <= 675 and mouse_pos[1] >= 630:#-----> Siguiente / Registrarse
             
-                    if len(texto1[1]) > 3 and len(texto2[1]) > 3 :
-                        if not(ExisteUsuario(texto1[1])) :
+                    elif mouse_pos[0] <= 845 and mouse_pos[0] >= 439 and mouse_pos[1] <= 631 and mouse_pos[1] >= 587: #-----> Contraseña                    
+                        texto_ingresado = texto2[1]
+                        texto_seleccionado = texto2 #Contraseña / iniciar sesion
+                        limite = 13
 
-                            if chequeo_contraseña(texto3[1]) == "aprobado":
 
-                                CrearActualizarUsuario(texto1[1] , texto2[1] , "" , "" , "" , texto3[1] , "" , "" , "" , "" , "")
+
+                    elif mouse_pos[0] <= 900 and mouse_pos[0] >= 862 and mouse_pos[1] <= 660 and mouse_pos[1] >= 630:#-----> Siguiente
+                        
+
+                        if ExisteUsuario(texto1[1]):
+
+                            if VerificarContraseña(texto1[1],texto2[1]):
+
                                 fondo_actual[0] = "menu habitaciones"
                                 fondo_actual[1] = 6
                                 texto_ingresado = ""
                                 texto1 = [(0,0),""]
-                                texto2 = [(0,0),""]  
-
-                            else:                       
-                                texto4[1] = chequeo_contraseña(texto3[1])    
+                                texto2 = [(0,0),""]
+                                texto3 = [(0,0),""]
+                            else:
+                                texto3[1] = "Contraseña erronea"
                         else:
-                            texto4[1] = "El usuario ingresado ya existe"
-                    else:
-                        texto4[1] = "usuario o mail muy cortos"
+                            texto3[1] = "Usuario inexistente"
 
 
 
-                          
-                elif mouse_pos[0] <= 748 and mouse_pos[0] >= 522 and mouse_pos[1] <= 683 and mouse_pos[1] >= 673:#-----> Iniciar Sesion
-                    fondo_actual[0] = "iniciar sesion"
-                    fondo_actual[1] = 0
-                    texto_ingresado = ""
-                    texto1 = [(0,0),""]
-                    texto2 = [(0,0),""]               
+                    elif mouse_pos[0] <= 744 and mouse_pos[0] >= 539 and mouse_pos[1] <= 682 and mouse_pos[1] >= 673:#-----> Crear cuenta
+                        fondo_actual[0] = "registrarse"
+                        fondo_actual[1] = 1
+                        texto_ingresado = ""
+                        texto1 = [(0,0),""]
+                        texto2 = [(0,0),""]
+                        texto3 = [(0,0),""]                
+
+    
+
+
+                elif fondo_actual[0] == "registrarse":   
+
+
+                    if mouse_pos[0] <= 844 and mouse_pos[0] >= 440 and mouse_pos[1] <= 500 and mouse_pos[1] >= 470: #-----> Usuario
+
+                        texto_seleccionado = texto1 #usuario / registrarse
+                        texto_ingresado = texto1[1]
+                        limite = 13
 
 
 
+                    elif mouse_pos[0] <= 844 and mouse_pos[0] >= 440 and mouse_pos[1] <= 581 and mouse_pos[1] >= 551:#-----> Correo Electronico
 
-            elif fondo_actual[0] == "menu habitaciones":
-
-
-                if mouse_pos[0] < 295 and mouse_pos[0] > 195 and mouse_pos[1] < 290 and mouse_pos[1] > 260:#personas        
-                    texto_seleccionado = texto1
-                    texto_ingresado = texto1[1]
-                    limite = 3
+                        texto_seleccionado = texto2 #mail / registrarse
+                        texto_ingresado = texto2[1]
+                        limite = 13
 
 
 
-                elif mouse_pos[0] < 150 and mouse_pos[0] > 55 and mouse_pos[1] < 417 and mouse_pos[1] > 385:#precio "desde"
-                    texto_seleccionado = texto2
-                    texto_ingresado = texto2[1]
-                    limite = 3
+                    elif mouse_pos[0] <= 844 and mouse_pos[0] >= 440 and mouse_pos[1] <= 653 and mouse_pos[1] >= 621: #-----> Contraseña
+    
+                        texto_seleccionado = texto3 #contraseña / registrarse
+                        texto_ingresado = texto3[1]
+                        limite = 13
 
 
 
-                elif mouse_pos[0] < 290 and mouse_pos[0] > 195 and mouse_pos[1] < 417 and mouse_pos[1] > 385:#precio "hasta"
-                    texto_seleccionado = texto3
-                    texto_ingresado = texto3[1]
-                    limite = 3
-
-
-
-
-            if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon"]:
-
-
-                if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15: #Home 
-                    fondo_actual[0] = "menu habitaciones"
-                    fondo_actual[1] = 6
-
-
-
-                elif mouse_pos[0] < 560 and mouse_pos[0] > 435 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Parking
-                    fondo_actual[0] = "menu parking"
-                    fondo_actual[1] = 2
-
-
-
-                elif mouse_pos[0] < 710 and mouse_pos[0] > 590 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Bedroom
-                    fondo_actual[0] = "menu bedroom"
-                    fondo_actual[1] = 3
-
-
-
-                elif mouse_pos[0] < 860 and mouse_pos[0] > 745 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Services
-                    fondo_actual[0] = "menu amenities"
-                    fondo_actual[1] = 7
+                    elif mouse_pos[0] <= 908 and mouse_pos[0] >= 852 and mouse_pos[1] <= 675 and mouse_pos[1] >= 630:#-----> Siguiente / Registrarse
                 
+                        if len(texto1[1]) > 3 and len(texto2[1]) > 3 :
+                            if not(ExisteUsuario(texto1[1])) :
 
-                elif mouse_pos[0] < 1220 and mouse_pos[0] > 1140 and mouse_pos[1] < 90 and mouse_pos[1] > 18:#boton usuario
-                    alter_usuario = not(alter_usuario)
-                    print(alter_usuario)
+                                if chequeo_contraseña(texto3[1]) == "aprobado":
+
+                                    CrearActualizarUsuario(texto1[1] , texto2[1] , "" , "" , "" , texto3[1] , "" , "" , "" , "" , "")
+                                    fondo_actual[0] = "menu habitaciones"
+                                    fondo_actual[1] = 6
+                                    texto_ingresado = ""
+                                    texto1 = [(0,0),""]
+                                    texto2 = [(0,0),""]  
+
+                                else:                       
+                                    texto4[1] = chequeo_contraseña(texto3[1])    
+                            else:
+                                texto4[1] = "El usuario ingresado ya existe"
+                        else:
+                            texto4[1] = "usuario o mail muy cortos"
+
+
+
+                            
+                    elif mouse_pos[0] <= 748 and mouse_pos[0] >= 522 and mouse_pos[1] <= 683 and mouse_pos[1] >= 673:#-----> Iniciar Sesion
+                        fondo_actual[0] = "iniciar sesion"
+                        fondo_actual[1] = 0
+                        texto_ingresado = ""
+                        texto1 = [(0,0),""]
+                        texto2 = [(0,0),""]               
+
+
+
+
+                elif fondo_actual[0] == "menu habitaciones":
+
+
+                    if mouse_pos[0] < 295 and mouse_pos[0] > 195 and mouse_pos[1] < 290 and mouse_pos[1] > 260:#personas        
+                        texto_seleccionado = texto1
+                        texto_ingresado = texto1[1]
+                        limite = 3
+
+
+
+                    elif mouse_pos[0] < 150 and mouse_pos[0] > 55 and mouse_pos[1] < 417 and mouse_pos[1] > 385:#precio "desde"
+                        texto_seleccionado = texto2
+                        texto_ingresado = texto2[1]
+                        limite = 3
+
+
+
+                    elif mouse_pos[0] < 290 and mouse_pos[0] > 195 and mouse_pos[1] < 417 and mouse_pos[1] > 385:#precio "hasta"
+                        texto_seleccionado = texto3
+                        texto_ingresado = texto3[1]
+                        limite = 3
+
+
+
+
+                if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon"]:
+
+
+                    if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15: #Home 
+                        fondo_actual[0] = "menu habitaciones"
+                        fondo_actual[1] = 6
+
+
+
+                    elif mouse_pos[0] < 560 and mouse_pos[0] > 435 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Parking
+                        fondo_actual[0] = "menu parking"
+                        fondo_actual[1] = 2
+
+
+
+                    elif mouse_pos[0] < 710 and mouse_pos[0] > 590 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Bedroom
+                        fondo_actual[0] = "menu bedroom"
+                        fondo_actual[1] = 3
+
+
+
+                    elif mouse_pos[0] < 860 and mouse_pos[0] > 745 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Services
+                        fondo_actual[0] = "menu amenities"
+                        fondo_actual[1] = 7
+                    
+
+                    elif mouse_pos[0] < 1220 and mouse_pos[0] > 1140 and mouse_pos[1] < 90 and mouse_pos[1] > 18:#boton usuario
+                        alter_usuario = not(alter_usuario)
+                        print(alter_usuario)
 
 
         

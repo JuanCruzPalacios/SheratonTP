@@ -1,6 +1,8 @@
 # Funciones requeridas : 
 
+#ArchivarDesarchivarNotificaciones
 
+#FijarNotificacion
 
 
 import json
@@ -160,8 +162,6 @@ def NotificarIngresoEgreso(id_estacionamiento):
         estacionamiento[id_estacionamiento]["UltimoEgreso"] = [str(ahora.day) + "/" + str(ahora.month) + "/" + str(ahora.year), str(ahora.hour) + ":" + str(ahora.minute) + ":" + str(ahora.second)]
     ActualizarJson("Estacionamiento.json", estacionamiento )
 
-NotificarIngresoEgreso("-1")
-
 def Filtros(huespedes, precio_min, precio_max):
     filtro = LeerJson("habitaciones.json")
     resultado_ocupado = []
@@ -177,6 +177,65 @@ def Filtros(huespedes, precio_min, precio_max):
         if int(filtro[habitacion]["RangoHuespedes"]) == huespedes: 
             resultado_final.append(habitacion)
     return resultado_final 
+
+#def ArchivarDesarchivarNotificaciones(id_notificacion):
+
+def VerUsuario(usuario): 
+    usuario_json = LeerJson("Usuario.json")
+    return usuario_json[usuario]
+
+def TieneServicio(usuario):
+    contr = []
+    n = 0
+    usuarios_json = LeerJson("Usuario.json")
+    contrataciones = usuarios_json[usuario]["Contrataciones"]
+    try: 
+        for i in range (0, len(contrataciones)):
+            if contrataciones[i][0] == "GYM":
+                contr.append([True , contrataciones[i][1]])
+                n += 1
+            
+        if n == 0:
+                contr.append([False])
+            
+        n = 0
+
+        for i in range (0, len(contrataciones)):
+            if contrataciones[i][0] == "SPA":
+                contr.append([True , contrataciones[i][1]])
+                n += 1
+            
+        if n == 0:
+            contr.append([False])
+            
+        n = 0
+        
+        for i in range (0, len(contrataciones)):
+            if contrataciones[i][0] == "PISCINA":
+                contr.append([True , contrataciones[i][1]])
+                n += 1
+            
+        if n == 0:
+            contr.append([False])
+            
+        n = 0
+
+    except:
+        contr.append([False])
+    
+    return contr
+    
+def TieneEstacionamiento(usuario): 
+    try:
+        usuarios_json = LeerJson("Usuario.json")
+        Estacionamiento = usuarios_json[usuario]["IdEstacionamiento"] 
+        if len(Estacionamiento) >= 1: 
+            return True , Estacionamiento
+        else:
+            return False , False
+    except:
+        print("El usuario no existe o hubo un error al hacer la operacion")
+        return False , False
 
 
 

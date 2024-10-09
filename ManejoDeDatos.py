@@ -160,8 +160,6 @@ def NotificarIngresoEgreso(id_estacionamiento):
         estacionamiento[id_estacionamiento]["UltimoEgreso"].append ([str(ahora.day) + "/" + str(ahora.month) + "/" + str(ahora.year), str(ahora.hour) + ":" + str(ahora.minute) + ":" + str(ahora.second)])
     ActualizarJson("Estacionamiento.json", estacionamiento )
 
-NotificarIngresoEgreso("-1")
-
 def Filtros(huespedes, precio_min, precio_max):
     filtro = LeerJson("habitaciones.json")
     resultado_ocupado = []

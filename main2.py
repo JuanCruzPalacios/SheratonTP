@@ -11,8 +11,8 @@ running = True
 
 
 
-fondo_iniciar_sesion = pygame.transform.scale(pygame.image.load("imagenes/iniciar_sesion.png"), (1280,720))
-fondo_registrarse = pygame.transform.scale(pygame.image.load("imagenes/registrarse.png"),(1280,720))
+fondo_iniciar_sesion = pygame.transform.scale(pygame.image.load("imagenes/iniciar_sesion.jpg"), (1280,720))
+fondo_registrarse = pygame.transform.scale(pygame.image.load("imagenes/registrarse.jpg"),(1280,720))
 fondo_estacionamiento = pygame.transform.scale(pygame.image.load("imagenes/estacionamiento.jpg"), (1280, 720))
 fondo_habitacion = pygame.transform.scale(pygame.image.load("imagenes/habitacion.jpg"), (1280, 720))
 fondo_reservar = pygame.transform.scale(pygame.image.load("imagenes/suite_parking.jpg"), (1280, 720))
@@ -48,13 +48,13 @@ fondos = [  fondo_iniciar_sesion, fondo_registrarse,
             fondo_reservar, fondo_pagar , fondo_menu_habitaciones,
             #4              #5            #6
             fondo_menu_amenities, fondo_menu_salones, fondo_datos_usuario, fondo_menu_mantenimiento,
-            #7                   #7                  #8                   #9
+            #7                   #8                  #9                   #10
             fondo_mantenimiento_stock, fondo_mantenimiento_notificaciones, 
-            #10                        #11
+            #11                        #12
             fondo_mantenimiento_notificaciones_archivadas, fondo_menu_recepcionista, fondo_recepcionista_notificar,
-            #12                                            #13                       #14
+            #13                                            #14                       #15
             fondo_recepcinista_eventos, fondo_recepcinista_limpieza]
-            #15                         #16
+            #16                         #17
 
 fuente = pygame.font.Font("fuentes/Averia_Libre/AveriaLibre-Regular.ttf", 31)
 limite = 13
@@ -153,7 +153,7 @@ def cursor(mouse_pos):
 
 
 
-    if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon"]:
+    if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon", "ver datos"]:
 
 
             if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15: #Home
@@ -240,6 +240,45 @@ while running:
             elif event.key == pygame.K_ESCAPE:
                 texto_seleccionado = ""
                 
+            elif event.key == 13 :#enter
+                if fondo_actual[0] == "iniciar sesion":
+                        if ExisteUsuario(texto1[1]):
+
+                            if VerificarContraseña(texto1[1],texto2[1]):
+
+                                fondo_actual[0] = "menu habitaciones"
+                                fondo_actual[1] = 6
+                                texto_ingresado = ""
+                                texto1 = [(0,0),""]
+                                texto2 = [(0,0),""]
+                                texto3 = [(0,0),""]
+                            else:
+                                texto3[1] = "Contraseña erronea"
+                        else:
+                            texto3[1] = "Usuario inexistente"
+                elif fondo_actual[0] == "registrarse": 
+                    if len(texto1[1]) > 3 and len(texto2[1]) > 3 :
+                        if not(ExisteUsuario(texto1[1])) :
+
+                            if chequeo_contraseña(texto3[1]) == "aprobado":
+
+                                CrearActualizarUsuario(texto1[1] , texto2[1] , "" , "" , "" , texto3[1] , "" , "" , "" , "" , "")
+                                fondo_actual[0] = "menu habitaciones"
+                                fondo_actual[1] = 6
+                                texto_ingresado = ""
+                                texto1 = [(0,0),""]
+                                texto2 = [(0,0),""]  
+
+                            else:                       
+                                texto4[1] = chequeo_contraseña(texto3[1])    
+                        else:
+                            texto4[1] = "El usuario ingresado ya existe"
+                    else:
+                        texto4[1] = "usuario o mail muy cortos" 
+                else:
+                    texto_seleccionado = ""
+       
+       
             else:                 
                 if len(texto_ingresado) < limite:           
                     # Agregar caracteres al texto ingresado
@@ -264,6 +303,7 @@ while running:
 
 
                 print(mouse_pos)   
+
 
                 if fondo_actual[0] == "iniciar sesion":
                 
@@ -322,13 +362,11 @@ while running:
                         limite = 13
 
 
-
                     elif mouse_pos[0] <= 821 and mouse_pos[0] >= 460 and mouse_pos[1] <= 583 and mouse_pos[1] >= 544:#-----> Correo Electronico
 
                         texto_seleccionado = texto2 #mail / registrarse
                         texto_ingresado = texto2[1]
                         limite = 13
-
 
 
                     elif mouse_pos[0] <= 821 and mouse_pos[0] >= 460 and mouse_pos[1] <= 661 and mouse_pos[1] >= 621: #-----> Contraseña
@@ -360,9 +398,7 @@ while running:
                         else:
                             texto4[1] = "usuario o mail muy cortos"
 
-
-
-                            
+                          
                     elif mouse_pos[0] <= 748 and mouse_pos[0] >= 519 and mouse_pos[1] <= 682 and mouse_pos[1] >= 670:#-----> Iniciar Sesion
                         fondo_actual[0] = "iniciar sesion"
                         fondo_actual[1] = 0
@@ -399,7 +435,7 @@ while running:
 
 
 
-                if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon"]:
+                if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "reservar eventos", "ver datos"]:
 
 
                     if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15: #Home 
@@ -430,11 +466,54 @@ while running:
                         print(alter_usuario)
 
 
+
+
+                if alter_usuario:
+
+
+                    if mouse_pos[0] < 1205  and mouse_pos[0] > 1030 and mouse_pos[1] < 478 and mouse_pos[1] > 431: #salir
+                        fondo_actual[0] = "iniciar sesion"
+                        fondo_actual[1] = 0
+                        alter_usuario = not(alter_usuario)
+                        texto1[1] = ""
+                        texto2[1] = ""
+                        texto3[1] = ""
+                        texto4[1] = ""
+                        texto5[1] = ""
+                        texto6[1] = ""
+                        texto7[1] = ""
+                        texto8[1] = ""
+
+
+                    elif mouse_pos[0] < 1245 and mouse_pos[0] > 992 and mouse_pos[1] < 310 and mouse_pos[1] > 261: #ver datos
+                        fondo_actual[0] = "ver datos"
+                        fondo_actual[1] = 9
+                        alter_usuario = not(alter_usuario)
+                        texto1[1] = ""
+                        texto2[1] = ""
+                        texto3[1] = ""
+                        texto4[1] = ""
+                        texto5[1] = ""
+                        texto6[1] = ""
+                        texto7[1] = ""
+                        texto8[1] = ""                        
+
+
+                    elif mouse_pos[0] < 1245 and mouse_pos[0] > 992 and mouse_pos[1] < 395 and mouse_pos[1] > 350: #reservar eventos
+                        fondo_actual[0] = "reservar eventos"
+                        fondo_actual[1] = 8
+                        alter_usuario = not(alter_usuario)
+                        texto1[1] = ""
+                        texto2[1] = ""
+                        texto3[1] = ""
+                        texto4[1] = ""
+                        texto5[1] = ""
+                        texto6[1] = ""
+                        texto7[1] = ""
+                        texto8[1] = ""  
         
-
-
-
-
+        
+        
         cursor(mouse_pos)
 
 
@@ -487,7 +566,13 @@ while running:
     elif fondo_actual[0] == "menu amenities":
         screen.blit (fondos[fondo_actual[1]] , (0 , 0))
 
-    
+
+    elif fondo_actual[0] == "ver datos":
+        screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+
+
+    elif fondo_actual[0] == "reservar eventos":
+        screen.blit (fondos[fondo_actual[1]] , (0 , 0))
 
 
     if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon"]:

@@ -1,7 +1,8 @@
 {
 
-"Suite_balcon" : {
+"suite_balcon" : {
 
+"ID" : 0,
 "Ocupada" : "No",
 "UltimaLimpieza" : "19/09/2024" , 
 "Estado" : "No molestar" , 
@@ -11,8 +12,9 @@
 "Precio" : "240",
 "RangoHuespedes": 2
 },
-"Habitacion_triple" : {
 
+"habitacion_triple" : {
+"ID" : 1,
 "Ocupada" : "No",
 "UltimaLimpieza" : "02/10/2024" , 
 "Estado" : "Ninguno" , 
@@ -24,7 +26,7 @@
 },
 
 "habitacion_doble" : {
-
+"ID" : 2,
 "Ocupada" : "No",
 "UltimaLimpieza" : "01 /10/2024" , 
 "Estado" : "Ninguno" , 
@@ -36,7 +38,7 @@
 },
 
 "habitacion_lujo" : {
-
+"ID" : 3,
 "Ocupada" : "No",
 "UltimaLimpieza" : "19/09/2024" , 
 "Estado" : "No molestar" , 
@@ -48,7 +50,7 @@
 },
 
 "habitacion_cuadruple" : {
-
+"ID" : 4,
 "Ocupada" : "No",
 "UltimaLimpieza" : "19/09/2024" , 
 "Estado" : "Ninguno" , 
@@ -60,7 +62,7 @@
 },
 
 "suite_rio" : {
-
+"ID" : 5,
 "Ocupada" : "No",
 "UltimaLimpieza" : "02/10/2024" , 
 "Estado" : "No molestar" , 
@@ -72,7 +74,7 @@
 },
 
 "habitacion_individual" : {
-
+"ID" : 6,
 "Ocupada" : "No",
 "UltimaLimpieza" : "02/10/2024" , 
 "Estado" : "No molestar" , 
@@ -84,7 +86,7 @@
 },
 
 "suite_jacuzzi" : {
-
+"ID" : 7,
 "Ocupada" : "No",
 "UltimaLimpieza" : "02/10/2024" , 
 "Estado" : "No molestar" , 
@@ -96,7 +98,7 @@
 },
 
 "suite_estandar" : {
-
+"ID" : 8,
 "Ocupada" : "No" ,
 "UltimaLimpieza" : "02/10/2024" , 
 "Estado" : "No molestar" , 

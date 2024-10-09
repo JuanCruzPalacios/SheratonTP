@@ -181,19 +181,26 @@ def NotificarIngresoEgreso(id_estacionamiento):
 
 def Filtros(huespedes, precio_min, precio_max):
     filtro = LeerJson("habitaciones.json")
+    habitaciones_ocupado = []
+    habitaciones_precio = []
     resultado_ocupado = []
     resultado_precio = []
     resultado_final = []
-    for habitacion in filtro: 
-        if filtro[habitacion]["Ocupada"] == "No" :
-            resultado_ocupado.append(habitacion)
-    for habitacion in resultado_ocupado:
-        if int(filtro[habitacion]["Precio"]) >= precio_min and int(filtro[habitacion]["Precio"]) <= precio_max : 
-            resultado_precio.append(habitacion)
-    for habitacion in resultado_precio:
-        if int(filtro[habitacion]["RangoHuespedes"]) == huespedes: 
-            resultado_final.append(habitacion)
-    return resultado_final 
+    try:
+        for habitacion in filtro: 
+            if filtro[habitacion]["Ocupada"] == "No" :
+                resultado_ocupado.append(filtro[habitacion]["ID"])
+                habitaciones_ocupado.append(habitacion)
+        for habitacion in habitaciones_ocupado:
+            if int(filtro[habitacion]["Precio"]) >= int(precio_min) and int(filtro[habitacion]["Precio"]) <= int(precio_max) : 
+                resultado_precio.append(filtro[habitacion]["ID"])
+                habitaciones_precio.append(habitacion)
+        for habitacion in habitaciones_precio:
+            if int(filtro[habitacion]["RangoHuespedes"]) == int(huespedes): 
+                resultado_final.append(filtro[habitacion]["ID"])
+        return resultado_final
+    except ValueError:
+        """"""
 
 def InformacionHabitacion (numero_de_habitacion):
     habitaciones = LeerJson("habitaciones.json")

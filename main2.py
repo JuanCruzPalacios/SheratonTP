@@ -50,9 +50,28 @@ habitacion_individual = pygame.image.load("imagenes/habitaciones_solas/7.jpg")
 suite_jacuzzi = pygame.image.load("imagenes/habitaciones_solas/8.jpg")
 suite_estandar = pygame.image.load("imagenes/habitaciones_solas/9.jpg")
 
-habitaciones_libres = [[suite_balcon,habitacion_triple,habitacion_doble],
-                       [habitacion_lujo,habitacion_cuadruple,suite_rio],
-                       [habitacion_individual,suite_jacuzzi,suite_estandar]]
+
+suite_balcon_rect = suite_balcon.get_rect()
+habitacion_triple_rect = habitacion_triple.get_rect()
+habitacion_doble_rect = habitacion_doble.get_rect()
+habitacion_lujo_rect = habitacion_lujo.get_rect()
+habitacion_cuadruple_rect = habitacion_cuadruple.get_rect()
+suite_rio_rect = suite_rio.get_rect()
+habitacion_individual_rect = habitacion_individual.get_rect()
+suite_jacuzzi_rect = suite_jacuzzi.get_rect()
+suite_estandar_rect = suite_estandar.get_rect()
+
+
+habitaciones = [suite_balcon, habitacion_triple, habitacion_doble,
+                habitacion_lujo, habitacion_cuadruple, suite_rio,
+                habitacion_individual, suite_jacuzzi, suite_estandar]
+
+habitaciones_libres = [0,1,2,3,4,5,6,7,8]
+
+
+
+temp =  []
+
 
 
 fondo_actual = ["iniciar sesion", 0]
@@ -71,8 +90,11 @@ fondos = [  fondo_iniciar_sesion, fondo_registrarse,
             fondo_recepcinista_eventos, fondo_recepcinista_limpieza]
             #16                         #17
 
+
+
 fuente = pygame.font.Font("fuentes/Averia_Libre/AveriaLibre-Regular.ttf", 31)
 limite = 13
+
 texto1 = [(0,0), ""]
 texto2 = [(0,0), ""]
 texto3 = [(0,0), ""]
@@ -210,9 +232,6 @@ def cursor(mouse_pos):
 
 
 
-
-
-
 def chequeo_contraseña(conteraseña):
     if len(conteraseña) > 8:
         if  any( caracter in conteraseña for caracter in ["@", "#", "$", "*", "%", "&", "/", "!", "?", "-", "_"] ):
@@ -305,14 +324,17 @@ while running:
         if event.type == pygame.MOUSEBUTTONDOWN :
 
             if event.button == 4:  # Rueda hacia arriba   
-
-                if posicion <= 0:
-                    posicion += 25
+                
+                    if posicion <= 125:
+                        posicion += 25
 
             elif event.button == 5:  # Rueda hacia abajo
-
-                if posicion >= -700:
-                    posicion -= 25
+                if len(habitaciones_libres) > 6:
+                    if posicion >= -550:
+                        posicion -= 25
+                else:
+                    if posicion >= -100:
+                        posicion -= 25
 
             if event.button == 1:
 
@@ -450,8 +472,16 @@ while running:
 
 
                     elif mouse_pos[0] < 243 and mouse_pos[0] > 85 and mouse_pos[1] < 538 and mouse_pos[1] > 504:#buscar
-                        habitaciones_libres = Filtros(texto1[1],texto2[1],texto3[1])
-
+                        try:
+                            habitaciones_libres = Filtros(int(texto1[1]),int(texto2[1]),int(texto3[1]))
+                        except ValueError:
+                            """"""
+                        print(texto1[1],texto2[1],texto3[1])
+                        print(Filtros(texto1[1],texto2[1],texto3[1]))
+                        
+                    elif suite_balcon_rect.collidepoint(mouse_pos):
+                        fondo_actual[0] = "iniciar sesion"
+                        fondo_actual[1] = 0
 
 
 
@@ -539,72 +569,73 @@ while running:
 
     #fondos :)
 
- 
-
-
-    if fondo_actual[0] == "iniciar sesion":
-        texto1[0] = ( 467 , 486 )
-        texto2[0] = ( 467 , 592 )
-        texto3[0] = ( 420 , 377 )
-        screen.blit (fondos[fondo_actual[1]] , (0 , 0))       
-        screen.blit( fuente.render(texto1[1] , 0 , (0,0,0) ), texto1[0] )
-        screen.blit( fuente.render(texto2[1] , 0 , (0,0,0) ), texto2[0] )
-        screen.blit( fuente.render(texto3[1] , 0 , (0,0,0) ), texto3[0] )
-
     
-    elif fondo_actual[0] == "registrarse":
-        screen.blit (fondos[fondo_actual[1]] , (0 , 0)) 
-        texto1[0] = ( 467 , 465 )
-        texto2[0] = ( 467 , 541 )    
-        texto3[0] = ( 467 , 617 ) 
-        texto4[0] = ( 415 , 375 )
-        screen.blit( fuente.render(texto1[1] , 0 , (0,0,0) ), texto1[0] )
-        screen.blit( fuente.render(texto2[1] , 0 , (0,0,0) ), texto2[0] )  
-        screen.blit( fuente.render(texto3[1] , 0 , (0,0,0) ), texto3[0] )
-        screen.blit( fuente.render(texto4[1] , 0 , (0,0,0) ), texto4[0] )        
+    if True:
 
-
-    elif fondo_actual[0] == "menu habitaciones":
-        screen.fill((253,246,228))
-        for x in range(3):
-            for y in range(3):
-                   screen.blit ( habitaciones_libres[x][y],(320*(x+1),  posicion + 400*(y)))
-        
-        screen.blit (imagen_filtro , (30, 160 ))        
-        texto1[0] = ( 186 , 264 )
-        texto2[0] = ( 47 , 411 )    
-        texto3[0] = ( 186 , 411 )
-        screen.blit( fuente.render(texto1[1] , 0 , (0,0,0) ), texto1[0] )
-        screen.blit( fuente.render(texto2[1] , 0 , (0,0,0) ), texto2[0] )  
-        screen.blit( fuente.render(texto3[1] , 0 , (0,0,0) ), texto3[0] )   
-
-
-    elif fondo_actual[0] == "menu parking":
-        screen.blit (fondos[fondo_actual[1]] , (0 , 0))
-
-
-    elif fondo_actual[0] == "menu bedroom":
-        screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+        if fondo_actual[0] == "iniciar sesion":
+            texto1[0] = ( 467 , 486 )
+            texto2[0] = ( 467 , 592 )
+            texto3[0] = ( 420 , 377 )
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0))       
+            screen.blit( fuente.render(texto1[1] , 0 , (0,0,0) ), texto1[0] )
+            screen.blit( fuente.render(texto2[1] , 0 , (0,0,0) ), texto2[0] )
+            screen.blit( fuente.render(texto3[1] , 0 , (0,0,0) ), texto3[0] )
 
         
-    elif fondo_actual[0] == "menu amenities":
-        screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+        elif fondo_actual[0] == "registrarse":
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0)) 
+            texto1[0] = ( 467 , 465 )
+            texto2[0] = ( 467 , 541 )    
+            texto3[0] = ( 467 , 617 ) 
+            texto4[0] = ( 415 , 375 )
+            screen.blit( fuente.render(texto1[1] , 0 , (0,0,0) ), texto1[0] )
+            screen.blit( fuente.render(texto2[1] , 0 , (0,0,0) ), texto2[0] )  
+            screen.blit( fuente.render(texto3[1] , 0 , (0,0,0) ), texto3[0] )
+            screen.blit( fuente.render(texto4[1] , 0 , (0,0,0) ), texto4[0] )        
 
 
-    elif fondo_actual[0] == "ver datos":
-        screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+        elif fondo_actual[0] == "menu habitaciones":
+            screen.fill((253,246,228))
+            cont = 0
+            for i in habitaciones_libres:   
+                screen.blit(habitaciones[i], (316 * (cont  % 3 + 1) , posicion + 425 * (cont // 3)))
+                cont += 1
+            
+            screen.blit (imagen_filtro , ( 30, 160 ))        
+            texto1[0] = ( 190 , 266 )
+            texto2[0] = ( 47 , 411 )    
+            texto3[0] = ( 190 , 411 )
+            screen.blit( fuente.render(texto1[1] , 0 , (0,0,0) ), texto1[0] )
+            screen.blit( fuente.render(texto2[1] , 0 , (0,0,0) ), texto2[0] )  
+            screen.blit( fuente.render(texto3[1] , 0 , (0,0,0) ), texto3[0] )   
 
 
-    elif fondo_actual[0] == "reservar eventos":
-        screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+        elif fondo_actual[0] == "menu parking":
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0))
 
 
-    if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon"]:
-        screen.blit (barra_arriba, (0,0))
+        elif fondo_actual[0] == "menu bedroom":
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+
+            
+        elif fondo_actual[0] == "menu amenities":
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0))
 
 
-    if alter_usuario:
-        screen.blit (imagen_usuario , (958, 129))
+        elif fondo_actual[0] == "ver datos":
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+
+
+        elif fondo_actual[0] == "reservar eventos":
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+
+
+        if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon"]:
+            screen.blit (barra_arriba, (0,0))
+
+
+        if alter_usuario:
+            screen.blit (imagen_usuario , (958, 129))
 
 
 

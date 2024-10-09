@@ -51,16 +51,20 @@ suite_jacuzzi = pygame.image.load("imagenes/habitaciones_solas/8.jpg")
 suite_estandar = pygame.image.load("imagenes/habitaciones_solas/9.jpg")
 
 
-suite_balcon_rect = suite_balcon.get_rect()
-habitacion_triple_rect = habitacion_triple.get_rect()
-habitacion_doble_rect = habitacion_doble.get_rect()
-habitacion_lujo_rect = habitacion_lujo.get_rect()
-habitacion_cuadruple_rect = habitacion_cuadruple.get_rect()
-suite_rio_rect = suite_rio.get_rect()
-habitacion_individual_rect = habitacion_individual.get_rect()
-suite_jacuzzi_rect = suite_jacuzzi.get_rect()
-suite_estandar_rect = suite_estandar.get_rect()
+suite_balcon_rect = [suite_balcon.get_rect(topleft=(316, 150)), 0]
+habitacion_triple_rect = [habitacion_triple.get_rect(topleft=(632, 150)), 1]
+habitacion_doble_rect = [habitacion_doble.get_rect(topleft=(948, 150)), 2]
+habitacion_lujo_rect = [habitacion_lujo.get_rect(topleft=(316, 575)), 3]
+habitacion_cuadruple_rect = [habitacion_cuadruple.get_rect(topleft=(632, 575)), 4]
+suite_rio_rect = [suite_rio.get_rect(topleft=(948, 575)), 5]
+habitacion_individual_rect = [habitacion_individual.get_rect(topleft=(316, 1000)), 6]
+suite_jacuzzi_rect = [suite_jacuzzi.get_rect(topleft=(632, 1000)), 7]
+suite_estandar_rect = [suite_estandar.get_rect(topleft=(948, 1000)), 8]
 
+
+rects = [suite_balcon_rect,habitacion_triple_rect,habitacion_doble_rect,
+        habitacion_lujo_rect,habitacion_cuadruple_rect,suite_rio_rect,
+        habitacion_individual_rect,suite_jacuzzi_rect,suite_estandar_rect]
 
 habitaciones = [suite_balcon, habitacion_triple, habitacion_doble,
                 habitacion_lujo, habitacion_cuadruple, suite_rio,
@@ -69,7 +73,7 @@ habitaciones = [suite_balcon, habitacion_triple, habitacion_doble,
 habitaciones_libres = [0,1,2,3,4,5,6,7,8]
 
 
-
+cambiar_nombre = []
 temp =  []
 
 
@@ -170,22 +174,22 @@ def cursor(mouse_pos):
 
 
         if mouse_pos[0] < 282 and mouse_pos[0] > 185 and mouse_pos[1] < 302 and mouse_pos[1] > 267:#personas        
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
 
         elif mouse_pos[0] < 142 and mouse_pos[0] > 46 and mouse_pos[1] < 450 and mouse_pos[1] > 415:#precio "desde"
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
 
         elif mouse_pos[0] < 284 and mouse_pos[0] > 185 and mouse_pos[1] < 450 and mouse_pos[1] > 416:#precio "hasta"
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
 
         elif mouse_pos[0] < 243 and mouse_pos[0] > 85 and mouse_pos[1] < 538 and mouse_pos[1] > 504:#buscar
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
 
-        elif suite_balcon_rect.collidepoint(mouse_pos):
+        elif suite_balcon_rect[0].collidepoint(mouse_pos):
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
 
@@ -480,10 +484,10 @@ while running:
                             habitaciones_libres = Filtros(int(texto1[1]),int(texto2[1]),int(texto3[1]))
                         except ValueError:
                             """"""
-                        print(texto1[1],texto2[1],texto3[1])
-                        print(Filtros(texto1[1],texto2[1],texto3[1]))
-                        
-                    elif suite_balcon_rect.collidepoint(mouse_pos):
+
+
+
+                    elif suite_balcon_rect[0].collidepoint(mouse_pos):
                         fondo_actual[0] = "iniciar sesion"
                         fondo_actual[1] = 0
 
@@ -601,10 +605,36 @@ while running:
         elif fondo_actual[0] == "menu habitaciones":
             screen.fill((253,246,228))
             cont = 0
+            cambiar_nombre = []
             for i in habitaciones_libres:   
-                screen.blit(habitaciones[i], (316 * (cont  % 3 + 1) , posicion + 425 * (cont // 3)))
+                x = 316 * (cont  % 3 + 1) 
+                y = posicion + 425 * (cont // 3)
+                screen.blit(habitaciones[i], (x, y))
+                cambiar_nombre.append((x,y))
+                pygame.draw.rect(screen,(255,0,0),suite_balcon_rect[0])
+                pygame.draw.rect(screen,(255,0,0),suite_rio_rect[0])
+                pygame.draw.rect(screen,(255,0,0),suite_jacuzzi_rect[0])
+                pygame.draw.rect(screen,(255,0,0),suite_estandar_rect[0])
+                pygame.draw.rect(screen,(255,0,0),habitacion_lujo_rect[0])
+                pygame.draw.rect(screen,(255,0,0),habitacion_doble_rect[0])
+                pygame.draw.rect(screen,(255,0,0),habitacion_triple_rect[0])
+                pygame.draw.rect(screen,(255,0,0),habitacion_cuadruple_rect[0])
+                pygame.draw.rect(screen,(255,0,0),habitacion_individual_rect[0])
+
+
                 cont += 1
             
+            for i in rects:
+                
+                if i[1] in habitaciones_libres:
+                    
+                    i[0][0] = cambiar_nombre[0][0] #posicion del rect en x
+                    i[0][1] = cambiar_nombre[0][1] #posicion del rect en y
+                    print(cambiar_nombre)
+                    cambiar_nombre.pop(0)
+                
+                
+
             screen.blit (imagen_filtro , ( 30, 160 ))        
             texto1[0] = ( 190 , 266 )
             texto2[0] = ( 47 , 411 )    

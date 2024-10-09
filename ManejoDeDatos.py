@@ -1,9 +1,5 @@
 # Funciones requeridas : 
 
-#ArchivarDesarchivarNotificaciones
-
-#FijarNotificacion
-
 
 import json
 from datetime import datetime
@@ -253,9 +249,17 @@ def FijarDesfijarNotificaciones (id_notificacion):
         contenido[id_notificacion]["Fijada"] = 0
     ActualizarJson("Notificaciones.json", contenido)
 
-
-
-
+def TieneHabitacion(usuario): 
+    try:
+        usuarios_json = LeerJson("Usuario.json")
+        Estacionamiento = usuarios_json[usuario]["IdHabitacion"] 
+        if len(Estacionamiento) >= 1: 
+            return True , Estacionamiento
+        else:
+            return False , False
+    except:
+        print("El usuario no existe o hubo un error al hacer la operacion")
+        return False , False
 
     
 

@@ -167,7 +167,7 @@ def Filtros(huespedes, precio_min, precio_max):
         if filtro[habitacion]["Ocupada"] == "No" :
             resultado_ocupado.append(habitacion)
     for habitacion in resultado_ocupado:
-        if int(filtro[habitacion]["Precio"]) >= precio_min and int(filtro[habitacion]["Precio"]) <= precio_max : 
+        if int(filtro[habitacion]["Precio"]) >= int(precio_min) and int(filtro[habitacion]["Precio"]) <= int(precio_max) : 
             resultado_precio.append(habitacion)
     for habitacion in resultado_precio:
         if int(filtro[habitacion]["RangoHuespedes"]) == huespedes: 

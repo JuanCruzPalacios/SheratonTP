@@ -40,6 +40,21 @@ imagen_filtro = pygame.image.load("imagenes/NICOLAS.png")
 alter_usuario = False
 
 
+suite_balcon = pygame.image.load("imagenes/habitaciones_solas/1.jpg")
+habitacion_triple = pygame.image.load("imagenes/habitaciones_solas/2.jpg")
+habitacion_doble = pygame.image.load("imagenes/habitaciones_solas/3.jpg")
+habitacion_lujo = pygame.image.load("imagenes/habitaciones_solas/4.jpg")
+habitacion_cuadruple = pygame.image.load("imagenes/habitaciones_solas/5.jpg")
+suite_rio = pygame.image.load("imagenes/habitaciones_solas/6.jpg")
+habitacion_individual = pygame.image.load("imagenes/habitaciones_solas/7.jpg")
+suite_jacuzzi = pygame.image.load("imagenes/habitaciones_solas/8.jpg")
+suite_estandar = pygame.image.load("imagenes/habitaciones_solas/9.jpg")
+
+habitaciones_libres = [[suite_balcon,habitacion_triple,habitacion_doble],
+                       [habitacion_lujo,habitacion_cuadruple,suite_rio],
+                       [habitacion_individual,suite_jacuzzi,suite_estandar]]
+
+
 fondo_actual = ["iniciar sesion", 0]
 fondos = [  fondo_iniciar_sesion, fondo_registrarse, 
             #0                    #1
@@ -67,7 +82,7 @@ texto6 = [(0,0), ""]
 texto7 = [(0,0), ""]
 texto8 = [(0,0), ""]
 
-posicion = 0
+posicion = 150
 
 
 texto_seleccionado =  texto1 
@@ -434,6 +449,11 @@ while running:
 
 
 
+                    elif mouse_pos[0] < 243 and mouse_pos[0] > 85 and mouse_pos[1] < 538 and mouse_pos[1] > 504:#buscar
+                        habitaciones_libres = Filtros(texto1[1],texto2[1],texto3[1])
+
+
+
 
                 if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "reservar eventos", "ver datos"]:
 
@@ -545,7 +565,11 @@ while running:
 
 
     elif fondo_actual[0] == "menu habitaciones":
-        screen.blit (fondos[fondo_actual[1]] , (0 , posicion)) 
+        screen.fill((253,246,228))
+        for x in range(3):
+            for y in range(3):
+                   screen.blit ( habitaciones_libres[x][y],(320*(x+1),  posicion + 400*(y)))
+        
         screen.blit (imagen_filtro , (30, 160 ))        
         texto1[0] = ( 186 , 264 )
         texto2[0] = ( 47 , 411 )    

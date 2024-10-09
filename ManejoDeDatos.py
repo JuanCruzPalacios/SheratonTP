@@ -1,13 +1,6 @@
 # Funciones requeridas : 
 
-# Crear usuario 
 
-# Crear notificacion
-
-# Leer notificacion
-
-# Eliminar/Agregar stock  
-# Mostrar stock
 
 
 import json

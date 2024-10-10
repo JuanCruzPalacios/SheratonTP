@@ -33,7 +33,7 @@ fondo_recepcionista_notificar = pygame.transform.scale(pygame.image.load("imagen
 fondo_recepcinista_eventos = pygame.transform.scale(pygame.image.load("imagenes/recepcionista_eventos.jpg"), (1280, 720))
 fondo_recepcinista_limpieza = pygame.transform.scale(pygame.image.load("imagenes/recepcionista_limpieza.jpg"), (1280, 720))
 
-barra_arriba = pygame.image.load("imagenes/barra_arriba.png")
+barra_arriba = pygame.image.load("imagenes/barra_arriba.jpg")
 
 imagen_usuario = pygame.transform.scale(pygame.image.load("imagenes/usuario.png"), (321, 394))
 imagen_filtro = pygame.image.load("imagenes/NICOLAS.png")
@@ -640,72 +640,9 @@ while running:
                             fondo_actual[1] = 26
              
 
-                
-                elif fondo_actual == "menu parking" and alter_mouse == False:
+                if alter_usuario:
 
 
-                    if mouse_pos[0] < 492 and mouse_pos[0] > 260 and mouse_pos[1] < 579 and mouse_pos[1] > 656: #ver registros        
-                        
-                        fondo_actual[0] = fondo_actual[0]
-                    
-
-                    if mouse_pos[0] < 521 and mouse_pos[0] > 492 and mouse_pos[1] < 579 and mouse_pos[1] > 656:#notificar ingreso        
-                        
-                        fondo_actual[0] = fondo_actual[0]
-                    
-
-
-                    if mouse_pos[0] < 1018 and mouse_pos[0] > 784 and mouse_pos[1] < 579 and mouse_pos[1] > 656:#cancelar reserva de parking        
-                        
-                        fondo_actual[0] = fondo_actual[0]
-
-
-
-
- 
-
-                if fondo_actual[0] in ["reservar habitacion","habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar", "datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "reservar eventos", "ver datos"] and alter_mouse == False:
-
-                    
-
-                    if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15: #Home 
-                        fondo_actual[0] = "menu habitaciones"
-                        fondo_actual[1] = 6
-
-
-
-                    elif mouse_pos[0] < 560 and mouse_pos[0] > 435 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Parking
-                        fondo_actual[0] = "menu parking"
-                        fondo_actual[1] = 2
-
-
-
-                    elif mouse_pos[0] < 710 and mouse_pos[0] > 590 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Bedroom
-                        fondo_actual[0] = "menu bedroom"
-                        fondo_actual[1] = 3
-
-
-
-                    elif mouse_pos[0] < 860 and mouse_pos[0] > 745 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Services
-                        fondo_actual[0] = "menu amenities"
-                        fondo_actual[1] = 7
-                    
-
-
-                    elif mouse_pos[0] < 1220 and mouse_pos[0] > 1140 and mouse_pos[1] < 90 and mouse_pos[1] > 18:#boton usuario
-                        alter_usuario = not(alter_usuario)
-                        print(alter_usuario)
-
-
-
-                    if mouse_pos[0] < 1008 and mouse_pos[0] > 785 and mouse_pos[1] < 666 and mouse_pos[1] > 605:#reservar
-                        fondo_actual[0] = "reservar habitacion"
-                        fondo_actual[1] = 5
-                    
-
-                if alter_usuario and alter_mouse == False:
-
-                    alter_mouse = True
                     if mouse_pos[0] < 1205  and mouse_pos[0] > 1030 and mouse_pos[1] < 478 and mouse_pos[1] > 431: #salir
                         fondo_actual[0] = "iniciar sesion"
                         fondo_actual[1] = 0
@@ -746,6 +683,48 @@ while running:
                         texto6[1] = ""
                         texto7[1] = ""
                         texto8[1] = ""  
+                         
+
+                if fondo_actual[0] in ["reservar habitacion","habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar", "datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "reservar eventos", "ver datos"]:
+
+
+
+                    if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15: #Home 
+                        fondo_actual[0] = "menu habitaciones"
+                        fondo_actual[1] = 6
+
+
+
+                    elif mouse_pos[0] < 560 and mouse_pos[0] > 435 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Parking
+                        fondo_actual[0] = "menu parking"
+                        fondo_actual[1] = 2
+
+
+
+                    elif mouse_pos[0] < 710 and mouse_pos[0] > 590 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Bedroom
+                        fondo_actual[0] = "menu bedroom"
+                        fondo_actual[1] = 3
+
+
+
+                    elif mouse_pos[0] < 860 and mouse_pos[0] > 745 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Services
+                        fondo_actual[0] = "menu amenities"
+                        fondo_actual[1] = 7
+                    
+
+
+                    elif mouse_pos[0] < 1220 and mouse_pos[0] > 1140 and mouse_pos[1] < 90 and mouse_pos[1] > 18:#boton usuario
+                        alter_usuario = not(alter_usuario)
+                        print(alter_usuario)
+
+
+
+                    if mouse_pos[0] < 1008 and mouse_pos[0] > 785 and mouse_pos[1] < 666 and mouse_pos[1] > 605:#reservar
+                        fondo_actual[0] = "reservar habitacion"
+                        fondo_actual[1] = 5
+
+
+
         
         
         

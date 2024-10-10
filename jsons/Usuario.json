@@ -1,7 +1,7 @@
 {
     "pepe": {
         "Correo": "pepito123@gmail.com",
-        "Tipo": "Si es cliente, empleado de mantenimiento, etc",
+        "Tipo": "Cliente",
         "Nombre": "Pepe",
         "Apellido": "Palacios",
         "Password": "pepito123",
@@ -15,22 +15,35 @@
         "IdEstacionamiento" : ["1" , "2"] , 
         "IdHabitacion": 1
     },
-
-    "": {
-        "Correo": "pepito123@gmail.com",
-        "Tipo": "cliente",
-        "Nombre": "",
-        "Apellido": "Palacios",
-        "Password": "",
-        "DNI": "40873319",
-        "NumeroTelefono": "+54 9 11 5920-3841",
-        "NumeroDeCliente": 1,
-        "CodigoPostal": "1999",
+    "marco": {
+        "Correo": "marco123@gmail.com",
+        "Tipo": "Mantenimiento",
+        "Nombre": "Marco",
+        "Apellido": "Peralta",
+        "Password": "marco123",
+        "DNI": "48696969",
+        "NumeroTelefono": "+54 9 11 0303-4560",
+        "NumeroDeCliente": 2,
+        "CodigoPostal": "2007",
         "Contrataciones": [
-            ["SPA" , "-1"] , ["PISCINA" , "-1"] , ["GYM" , "-1"]
         ],
-        "IdEstacionamiento" : ["1" , "2"] , 
-        "IdHabitacion": 2
+        "IdEstacionamiento" : [] , 
+        "IdHabitacion": []
+    },
+    "ezequiel": {
+        "Correo": "ezequiel123@gmail.com",
+        "Tipo": "Recepcionista",
+        "Nombre": "Ezequiel",
+        "Apellido": "Lavezzi",
+        "Password": "ezequiel123",
+        "DNI": "48116344",
+        "NumeroTelefono": "+54 9 11 0334-4560",
+        "NumeroDeCliente": 3,
+        "CodigoPostal": "2003",
+        "Contrataciones": [
+        ],
+        "IdEstacionamiento" : [] , 
+        "IdHabitacion": []
     }
 
 }

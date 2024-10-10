@@ -95,6 +95,10 @@ def VerFechaFinal(cliente):
         if contenido[cliente]["IdHabitacion"] == contenido2[(habitaciones[x])]["IdClienteOcupante"]:
             return contenido2[(habitaciones[x])]["FechaFinal"]
 
+def VerRolUsuario(usuario):
+    contenido = LeerJson("Usuario.json")
+    return contenido[usuario]["Tipo"]
+
 def TieneHabitacion(usuario): 
     try:
         usuarios_json = LeerJson("Usuario.json")
@@ -189,10 +193,19 @@ def NotificarIngresoEgreso(id_estacionamiento):
     estacionamiento = LeerJson("Estacionamiento.json")
     if estacionamiento[id_estacionamiento]["EstadoActual"] == "Fuera":
         estacionamiento[id_estacionamiento]["EstadoActual"] = "Adentro"
-        estacionamiento[id_estacionamiento]["UltimoIngreso"].append([str(ahora.day) + "/" + str(ahora.month) + "/" + str(ahora.year), str(ahora.hour) + ":" + str(ahora.minute) + ":" + str(ahora.second)])
+        if len(estacionamiento[id_estacionamiento]["UltimoIngreso"]) < 5:
+            estacionamiento[id_estacionamiento]["UltimoIngreso"].append([str(ahora.day) + "/" + str(ahora.month) + "/" + str(ahora.year), str(ahora.hour) + ":" + str(ahora.minute) + ":" + str(ahora.second)])
+        else:
+            estacionamiento[id_estacionamiento]["UltimoIngreso"].pop(0)
+            estacionamiento[id_estacionamiento]["UltimoIngreso"].append([str(ahora.day) + "/" + str(ahora.month) + "/" + str(ahora.year), str(ahora.hour) + ":" + str(ahora.minute) + ":" + str(ahora.second)])
     else:
         estacionamiento[id_estacionamiento]["EstadoActual"] = "Fuera"
-        estacionamiento[id_estacionamiento]["UltimoEgreso"].append ([str(ahora.day) + "/" + str(ahora.month) + "/" + str(ahora.year), str(ahora.hour) + ":" + str(ahora.minute) + ":" + str(ahora.second)])
+        if len(estacionamiento[id_estacionamiento]["UltimoEgreso"]) < 5:
+            estacionamiento[id_estacionamiento]["UltimoEgreso"].append ([str(ahora.day) + "/" + str(ahora.month) + "/" + str(ahora.year), str(ahora.hour) + ":" + str(ahora.minute) + ":" + str(ahora.second)])
+        else:
+            estacionamiento[id_estacionamiento]["UltimoEgreso"].pop(0)
+            estacionamiento[id_estacionamiento]["UltimoEgreso"].append([str(ahora.day) + "/" + str(ahora.month) + "/" + str(ahora.year), str(ahora.hour) + ":" + str(ahora.minute) + ":" + str(ahora.second)])
+
     ActualizarJson("Estacionamiento.json", estacionamiento )
 
 def Filtros(huespedes, precio_min, precio_max):
@@ -218,10 +231,10 @@ def Filtros(huespedes, precio_min, precio_max):
     except ValueError:
         """"""
 
-def InformacionHabitacion (numero_de_habitacion):
+def InformacionHabitacion (nombre_de_habitacion):
     habitaciones = LeerJson("habitaciones.json")
     try:
-        return habitaciones[str(numero_de_habitacion)]
+        return habitaciones[nombre_de_habitacion]
     except: 
         print("Esa habitacion no existe.")
         return None
@@ -280,4 +293,3 @@ def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contrase
 
 
     ActualizarJson("Usuario.json", contenido_actual)
-

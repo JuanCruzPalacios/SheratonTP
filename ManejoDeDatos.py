@@ -263,11 +263,6 @@ def AgregarEliminarStock (nombre_stock , cantidad) :
         print ("Hubo un error al agregar o eliminar el stock, verifique que el stock ingresado exista.")
         return False
 
-def MarcarFechas(habitacion,fecha_inicio, fecha_final):
-    contenido = LeerJson("habitaciones.json")
-    contenido[habitacion]["Fechas"] = [[fecha_inicio],[fecha_final]]
-    ActualizarJson("habitaciones.json",contenido)
-
 def ArchivarDesarchivarNotificaciones (id_notificacion):
     contenido = LeerJson("Notificaciones.json")
     if contenido[id_notificacion]["Archivada"] == 0:
@@ -275,6 +270,16 @@ def ArchivarDesarchivarNotificaciones (id_notificacion):
     else:
         contenido[id_notificacion]["Archivada"] = 0
     ActualizarJson("Notificaciones.json", contenido)
+
+def MarcarReservacion(usuario,habitacion,fecha_inicio, fecha_final):
+    contenido = LeerJson("Usuario.json")
+    contenido2 = LeerJson("habitacion.json")
+    contenido[usuario]["IdHabitacion"].append(contenido2[habitacion]["ID"])
+    contenido2[habitacion]["Ocupada"] = "Si"
+    contenido2[habitacion]["IdClienteOcupante"] = contenido[usuario]["NumeroDeCliente"]
+    contenido2[habitacion]["Fechas"] = [[fecha_inicio],[fecha_final]]
+    ActualizarJson("habitaciones.json",contenido2)
+    ActualizarJson("Usuario.json", contenido)
 
 def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal , IdContrataciones , IdHabitacion):    
     contenido_actual = LeerJson("Usuario.json")
@@ -302,5 +307,4 @@ def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contrase
 
 
     ActualizarJson("Usuario.json", contenido_actual)
-
 

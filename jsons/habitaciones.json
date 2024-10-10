@@ -7,8 +7,9 @@
 "UltimaLimpieza" : "19/09/2024" , 
 "Estado" : "No molestar" , 
 "ServiciosIncluidos" : [""] , 
-"EstadoActual" : "Ocupada" ,  
-"IdClienteOcupante" : "1" , 
+"EstadoActual" : "Desocupada" ,  
+"IdClienteOcupante" : "" , 
+"FechaFinal":[],
 "Precio" : "240",
 "RangoHuespedes": 2
 },
@@ -19,8 +20,9 @@
 "UltimaLimpieza" : "02/10/2024" , 
 "Estado" : "Ninguno" , 
 "ServiciosIncluidos" : ["SPA","GYM"] , 
-"EstadoActual" : "Desocupada" ,  
-"IdClienteOcupante" : "" , 
+"EstadoActual" : "Ocupada" ,  
+"IdClienteOcupante" : 1 , 
+"FechaFinal":["11/10/2024"],
 "Precio" : "255",
 "RangoHuespedes": 3
 },
@@ -33,6 +35,7 @@
 "ServiciosIncluidos" : [""] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
+"FechaFinal":[""],
 "Precio" : "200",
 "RangoHuespedes": 2
 },
@@ -45,6 +48,7 @@
 "ServiciosIncluidos" : ["GYM","SPA","PISCINA"] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
+"FechaFinal":[""],
 "Precio" : "410",
 "RangoHuespedes": 2
 },
@@ -57,6 +61,7 @@
 "ServiciosIncluidos" : [] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
+"FechaFinal":[""],
 "Precio" : "297",
 "RangoHuespedes": 4
 },
@@ -69,6 +74,7 @@
 "ServiciosIncluidos" : ["PISCINA"] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
+"FechaFinal":[""],
 "Precio" : "290",
 "RangoHuespedes": 2
 },
@@ -81,6 +87,7 @@
 "ServiciosIncluidos" : ["PISCINA"] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
+"FechaFinal":[""],
 "Precio" : "180",
 "RangoHuespedes": 1
 },
@@ -93,6 +100,7 @@
 "ServiciosIncluidos" : ["PISCINA"] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
+"FechaFinal":[""],
 "Precio" : "325",
 "RangoHuespedes": 2
 },
@@ -105,6 +113,7 @@
 "ServiciosIncluidos" : ["PISCINA"] , 
 "EstadoActual" : "Desocupada" ,  
 "IdClienteOcupante" : "" , 
+"FechaFinal":[""],
 "Precio" : "215",
 "RangoHuespedes": 2
 }

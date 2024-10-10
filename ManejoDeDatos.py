@@ -87,6 +87,14 @@ def ExisteUsuario(Usuario):
         print("El usuario no existe.")
         return False
 
+def VerFechaFinal(cliente):
+    contenido = LeerJson("Usuario.json")
+    contenido2 = LeerJson("habitaciones.json")
+    habitaciones = ["suite_balcon","habitacion_triple","habitacion_doble","habitacion_lujo","habitacion_cuadruple","suite_rio","habitacion_individual","suite_jacuzzi","suite_estandar"]
+    for x in range(0,8):
+        if contenido[cliente]["IdHabitacion"] == contenido2[(habitaciones[x])]["IdClienteOcupante"]:
+            return contenido2[(habitaciones[x])]["FechaFinal"]
+
 def TieneHabitacion(usuario): 
     try:
         usuarios_json = LeerJson("Usuario.json")
@@ -118,6 +126,10 @@ def AgregarNotificacion(texto):
 
     ActualizarJson("Notificaciones.json", contenido_actual)
 
+def VerNumeroHabitacion(cliente):
+    contenido = LeerJson("Usuario.json")
+    return contenido[cliente]["IdHabitacion"]
+
 def TieneEstacionamiento(usuario): 
     try:
         usuarios_json = LeerJson("Usuario.json")
@@ -138,6 +150,10 @@ def ActualizarJson(archivo, datos):
         print(f"Archivo {archivo} actualizado correctamente.")
     except Exception as e:
         print(f"Ocurrió un error al actualizar el archivo: {e}")
+
+def VerNumeroEstacionamiento(cliente):
+    contenido = LeerJson("Usuario.json")
+    return contenido[cliente]["IdEstacionamiento"]
 
 def VerNotificacion(numero_de_notificacion):
     numero_de_notificacion = str(numero_de_notificacion) 

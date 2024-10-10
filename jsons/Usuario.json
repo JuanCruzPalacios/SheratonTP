@@ -13,8 +13,6 @@
             ["SPA" , "-1"] , ["PISCINA" , "-1"] , ["GYM" , "-1"]
         ],
         "IdEstacionamiento" : ["1" , "2"] , 
-        "IdHabitacion": [
-            "Aca van las id de habitaciones que tenga el usuario, si no tiene ninguna la lista va vacia."
-        ]
+        "IdHabitacion": ["1"]
     }
 }

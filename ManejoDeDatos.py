@@ -118,6 +118,10 @@ def AgregarNotificacion(texto):
 
     ActualizarJson("Notificaciones.json", contenido_actual)
 
+def VerNumeroHabitacion(cliente):
+    contenido = LeerJson("Usuario.json")
+    return contenido[cliente]["IdHabitacion"]
+
 def TieneEstacionamiento(usuario): 
     try:
         usuarios_json = LeerJson("Usuario.json")
@@ -264,4 +268,3 @@ def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contrase
 
 
     ActualizarJson("Usuario.json", contenido_actual)
-

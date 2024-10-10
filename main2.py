@@ -596,7 +596,9 @@ while running:
 
 
                 if fondo_actual[0] == "iniciar sesion" and alter_mouse == False:
+
                     alter_mouse = True
+
                     if mouse_pos[0] <= 819 and mouse_pos[0] >= 459 and mouse_pos[1] <= 525 and mouse_pos[1] >= 488: #-----> Usuario
                         texto_ingresado = texto1[1]
                         texto_seleccionado = texto1 #Usuario / iniciar sesion
@@ -736,8 +738,12 @@ while running:
                             """"""
                         alter_mouse = True
 
+
+
                     elif mouse_pos[0] < 253 and mouse_pos[0] > 76 and mouse_pos[1] < 512 and mouse_pos[1] > 475:#restablecer
                         habitaciones_libres = [0,1,2,3,4,5,6,7,8]
+                        alter_mouse = True
+
 
 
                     if not(mouse_pos[0] < 1280 and mouse_pos[0] > 0 and mouse_pos[1] < 125 and mouse_pos[1] > 0): #-----> habitaciones
@@ -777,7 +783,9 @@ while running:
                         elif suite_estandar_rect[0].collidepoint(mouse_pos):
                             fondo_actual[0] = "suite estandar"
                             fondo_actual[1] = 26
-             
+
+
+
 
                 if alter_usuario:
 
@@ -822,7 +830,9 @@ while running:
                         texto6[1] = ""
                         texto7[1] = ""
                         texto8[1] = ""  
-                         
+
+
+
 
                 if fondo_actual[0] in ["reservar habitacion","habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar", "datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "reservar eventos", "ver datos"]:
 
@@ -880,9 +890,9 @@ while running:
             texto2[0] = ( 467 , 592 )
             texto3[0] = ( 420 , 377 )
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))       
-            screen.blit( fuente.render(texto1[1] , 0 , (0,0,0) ), texto1[0] )
-            screen.blit( fuente.render(texto2[1] , 0 , (0,0,0) ), texto2[0] )
-            screen.blit( fuente.render(texto3[1] , 0 , (0,0,0) ), texto3[0] )
+            screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
+            screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )
+            screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )
 
         
         elif fondo_actual[0] == "registrarse":
@@ -891,10 +901,10 @@ while running:
             texto2[0] = ( 467 , 541 )    
             texto3[0] = ( 467 , 617 ) 
             texto4[0] = ( 415 , 375 )
-            screen.blit( fuente.render(texto1[1] , 0 , (0,0,0) ), texto1[0] )
-            screen.blit( fuente.render(texto2[1] , 0 , (0,0,0) ), texto2[0] )  
-            screen.blit( fuente.render(texto3[1] , 0 , (0,0,0) ), texto3[0] )
-            screen.blit( fuente.render(texto4[1] , 0 , (0,0,0) ), texto4[0] )        
+            screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
+            screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )  
+            screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )
+            screen.blit( fuente.render(texto4[1] , True , (0,0,0) ), texto4[0] )        
 
 
         elif fondo_actual[0] == "menu habitaciones":
@@ -931,15 +941,16 @@ while running:
             texto1[0] = ( 190 , 266 )
             texto2[0] = ( 47 , 411 )    
             texto3[0] = ( 190 , 411 )
-            screen.blit( fuente.render(texto1[1] , 0 , (0,0,0) ), texto1[0] )
-            screen.blit( fuente.render(texto2[1] , 0 , (0,0,0) ), texto2[0] )  
-            screen.blit( fuente.render(texto3[1] , 0 , (0,0,0) ), texto3[0] )   
+            screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
+            screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )  
+            screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )   
 
 
         elif fondo_actual[0] == "menu parking":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
-            texto1[0] = (353, 345)
-            texto1[1] = VerNumeroHabitacion(usuario).pop(-1)
+            texto1[0] = (390, 346)
+            texto1[1] = str(VerNumeroHabitacion(usuario).pop(-1))
+            screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
 
 
         elif fondo_actual[0] == "menu bedroom":

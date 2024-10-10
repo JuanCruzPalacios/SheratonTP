@@ -7,12 +7,12 @@
         "Password": "pepito123",
         "DNI": "47873319",
         "NumeroTelefono": "+54 9 11 5920-3842",
-        "NumeroDeCliente": -1,
+        "NumeroDeCliente": 1,
         "CodigoPostal": "1993",
         "Contrataciones": [
             ["SPA" , "-1"] , ["PISCINA" , "-1"] , ["GYM" , "-1"]
         ],
         "IdEstacionamiento" : ["1" , "2"] , 
-        "IdHabitacion": ["1"]
+        "IdHabitacion": 1
     }
 }

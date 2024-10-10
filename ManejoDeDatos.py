@@ -131,8 +131,12 @@ def AgregarNotificacion(texto):
     ActualizarJson("Notificaciones.json", contenido_actual)
 
 def VerNumeroHabitacion(cliente):
+
     contenido = LeerJson("Usuario.json")
-    return contenido[cliente]["IdHabitacion"]
+    if contenido[cliente]["IdHabitacion"] == []:
+        return False
+    else:
+        return contenido[cliente]["IdHabitacion"]
 
 def TieneEstacionamiento(usuario): 
     try:

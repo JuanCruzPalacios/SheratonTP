@@ -16,7 +16,7 @@
 
 "habitacion_triple" : {
 "ID" : 1,
-"Ocupada" : "No",
+"Ocupada" : "Si",
 "UltimaLimpieza" : "02/10/2024" , 
 "Estado" : "Ninguno" , 
 "ServiciosIncluidos" : ["SPA","GYM"] , 

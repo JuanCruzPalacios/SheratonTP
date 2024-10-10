@@ -29,5 +29,20 @@
         ],
         "IdEstacionamiento" : [] , 
         "IdHabitacion": []
+    },
+    "ezequiel": {
+        "Correo": "ezequiel123@gmail.com",
+        "Tipo": "Recepcionista",
+        "Nombre": "Ezequiel",
+        "Apellido": "Lavezzi",
+        "Password": "ezequiel123",
+        "DNI": "48116344",
+        "NumeroTelefono": "+54 9 11 0334-4560",
+        "NumeroDeCliente": 3,
+        "CodigoPostal": "2003",
+        "Contrataciones": [
+        ],
+        "IdEstacionamiento" : [] , 
+        "IdHabitacion": []
     }
 }

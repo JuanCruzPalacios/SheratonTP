@@ -13,7 +13,7 @@
             ["SPA" , "-1"] , ["PISCINA" , "-1"] , ["GYM" , "-1"]
         ],
         "IdEstacionamiento" : ["1" , "2"] , 
-        "IdHabitacion": 1
+        "IdHabitacion": [1]
     },
     "marco": {
         "Correo": "marco123@gmail.com",

@@ -1,7 +1,7 @@
 {
     "pepe": {
         "Correo": "pepito123@gmail.com",
-        "Tipo": "Si es cliente, empleado de mantenimiento, etc",
+        "Tipo": "Cliente",
         "Nombre": "Pepe",
         "Apellido": "Palacios",
         "Password": "pepito123",
@@ -14,5 +14,20 @@
         ],
         "IdEstacionamiento" : ["1" , "2"] , 
         "IdHabitacion": 1
+    },
+    "marco": {
+        "Correo": "marco123@gmail.com",
+        "Tipo": "Mantenimiento",
+        "Nombre": "Marco",
+        "Apellido": "Peralta",
+        "Password": "marco123",
+        "DNI": "48696969",
+        "NumeroTelefono": "+54 9 11 0303-4560",
+        "NumeroDeCliente": 2,
+        "CodigoPostal": "2007",
+        "Contrataciones": [
+        ],
+        "IdEstacionamiento" : [] , 
+        "IdHabitacion": []
     }
 }

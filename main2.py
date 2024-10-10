@@ -210,7 +210,11 @@ def cursor(mouse_pos):
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
 
-        elif mouse_pos[0] < 243 and mouse_pos[0] > 85 and mouse_pos[1] < 538 and mouse_pos[1] > 504:#buscar
+        elif mouse_pos[0] < 253 and mouse_pos[0] > 76 and mouse_pos[1] < 561 and mouse_pos[1] > 525:#buscar
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif mouse_pos[0] < 253 and mouse_pos[0] > 76 and mouse_pos[1] < 512 and mouse_pos[1] > 475:#restablecer
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
         
@@ -481,6 +485,7 @@ while running:
 
                             if VerificarContraseña(texto1[1],texto2[1]):
 
+                                usuario = texto1[1]
                                 fondo_actual[0] = "menu habitaciones"
                                 fondo_actual[1] = 6
                                 texto_ingresado = ""
@@ -591,13 +596,15 @@ while running:
 
 
 
-                    elif mouse_pos[0] < 243 and mouse_pos[0] > 85 and mouse_pos[1] < 538 and mouse_pos[1] > 504:#buscar
+                    elif mouse_pos[0] < 253 and mouse_pos[0] > 76 and mouse_pos[1] < 561 and mouse_pos[1] > 525:#buscar
                         try:
                             habitaciones_libres = Filtros(int(texto1[1]),int(texto2[1]),int(texto3[1]))
                         except ValueError:
                             """"""
                         alter_mouse = True
 
+                    elif mouse_pos[0] < 253 and mouse_pos[0] > 76 and mouse_pos[1] < 512 and mouse_pos[1] > 475:#restablecer
+                        habitaciones_libres = [0,1,2,3,4,5,6,7,8]
 
 
                     if not(mouse_pos[0] < 1280 and mouse_pos[0] > 0 and mouse_pos[1] < 125 and mouse_pos[1] > 0): #-----> habitaciones
@@ -798,6 +805,8 @@ while running:
 
         elif fondo_actual[0] == "menu parking":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+            texto1[0] = (353, 345)
+            texto1[1] = VerNumeroHabitacion(usuario).pop(-1)
 
 
         elif fondo_actual[0] == "menu bedroom":

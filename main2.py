@@ -356,6 +356,70 @@ def cursor(mouse_pos):
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW) 
 
 
+    elif fondo_actual[0] == "reservar eventos":
+
+
+        if mouse_pos[0] < 580 and mouse_pos[0] > 300 and mouse_pos[1] < 300 and mouse_pos[1] > 260: #cantidad asistentes
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+
+
+        elif  mouse_pos[0] < 315 and mouse_pos[0] > 225 and mouse_pos[1] < 390 and mouse_pos[1] > 335: #inicia el horario
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+
+
+        elif  mouse_pos[0] < 485 and mouse_pos[0] > 390 and mouse_pos[1] < 390 and mouse_pos[1] > 335: #termina el horario el horario
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+
+
+        elif  mouse_pos[0] < 580 and mouse_pos[0] > 200 and mouse_pos[1] < 460 and mouse_pos[1] > 415: #dia del evento
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+
+
+        elif  mouse_pos[0] < 590 and mouse_pos[0] > 310 and mouse_pos[1] < 527 and mouse_pos[1] > 490: #personal requerido
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+
+
+        elif  mouse_pos[0] < 590 and mouse_pos[0] > 225 and mouse_pos[1] < 600 and mouse_pos[1] > 560: #mail
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+
+
+        elif  mouse_pos[0] < 480 and mouse_pos[0] > 260 and mouse_pos[1] < 690 and mouse_pos[1] > 620: #reservar salon de eventos
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif  mouse_pos[0] < 1140 and mouse_pos[0] > 730 and mouse_pos[1] < 408 and mouse_pos[1] > 215: #especificaciones
+            
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+
+
+        elif  mouse_pos[0] < 920 and mouse_pos[0] > 865 and mouse_pos[1] < 580 and mouse_pos[1] > 530: #pago con efectivo
+            
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif  mouse_pos[0] < 1105 and mouse_pos[0] > 1050 and mouse_pos[1] < 580 and mouse_pos[1] > 530: #pago con tarjeta
+            
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif  mouse_pos[0] < 1005 and mouse_pos[0] > 950 and mouse_pos[1] < 650 and mouse_pos[1] > 600: #pago con mercado pago
+            
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+
+        else:
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW) 
+
+
 
 
     if fondo_actual[0] in ["habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"]:

@@ -10,9 +10,24 @@
         "NumeroDeCliente": 1,
         "CodigoPostal": "1993",
         "Contrataciones": [
-            ["SPA" , "-1"] , ["PISCINA" , "-1"] , ["GYM" , "-1"]
+            [
+                "SPA",
+                "-1"
+            ],
+            [
+                "PISCINA",
+                "-1"
+            ],
+            [
+                "GYM",
+                "-1"
+            ]
         ],
-        "IdEstacionamiento" : ["1" , "2"] , 
+        "IdEstacionamiento": [
+            "1",
+            "2"
+        ],
+        "IdEstacionamient" : ["1" , "2"] , 
         "IdHabitacion": [1]
     },
     "marco": {
@@ -25,9 +40,8 @@
         "NumeroTelefono": "+54 9 11 0303-4560",
         "NumeroDeCliente": 2,
         "CodigoPostal": "2007",
-        "Contrataciones": [
-        ],
-        "IdEstacionamiento" : [] , 
+        "Contrataciones": [],
+        "IdEstacionamiento": [],
         "IdHabitacion": []
     },
     "ezequiel": {
@@ -40,9 +54,8 @@
         "NumeroTelefono": "+54 9 11 0334-4560",
         "NumeroDeCliente": 3,
         "CodigoPostal": "2003",
-        "Contrataciones": [
-        ],
-        "IdEstacionamiento" : [] , 
+        "Contrataciones": [],
+        "IdEstacionamiento": [],
         "IdHabitacion": []
     },
     "": {
@@ -55,11 +68,8 @@
         "NumeroTelefono": "+54 9 11 0334-4560",
         "NumeroDeCliente": 4,
         "CodigoPostal": "2003",
-        "Contrataciones": [
-        ],
-        "IdEstacionamiento" : [] , 
+        "Contrataciones": [],
+        "IdEstacionamiento": [],
         "IdHabitacion": []
     }
-
-
 }

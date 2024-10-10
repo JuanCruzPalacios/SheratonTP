@@ -802,8 +802,8 @@ while running:
                         alter_usuario = not(alter_usuario)
                         print(alter_usuario)
 
-
-
+                if fondo_actual[0] in [ "reservar eventos","ver datos","habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"] and alter_mouse == False:        
+                    alter_mouse = True
                     if mouse_pos[0] < 1008 and mouse_pos[0] > 785 and mouse_pos[1] < 666 and mouse_pos[1] > 605:#reservar
                         fondo_actual[0] = "reservar habitacion"
                         fondo_actual[1] = 5

@@ -33,7 +33,7 @@ fondo_recepcionista_notificar = pygame.transform.scale(pygame.image.load("imagen
 fondo_recepcinista_eventos = pygame.transform.scale(pygame.image.load("imagenes/recepcionista_eventos.jpg"), (1280, 720))
 fondo_recepcinista_limpieza = pygame.transform.scale(pygame.image.load("imagenes/recepcionista_limpieza.jpg"), (1280, 720))
 
-barra_arriba = pygame.image.load("imagenes/barra_arriba.png")
+barra_arriba = pygame.image.load("imagenes/barra_arriba.jpg")
 
 imagen_usuario = pygame.transform.scale(pygame.image.load("imagenes/usuario.png"), (321, 394))
 imagen_filtro = pygame.image.load("imagenes/NICOLAS.png")

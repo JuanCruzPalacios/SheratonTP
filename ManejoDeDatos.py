@@ -193,10 +193,19 @@ def NotificarIngresoEgreso(id_estacionamiento):
     estacionamiento = LeerJson("Estacionamiento.json")
     if estacionamiento[id_estacionamiento]["EstadoActual"] == "Fuera":
         estacionamiento[id_estacionamiento]["EstadoActual"] = "Adentro"
-        estacionamiento[id_estacionamiento]["UltimoIngreso"].append([str(ahora.day) + "/" + str(ahora.month) + "/" + str(ahora.year), str(ahora.hour) + ":" + str(ahora.minute) + ":" + str(ahora.second)])
+        if len(estacionamiento[id_estacionamiento]["UltimoIngreso"]) < 5:
+            estacionamiento[id_estacionamiento]["UltimoIngreso"].append([str(ahora.day) + "/" + str(ahora.month) + "/" + str(ahora.year), str(ahora.hour) + ":" + str(ahora.minute) + ":" + str(ahora.second)])
+        else:
+            estacionamiento[id_estacionamiento]["UltimoIngreso"].pop(0)
+            estacionamiento[id_estacionamiento]["UltimoIngreso"].append([str(ahora.day) + "/" + str(ahora.month) + "/" + str(ahora.year), str(ahora.hour) + ":" + str(ahora.minute) + ":" + str(ahora.second)])
     else:
         estacionamiento[id_estacionamiento]["EstadoActual"] = "Fuera"
-        estacionamiento[id_estacionamiento]["UltimoEgreso"].append ([str(ahora.day) + "/" + str(ahora.month) + "/" + str(ahora.year), str(ahora.hour) + ":" + str(ahora.minute) + ":" + str(ahora.second)])
+        if len(estacionamiento[id_estacionamiento]["UltimoEgreso"]) < 5:
+            estacionamiento[id_estacionamiento]["UltimoEgreso"].append ([str(ahora.day) + "/" + str(ahora.month) + "/" + str(ahora.year), str(ahora.hour) + ":" + str(ahora.minute) + ":" + str(ahora.second)])
+        else:
+            estacionamiento[id_estacionamiento]["UltimoEgreso"].pop(0)
+            estacionamiento[id_estacionamiento]["UltimoEgreso"].append([str(ahora.day) + "/" + str(ahora.month) + "/" + str(ahora.year), str(ahora.hour) + ":" + str(ahora.minute) + ":" + str(ahora.second)])
+
     ActualizarJson("Estacionamiento.json", estacionamiento )
 
 def Filtros(huespedes, precio_min, precio_max):
@@ -284,4 +293,3 @@ def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contrase
 
 
     ActualizarJson("Usuario.json", contenido_actual)
-

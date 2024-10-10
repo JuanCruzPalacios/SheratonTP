@@ -135,7 +135,7 @@ texto7 = [(0,0), ""]
 texto8 = [(0,0), ""]
 
 posicion = 150
-
+alter_mouse = False
 
 texto_seleccionado =  texto1 
 texto_ingresado = ""
@@ -257,6 +257,35 @@ def cursor(mouse_pos):
 
 
 
+    elif fondo_actual[0] == "menu parking":
+
+        
+
+        if mouse_pos[0] < 490 and mouse_pos[0] > 260 and mouse_pos[1] < 656 and mouse_pos[1] > 579: #ver registros        
+                        
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND) 
+                    
+
+        elif mouse_pos[0] < 757 and mouse_pos[0] > 522 and mouse_pos[1] < 656 and mouse_pos[1] > 579:#notificar ingreso        
+                        
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND) 
+                    
+
+
+        elif mouse_pos[0] < 1018 and mouse_pos[0] > 784 and mouse_pos[1] < 656 and mouse_pos[1] > 579:#cancelar reserva de parking        
+                        
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND) 
+        
+
+        else:
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW) 
+
+
+
+
+
+
     if fondo_actual[0] in ["habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"]:
             if mouse_pos[0] < 1008 and mouse_pos[0] > 785 and mouse_pos[1] < 666 and mouse_pos[1] > 605:#reservar       
                 pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)    
@@ -287,6 +316,8 @@ def cursor(mouse_pos):
 
             elif mouse_pos[0] < 1220 and mouse_pos[0] > 1140 and mouse_pos[1] < 90 and mouse_pos[1] > 18:#boton usuario
                 pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+    
 
 
 
@@ -396,7 +427,14 @@ while running:
                     texto_ingresado += event.unicode
             texto_seleccionado[1] = texto_ingresado
             
-                
+
+
+        if event.type == pygame.MOUSEBUTTONUP :        
+        
+            if event.button == 1:
+                alter_mouse = False
+
+
 
         if event.type == pygame.MOUSEBUTTONDOWN :
 
@@ -404,6 +442,7 @@ while running:
                 
                     if posicion <= 125:
                         posicion += 25
+
 
             elif event.button == 5:  # Rueda hacia abajo
                 if len(habitaciones_libres) > 6:
@@ -413,14 +452,15 @@ while running:
                     if posicion >= -100:
                         posicion -= 25
 
-            if event.button == 1:
 
+            if event.button == 1:
+                
 
                 print(mouse_pos)   
 
 
-                if fondo_actual[0] == "iniciar sesion":
-                
+                if fondo_actual[0] == "iniciar sesion" and alter_mouse == False:
+                    alter_mouse = True
                     if mouse_pos[0] <= 819 and mouse_pos[0] >= 459 and mouse_pos[1] <= 525 and mouse_pos[1] >= 488: #-----> Usuario
                         texto_ingresado = texto1[1]
                         texto_seleccionado = texto1 #Usuario / iniciar sesion
@@ -466,8 +506,8 @@ while running:
     
 
 
-                elif fondo_actual[0] == "registrarse":   
-
+                elif fondo_actual[0] == "registrarse" and alter_mouse == False:   
+                    alter_mouse = True
 
                     if mouse_pos[0] <= 821 and mouse_pos[0] >= 460 and mouse_pos[1] <= 505 and mouse_pos[1] >= 467: #-----> Usuario
 
@@ -524,13 +564,15 @@ while running:
 
 
 
-                elif fondo_actual[0] == "menu habitaciones":
-
+                elif fondo_actual[0] == "menu habitaciones" and alter_mouse == False:
+                    
+                    
 
                     if mouse_pos[0] < 295 and mouse_pos[0] > 195 and mouse_pos[1] < 290 and mouse_pos[1] > 260:#personas        
                         texto_seleccionado = texto1
                         texto_ingresado = texto1[1]
                         limite = 3
+                        alter_mouse = True
 
 
 
@@ -538,6 +580,7 @@ while running:
                         texto_seleccionado = texto2
                         texto_ingresado = texto2[1]
                         limite = 3
+                        alter_mouse = True
 
 
 
@@ -545,6 +588,7 @@ while running:
                         texto_seleccionado = texto3
                         texto_ingresado = texto3[1]
                         limite = 3
+                        alter_mouse = True
 
 
 
@@ -553,16 +597,12 @@ while running:
                             habitaciones_libres = Filtros(int(texto1[1]),int(texto2[1]),int(texto3[1]))
                         except ValueError:
                             """"""
+                        alter_mouse = True
 
 
 
-                    elif suite_balcon_rect[0].collidepoint(mouse_pos):
-                        fondo_actual[0] = "iniciar sesion"
-                        fondo_actual[1] = 0
-
-
-
-                    if True: #-----> habitaciones
+                    if not(mouse_pos[0] < 1280 and mouse_pos[0] > 0 and mouse_pos[1] < 125 and mouse_pos[1] > 0): #-----> habitaciones
+                        alter_mouse = True
                         if suite_balcon_rect[0].collidepoint(mouse_pos):
                             fondo_actual[0] = "habitacion balcon"
                             fondo_actual[1] = 18
@@ -725,11 +765,12 @@ while running:
             cambiar_nombre = []
 
             for i in habitaciones_libres:   
+
                 x = 316 * (cont  % 3 + 1) 
                 y = posicion + 425 * (cont // 3)
                 screen.blit(habitaciones[i], (x, y))
                 cambiar_nombre.append((x,y))
-
+                
 
                 cont += 1
             
@@ -739,7 +780,7 @@ while running:
                     
                     i[0][0] = cambiar_nombre[0][0] #posicion del rect en x
                     i[0][1] = cambiar_nombre[0][1] #posicion del rect en y
-                    print(cambiar_nombre)
+                    
                     cambiar_nombre.pop(0)
                 
                 else:

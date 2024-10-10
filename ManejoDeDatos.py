@@ -218,10 +218,10 @@ def Filtros(huespedes, precio_min, precio_max):
     except ValueError:
         """"""
 
-def InformacionHabitacion (numero_de_habitacion):
+def InformacionHabitacion (nombre_de_habitacion):
     habitaciones = LeerJson("habitaciones.json")
     try:
-        return habitaciones[str(numero_de_habitacion)]
+        return habitaciones[str(nombre_de_habitacion)]
     except: 
         print("Esa habitacion no existe.")
         return None

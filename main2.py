@@ -286,6 +286,75 @@ def cursor(mouse_pos):
 
 
 
+    elif fondo_actual[0] == "reservar habitacion":
+
+        if mouse_pos[0] < 687 and mouse_pos[0] > 400 and mouse_pos[1] < 300 and mouse_pos[1] > 253: #nombre y apellido        
+                        
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM) 
+        
+
+        elif mouse_pos[0] < 332 and mouse_pos[0] > 223 and mouse_pos[1] < 383 and mouse_pos[1] > 225: #dia inicio        
+                        
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM) 
+
+
+        elif mouse_pos[0] < 493 and mouse_pos[0] > 386 and mouse_pos[1] < 380 and mouse_pos[1] > 337: #dia fin      
+                        
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM) 
+        
+
+        elif mouse_pos[0] < 690 and mouse_pos[0] > 289 and mouse_pos[1] < 453 and mouse_pos[1] > 411: #direccion      
+                        
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM) 
+
+        
+        elif mouse_pos[0] < 690 and mouse_pos[0] > 273 and mouse_pos[1] < 520 and mouse_pos[1] > 480: #telefono     
+                        
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+        
+
+        elif mouse_pos[0] < 690 and mouse_pos[0] > 232 and mouse_pos[1] < 588 and mouse_pos[1] > 546: #mail   
+                        
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+        
+
+        elif mouse_pos[0] < 528 and mouse_pos[0] > 307 and mouse_pos[1] < 670 and mouse_pos[1] > 615: #pagar    
+                        
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+
+        elif mouse_pos[0] < 1107 and mouse_pos[0] > 896 and mouse_pos[1] < 223 and mouse_pos[1] > 178: #dni/cuit   
+                        
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+        
+
+        elif mouse_pos[0] < 1107 and mouse_pos[0] > 937 and mouse_pos[1] < 295 and mouse_pos[1] > 251: #codigo postal 
+                        
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+        
+
+        elif mouse_pos[0] < 925 and mouse_pos[0] > 870 and mouse_pos[1] < 460 and mouse_pos[1] > 405: #efectivo
+                        
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif mouse_pos[0] < 1006 and mouse_pos[0] > 954 and mouse_pos[1] < 534 and mouse_pos[1] > 480: #mercado pago
+                        
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif mouse_pos[0] < 1108 and mouse_pos[0] > 1058 and mouse_pos[1] < 460 and mouse_pos[1] > 307: #tarjeta
+                        
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+
+
+
+        else:
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW) 
+
 
 
 
@@ -838,7 +907,6 @@ while running:
 
         elif fondo_actual[0] == "reservar habitacion":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
-
 
         if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon", "reservar habitacion"]:
             screen.blit (barra_arriba, (0,0))

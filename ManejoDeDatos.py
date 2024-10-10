@@ -221,7 +221,7 @@ def Filtros(huespedes, precio_min, precio_max):
 def InformacionHabitacion (nombre_de_habitacion):
     habitaciones = LeerJson("habitaciones.json")
     try:
-        return habitaciones[str(nombre_de_habitacion)]
+        return habitaciones[nombre_de_habitacion]
     except: 
         print("Esa habitacion no existe.")
         return None
@@ -280,4 +280,3 @@ def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contrase
 
 
     ActualizarJson("Usuario.json", contenido_actual)
-

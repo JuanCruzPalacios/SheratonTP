@@ -44,6 +44,22 @@
         ],
         "IdEstacionamiento" : [] , 
         "IdHabitacion": []
+    },
+    "": {
+        "Correo": "ezequiel123@gmail.com",
+        "Tipo": "Cliente",
+        "Nombre": "",
+        "Apellido": "",
+        "Password": "",
+        "DNI": "48116355",
+        "NumeroTelefono": "+54 9 11 0334-4560",
+        "NumeroDeCliente": 4,
+        "CodigoPostal": "2003",
+        "Contrataciones": [
+        ],
+        "IdEstacionamiento" : [] , 
+        "IdHabitacion": []
     }
+
 
 }

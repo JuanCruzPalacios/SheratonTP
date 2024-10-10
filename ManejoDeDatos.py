@@ -93,7 +93,7 @@ def VerFechaFinal(cliente):
     habitaciones = ["suite_balcon","habitacion_triple","habitacion_doble","habitacion_lujo","habitacion_cuadruple","suite_rio","habitacion_individual","suite_jacuzzi","suite_estandar"]
     for x in range(0,8):
         if contenido[cliente]["IdHabitacion"] == contenido2[(habitaciones[x])]["IdClienteOcupante"]:
-            return contenido2[(habitaciones[x])]["FechaFinal"]
+            return contenido2[(habitaciones[x])]["Fechas"][1]
 
 def VerRolUsuario(usuario):
     contenido = LeerJson("Usuario.json")
@@ -131,8 +131,12 @@ def AgregarNotificacion(texto):
     ActualizarJson("Notificaciones.json", contenido_actual)
 
 def VerNumeroHabitacion(cliente):
+
     contenido = LeerJson("Usuario.json")
-    return contenido[cliente]["IdHabitacion"]
+    if contenido[cliente]["IdHabitacion"] == []:
+        return False
+    else:
+        return contenido[cliente]["IdHabitacion"]
 
 def TieneEstacionamiento(usuario): 
     try:
@@ -259,6 +263,11 @@ def AgregarEliminarStock (nombre_stock , cantidad) :
         print ("Hubo un error al agregar o eliminar el stock, verifique que el stock ingresado exista.")
         return False
 
+def MarcarFechas(habitacion,fecha_inicio, fecha_final):
+    contenido = LeerJson("habitaciones.json")
+    contenido[habitacion]["Fechas"] = [[fecha_inicio],[fecha_final]]
+    ActualizarJson("habitaciones.json",contenido)
+
 def ArchivarDesarchivarNotificaciones (id_notificacion):
     contenido = LeerJson("Notificaciones.json")
     if contenido[id_notificacion]["Archivada"] == 0:
@@ -293,3 +302,5 @@ def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contrase
 
 
     ActualizarJson("Usuario.json", contenido_actual)
+
+

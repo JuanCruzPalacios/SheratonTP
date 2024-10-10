@@ -40,35 +40,44 @@ imagen_filtro = pygame.image.load("imagenes/NICOLAS.png")
 alter_usuario = False
 
 
-suite_balcon = pygame.image.load("imagenes/habitaciones_solas/1.jpg")
-habitacion_triple = pygame.image.load("imagenes/habitaciones_solas/2.jpg")
-habitacion_doble = pygame.image.load("imagenes/habitaciones_solas/3.jpg")
-habitacion_lujo = pygame.image.load("imagenes/habitaciones_solas/4.jpg")
-habitacion_cuadruple = pygame.image.load("imagenes/habitaciones_solas/5.jpg")
-suite_rio = pygame.image.load("imagenes/habitaciones_solas/6.jpg")
-habitacion_individual = pygame.image.load("imagenes/habitaciones_solas/7.jpg")
-suite_jacuzzi = pygame.image.load("imagenes/habitaciones_solas/8.jpg")
-suite_estandar = pygame.image.load("imagenes/habitaciones_solas/9.jpg")
+suite_balcon = pygame.image.load("imagenes/habitaciones_sheraton/1.png")
+habitacion_triple = pygame.image.load("imagenes/habitaciones_sheraton/2.png")
+habitacion_doble = pygame.image.load("imagenes/habitaciones_sheraton/3.png")
+habitacion_lujo = pygame.image.load("imagenes/habitaciones_sheraton/4.png")
+habitacion_cuadruple = pygame.image.load("imagenes/habitaciones_sheraton/5.png")
+suite_rio = pygame.image.load("imagenes/habitaciones_sheraton/6.png")
+habitacion_individual = pygame.image.load("imagenes/habitaciones_sheraton/7.png")
+suite_jacuzzi = pygame.image.load("imagenes/habitaciones_sheraton/8.png")
+suite_estandar = pygame.image.load("imagenes/habitaciones_sheraton/9.png")
 
+suite_balcon_sola = pygame.image.load("imagenes/habitaciones_solas/1.jpg")
+habitacion_triple_sola = pygame.image.load("imagenes/habitaciones_solas/2.jpg")
+habitacion_doble_sola = pygame.image.load("imagenes/habitaciones_solas/3.jpg")
+habitacion_lujo_sola = pygame.image.load("imagenes/habitaciones_solas/4.jpg")
+habitacion_cuadruple_sola = pygame.image.load("imagenes/habitaciones_solas/5.jpg")
+suite_rio_sola = pygame.image.load("imagenes/habitaciones_solas/6.jpg")
+habitacion_individual_sola = pygame.image.load("imagenes/habitaciones_solas/7.jpg")
+suite_jacuzzi_sola = pygame.image.load("imagenes/habitaciones_solas/8.jpg")
+suite_estandar_sola = pygame.image.load("imagenes/habitaciones_solas/9.jpg")
 
-suite_balcon_rect = [suite_balcon.get_rect(topleft=(316, 150)), 0]
-habitacion_triple_rect = [habitacion_triple.get_rect(topleft=(632, 150)), 1]
-habitacion_doble_rect = [habitacion_doble.get_rect(topleft=(948, 150)), 2]
-habitacion_lujo_rect = [habitacion_lujo.get_rect(topleft=(316, 575)), 3]
-habitacion_cuadruple_rect = [habitacion_cuadruple.get_rect(topleft=(632, 575)), 4]
-suite_rio_rect = [suite_rio.get_rect(topleft=(948, 575)), 5]
-habitacion_individual_rect = [habitacion_individual.get_rect(topleft=(316, 1000)), 6]
-suite_jacuzzi_rect = [suite_jacuzzi.get_rect(topleft=(632, 1000)), 7]
-suite_estandar_rect = [suite_estandar.get_rect(topleft=(948, 1000)), 8]
+suite_balcon_rect = [suite_balcon_sola.get_rect(topleft=(316, 150)), 0]
+habitacion_triple_rect = [habitacion_triple_sola.get_rect(topleft=(632, 150)), 1]
+habitacion_doble_rect = [habitacion_doble_sola.get_rect(topleft=(948, 150)), 2]
+habitacion_lujo_rect = [habitacion_lujo_sola.get_rect(topleft=(316, 575)), 3]
+habitacion_cuadruple_rect = [habitacion_cuadruple_sola.get_rect(topleft=(632, 575)), 4]
+suite_rio_rect = [suite_rio_sola.get_rect(topleft=(948, 575)), 5]
+habitacion_individual_rect = [habitacion_individual_sola.get_rect(topleft=(316, 1000)), 6]
+suite_jacuzzi_rect = [suite_jacuzzi_sola.get_rect(topleft=(632, 1000)), 7]
+suite_estandar_rect = [suite_estandar_sola.get_rect(topleft=(948, 1000)), 8]
 
 
 rects = [suite_balcon_rect,habitacion_triple_rect,habitacion_doble_rect,
         habitacion_lujo_rect,habitacion_cuadruple_rect,suite_rio_rect,
         habitacion_individual_rect,suite_jacuzzi_rect,suite_estandar_rect]
 
-habitaciones = [suite_balcon, habitacion_triple, habitacion_doble,
-                habitacion_lujo, habitacion_cuadruple, suite_rio,
-                habitacion_individual, suite_jacuzzi, suite_estandar]
+habitaciones = [suite_balcon_sola, habitacion_triple_sola, habitacion_doble_sola,
+                habitacion_lujo_sola, habitacion_cuadruple_sola, suite_rio_sola,
+                habitacion_individual_sola, suite_jacuzzi_sola, suite_estandar_sola]
 
 habitaciones_libres = [0,1,2,3,4,5,6,7,8]
 
@@ -79,20 +88,35 @@ temp =  []
 
 
 fondo_actual = ["iniciar sesion", 0]
-fondos = [  fondo_iniciar_sesion, fondo_registrarse, 
-            #0                    #1
-            fondo_estacionamiento, fondo_habitacion,
-            #2                     #3
-            fondo_reservar, fondo_pagar , fondo_menu_habitaciones,
-            #4              #5            #6
-            fondo_menu_amenities, fondo_menu_salones, fondo_datos_usuario, fondo_menu_mantenimiento,
-            #7                   #8                  #9                   #10
-            fondo_mantenimiento_stock, fondo_mantenimiento_notificaciones, 
-            #11                        #12
-            fondo_mantenimiento_notificaciones_archivadas, fondo_menu_recepcionista, fondo_recepcionista_notificar,
-            #13                                            #14                       #15
-            fondo_recepcinista_eventos, fondo_recepcinista_limpieza]
-            #16                         #17
+fondos = [
+    fondo_iniciar_sesion,             # 0
+    fondo_registrarse,                 # 1
+    fondo_estacionamiento,             # 2
+    fondo_habitacion,                  # 3
+    fondo_reservar,                    # 4
+    fondo_pagar,                       # 5
+    fondo_menu_habitaciones,           # 6
+    fondo_menu_amenities,              # 7
+    fondo_menu_salones,                # 8
+    fondo_datos_usuario,               # 9
+    fondo_menu_mantenimiento,           # 10
+    fondo_mantenimiento_stock,          # 11
+    fondo_mantenimiento_notificaciones,  # 12
+    fondo_mantenimiento_notificaciones_archivadas,  # 13
+    fondo_menu_recepcionista,          # 14
+    fondo_recepcionista_notificar,      # 15
+    fondo_recepcinista_eventos,        # 16
+    fondo_recepcinista_limpieza,       # 17
+    suite_balcon,                      # 18
+    habitacion_triple,                 # 19
+    habitacion_doble,                  # 20
+    habitacion_lujo,                   # 21
+    habitacion_cuadruple,              # 22
+    suite_rio,                         # 23
+    habitacion_individual,             # 24
+    suite_jacuzzi,                     # 25
+    suite_estandar                     # 26
+]
 
 
 
@@ -188,9 +212,42 @@ def cursor(mouse_pos):
         elif mouse_pos[0] < 243 and mouse_pos[0] > 85 and mouse_pos[1] < 538 and mouse_pos[1] > 504:#buscar
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
-
+        
         elif suite_balcon_rect[0].collidepoint(mouse_pos):
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif habitacion_triple_rect[0].collidepoint(mouse_pos):
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif habitacion_doble_rect[0].collidepoint(mouse_pos):
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif habitacion_lujo_rect[0].collidepoint(mouse_pos):
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif habitacion_cuadruple_rect[0].collidepoint(mouse_pos):
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif suite_rio_rect[0].collidepoint(mouse_pos):
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif habitacion_individual_rect[0].collidepoint(mouse_pos):
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif suite_jacuzzi_rect[0].collidepoint(mouse_pos):
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif suite_estandar_rect[0].collidepoint(mouse_pos):
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+             
 
 
         else:
@@ -198,7 +255,15 @@ def cursor(mouse_pos):
 
 
 
-    if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon", "ver datos"]:
+    if fondo_actual[0] in ["habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"]:
+            if mouse_pos[0] < 1008 and mouse_pos[0] > 785 and mouse_pos[1] < 666 and mouse_pos[1] > 605:#personas        
+                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)    
+            else:
+                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
+    if fondo_actual[0] in ["habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar", "datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "reservar eventos", "ver datos"]:
+
 
 
             if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15: #Home
@@ -493,7 +558,48 @@ while running:
 
 
 
-                if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "reservar eventos", "ver datos"]:
+                    if True: #-----> habitaciones
+                        if suite_balcon_rect[0].collidepoint(mouse_pos):
+                            fondo_actual[0] = "habitacion balcon"
+                            fondo_actual[1] = 18
+
+                        elif habitacion_triple_rect[0].collidepoint(mouse_pos):
+                            fondo_actual[0] = "habitacion triple"
+                            fondo_actual[1] = 19
+
+                        elif habitacion_doble_rect[0].collidepoint(mouse_pos):
+                            fondo_actual[0] = "habitacion doble"
+                            fondo_actual[1] = 20
+
+                        elif habitacion_lujo_rect[0].collidepoint(mouse_pos):
+                            fondo_actual[0] = "habitacion lujo"
+                            fondo_actual[1] = 21
+
+                        elif habitacion_cuadruple_rect[0].collidepoint(mouse_pos):
+                            fondo_actual[0] = "habitacion cuadruple"
+                            fondo_actual[1] = 22
+
+                        elif suite_rio_rect[0].collidepoint(mouse_pos):
+                            fondo_actual[0] = "suite rio"
+                            fondo_actual[1] = 23
+
+                        elif habitacion_individual_rect[0].collidepoint(mouse_pos):
+                            fondo_actual[0] = "habitacion individual"
+                            fondo_actual[1] = 24
+
+                        elif suite_jacuzzi_rect[0].collidepoint(mouse_pos):
+                            fondo_actual[0] = "suite jacuzzi"
+                            fondo_actual[1] = 25
+
+                        elif suite_estandar_rect[0].collidepoint(mouse_pos):
+                            fondo_actual[0] = "suite estandar"
+                            fondo_actual[1] = 26
+             
+
+ 
+
+                if fondo_actual[0] in ["habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar", "datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "reservar eventos", "ver datos"]:
+
 
 
                     if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15: #Home 
@@ -603,23 +709,16 @@ while running:
 
 
         elif fondo_actual[0] == "menu habitaciones":
+
             screen.fill((253,246,228))
             cont = 0
             cambiar_nombre = []
+
             for i in habitaciones_libres:   
                 x = 316 * (cont  % 3 + 1) 
                 y = posicion + 425 * (cont // 3)
                 screen.blit(habitaciones[i], (x, y))
                 cambiar_nombre.append((x,y))
-                pygame.draw.rect(screen,(255,0,0),suite_balcon_rect[0])
-                pygame.draw.rect(screen,(255,0,0),suite_rio_rect[0])
-                pygame.draw.rect(screen,(255,0,0),suite_jacuzzi_rect[0])
-                pygame.draw.rect(screen,(255,0,0),suite_estandar_rect[0])
-                pygame.draw.rect(screen,(255,0,0),habitacion_lujo_rect[0])
-                pygame.draw.rect(screen,(255,0,0),habitacion_doble_rect[0])
-                pygame.draw.rect(screen,(255,0,0),habitacion_triple_rect[0])
-                pygame.draw.rect(screen,(255,0,0),habitacion_cuadruple_rect[0])
-                pygame.draw.rect(screen,(255,0,0),habitacion_individual_rect[0])
 
 
                 cont += 1
@@ -633,6 +732,9 @@ while running:
                     print(cambiar_nombre)
                     cambiar_nombre.pop(0)
                 
+                else:
+                    i[0][0] = 1000 #posicion del rect en x
+                    i[0][1] = 1000 #posicion del rect en y
                 
 
             screen.blit (imagen_filtro , ( 30, 160 ))        
@@ -666,6 +768,11 @@ while running:
 
         if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon"]:
             screen.blit (barra_arriba, (0,0))
+
+
+        if fondo_actual[0] in ["habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"]:
+                screen.blit(fondos[fondo_actual[1]],(0,0))
+                screen.blit(barra_arriba,(0,0))
 
 
         if alter_usuario:

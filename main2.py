@@ -387,7 +387,7 @@ while running:
                     else:
                         texto4[1] = "usuario o mail muy cortos" 
                 else:
-                    texto_seleccionado = ""
+                    texto_seleccionado[1] = ""
        
        
             else:                 

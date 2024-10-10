@@ -93,7 +93,7 @@ def VerFechaFinal(cliente):
     habitaciones = ["suite_balcon","habitacion_triple","habitacion_doble","habitacion_lujo","habitacion_cuadruple","suite_rio","habitacion_individual","suite_jacuzzi","suite_estandar"]
     for x in range(0,8):
         if contenido[cliente]["IdHabitacion"] == contenido2[(habitaciones[x])]["IdClienteOcupante"]:
-            return contenido2[(habitaciones[x])]["FechaFinal"]
+            return contenido2[(habitaciones[x])]["Fechas"][1]
 
 def VerRolUsuario(usuario):
     contenido = LeerJson("Usuario.json")
@@ -131,8 +131,12 @@ def AgregarNotificacion(texto):
     ActualizarJson("Notificaciones.json", contenido_actual)
 
 def VerNumeroHabitacion(cliente):
+
     contenido = LeerJson("Usuario.json")
-    return contenido[cliente]["IdHabitacion"]
+    if contenido[cliente]["IdHabitacion"] == []:
+        return False
+    else:
+        return contenido[cliente]["IdHabitacion"]
 
 def TieneEstacionamiento(usuario): 
     try:
@@ -267,6 +271,16 @@ def ArchivarDesarchivarNotificaciones (id_notificacion):
         contenido[id_notificacion]["Archivada"] = 0
     ActualizarJson("Notificaciones.json", contenido)
 
+def MarcarReservacion(usuario,habitacion,fecha_inicio, fecha_final):
+    contenido = LeerJson("Usuario.json")
+    contenido2 = LeerJson("habitacion.json")
+    contenido[usuario]["IdHabitacion"].append(contenido2[habitacion]["ID"])
+    contenido2[habitacion]["Ocupada"] = "Si"
+    contenido2[habitacion]["IdClienteOcupante"] = contenido[usuario]["NumeroDeCliente"]
+    contenido2[habitacion]["Fechas"] = [[fecha_inicio],[fecha_final]]
+    ActualizarJson("habitaciones.json",contenido2)
+    ActualizarJson("Usuario.json", contenido)
+
 def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal , IdContrataciones , IdHabitacion):    
     contenido_actual = LeerJson("Usuario.json")
 
@@ -293,3 +307,4 @@ def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contrase
 
 
     ActualizarJson("Usuario.json", contenido_actual)
+

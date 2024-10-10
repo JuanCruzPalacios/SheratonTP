@@ -15,10 +15,9 @@ fondo_iniciar_sesion = pygame.transform.scale(pygame.image.load("imagenes/inicia
 fondo_registrarse = pygame.transform.scale(pygame.image.load("imagenes/registrarse.jpg"),(1280,720))
 fondo_estacionamiento = pygame.transform.scale(pygame.image.load("imagenes/estacionamiento.jpg"), (1280, 720))
 fondo_habitacion = pygame.transform.scale(pygame.image.load("imagenes/habitacion.jpg"), (1280, 720))
-fondo_reservar = pygame.transform.scale(pygame.image.load("imagenes/suite_parking.jpg"), (1280, 720))
 fondo_pagar = pygame.transform.scale(pygame.image.load("imagenes/reserva_de_habitacion.jpg"), (1280, 720))
 
-fondo_menu_habitaciones = pygame.image.load("imagenes/Menu_habitaciones.png")
+
 fondo_menu_amenities = pygame.transform.scale(pygame.image.load("imagenes/reserva_de_amenities.jpg"), (1280, 720))
 fondo_menu_salones = pygame.transform.scale(pygame.image.load("imagenes/reserva_de_salon.jpg"), (1280, 720))
 fondo_datos_usuario = pygame.transform.scale(pygame.image.load("imagenes/datos_usuario.jpg"), (1280, 720))
@@ -40,15 +39,15 @@ imagen_filtro = pygame.image.load("imagenes/NICOLAS.png")
 alter_usuario = False
 
 
-suite_balcon = pygame.image.load("imagenes/habitaciones_sheraton/1.png")
-habitacion_triple = pygame.image.load("imagenes/habitaciones_sheraton/2.png")
-habitacion_doble = pygame.image.load("imagenes/habitaciones_sheraton/3.png")
-habitacion_lujo = pygame.image.load("imagenes/habitaciones_sheraton/4.png")
-habitacion_cuadruple = pygame.image.load("imagenes/habitaciones_sheraton/5.png")
-suite_rio = pygame.image.load("imagenes/habitaciones_sheraton/6.png")
-habitacion_individual = pygame.image.load("imagenes/habitaciones_sheraton/7.png")
-suite_jacuzzi = pygame.image.load("imagenes/habitaciones_sheraton/8.png")
-suite_estandar = pygame.image.load("imagenes/habitaciones_sheraton/9.png")
+suite_balcon = pygame.image.load("imagenes/habitaciones_sheraton/1.jpg")
+habitacion_triple = pygame.image.load("imagenes/habitaciones_sheraton/2.jpg")
+habitacion_doble = pygame.image.load("imagenes/habitaciones_sheraton/3.jpg")
+habitacion_lujo = pygame.image.load("imagenes/habitaciones_sheraton/4.jpg")
+habitacion_cuadruple = pygame.image.load("imagenes/habitaciones_sheraton/5.jpg")
+suite_rio = pygame.image.load("imagenes/habitaciones_sheraton/6.jpg")
+habitacion_individual = pygame.image.load("imagenes/habitaciones_sheraton/7.jpg")
+suite_jacuzzi = pygame.image.load("imagenes/habitaciones_sheraton/8.jpg")
+suite_estandar = pygame.image.load("imagenes/habitaciones_sheraton/9.jpg")
 
 suite_balcon_sola = pygame.image.load("imagenes/habitaciones_solas/1.jpg")
 habitacion_triple_sola = pygame.image.load("imagenes/habitaciones_solas/2.jpg")
@@ -93,9 +92,9 @@ fondos = [
     fondo_registrarse,                 # 1
     fondo_estacionamiento,             # 2
     fondo_habitacion,                  # 3
-    fondo_reservar,                    # 4
+    "",
     fondo_pagar,                       # 5
-    fondo_menu_habitaciones,           # 6
+    "",
     fondo_menu_amenities,              # 7
     fondo_menu_salones,                # 8
     fondo_datos_usuario,               # 9

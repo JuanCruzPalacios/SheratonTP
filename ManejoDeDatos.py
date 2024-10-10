@@ -95,6 +95,10 @@ def VerFechaFinal(cliente):
         if contenido[cliente]["IdHabitacion"] == contenido2[(habitaciones[x])]["IdClienteOcupante"]:
             return contenido2[(habitaciones[x])]["FechaFinal"]
 
+def VerRolUsuario(usuario):
+    contenido = LeerJson("Usuario.json")
+    return contenido[usuario]["Tipo"]
+
 def TieneHabitacion(usuario): 
     try:
         usuarios_json = LeerJson("Usuario.json")
@@ -221,7 +225,7 @@ def Filtros(huespedes, precio_min, precio_max):
 def InformacionHabitacion (nombre_de_habitacion):
     habitaciones = LeerJson("habitaciones.json")
     try:
-        return habitaciones[str(nombre_de_habitacion)]
+        return habitaciones[nombre_de_habitacion]
     except: 
         print("Esa habitacion no existe.")
         return None

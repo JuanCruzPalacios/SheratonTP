@@ -630,12 +630,9 @@ while running:
                     if event.unicode .isprintable():
                         
                         texto_ingresado += event.unicode
-                    
 
-            try:
                 texto_seleccionado[1] = texto_ingresado
-            except:
-                """"""
+            
 
 
         if event.type == pygame.MOUSEBUTTONUP :        

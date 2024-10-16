@@ -23,14 +23,16 @@
                 "-1"
             ]
         ],
-        "IdEstacionamiento": ["1" , "2" , "3" , "4"],
+        "IdEstacionamiento": [
+            "1" , "2" , "3" , "4"
+        ],
         "IdHabitacion": [1,2,3,4]
     },
     "marco": {
         "Correo": "marco123@gmail.com",
         "Tipo": "Mantenimiento",
         "Nombre": "Marco",
-        "Apellido": "Peralta",
+        "Apellido": "Ougust",
         "Password": "marco123",
         "DNI": "48696969",
         "NumeroTelefono": "+54 9 11 0303-4560",
@@ -55,7 +57,7 @@
         "IdHabitacion": []
     },
     "": {
-        "Correo": "ezequiel123@gmail.com",
+        "Correo": "ezequiel12@gmail.com",
         "Tipo": "Cliente",
         "Nombre": "",
         "Apellido": "",

@@ -111,6 +111,14 @@ def TieneHabitacion(usuario):
         print("El usuario no existe o hubo un error al hacer la operacion")
         return False , False
 
+def CambiarEstadoAmenitie(id):
+    contenido = LeerJson("Contrataciones.json")
+    contenido2 = LeerJson("Usuario.json")
+    contenido[id]["Estado"] = "Finalizado"
+    contenido2[contenido[id]["Usuario"]]["Contrataciones"] = ""
+    ActualizarJson("Contrataciones.json", contenido)
+    ActualizarJson("Usuario.json", contenido2)
+
 def AgregarNotificacion(texto):
    
     contenido_actual = LeerJson("Notificaciones.json")
@@ -162,6 +170,10 @@ def ActualizarJson(archivo, datos):
 def VerNumeroEstacionamiento(cliente):
     contenido = LeerJson("Usuario.json")
     return contenido[cliente]["IdEstacionamiento"]
+
+def VencimientoEstacionamiento(id_estacionamiento):
+    contenido = LeerJson("Estacionamiento.json")
+    return(contenido[id_estacionamiento]["Vencimiento"])
 
 def VerNotificacion(numero_de_notificacion):
     numero_de_notificacion = str(numero_de_notificacion) 
@@ -243,6 +255,13 @@ def InformacionHabitacion (nombre_de_habitacion):
         print("Esa habitacion no existe.")
         return None
 
+def CambiarEstadoHabitacion(nombre_de_habitacion):
+    contenido = LeerJson("habitaciones.json")
+    if contenido[nombre_de_habitacion]["Estado"] == "Ninguno":
+        contenido[nombre_de_habitacion]["Estado"] = "No molestar"
+    else:
+        contenido[nombre_de_habitacion]["Estado"] = "Ninguno"
+
 def FijarDesfijarNotificaciones (id_notificacion):
     contenido = LeerJson("Notificaciones.json")
     if contenido[id_notificacion]["Fijada"] == 0:
@@ -263,6 +282,19 @@ def AgregarEliminarStock (nombre_stock , cantidad) :
         print ("Hubo un error al agregar o eliminar el stock, verifique que el stock ingresado exista.")
         return False
 
+def ContratarAmenities(usuario,amenitie,fecha,precio):
+    contenido = LeerJson("Contrataciones.json")
+    contenido2 = LeerJson("Usuario.json")
+    nueva_clave = str(len(contenido))
+    contenido[nueva_clave]["ServiciosContratados"] = amenitie
+    contenido[nueva_clave]["FechaContratada"] = fecha
+    contenido[nueva_clave]["Estado"] = "No vencido"
+    contenido[nueva_clave]["Precio"] = precio
+    contenido[nueva_clave]["Usuario"] = usuario
+    contenido2[usuario]["Contrataciones"] = amenitie
+    ActualizarJson("Contrataciones.json", contenido)
+    ActualizarJson("Usuario.json", contenido2)
+
 def ArchivarDesarchivarNotificaciones (id_notificacion):
     contenido = LeerJson("Notificaciones.json")
     if contenido[id_notificacion]["Archivada"] == 0:
@@ -271,7 +303,7 @@ def ArchivarDesarchivarNotificaciones (id_notificacion):
         contenido[id_notificacion]["Archivada"] = 0
     ActualizarJson("Notificaciones.json", contenido)
 
-def MarcarReservacion(usuario,habitacion,fecha_inicio, fecha_final):
+def MarcarReservacionHabitacion(usuario,habitacion,fecha_inicio, fecha_final):
     contenido = LeerJson("Usuario.json")
     contenido2 = LeerJson("habitacion.json")
     contenido[usuario]["IdHabitacion"].append(contenido2[habitacion]["ID"])
@@ -280,6 +312,21 @@ def MarcarReservacion(usuario,habitacion,fecha_inicio, fecha_final):
     contenido2[habitacion]["Fechas"] = [[fecha_inicio],[fecha_final]]
     ActualizarJson("habitaciones.json",contenido2)
     ActualizarJson("Usuario.json", contenido)
+
+def ReservarEvento(precio,cliente,salon,asistentes,hora,dia,cantidad_personal,mail,especificaciones):
+    contenido = LeerJson("ContratacionEventos")
+    nueva_clave = str(len(contenido))
+    contenido[nueva_clave]["IdSalon"] = salon
+    contenido[nueva_clave]["FechaContratada"] = dia
+    contenido[nueva_clave]["Hora"] = hora
+    contenido[nueva_clave]["Estado"] = "No realizado"
+    contenido[nueva_clave]["Mail"] = mail
+    contenido[nueva_clave]["Especificaciones"] = especificaciones
+    contenido[nueva_clave]["Precio"] = precio
+    contenido[nueva_clave]["Personal"] = cantidad_personal
+    contenido[nueva_clave]["Asistentes"] = asistentes
+    contenido[nueva_clave]["Usuario"] = cliente
+    ActualizarJson("ContratacionEventos.json", contenido)
 
 def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal , IdContrataciones , IdHabitacion):    
     contenido_actual = LeerJson("Usuario.json")
@@ -308,3 +355,7 @@ def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contrase
 
     ActualizarJson("Usuario.json", contenido_actual)
 
+
+
+
+    

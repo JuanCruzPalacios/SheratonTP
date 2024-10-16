@@ -262,7 +262,6 @@ def cursor(mouse_pos):
 
     elif fondo_actual[0] == "menu parking":
 
-        
 
         if mouse_pos[0] < 490 and mouse_pos[0] > 260 and mouse_pos[1] < 656 and mouse_pos[1] > 579: #ver registros        
                         
@@ -279,6 +278,19 @@ def cursor(mouse_pos):
                         
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND) 
         
+
+        else:
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW) 
+
+
+
+    elif fondo_actual[0] == "menu amenities":
+
+        if mouse_pos[0] < 702 and mouse_pos[0] > 565 and mouse_pos[1] < 670 and mouse_pos[1] > 630: #reservar        
+                        
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND) 
+
 
         else:
 
@@ -354,6 +366,40 @@ def cursor(mouse_pos):
         else:
 
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW) 
+
+
+
+    elif fondo_actual[0] == "ver datos":
+
+        if mouse_pos[0] < 770 and mouse_pos[0] > 410 and mouse_pos[1] < 300 and mouse_pos[1] > 255: #nombre y apellido
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+
+        elif mouse_pos[0] < 770 and mouse_pos[0] > 300 and mouse_pos[1] < 360 and mouse_pos[1] > 316: #direccion
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+
+        elif mouse_pos[0] < 770 and mouse_pos[0] > 300 and mouse_pos[1] < 420 and mouse_pos[1] > 376: #telefono
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+
+        elif mouse_pos[0] < 770 and mouse_pos[0] > 225 and mouse_pos[1] < 490 and mouse_pos[1] > 447: #mail
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+
+        elif mouse_pos[0] < 770 and mouse_pos[0] > 350 and mouse_pos[1] < 557 and mouse_pos[1] > 510: #codigo postal
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+
+        elif mouse_pos[0] < 770 and mouse_pos[0] > 300 and mouse_pos[1] < 620 and mouse_pos[1] > 575: #dni cuit
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+
+
+        else:
+            
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW) 
+
 
 
     elif fondo_actual[0] == "reservar eventos":

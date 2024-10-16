@@ -231,21 +231,56 @@ def Filtros(huespedes, precio_min, precio_max):
     resultado_ocupado = []
     resultado_precio = []
     resultado_final = []
-    try:
-        for habitacion in filtro: 
-            if filtro[habitacion]["Ocupada"] == "No" :
-                resultado_ocupado.append(filtro[habitacion]["ID"])
-                habitaciones_ocupado.append(habitacion)
-        for habitacion in habitaciones_ocupado:
-            if int(filtro[habitacion]["Precio"]) >= int(precio_min) and int(filtro[habitacion]["Precio"]) <= int(precio_max) : 
-                resultado_precio.append(filtro[habitacion]["ID"])
-                habitaciones_precio.append(habitacion)
-        for habitacion in habitaciones_precio:
-            if int(filtro[habitacion]["RangoHuespedes"]) == int(huespedes): 
-                resultado_final.append(filtro[habitacion]["ID"])
-        return resultado_final
-    except ValueError:
-        """"""
+    if str(huespedes) != "" and str(precio_max) != "" and str(precio_min) != "":
+        try:
+            for habitacion in filtro: 
+                if filtro[habitacion]["Ocupada"] == "No" :
+                    resultado_ocupado.append(filtro[habitacion]["ID"])
+                    habitaciones_ocupado.append(habitacion)
+            for habitacion in habitaciones_ocupado:
+                if int(filtro[habitacion]["Precio"]) >= int(precio_min) and int(filtro[habitacion]["Precio"]) <= int(precio_max) : 
+                    resultado_precio.append(filtro[habitacion]["ID"])
+                    habitaciones_precio.append(habitacion)
+            for habitacion in habitaciones_precio:
+                if int(filtro[habitacion]["RangoHuespedes"]) == int(huespedes): 
+                    resultado_final.append(filtro[habitacion]["ID"])
+            return resultado_final
+        except ValueError:
+            """"""
+    
+   
+        try:
+            for habitacion in filtro: 
+                if filtro[habitacion]["Ocupada"] == "No" :
+                    resultado_ocupado.append(filtro[habitacion]["ID"])
+                    habitaciones_ocupado.append(habitacion)
+            for habitacion in habitaciones_ocupado:
+                if int(filtro[habitacion]["Precio"]) <= int(precio_max) : 
+                    resultado_precio.append(filtro[habitacion]["ID"])
+                    habitaciones_precio.append(habitacion)
+            for habitacion in habitaciones_precio:
+                if int(filtro[habitacion]["RangoHuespedes"]) == int(huespedes): 
+                    resultado_final.append(filtro[habitacion]["ID"])
+            return resultado_final
+        except ValueError:
+            """"""
+
+    if str(huespedes) == "" and str(precio_max) != "" and str(precio_min) != "":
+        try:
+            for habitacion in filtro: 
+                if filtro[habitacion]["Ocupada"] == "No" :
+                    resultado_ocupado.append(filtro[habitacion]["ID"])
+                    habitaciones_ocupado.append(habitacion)
+            for habitacion in habitaciones_ocupado:
+                if int(filtro[habitacion]["Precio"]) >= int(precio_min) and int(filtro[habitacion]["Precio"]) <= int(precio_max): 
+                    resultado_precio.append(filtro[habitacion]["ID"])
+                    habitaciones_precio.append(habitacion)
+            return habitaciones_precio
+        except ValueError:
+            """"""
+    
+    
+    
 
 def InformacionHabitacion (nombre_de_habitacion):
     habitaciones = LeerJson("habitaciones.json")

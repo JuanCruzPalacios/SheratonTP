@@ -262,7 +262,6 @@ def cursor(mouse_pos):
 
     elif fondo_actual[0] == "menu parking":
 
-        
 
         if mouse_pos[0] < 490 and mouse_pos[0] > 260 and mouse_pos[1] < 656 and mouse_pos[1] > 579: #ver registros        
                         
@@ -283,6 +282,8 @@ def cursor(mouse_pos):
         else:
 
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW) 
+
+
 
 
 
@@ -356,6 +357,13 @@ def cursor(mouse_pos):
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW) 
 
 
+
+    elif fondo_actual[0] == "ver datos":
+
+        pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
+
     elif fondo_actual[0] == "reservar eventos":
 
 
@@ -418,6 +426,56 @@ def cursor(mouse_pos):
         else:
 
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW) 
+
+
+    elif fondo_actual[0] == "menu bedroom":
+
+        if mouse_pos[0] < 481 and mouse_pos[0] > 250 and mouse_pos[1] < 655 and mouse_pos[1] > 576: #pedir limpieza
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+
+        elif mouse_pos[0] < 752 and mouse_pos[0] > 516 and mouse_pos[1] < 655 and mouse_pos[1] > 576: #no molestar
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+
+        elif mouse_pos[0] < 1018 and mouse_pos[0] > 785 and mouse_pos[1] < 655 and mouse_pos[1] > 576: #cancelar reserva
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+
+        else:
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
+    elif fondo_actual[0] == "menu amenities":
+
+        if mouse_pos[0] < 450 and mouse_pos[0] > 392 and mouse_pos[1] < 392 and mouse_pos[1] > 340: #spa
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+
+        elif mouse_pos[0] < 747 and mouse_pos[0] > 690 and mouse_pos[1] < 392 and mouse_pos[1] > 340: #piscina
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+
+        elif mouse_pos[0] < 1026 and mouse_pos[0] > 968 and mouse_pos[1] < 392 and mouse_pos[1] > 340: #gimnasio
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+
+        elif mouse_pos[0] < 708 and mouse_pos[0] > 568 and mouse_pos[1] < 676 and mouse_pos[1] > 636: #reservar
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        else:
+
+             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
 
 
 
@@ -504,6 +562,8 @@ while running:
 
         if event.type == pygame.QUIT:
             running = False
+        
+       
 
 
 
@@ -866,8 +926,8 @@ while running:
                         alter_usuario = not(alter_usuario)
                         print(alter_usuario)
 
-
-
+                if fondo_actual[0] in [ "reservar eventos","ver datos","habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"] and alter_mouse == False:        
+                    alter_mouse = True
                     if mouse_pos[0] < 1008 and mouse_pos[0] > 785 and mouse_pos[1] < 666 and mouse_pos[1] > 605:#reservar
                         fondo_actual[0] = "reservar habitacion"
                         fondo_actual[1] = 5
@@ -949,7 +1009,10 @@ while running:
         elif fondo_actual[0] == "menu parking":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
             texto1[0] = (390, 346)
-            texto1[1] = str(VerNumeroHabitacion(usuario).pop(-1))
+            try:
+                texto1[1] = str(VerNumeroHabitacion(usuario).pop(-1))
+            except:
+                """"""
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
 
 

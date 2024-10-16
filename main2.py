@@ -358,6 +358,12 @@ def cursor(mouse_pos):
 
 
 
+    elif fondo_actual[0] == "ver datos":
+
+        pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
+
     elif fondo_actual[0] == "reservar eventos":
 
 

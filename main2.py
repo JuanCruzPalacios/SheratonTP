@@ -442,6 +442,32 @@ def cursor(mouse_pos):
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
 
+    elif fondo_actual[0] == "menu amenities":
+
+        if mouse_pos[0] < 450 and mouse_pos[0] > 392 and mouse_pos[1] < 392 and mouse_pos[1] > 340: #spa
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+
+        elif mouse_pos[0] < 747 and mouse_pos[0] > 690 and mouse_pos[1] < 392 and mouse_pos[1] > 340: #piscina
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+
+        elif mouse_pos[0] < 1026 and mouse_pos[0] > 968 and mouse_pos[1] < 392 and mouse_pos[1] > 340: #gimnasio
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+
+        elif mouse_pos[0] < 708 and mouse_pos[0] > 568 and mouse_pos[1] < 676 and mouse_pos[1] > 636: #reservar
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        else:
+
+             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
 
 
 

@@ -1,10 +1,16 @@
 {
     "-1":
     {"IdSalon": "1",
-     "FechaContratada": [""],
+     "FechaContratada": "",
+     "Hora":["",""],
      "Estado": "",
-     "Descripcion": "",
-     "Precio": ""
-
+     "Mail": "",
+     "Especificaciones": "",
+     "Precio": "",
+     "Personal":"",
+     "Asistentes":"",
+     "Usuario":""
     }
+
+
 }

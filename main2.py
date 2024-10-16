@@ -140,7 +140,9 @@ texto_seleccionado =  texto1
 texto_ingresado = ""
 
 
-
+def reset_textos(*textos):
+    for texto in textos:
+        texto[1] = ""
 
 
 
@@ -624,9 +626,7 @@ while running:
                                 fondo_actual[0] = "menu habitaciones"
                                 fondo_actual[1] = 6
                                 texto_ingresado = ""
-                                texto1 = [(0,0),""]
-                                texto2 = [(0,0),""]
-                                texto3 = [(0,0),""]
+                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)   
                             else:
                                 texto3[1] = "Contraseña erronea"
                         else:
@@ -638,9 +638,7 @@ while running:
                         fondo_actual[0] = "registrarse"
                         fondo_actual[1] = 1
                         texto_ingresado = ""
-                        texto1 = [(0,0),""]
-                        texto2 = [(0,0),""]
-                        texto3 = [(0,0),""]                
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)                 
 
     
 
@@ -681,8 +679,7 @@ while running:
                                     fondo_actual[0] = "menu habitaciones"
                                     fondo_actual[1] = 6
                                     texto_ingresado = ""
-                                    texto1 = [(0,0),""]
-                                    texto2 = [(0,0),""]  
+                                    reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)   
 
                                 else:                       
                                     texto4[1] = chequeo_contraseña(texto3[1])    
@@ -742,47 +739,49 @@ while running:
 
                     elif mouse_pos[0] < 253 and mouse_pos[0] > 76 and mouse_pos[1] < 512 and mouse_pos[1] > 475:#restablecer
                         habitaciones_libres = [0,1,2,3,4,5,6,7,8]
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)   
                         alter_mouse = True
 
 
 
                     if not(mouse_pos[0] < 1280 and mouse_pos[0] > 0 and mouse_pos[1] < 125 and mouse_pos[1] > 0): #-----> habitaciones
-                        alter_mouse = True
-                        if suite_balcon_rect[0].collidepoint(mouse_pos):
-                            fondo_actual[0] = "habitacion balcon"
-                            fondo_actual[1] = 18
+                        if not(mouse_pos[0] < 1275 and mouse_pos[0] > 962 and mouse_pos[1] < 519 and mouse_pos[1] > 131) or alter_usuario == False:
+                            alter_mouse = True
+                            if suite_balcon_rect[0].collidepoint(mouse_pos):
+                                fondo_actual[0] = "habitacion balcon"
+                                fondo_actual[1] = 18
 
-                        elif habitacion_triple_rect[0].collidepoint(mouse_pos):
-                            fondo_actual[0] = "habitacion triple"
-                            fondo_actual[1] = 19
+                            elif habitacion_triple_rect[0].collidepoint(mouse_pos):
+                                fondo_actual[0] = "habitacion triple"
+                                fondo_actual[1] = 19
 
-                        elif habitacion_doble_rect[0].collidepoint(mouse_pos):
-                            fondo_actual[0] = "habitacion doble"
-                            fondo_actual[1] = 20
+                            elif habitacion_doble_rect[0].collidepoint(mouse_pos):
+                                fondo_actual[0] = "habitacion doble"
+                                fondo_actual[1] = 20
 
-                        elif habitacion_lujo_rect[0].collidepoint(mouse_pos):
-                            fondo_actual[0] = "habitacion lujo"
-                            fondo_actual[1] = 21
+                            elif habitacion_lujo_rect[0].collidepoint(mouse_pos):
+                                fondo_actual[0] = "habitacion lujo"
+                                fondo_actual[1] = 21
 
-                        elif habitacion_cuadruple_rect[0].collidepoint(mouse_pos):
-                            fondo_actual[0] = "habitacion cuadruple"
-                            fondo_actual[1] = 22
+                            elif habitacion_cuadruple_rect[0].collidepoint(mouse_pos):
+                                fondo_actual[0] = "habitacion cuadruple"
+                                fondo_actual[1] = 22
 
-                        elif suite_rio_rect[0].collidepoint(mouse_pos):
-                            fondo_actual[0] = "suite rio"
-                            fondo_actual[1] = 23
+                            elif suite_rio_rect[0].collidepoint(mouse_pos):
+                                fondo_actual[0] = "suite rio"
+                                fondo_actual[1] = 23
 
-                        elif habitacion_individual_rect[0].collidepoint(mouse_pos):
-                            fondo_actual[0] = "habitacion individual"
-                            fondo_actual[1] = 24
+                            elif habitacion_individual_rect[0].collidepoint(mouse_pos):
+                                fondo_actual[0] = "habitacion individual"
+                                fondo_actual[1] = 24
 
-                        elif suite_jacuzzi_rect[0].collidepoint(mouse_pos):
-                            fondo_actual[0] = "suite jacuzzi"
-                            fondo_actual[1] = 25
+                            elif suite_jacuzzi_rect[0].collidepoint(mouse_pos):
+                                fondo_actual[0] = "suite jacuzzi"
+                                fondo_actual[1] = 25
 
-                        elif suite_estandar_rect[0].collidepoint(mouse_pos):
-                            fondo_actual[0] = "suite estandar"
-                            fondo_actual[1] = 26
+                            elif suite_estandar_rect[0].collidepoint(mouse_pos):
+                                fondo_actual[0] = "suite estandar"
+                                fondo_actual[1] = 26
 
 
 
@@ -794,42 +793,21 @@ while running:
                         fondo_actual[0] = "iniciar sesion"
                         fondo_actual[1] = 0
                         alter_usuario = not(alter_usuario)
-                        texto1[1] = ""
-                        texto2[1] = ""
-                        texto3[1] = ""
-                        texto4[1] = ""
-                        texto5[1] = ""
-                        texto6[1] = ""
-                        texto7[1] = ""
-                        texto8[1] = ""
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)   
 
 
                     elif mouse_pos[0] < 1245 and mouse_pos[0] > 992 and mouse_pos[1] < 310 and mouse_pos[1] > 261: #ver datos
                         fondo_actual[0] = "ver datos"
                         fondo_actual[1] = 9
                         alter_usuario = not(alter_usuario)
-                        texto1[1] = ""
-                        texto2[1] = ""
-                        texto3[1] = ""
-                        texto4[1] = ""
-                        texto5[1] = ""
-                        texto6[1] = ""
-                        texto7[1] = ""
-                        texto8[1] = ""                        
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)                       
 
 
                     elif mouse_pos[0] < 1245 and mouse_pos[0] > 992 and mouse_pos[1] < 395 and mouse_pos[1] > 350: #reservar eventos
                         fondo_actual[0] = "reservar eventos"
                         fondo_actual[1] = 8
                         alter_usuario = not(alter_usuario)
-                        texto1[1] = ""
-                        texto2[1] = ""
-                        texto3[1] = ""
-                        texto4[1] = ""
-                        texto5[1] = ""
-                        texto6[1] = ""
-                        texto7[1] = ""
-                        texto8[1] = ""  
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)   
 
 
 
@@ -838,38 +816,45 @@ while running:
 
 
 
-                    if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15: #Home 
+                    if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15 and fondo_actual != "menu habitaciones" : #Home 
                         fondo_actual[0] = "menu habitaciones"
                         fondo_actual[1] = 6
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)   
+                        
 
 
 
-                    elif mouse_pos[0] < 560 and mouse_pos[0] > 435 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Parking
+                    elif mouse_pos[0] < 560 and mouse_pos[0] > 435 and mouse_pos[1] < 100 and mouse_pos[1] > 15 and fondo_actual != "menu parking" :#Parking
                         fondo_actual[0] = "menu parking"
                         fondo_actual[1] = 2
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)   
 
 
 
-                    elif mouse_pos[0] < 710 and mouse_pos[0] > 590 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Bedroom
+                    elif mouse_pos[0] < 710 and mouse_pos[0] > 590 and mouse_pos[1] < 100 and mouse_pos[1] > 15 and fondo_actual != "menu bedroom":#Bedroom
                         fondo_actual[0] = "menu bedroom"
                         fondo_actual[1] = 3
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)   
 
 
 
-                    elif mouse_pos[0] < 860 and mouse_pos[0] > 745 and mouse_pos[1] < 100 and mouse_pos[1] > 15:#Services
+                    elif mouse_pos[0] < 860 and mouse_pos[0] > 745 and mouse_pos[1] < 100 and mouse_pos[1] > 15 and fondo_actual != "menu amenities" :#Services
                         fondo_actual[0] = "menu amenities"
                         fondo_actual[1] = 7
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)   
                     
 
 
                     elif mouse_pos[0] < 1220 and mouse_pos[0] > 1140 and mouse_pos[1] < 90 and mouse_pos[1] > 18:#boton usuario
                         alter_usuario = not(alter_usuario)
-                        print(alter_usuario)
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)   
+                        
 
-                if fondo_actual[0] in [ "reservar eventos","ver datos","habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"] and alter_mouse == False:        
+                if fondo_actual[0] in ["habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"] and alter_mouse == False:        
                     alter_mouse = True
                     if mouse_pos[0] < 1008 and mouse_pos[0] > 785 and mouse_pos[1] < 666 and mouse_pos[1] > 605:#reservar
                         fondo_actual[0] = "reservar habitacion"
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)   
                         fondo_actual[1] = 5
 
 
@@ -949,12 +934,22 @@ while running:
         elif fondo_actual[0] == "menu parking":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
             texto1[0] = (390, 346)
+            texto2[0] = (814, 346)
+            reset_textos(texto1,texto2)
             try:
-                texto1[1] = str(VerNumeroHabitacion(usuario).pop(-1))
+                for i in range(len(VerNumeroHabitacion(usuario))):
+                    
+                    if i < 3:
+                        texto1[1] += str(VerNumeroHabitacion(usuario).pop( -1 - i ))
+                        texto2[1] += str(VerNumeroEstacionamiento(usuario).pop(-1 - i))
+                        texto1[1] += ", "
+                        texto2[1] += ", "
+                
             except:
                 """"""
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
-
+            screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )
+            
 
         elif fondo_actual[0] == "menu bedroom":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
@@ -974,6 +969,7 @@ while running:
 
         elif fondo_actual[0] == "reservar habitacion":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+
 
         if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon", "reservar habitacion"]:
             screen.blit (barra_arriba, (0,0))

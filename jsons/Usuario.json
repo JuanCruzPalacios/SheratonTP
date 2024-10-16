@@ -24,10 +24,8 @@
             ]
         ],
         "IdEstacionamiento": [
-            "1",
-            "2"
+            "1"
         ],
-        "IdEstacionamient" : ["1" , "2"] , 
         "IdHabitacion": [1]
     },
     "marco": {

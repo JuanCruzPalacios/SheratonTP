@@ -120,7 +120,7 @@ fondos = [
 
 
 fuente = pygame.font.Font("fuentes/Averia_Libre/AveriaLibre-Regular.ttf", 31)
-limite = 13
+limite = 11
 
 usuario = ""
 
@@ -622,9 +622,15 @@ while running:
             else:                 
                 if len(texto_ingresado) < limite:           
                     # Agregar caracteres al texto ingresado
-                    texto_ingresado += event.unicode
-            texto_seleccionado[1] = texto_ingresado
-            
+                    if event.unicode .isprintable():
+                        
+                        texto_ingresado += event.unicode
+                    
+
+            try:
+                texto_seleccionado[1] = texto_ingresado
+            except:
+                """"""
 
 
         if event.type == pygame.MOUSEBUTTONUP :        
@@ -664,14 +670,14 @@ while running:
                     if mouse_pos[0] <= 819 and mouse_pos[0] >= 459 and mouse_pos[1] <= 525 and mouse_pos[1] >= 488: #-----> Usuario
                         texto_ingresado = texto1[1]
                         texto_seleccionado = texto1 #Usuario / iniciar sesion
-                        limite = 13
+                        limite = 11
 
                     
             
                     elif mouse_pos[0] <= 819 and mouse_pos[0] >= 459 and mouse_pos[1] <= 630 and mouse_pos[1] >= 593:#-----> Contraseña                    
                         texto_ingresado = texto2[1]
                         texto_seleccionado = texto2 #Contraseña / iniciar sesion
-                        limite = 13
+                        limite = 11
 
 
 
@@ -710,21 +716,21 @@ while running:
 
                         texto_seleccionado = texto1 #usuario / registrarse
                         texto_ingresado = texto1[1]
-                        limite = 13
+                        limite = 11
 
 
                     elif mouse_pos[0] <= 821 and mouse_pos[0] >= 460 and mouse_pos[1] <= 583 and mouse_pos[1] >= 544:#-----> Correo Electronico
 
                         texto_seleccionado = texto2 #mail / registrarse
                         texto_ingresado = texto2[1]
-                        limite = 13
+                        limite = 11
 
 
                     elif mouse_pos[0] <= 821 and mouse_pos[0] >= 460 and mouse_pos[1] <= 661 and mouse_pos[1] >= 621: #-----> Contraseña
     
                         texto_seleccionado = texto3 #contraseña / registrarse
                         texto_ingresado = texto3[1]
-                        limite = 13
+                        limite = 11
 
 
 
@@ -764,7 +770,7 @@ while running:
                     
                     
 
-                    if mouse_pos[0] < 295 and mouse_pos[0] > 195 and mouse_pos[1] < 290 and mouse_pos[1] > 260:#personas        
+                    if mouse_pos[0] < 282 and mouse_pos[0] > 185 and mouse_pos[1] < 302 and mouse_pos[1] > 267:#personas        
                         texto_seleccionado = texto1
                         texto_ingresado = texto1[1]
                         limite = 3
@@ -949,7 +955,7 @@ while running:
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
             screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )  
             screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )
-            screen.blit( fuente.render(texto4[1] , True , (0,0,0) ), texto4[0] )        
+            screen.blit( fuente.render(texto4[1] , True , (0,0,0) ), texto4[0] )      
 
 
         elif fondo_actual[0] == "menu habitaciones":
@@ -989,6 +995,8 @@ while running:
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
             screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )  
             screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )   
+
+            
 
 
         elif fondo_actual[0] == "menu parking":
@@ -1042,7 +1050,6 @@ while running:
 
         if alter_usuario:
             screen.blit (imagen_usuario , (958, 129))
-
 
 
     pygame.display.flip()

@@ -285,17 +285,6 @@ def cursor(mouse_pos):
 
 
 
-    elif fondo_actual[0] == "menu amenities":
-
-        if mouse_pos[0] < 702 and mouse_pos[0] > 565 and mouse_pos[1] < 670 and mouse_pos[1] > 630: #reservar        
-                        
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND) 
-
-
-        else:
-
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW) 
-
 
 
     elif fondo_actual[0] == "reservar habitacion":

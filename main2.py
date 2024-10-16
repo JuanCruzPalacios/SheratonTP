@@ -147,6 +147,7 @@ texto_ingresado = ""
 def reset_textos(*textos):
     for texto in textos:
         texto[1] = ""
+    
 
 
 
@@ -579,9 +580,13 @@ while running:
             if event.key == pygame.K_BACKSPACE:
                 # Al presionar Retroceso, eliminar el último carácter del texto
                 texto_ingresado = texto_ingresado[:-1]
+                barra = barra[:-1] 
+                barra = barra[:-1] + "|"
+                
                 
     
             elif event.key == pygame.K_ESCAPE:
+                #aleja la barra de escritura fuera de la pantalla
                 texto_seleccionado = [(-10,-10),""]
                 
             elif event.key == 13 :#enter
@@ -630,8 +635,10 @@ while running:
                     if event.unicode .isprintable():
                         
                         texto_ingresado += event.unicode
+                
+            texto_seleccionado[1] = texto_ingresado
+            barra = texto_ingresado + "|"
 
-                texto_seleccionado[1] = texto_ingresado
             
 
 
@@ -672,6 +679,7 @@ while running:
                     if mouse_pos[0] <= 819 and mouse_pos[0] >= 459 and mouse_pos[1] <= 525 and mouse_pos[1] >= 488: #-----> Usuario
                         texto_ingresado = texto1[1]
                         texto_seleccionado = texto1 #Usuario / iniciar sesion
+                        barra = texto_ingresado + "|"
                         limite = 11
 
                     
@@ -679,6 +687,7 @@ while running:
                     elif mouse_pos[0] <= 819 and mouse_pos[0] >= 459 and mouse_pos[1] <= 630 and mouse_pos[1] >= 593:#-----> Contraseña                    
                         texto_ingresado = texto2[1]
                         texto_seleccionado = texto2 #Contraseña / iniciar sesion
+                        barra = texto_ingresado + "|"
                         limite = 11
 
 
@@ -694,7 +703,8 @@ while running:
                                 fondo_actual[0] = "menu habitaciones"
                                 fondo_actual[1] = 6
                                 texto_ingresado = ""
-                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8, barra)   
+                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                                
                             else:
                                 texto3[1] = "Contraseña erronea"
                         else:
@@ -706,7 +716,8 @@ while running:
                         fondo_actual[0] = "registrarse"
                         fondo_actual[1] = 1
                         texto_ingresado = ""
-                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8, barra)                 
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                                      
 
     
 
@@ -747,7 +758,8 @@ while running:
                                     fondo_actual[0] = "menu habitaciones"
                                     fondo_actual[1] = 6
                                     texto_ingresado = ""
-                                    reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8, barra)   
+                                    reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                                    
 
                                 else:                       
                                     texto4[1] = chequeo_contraseña(texto3[1])    
@@ -761,7 +773,8 @@ while running:
                         fondo_actual[0] = "iniciar sesion"
                         fondo_actual[1] = 0
                         texto_ingresado = ""
-                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8, barra)                  
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                                       
 
 
 
@@ -773,7 +786,7 @@ while running:
                     if mouse_pos[0] < 282 and mouse_pos[0] > 185 and mouse_pos[1] < 302 and mouse_pos[1] > 267:#personas        
                         texto_seleccionado = texto1
                         texto_ingresado = texto1[1]
-                        barra = texto_seleccionado[1] + "|"
+                        barra = texto_ingresado + "|"
                         limite = 3
                         alter_mouse = True
 
@@ -782,7 +795,7 @@ while running:
                     elif mouse_pos[0] < 142 and mouse_pos[0] > 46 and mouse_pos[1] < 450 and mouse_pos[1] > 415:#precio "desde"
                         texto_seleccionado = texto2
                         texto_ingresado = texto2[1]
-                        barra = texto_seleccionado[1] + "|"
+                        barra = texto_ingresado + "|"
                         limite = 3
                         alter_mouse = True
 
@@ -791,7 +804,7 @@ while running:
                     elif mouse_pos[0] < 284 and mouse_pos[0] > 185 and mouse_pos[1] < 450 and mouse_pos[1] > 416:#precio "hasta"
                         texto_seleccionado = texto3
                         texto_ingresado = texto3[1]
-                        barra = texto_seleccionado[1] + "|"
+                        barra = texto_ingresado + "|"
                         limite = 3
                         alter_mouse = True
 
@@ -808,7 +821,8 @@ while running:
 
                     elif mouse_pos[0] < 253 and mouse_pos[0] > 76 and mouse_pos[1] < 512 and mouse_pos[1] > 475:#restablecer
                         habitaciones_libres = [0,1,2,3,4,5,6,7,8]
-                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8, barra)   
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                        
                         alter_mouse = True
 
 
@@ -862,21 +876,24 @@ while running:
                         fondo_actual[0] = "iniciar sesion"
                         fondo_actual[1] = 0
                         alter_usuario = not(alter_usuario)
-                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8, barra)   
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                        
 
 
                     elif mouse_pos[0] < 1245 and mouse_pos[0] > 992 and mouse_pos[1] < 310 and mouse_pos[1] > 261: #ver datos
                         fondo_actual[0] = "ver datos"
                         fondo_actual[1] = 9
                         alter_usuario = not(alter_usuario)
-                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8, barra)                       
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                                            
 
 
                     elif mouse_pos[0] < 1245 and mouse_pos[0] > 992 and mouse_pos[1] < 395 and mouse_pos[1] > 350: #reservar eventos
                         fondo_actual[0] = "reservar eventos"
                         fondo_actual[1] = 8
                         alter_usuario = not(alter_usuario)
-                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8, barra)   
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                        
 
 
 
@@ -888,7 +905,8 @@ while running:
                     if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15 and fondo_actual != "menu habitaciones" : #Home 
                         fondo_actual[0] = "menu habitaciones"
                         fondo_actual[1] = 6
-                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8, barra)   
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                        
                         
 
 
@@ -896,34 +914,39 @@ while running:
                     elif mouse_pos[0] < 560 and mouse_pos[0] > 435 and mouse_pos[1] < 100 and mouse_pos[1] > 15 and fondo_actual != "menu parking" :#Parking
                         fondo_actual[0] = "menu parking"
                         fondo_actual[1] = 2
-                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8, barra)   
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                        
 
 
 
                     elif mouse_pos[0] < 710 and mouse_pos[0] > 590 and mouse_pos[1] < 100 and mouse_pos[1] > 15 and fondo_actual != "menu bedroom":#Bedroom
                         fondo_actual[0] = "menu bedroom"
                         fondo_actual[1] = 3
-                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8, barra)   
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                        
 
 
 
                     elif mouse_pos[0] < 860 and mouse_pos[0] > 745 and mouse_pos[1] < 100 and mouse_pos[1] > 15 and fondo_actual != "menu amenities" :#Services
                         fondo_actual[0] = "menu amenities"
                         fondo_actual[1] = 7
-                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8, barra)   
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                        
                     
 
 
                     elif mouse_pos[0] < 1220 and mouse_pos[0] > 1140 and mouse_pos[1] < 90 and mouse_pos[1] > 18:#boton usuario
                         alter_usuario = not(alter_usuario)
-                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8, barra)   
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                        
                         
 
                 if fondo_actual[0] in ["habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"] and alter_mouse == False:        
                     alter_mouse = True
                     if mouse_pos[0] < 1008 and mouse_pos[0] > 785 and mouse_pos[1] < 666 and mouse_pos[1] > 605:#reservar
                         fondo_actual[0] = "reservar habitacion"
-                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8, barra)   
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                        
                         fondo_actual[1] = 5
 
 
@@ -959,7 +982,8 @@ while running:
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
             screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )  
             screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )
-            screen.blit( fuente.render(texto4[1] , True , (0,0,0) ), texto4[0] )      
+            screen.blit( fuente.render(texto4[1] , True , (0,0,0) ), texto4[0] )    
+            screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )  
 
 
         elif fondo_actual[0] == "menu habitaciones":
@@ -999,6 +1023,7 @@ while running:
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
             screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )  
             screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )   
+            screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
 
             
 

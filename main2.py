@@ -303,22 +303,22 @@ def cursor(mouse_pos):
 
     elif fondo_actual[0] == "reservar habitacion":
 
-        if mouse_pos[0] < 687 and mouse_pos[0] > 400 and mouse_pos[1] < 300 and mouse_pos[1] > 253: #nombre y apellido        
+        if mouse_pos[0] < 690 and mouse_pos[0] > 400 and mouse_pos[1] < 295 and mouse_pos[1] > 255: #nombre y apellido        
                         
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM) 
         
 
-        elif mouse_pos[0] < 332 and mouse_pos[0] > 223 and mouse_pos[1] < 383 and mouse_pos[1] > 225: #dia inicio        
+        elif mouse_pos[0] < 330 and mouse_pos[0] > 225 and mouse_pos[1] < 375 and mouse_pos[1] > 335: #dia inicio        
                         
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM) 
 
 
-        elif mouse_pos[0] < 493 and mouse_pos[0] > 386 and mouse_pos[1] < 380 and mouse_pos[1] > 337: #dia fin      
+        elif mouse_pos[0] < 490 and mouse_pos[0] > 386 and mouse_pos[1] < 380 and mouse_pos[1] > 335: #dia fin      
                         
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM) 
         
 
-        elif mouse_pos[0] < 690 and mouse_pos[0] > 289 and mouse_pos[1] < 453 and mouse_pos[1] > 411: #direccion      
+        elif mouse_pos[0] < 690 and mouse_pos[0] > 290 and mouse_pos[1] < 453 and mouse_pos[1] > 411: #direccion      
                         
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM) 
 
@@ -361,9 +361,6 @@ def cursor(mouse_pos):
         elif mouse_pos[0] < 1108 and mouse_pos[0] > 1058 and mouse_pos[1] < 460 and mouse_pos[1] > 307: #tarjeta
                         
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-
-
-
 
 
         else:
@@ -466,17 +463,17 @@ def cursor(mouse_pos):
 
     elif fondo_actual[0] == "menu amenities":
 
-        if mouse_pos[0] < 450 and mouse_pos[0] > 392 and mouse_pos[1] < 392 and mouse_pos[1] > 340: #spa
+        if mouse_pos[0] < 455 and mouse_pos[0] > 400 and mouse_pos[1] < 342 and mouse_pos[1] > 290: #spa
 
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         
 
-        elif mouse_pos[0] < 747 and mouse_pos[0] > 690 and mouse_pos[1] < 392 and mouse_pos[1] > 340: #piscina
+        elif mouse_pos[0] < 740 and mouse_pos[0] > 688 and mouse_pos[1] < 345 and mouse_pos[1] > 290: #piscina
 
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         
 
-        elif mouse_pos[0] < 1026 and mouse_pos[0] > 968 and mouse_pos[1] < 392 and mouse_pos[1] > 340: #gimnasio
+        elif mouse_pos[0] < 1005 and mouse_pos[0] > 948 and mouse_pos[1] < 345 and mouse_pos[1] > 290: #gimnasio
 
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         

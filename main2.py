@@ -904,13 +904,8 @@ while running:
                         texto_seleccionado = texto1   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-<<<<<<< HEAD
-                        limite = 14 
-                    
-=======
                         limite = 11 
         
->>>>>>> 36b7c5a385eedbb2bbfb61fcc9f439afafb19cb4
 
                     elif mouse_pos[0] < 425 and mouse_pos[0] > 205 and mouse_pos[1] < 375 and mouse_pos[1] > 335: #dia inicio        
 

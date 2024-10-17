@@ -279,9 +279,6 @@ def Filtros(huespedes, precio_min, precio_max):
         except ValueError:
             """"""
     
-    
-    
-
 def InformacionHabitacion (nombre_de_habitacion):
     habitaciones = LeerJson("habitaciones.json")
     try:

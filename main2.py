@@ -80,7 +80,7 @@ habitaciones = [suite_balcon_sola, habitacion_triple_sola, habitacion_doble_sola
                 habitacion_lujo_sola, habitacion_cuadruple_sola, suite_rio_sola,
                 habitacion_individual_sola, suite_jacuzzi_sola, suite_estandar_sola]
 
-habitaciones_libres = [0,1,2,3,4,5,6,7,8]
+habitaciones_libres = Filtros("",0,100)
 
 
 cambiar_nombre = []
@@ -834,7 +834,7 @@ while running:
 
 
                     elif mouse_pos[0] < 253 and mouse_pos[0] > 76 and mouse_pos[1] < 512 and mouse_pos[1] > 475:#restablecer
-                        habitaciones_libres = [0,1,2,3,4,5,6,7,8]
+                        habitaciones_libres = Filtros("",0,100)
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         print(texto1)
                         barra = texto_seleccionado[1] + "|"  
@@ -907,9 +907,9 @@ while running:
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
                         limite = 11 
-                    
+        
 
-                    elif mouse_pos[0] < 332 and mouse_pos[0] > 223 and mouse_pos[1] < 383 and mouse_pos[1] > 225: #dia inicio        
+                    elif mouse_pos[0] < 425 and mouse_pos[0] > 205 and mouse_pos[1] < 375 and mouse_pos[1] > 335: #dia inicio        
                                     
                         texto_ingresado = ""
                         texto_seleccionado = texto2   
@@ -918,7 +918,7 @@ while running:
                         limite = 11 
 
 
-                    elif mouse_pos[0] < 490 and mouse_pos[0] > 386 and mouse_pos[1] < 380 and mouse_pos[1] > 335: #dia fin       
+                    elif mouse_pos[0] < 710 and mouse_pos[0] > 485 and mouse_pos[1] < 375 and mouse_pos[1] > 335: #dia fin       
                                     
                         texto_ingresado = ""
                         texto_seleccionado = texto3
@@ -1027,6 +1027,7 @@ while running:
 
 
                     if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15 and fondo_actual != "menu habitaciones" : #Home 
+                        habitaciones_libres = Filtros((""),0,1000)
                         fondo_actual[0] = "menu habitaciones"
                         fondo_actual[1] = 6
                         texto_seleccionado = [(-100,-100),""]

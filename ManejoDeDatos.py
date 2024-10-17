@@ -283,6 +283,25 @@ def InformacionHabitacion (nombre_de_habitacion):
         print("Esa habitacion no existe.")
         return None
 
+def CancelarReservaEstacionamiento(usuario , id):
+    id = str(id)
+    data_usuario = LeerJson("Usuario.json")
+    data_parking = LeerJson("Estacionamiento.json")
+    try:
+        parking = data_usuario[usuario]["IdEstacionamiento"]
+        if id in parking: 
+            data_parking[id]["Ocupado"] = 0
+            data_parking[id]["Ocupante"] = "Nadie"
+            parking.remove(id)
+            data_usuario[usuario]["IdEstacionamiento"] = parking
+            ActualizarJson("Usuario.json" , data_usuario)
+            ActualizarJson("Estacionamiento.json" , data_parking)
+            print("Reserva de estacionamiento cancelada con exito.")
+        else:
+            print("El usuario no posee ese estacionamiento.")
+    except: 
+        print("El usuario o el estacionamiento ingresado no existe.")
+
 def CambiarEstadoHabitacion(nombre_de_habitacion):
     contenido = LeerJson("habitaciones.json")
     if contenido[nombre_de_habitacion]["Estado"] == "Ninguno":

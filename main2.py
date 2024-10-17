@@ -16,6 +16,8 @@ fondo_registrarse = pygame.transform.scale(pygame.image.load("imagenes/registrar
 fondo_estacionamiento = pygame.transform.scale(pygame.image.load("imagenes/estacionamiento.jpg"), (1280, 720))
 fondo_habitacion = pygame.transform.scale(pygame.image.load("imagenes/habitacion.jpg"), (1280, 720))
 fondo_pagar = pygame.transform.scale(pygame.image.load("imagenes/reserva_de_habitacion.jpg"), (1280, 720))
+fondo_pagar_con_mercado = pygame.transform.scale(pygame.image.load("imagenes/pagar_con_mercado.jpg"), (1280, 720))
+fondo_pagar_con_tarjeta = pygame.transform.scale(pygame.image.load("imagenes/pagar_con_tarjeta.jpg"), (1280, 720))
 
 
 fondo_menu_amenities = pygame.transform.scale(pygame.image.load("imagenes/reserva_de_amenities.jpg"), (1280, 720))
@@ -88,22 +90,22 @@ temp =  []
 
 fondo_actual = ["iniciar sesion", 0]
 fondos = [
-    fondo_iniciar_sesion,             # 0
+    fondo_iniciar_sesion,              # 0
     fondo_registrarse,                 # 1
     fondo_estacionamiento,             # 2
     fondo_habitacion,                  # 3
-    "",
+    fondo_pagar_con_mercado,           # 4
     fondo_pagar,                       # 5
-    "",
+    fondo_pagar_con_tarjeta,           # 6
     fondo_menu_amenities,              # 7
     fondo_menu_salones,                # 8
     fondo_datos_usuario,               # 9
     fondo_menu_mantenimiento,           # 10
     fondo_mantenimiento_stock,          # 11
-    fondo_mantenimiento_notificaciones,  # 12
+    fondo_mantenimiento_notificaciones, # 12
     fondo_mantenimiento_notificaciones_archivadas,  # 13
     fondo_menu_recepcionista,          # 14
-    fondo_recepcionista_notificar,      # 15
+    fondo_recepcionista_notificar,     # 15
     fondo_recepcinista_eventos,        # 16
     fondo_recepcinista_limpieza,       # 17
     suite_balcon,                      # 18
@@ -151,7 +153,6 @@ def reset_textos(*textos):
     for texto in textos:
         texto[1] = ""
     
-
 
 
 
@@ -297,26 +298,24 @@ def cursor(mouse_pos):
 
 
 
-
-
     elif fondo_actual[0] == "reservar habitacion":
 
-        if mouse_pos[0] < 687 and mouse_pos[0] > 400 and mouse_pos[1] < 300 and mouse_pos[1] > 253: #nombre y apellido        
+        if mouse_pos[0] < 690 and mouse_pos[0] > 400 and mouse_pos[1] < 295 and mouse_pos[1] > 255: #nombre y apellido        
                         
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM) 
         
 
-        elif mouse_pos[0] < 332 and mouse_pos[0] > 223 and mouse_pos[1] < 383 and mouse_pos[1] > 225: #dia inicio        
+        elif mouse_pos[0] < 330 and mouse_pos[0] > 225 and mouse_pos[1] < 375 and mouse_pos[1] > 335: #dia inicio        
                         
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM) 
 
 
-        elif mouse_pos[0] < 493 and mouse_pos[0] > 386 and mouse_pos[1] < 380 and mouse_pos[1] > 337: #dia fin      
+        elif mouse_pos[0] < 490 and mouse_pos[0] > 386 and mouse_pos[1] < 380 and mouse_pos[1] > 335: #dia fin      
                         
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM) 
         
 
-        elif mouse_pos[0] < 690 and mouse_pos[0] > 289 and mouse_pos[1] < 453 and mouse_pos[1] > 411: #direccion      
+        elif mouse_pos[0] < 690 and mouse_pos[0] > 290 and mouse_pos[1] < 453 and mouse_pos[1] > 411: #direccion      
                         
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM) 
 
@@ -359,9 +358,6 @@ def cursor(mouse_pos):
         elif mouse_pos[0] < 1108 and mouse_pos[0] > 1058 and mouse_pos[1] < 460 and mouse_pos[1] > 307: #tarjeta
                         
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-
-
-
 
 
         else:
@@ -440,6 +436,7 @@ def cursor(mouse_pos):
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW) 
 
 
+
     elif fondo_actual[0] == "menu bedroom":
 
         if mouse_pos[0] < 481 and mouse_pos[0] > 250 and mouse_pos[1] < 655 and mouse_pos[1] > 576: #pedir limpieza
@@ -462,19 +459,20 @@ def cursor(mouse_pos):
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
 
+
     elif fondo_actual[0] == "menu amenities":
 
-        if mouse_pos[0] < 450 and mouse_pos[0] > 392 and mouse_pos[1] < 392 and mouse_pos[1] > 340: #spa
+        if mouse_pos[0] < 455 and mouse_pos[0] > 400 and mouse_pos[1] < 342 and mouse_pos[1] > 290: #spa
 
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         
 
-        elif mouse_pos[0] < 747 and mouse_pos[0] > 690 and mouse_pos[1] < 392 and mouse_pos[1] > 340: #piscina
+        elif mouse_pos[0] < 740 and mouse_pos[0] > 688 and mouse_pos[1] < 345 and mouse_pos[1] > 290: #piscina
 
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         
 
-        elif mouse_pos[0] < 1026 and mouse_pos[0] > 968 and mouse_pos[1] < 392 and mouse_pos[1] > 340: #gimnasio
+        elif mouse_pos[0] < 1005 and mouse_pos[0] > 948 and mouse_pos[1] < 345 and mouse_pos[1] > 290: #gimnasio
 
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         
@@ -900,6 +898,98 @@ while running:
 
 
 
+                elif fondo_actual[0] == "reservar habitacion":
+
+                    if mouse_pos[0] < 687 and mouse_pos[0] > 400 and mouse_pos[1] < 300 and mouse_pos[1] > 253: #nombre y apellido        
+                                    
+                        texto_ingresado = texto1[1]
+                        texto_seleccionado = texto1   
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 11 
+                    
+
+                    elif mouse_pos[0] < 332 and mouse_pos[0] > 223 and mouse_pos[1] < 383 and mouse_pos[1] > 225: #dia inicio        
+                                    
+                        texto_ingresado = texto2[1]
+                        texto_seleccionado = texto2   
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 11 
+
+
+                    elif mouse_pos[0] < 493 and mouse_pos[0] > 386 and mouse_pos[1] < 380 and mouse_pos[1] > 337: #dia fin      
+                                    
+                        texto_ingresado = texto3[1]
+                        texto_seleccionado = texto3
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 11  
+                    
+
+                    elif mouse_pos[0] < 690 and mouse_pos[0] > 289 and mouse_pos[1] < 453 and mouse_pos[1] > 411: #direccion      
+                                    
+                        texto_ingresado = texto4[1]
+                        texto_seleccionado = texto4  
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 11 
+
+                    
+                    elif mouse_pos[0] < 690 and mouse_pos[0] > 273 and mouse_pos[1] < 520 and mouse_pos[1] > 480: #telefono     
+                                    
+                        texto_ingresado = texto5[1]
+                        texto_seleccionado = texto5   
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 11 
+                    
+
+                    elif mouse_pos[0] < 690 and mouse_pos[0] > 232 and mouse_pos[1] < 588 and mouse_pos[1] > 546: #mail   
+                                    
+                        texto_ingresado = texto6[1]
+                        texto_seleccionado = texto6   
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 11 
+                                        
+
+                    elif mouse_pos[0] < 1107 and mouse_pos[0] > 896 and mouse_pos[1] < 223 and mouse_pos[1] > 178: #dni/cuit   
+                                    
+                        texto_ingresado = texto7[1]
+                        texto_seleccionado = texto7   
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 11 
+                    
+
+                    elif mouse_pos[0] < 1107 and mouse_pos[0] > 937 and mouse_pos[1] < 295 and mouse_pos[1] > 251: #codigo postal 
+                                    
+                        texto_ingresado = texto8[1]
+                        texto_seleccionado = texto8   
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 11 
+                    
+
+                    elif mouse_pos[0] < 925 and mouse_pos[0] > 870 and mouse_pos[1] < 460 and mouse_pos[1] > 405: #efectivo
+                                    
+                        pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+                    elif mouse_pos[0] < 1006 and mouse_pos[0] > 954 and mouse_pos[1] < 534 and mouse_pos[1] > 480: #mercado pago
+                                    
+                        pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+                    elif mouse_pos[0] < 1108 and mouse_pos[0] > 1058 and mouse_pos[1] < 460 and mouse_pos[1] > 307: #tarjeta
+                                    
+                        pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+
+
+
                 if alter_usuario:
 
 
@@ -978,6 +1068,8 @@ while running:
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         
                         
+
+
 
                 if fondo_actual[0] in ["habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"] and alter_mouse == False:        
                     alter_mouse = True
@@ -1082,8 +1174,6 @@ while running:
             screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )   
             screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
 
-            
-
 
         elif fondo_actual[0] == "menu parking":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
@@ -1123,8 +1213,29 @@ while running:
 
 
         elif fondo_actual[0] == "reservar habitacion":
+            texto1[0] = (415, 252) #Nombre
+            texto2[0] = (234, 335) #Dia1
+            texto3[0] = (398, 335) #Dia2
+            texto4[0] = (302, 410) #Direccion
+            texto5[0] = (286, 479) #Telefono
+            texto6[0] = (249, 545) #Mail
+            texto7[0] = (908, 176) #DNI
+            texto8[0] = (945, 251)
+            if texto_seleccionado != texto2:
+                texto2[1] = "AAAA/MM/DD"
+            if texto_seleccionado != texto3:
+                texto3[1] = "AAAA/MM/DD"
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
-
+            screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
+            screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
+            screen.blit(fuente.render(texto2[1], True, (0, 0, 0)), texto2[0])
+            screen.blit(fuente.render(texto3[1], True, (0, 0, 0)), texto3[0])
+            screen.blit(fuente.render(texto4[1], True, (0, 0, 0)), texto4[0])
+            screen.blit(fuente.render(texto5[1], True, (0, 0, 0)), texto5[0])
+            screen.blit(fuente.render(texto6[1], True, (0, 0, 0)), texto6[0])
+            screen.blit(fuente.render(texto7[1], True, (0, 0, 0)), texto7[0])
+            screen.blit(fuente.render(texto8[1], True, (0, 0, 0)), texto8[0])
+            
 
         if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon", "reservar habitacion"]:
             screen.blit (barra_arriba, (0,0))

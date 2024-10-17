@@ -1214,17 +1214,24 @@ while running:
 
         elif fondo_actual[0] == "reservar habitacion":
             texto1[0] = (415, 252) #Nombre
-            texto2[0] = (234, 335) #Dia1
-            texto3[0] = (398, 335) #Dia2
+            texto2[0] = (223, 336) #Dia1
+            texto3[0] = (484, 335) #Dia2
             texto4[0] = (302, 410) #Direccion
             texto5[0] = (286, 479) #Telefono
             texto6[0] = (249, 545) #Mail
             texto7[0] = (908, 176) #DNI
             texto8[0] = (945, 251)
+
             if texto_seleccionado != texto2:
-                texto2[1] = "AAAA/MM/DD"
+                texto2[1] = "DD/MM/AAAA"
+            else:
+                texto2[1] = texto_seleccionado[1]
+
             if texto_seleccionado != texto3:
-                texto3[1] = "AAAA/MM/DD"
+                texto3[1] = "DD/MM/AAAA"
+            else:
+                texto3[1] = texto_seleccionado[1]
+
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
             screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
             screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])

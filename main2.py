@@ -300,7 +300,7 @@ def cursor(mouse_pos):
 
     elif fondo_actual[0] == "reservar habitacion":
 
-        if mouse_pos[0] < 690 and mouse_pos[0] > 400 and mouse_pos[1] < 295 and mouse_pos[1] > 255: #nombre y apellido        
+        if mouse_pos[0] < 690 and mouse_pos[0] > 255 and mouse_pos[1] < 300 and mouse_pos[1] > 250: #nombre       
                         
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM) 
         

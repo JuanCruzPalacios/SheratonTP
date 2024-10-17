@@ -48,5 +48,71 @@
                 "15:36:37"
             ]
         ]
+    },
+
+    "2": {
+        "Ocupado" : 0,
+        "Ocupante" : "Nadie" , 
+        "EstadoActual": "Afuera", 
+        "UltimoIngreso" : [],
+        "UltimoEgreso" : []
+    },
+
+    "3": {
+        "Ocupado" : 0,
+        "Ocupante" : "Nadie" , 
+        "EstadoActual": "Afuera", 
+        "UltimoIngreso" : [],
+        "UltimoEgreso" : []
+    },
+
+    "4": {
+        "Ocupado" : 0,
+        "Ocupante" : "Nadie" , 
+        "EstadoActual": "Afuera", 
+        "UltimoIngreso" : [],
+        "UltimoEgreso" : []
+    },
+
+    "5": {
+        "Ocupado" : 0,
+        "Ocupante" : "Nadie" , 
+        "EstadoActual": "Afuera", 
+        "UltimoIngreso" : [],
+        "UltimoEgreso" : []
+    },
+
+    "6": {
+        "Ocupado" : 0,
+        "Ocupante" : "Nadie" , 
+        "EstadoActual": "Afuera", 
+        "UltimoIngreso" : [],
+        "UltimoEgreso" : []
+    },
+
+    "7": {
+        "Ocupado" : 0,
+        "Ocupante" : "Nadie" , 
+        "EstadoActual": "Afuera", 
+        "UltimoIngreso" : [],
+        "UltimoEgreso" : []
+    },
+
+    "8": {
+        "Ocupado" : 0,
+        "Ocupante" : "Nadie" , 
+        "EstadoActual": "Afuera", 
+        "UltimoIngreso" : [],
+        "UltimoEgreso" : []
+    },
+
+    "9": {
+        "Ocupado" : 0,
+        "Ocupante" : "Nadie" , 
+        "EstadoActual": "Afuera", 
+        "UltimoIngreso" : [],
+        "UltimoEgreso" : []
     }
+
 }
+

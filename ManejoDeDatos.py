@@ -1,7 +1,7 @@
 # Funciones requeridas : 
 
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 
 def VerStock(): 
     Stock = LeerJson("Stock.json")
@@ -432,6 +432,8 @@ def CancelarReservaEstacionamiento(usuario , id):
             data_parking[id]["Ocupado"] = 0
             data_parking[id]["Ocupante"] = "Nadie"
             data_parking[id]["EstadoActual"] = "Afuera"
+            data_parking[id]["UltimoIngreso"] = []
+            data_parking[id]["UltimoEgreso"] = []
             parking.remove(id)
             data_usuario[usuario]["IdEstacionamiento"] = parking
             ActualizarJson("Usuario.json" , data_usuario)
@@ -442,8 +444,43 @@ def CancelarReservaEstacionamiento(usuario , id):
     except: 
         print("El usuario o el estacionamiento ingresado no existe.")
 
-
-
-
-
+def diferencia_dias(fecha1_str, fecha2_str):#dia inicio y dia final se ponen AÑO,MES,DIA
+    fecha1 = datetime.strptime(fecha1_str, '%Y-%m-%d')
+    fecha2 = datetime.strptime(fecha2_str, '%Y-%m-%d')
     
+    diferencia = abs((fecha2 - fecha1).days)
+    return int(diferencia)
+    
+def CalcularPrecioHabitacion(habitacion, dia_inicio, dia_final):#dia inicio y dia final se ponen AÑO,MES,DIA
+    contenido = LeerJson("Habitaciones.json")
+    precio = contenido[habitacion]["Precio"]
+    return precio*diferencia_dias(dia_inicio,dia_final)
+
+def CalcularPrecioAmenities(dia_inicio,dia_final,cantidad_amenities):#dia inicio y dia final se ponen AÑO,MES,DIA
+    return ((50*cantidad_amenities)*diferencia_dias(dia_inicio,dia_final))
+
+def CalcularPrecioEstacionamiento(dia_inicio,dia_final):#dia inicio y dia final se ponen AÑO,MES,DIA
+    return 4*diferencia_dias(dia_inicio,dia_final)
+
+def ReservarEstacionamiento(usuario , dia_final):
+    contenido = LeerJson("Estacionamiento.json")
+    data_usuario = LeerJson("Usuario.json")
+    parking = data_usuario[usuario]["IdEstacionamiento"]
+
+    pase = False
+    for i in contenido: 
+        if contenido[i]["Ocupado"] == 0:
+            contenido[i]["Ocupado"] = 1 
+            contenido[i]["Ocupante"] = usuario 
+            contenido[i]["Vencimiento"] = dia_final
+            pase = True
+            parking.append(i)
+            data_usuario[usuario]["IdEstacionamiento"] = parking
+            print("Se reservo un estacionamiento existente de forma exitosa.")
+            ActualizarJson("Estacionamiento.json" , contenido)
+            ActualizarJson("Usuario.json" , data_usuario)
+            return True
+            break
+    if not pase :
+        print("No hay estacionamiento disponible.") 
+        return False

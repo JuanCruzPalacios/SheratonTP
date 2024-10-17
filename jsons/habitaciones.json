@@ -10,7 +10,7 @@
 "EstadoActual" : "" ,  
 "IdClienteOcupante" : "" , 
 "Fechas":[],
-"Precio" : "240",
+"Precio" : 240,
 "RangoHuespedes": 2
 },
 
@@ -23,7 +23,7 @@
 "EstadoActual" : "Ninguno" ,  
 "IdClienteOcupante" : 1 , 
 "Fechas":[["10/10/2024"],["11/10/2024"]],
-"Precio" : "255",
+"Precio" : 255,
 "RangoHuespedes": 3
 },
 
@@ -36,7 +36,7 @@
 "EstadoActual" : "" ,  
 "IdClienteOcupante" : "" , 
 "Fechas":[""],
-"Precio" : "200",
+"Precio" : 200,
 "RangoHuespedes": 2
 },
 
@@ -49,7 +49,7 @@
 "EstadoActual" : "" ,  
 "IdClienteOcupante" : "" , 
 "Fechas":[""],
-"Precio" : "410",
+"Precio" : 410,
 "RangoHuespedes": 2
 },
 
@@ -62,7 +62,7 @@
 "EstadoActual" : "" ,  
 "IdClienteOcupante" : "" , 
 "Fechas":[""],
-"Precio" : "297",
+"Precio" : 297,
 "RangoHuespedes": 4
 },
 
@@ -75,7 +75,7 @@
 "EstadoActual" : "" ,  
 "IdClienteOcupante" : "" , 
 "Fechas":[""],
-"Precio" : "290",
+"Precio" : 290,
 "RangoHuespedes": 2
 },
 
@@ -88,7 +88,7 @@
 "EstadoActual" : "" ,  
 "IdClienteOcupante" : "" , 
 "Fechas":[""],
-"Precio" : "180",
+"Precio" : 180,
 "RangoHuespedes": 1
 },
 
@@ -101,7 +101,7 @@
 "EstadoActual" : "" ,  
 "IdClienteOcupante" : "" , 
 "Fechas":[""],
-"Precio" : "325",
+"Precio" : 325,
 "RangoHuespedes": 2
 },
 
@@ -114,7 +114,7 @@
 "EstadoActual" : "" ,  
 "IdClienteOcupante" : "" , 
 "Fechas":[""],
-"Precio" : "215",
+"Precio" : 215,
 "RangoHuespedes": 2
 }
 

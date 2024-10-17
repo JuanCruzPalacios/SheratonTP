@@ -1113,8 +1113,8 @@ while running:
     if True:
 
         if fondo_actual[0] == "iniciar sesion":
-            texto1[0] = ( 467 , 486 )
-            texto2[0] = ( 467 , 592 )
+            texto1[0] = ( 467 , 487 )
+            texto2[0] = ( 467 , 593 )
             texto3[0] = ( 420 , 377 )
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))       
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
@@ -1125,10 +1125,10 @@ while running:
         
         elif fondo_actual[0] == "registrarse":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0)) 
-            texto1[0] = ( 467 , 465 )
-            texto2[0] = ( 467 , 541 )    
-            texto3[0] = ( 467 , 617 ) 
-            texto4[0] = ( 415 , 375 )
+            texto1[0] = ( 467 , 466 )
+            texto2[0] = ( 467 , 543 )    
+            texto3[0] = ( 467 , 620 ) 
+            texto4[0] = ( 415 , 378 )
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
             screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )  
             screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )
@@ -1167,9 +1167,9 @@ while running:
                 
 
             screen.blit (imagen_filtro , ( 30, 160 ))        
-            texto1[0] = ( 190 , 266 )
-            texto2[0] = ( 47 , 411 )    
-            texto3[0] = ( 190 , 411 )
+            texto1[0] = ( 192 , 265 )
+            texto2[0] = ( 52 , 412 )    
+            texto3[0] = ( 192 , 412 )
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
             screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )  
             screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )   
@@ -1178,8 +1178,8 @@ while running:
 
         elif fondo_actual[0] == "menu parking":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
-            texto1[0] = (365, 346)
-            texto2[0] = (785, 346)
+            texto1[0] = (400, 350)     #(365, 350)
+            texto2[0] = (822, 350)     #(785, 350)  
             reset_textos(texto1,texto2)
             try:
                 for i in range(len(VerNumeroHabitacion(usuario))):

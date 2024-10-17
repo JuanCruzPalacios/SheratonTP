@@ -840,7 +840,12 @@ while running:
                     elif mouse_pos[0] < 253 and mouse_pos[0] > 76 and mouse_pos[1] < 512 and mouse_pos[1] > 475:#restablecer
                         habitaciones_libres = [0,1,2,3,4,5,6,7,8]
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
-                        
+                        print(texto1)
+                        barra = texto_seleccionado[1] + "|"  
+                        texto_ingresado = ""
+                        print(barra)
+
+                        ultimo_cambio_barra  = pygame.time.get_ticks()
                         alter_mouse = True
 
 
@@ -892,6 +897,7 @@ while running:
                                 fondo_actual[0] = "suite estandar"
                                 fondo_actual[1] = 26
                                 texto_seleccionado = [(-100,-100),""]
+
 
 
 

@@ -2,7 +2,7 @@
 
 import json
 from datetime import datetime
- 
+
 def VerStock(): 
     Stock = LeerJson("Stock.json")
     lista_stock = []
@@ -171,10 +171,6 @@ def VerNumeroEstacionamiento(cliente):
     contenido = LeerJson("Usuario.json")
     return contenido[cliente]["IdEstacionamiento"]
 
-def VencimientoEstacionamiento(id_estacionamiento):
-    contenido = LeerJson("Estacionamiento.json")
-    return(contenido[id_estacionamiento]["Vencimiento"])
-
 def VerNotificacion(numero_de_notificacion):
     numero_de_notificacion = str(numero_de_notificacion) 
     Notificaciones = LeerJson("Notificaciones.json")
@@ -302,6 +298,10 @@ def FijarDesfijarNotificaciones (id_notificacion):
         contenido[id_notificacion]["Fijada"] = 0
     ActualizarJson("Notificaciones.json", contenido)
 
+def VencimientoEstacionamiento(id_estacionamiento):
+    contenido = LeerJson("Estacionamiento.json")
+    return(contenido[id_estacionamiento]["Vencimiento"])
+
 def AgregarEliminarStock (nombre_stock , cantidad) : 
     Stock = LeerJson("Stock.json")
     try: 
@@ -326,6 +326,22 @@ def ContratarAmenities(usuario,amenitie,fecha,precio):
     contenido2[usuario]["Contrataciones"] = amenitie
     ActualizarJson("Contrataciones.json", contenido)
     ActualizarJson("Usuario.json", contenido2)
+
+def CancelarReservaHabitaciones(usuario,id_habitacion):
+    contenido = LeerJson("Usuario.json")
+    contenido2 = LeerJson("Habitaciones.json")
+    try:
+        contenido[usuario]["IdHabitacion"].pop(id_habitacion)
+    except:
+        print("Habitacion no encontrada")
+    habitaciones = ["suite_balcon","habitacion_triple","habitacion_doble","habitacion_lujo","habitacion_cuadruple","suite_rio","habitacion_individual","suite_jacuzzi","suite_estandar"]
+    for i in range(0,8):
+        if contenido2[habitaciones[i]]["ID"] == id_habitacion:
+            contenido2[habitaciones[i]]["IdClienteOcupante"] == ""
+            contenido2[habitaciones[i]]["Fechas"] == [""]
+            contenido2[habitaciones[i]]["EstadoActual"] == [""]
+    ActualizarJson("Usuario.json", contenido)
+    ActualizarJson("Habitaciones.json", contenido2)
 
 def ArchivarDesarchivarNotificaciones (id_notificacion):
     contenido = LeerJson("Notificaciones.json")
@@ -386,6 +402,28 @@ def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contrase
 
 
     ActualizarJson("Usuario.json", contenido_actual)
+
+def CancelarReservaEstacionamiento(usuario , id):
+    id = str(id)
+    data_usuario = LeerJson("Usuario.json")
+    data_parking = LeerJson("Estacionamiento.json")
+    try:
+        parking = data_usuario[usuario]["IdEstacionamiento"]
+        if id in parking: 
+            data_parking[id]["Ocupado"] = 0
+            data_parking[id]["Ocupante"] = "Nadie"
+            parking.remove(id)
+            data_usuario[usuario]["IdEstacionamiento"] = parking
+            ActualizarJson("Usuario.json" , data_usuario)
+            ActualizarJson("Estacionamiento.json" , data_parking)
+            print("Reserva de estacionamiento cancelada con exito.")
+        else:
+            print("El usuario no posee ese estacionamiento.")
+    except: 
+        print("El usuario o el estacionamiento ingresado no existe.")
+
+
+
 
 
 

@@ -140,6 +140,9 @@ barra = "|"
 posicion = 150
 alter_mouse = False
 
+alter_barra = True
+ultimo_cambio_barra = pygame.time.get_ticks()
+
 texto_seleccionado =  texto1 
 texto_ingresado = ""
 
@@ -489,8 +492,6 @@ def cursor(mouse_pos):
 
 
 
-
-
     if fondo_actual[0] in ["habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"]:
             if mouse_pos[0] < 1008 and mouse_pos[0] > 785 and mouse_pos[1] < 666 and mouse_pos[1] > 605:#reservar       
                 pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)    
@@ -576,7 +577,6 @@ while running:
        
 
 
-
         if event.type == pygame.KEYDOWN:
                      
             if event.key == pygame.K_BACKSPACE:
@@ -589,7 +589,7 @@ while running:
     
             elif event.key == pygame.K_ESCAPE:
                 #aleja la barra de escritura fuera de la pantalla
-                texto_seleccionado = [(-10,-10),""]
+                texto_seleccionado = [(-100,-100),""]
                 
             elif event.key == 13 :#enter
                 if fondo_actual[0] == "iniciar sesion":
@@ -639,15 +639,16 @@ while running:
                         texto_ingresado += event.unicode
                 
             texto_seleccionado[1] = texto_ingresado
-            barra = texto_ingresado + "|"
-
+            barra = texto_seleccionado[1] + "|" 
             
 
+            
 
         if event.type == pygame.MOUSEBUTTONUP :        
         
             if event.button == 1:
                 alter_mouse = False
+
 
 
 
@@ -680,8 +681,9 @@ while running:
 
                     if mouse_pos[0] <= 819 and mouse_pos[0] >= 459 and mouse_pos[1] <= 525 and mouse_pos[1] >= 488: #-----> Usuario
                         texto_ingresado = texto1[1]
-                        texto_seleccionado = texto1 #Usuario / iniciar sesion
-                        barra = texto_ingresado + "|"
+                        texto_seleccionado = texto1 #Usuario / iniciar sesion   
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
                         limite = 11
 
                     
@@ -689,7 +691,9 @@ while running:
                     elif mouse_pos[0] <= 819 and mouse_pos[0] >= 459 and mouse_pos[1] <= 630 and mouse_pos[1] >= 593:#-----> Contraseña                    
                         texto_ingresado = texto2[1]
                         texto_seleccionado = texto2 #Contraseña / iniciar sesion
-                        barra = texto_ingresado + "|"
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()   
+                        
                         limite = 11
 
 
@@ -705,6 +709,7 @@ while running:
                                 fondo_actual[0] = "menu habitaciones"
                                 fondo_actual[1] = 6
                                 texto_ingresado = ""
+                                texto_seleccionado = [(-100,-100),""]
                                 reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                                 
                             else:
@@ -718,6 +723,7 @@ while running:
                         fondo_actual[0] = "registrarse"
                         fondo_actual[1] = 1
                         texto_ingresado = ""
+                        texto_seleccionado = [(-100,-100),""]
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                                       
 
@@ -731,6 +737,8 @@ while running:
 
                         texto_seleccionado = texto1 #usuario / registrarse
                         texto_ingresado = texto1[1]
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()   
                         limite = 11
 
 
@@ -738,6 +746,8 @@ while running:
 
                         texto_seleccionado = texto2 #mail / registrarse
                         texto_ingresado = texto2[1]
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()   
                         limite = 11
 
 
@@ -745,8 +755,9 @@ while running:
     
                         texto_seleccionado = texto3 #contraseña / registrarse
                         texto_ingresado = texto3[1]
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()   
                         limite = 11
-
 
 
                     elif mouse_pos[0] <= 871 and mouse_pos[0] >= 832 and mouse_pos[1] <= 669 and mouse_pos[1] >= 633:#-----> Siguiente
@@ -760,6 +771,7 @@ while running:
                                     fondo_actual[0] = "menu habitaciones"
                                     fondo_actual[1] = 6
                                     texto_ingresado = ""
+                                    texto_seleccionado = [(-100,-100),""]
                                     reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                                     
 
@@ -775,6 +787,7 @@ while running:
                         fondo_actual[0] = "iniciar sesion"
                         fondo_actual[1] = 0
                         texto_ingresado = ""
+                        texto_seleccionado = [(-100,-100),""]
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                                        
 
@@ -788,7 +801,8 @@ while running:
                     if mouse_pos[0] < 282 and mouse_pos[0] > 185 and mouse_pos[1] < 302 and mouse_pos[1] > 267:#personas        
                         texto_seleccionado = texto1
                         texto_ingresado = texto1[1]
-                        barra = texto_ingresado + "|"
+                        barra = texto_ingresado + "|" 
+                        ultimo_cambio_barra  = pygame.time.get_ticks()   
                         limite = 3
                         alter_mouse = True
 
@@ -797,7 +811,8 @@ while running:
                     elif mouse_pos[0] < 142 and mouse_pos[0] > 46 and mouse_pos[1] < 450 and mouse_pos[1] > 415:#precio "desde"
                         texto_seleccionado = texto2
                         texto_ingresado = texto2[1]
-                        barra = texto_ingresado + "|"
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()   
                         limite = 3
                         alter_mouse = True
 
@@ -806,7 +821,8 @@ while running:
                     elif mouse_pos[0] < 284 and mouse_pos[0] > 185 and mouse_pos[1] < 450 and mouse_pos[1] > 416:#precio "hasta"
                         texto_seleccionado = texto3
                         texto_ingresado = texto3[1]
-                        barra = texto_ingresado + "|"
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()   
                         limite = 3
                         alter_mouse = True
 
@@ -835,38 +851,47 @@ while running:
                             if suite_balcon_rect[0].collidepoint(mouse_pos):
                                 fondo_actual[0] = "habitacion balcon"
                                 fondo_actual[1] = 18
+                                texto_seleccionado = [(-100,-100),""]
 
                             elif habitacion_triple_rect[0].collidepoint(mouse_pos):
                                 fondo_actual[0] = "habitacion triple"
                                 fondo_actual[1] = 19
+                                texto_seleccionado = [(-100,-100),""]
 
                             elif habitacion_doble_rect[0].collidepoint(mouse_pos):
                                 fondo_actual[0] = "habitacion doble"
                                 fondo_actual[1] = 20
+                                texto_seleccionado = [(-100,-100),""]
 
                             elif habitacion_lujo_rect[0].collidepoint(mouse_pos):
                                 fondo_actual[0] = "habitacion lujo"
                                 fondo_actual[1] = 21
+                                texto_seleccionado = [(-100,-100),""]
 
                             elif habitacion_cuadruple_rect[0].collidepoint(mouse_pos):
                                 fondo_actual[0] = "habitacion cuadruple"
                                 fondo_actual[1] = 22
+                                texto_seleccionado = [(-100,-100),""]
 
                             elif suite_rio_rect[0].collidepoint(mouse_pos):
                                 fondo_actual[0] = "suite rio"
                                 fondo_actual[1] = 23
+                                texto_seleccionado = [(-100,-100),""]
 
                             elif habitacion_individual_rect[0].collidepoint(mouse_pos):
                                 fondo_actual[0] = "habitacion individual"
                                 fondo_actual[1] = 24
+                                texto_seleccionado = [(-100,-100),""]
 
                             elif suite_jacuzzi_rect[0].collidepoint(mouse_pos):
                                 fondo_actual[0] = "suite jacuzzi"
                                 fondo_actual[1] = 25
+                                texto_seleccionado = [(-100,-100),""]
 
                             elif suite_estandar_rect[0].collidepoint(mouse_pos):
                                 fondo_actual[0] = "suite estandar"
                                 fondo_actual[1] = 26
+                                texto_seleccionado = [(-100,-100),""]
 
 
 
@@ -877,6 +902,7 @@ while running:
                     if mouse_pos[0] < 1205  and mouse_pos[0] > 1030 and mouse_pos[1] < 478 and mouse_pos[1] > 431: #salir
                         fondo_actual[0] = "iniciar sesion"
                         fondo_actual[1] = 0
+                        texto_seleccionado = [(-100,-100),""]
                         alter_usuario = not(alter_usuario)
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         
@@ -885,6 +911,7 @@ while running:
                     elif mouse_pos[0] < 1245 and mouse_pos[0] > 992 and mouse_pos[1] < 310 and mouse_pos[1] > 261: #ver datos
                         fondo_actual[0] = "ver datos"
                         fondo_actual[1] = 9
+                        texto_seleccionado = [(-100,-100),""]
                         alter_usuario = not(alter_usuario)
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                                             
@@ -893,6 +920,7 @@ while running:
                     elif mouse_pos[0] < 1245 and mouse_pos[0] > 992 and mouse_pos[1] < 395 and mouse_pos[1] > 350: #reservar eventos
                         fondo_actual[0] = "reservar eventos"
                         fondo_actual[1] = 8
+                        texto_seleccionado = [(-100,-100),""]
                         alter_usuario = not(alter_usuario)
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         
@@ -907,6 +935,7 @@ while running:
                     if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15 and fondo_actual != "menu habitaciones" : #Home 
                         fondo_actual[0] = "menu habitaciones"
                         fondo_actual[1] = 6
+                        texto_seleccionado = [(-100,-100),""]
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         
                         
@@ -916,6 +945,7 @@ while running:
                     elif mouse_pos[0] < 560 and mouse_pos[0] > 435 and mouse_pos[1] < 100 and mouse_pos[1] > 15 and fondo_actual != "menu parking" :#Parking
                         fondo_actual[0] = "menu parking"
                         fondo_actual[1] = 2
+                        texto_seleccionado = [(-100,-100),""]
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         
 
@@ -924,6 +954,7 @@ while running:
                     elif mouse_pos[0] < 710 and mouse_pos[0] > 590 and mouse_pos[1] < 100 and mouse_pos[1] > 15 and fondo_actual != "menu bedroom":#Bedroom
                         fondo_actual[0] = "menu bedroom"
                         fondo_actual[1] = 3
+                        texto_seleccionado = [(-100,-100),""]
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         
 
@@ -932,6 +963,7 @@ while running:
                     elif mouse_pos[0] < 860 and mouse_pos[0] > 745 and mouse_pos[1] < 100 and mouse_pos[1] > 15 and fondo_actual != "menu amenities" :#Services
                         fondo_actual[0] = "menu amenities"
                         fondo_actual[1] = 7
+                        texto_seleccionado = [(-100,-100),""]
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         
                     
@@ -947,16 +979,35 @@ while running:
                     alter_mouse = True
                     if mouse_pos[0] < 1008 and mouse_pos[0] > 785 and mouse_pos[1] < 666 and mouse_pos[1] > 605:#reservar
                         fondo_actual[0] = "reservar habitacion"
+                        texto_seleccionado = [(-100,-100),""]
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         
                         fondo_actual[1] = 5
 
 
 
+
+    tiempo_actual = pygame.time.get_ticks()
+    
+    
+    if (tiempo_actual - ultimo_cambio_barra) >= 650 :
+
+        alter_barra = not(alter_barra)
+        
+        if alter_barra:
+                       
+            ultimo_cambio_barra  = pygame.time.get_ticks()
+            if texto_seleccionado != "":
+                barra = texto_seleccionado[1] + "|" 
+
+        else:
+                   
+            ultimo_cambio_barra  = pygame.time.get_ticks()
+            if texto_seleccionado != "":
+                barra = texto_seleccionado[1]
         
         
-        
-        cursor(mouse_pos)
+    cursor(mouse_pos)
 
 
     #fondos :)

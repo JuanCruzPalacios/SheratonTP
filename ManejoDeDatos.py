@@ -1,7 +1,7 @@
 # Funciones requeridas : 
 
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 
 def VerStock(): 
     Stock = LeerJson("Stock.json")
@@ -432,6 +432,8 @@ def CancelarReservaEstacionamiento(usuario , id):
             data_parking[id]["Ocupado"] = 0
             data_parking[id]["Ocupante"] = "Nadie"
             data_parking[id]["EstadoActual"] = "Afuera"
+            data_parking[id]["UltimoIngreso"] = []
+            data_parking[id]["UltimoEgreso"] = []
             parking.remove(id)
             data_usuario[usuario]["IdEstacionamiento"] = parking
             ActualizarJson("Usuario.json" , data_usuario)
@@ -461,4 +463,25 @@ def CalcularPrecioEstacionamiento(dia_final):
     dia_inicio = datetime.now()
     return 4*diferencia_dias(dia_inicio,dia_final)
 
+def ReservarEstacionamiento(usuario , dia_final):
+    contenido = LeerJson("Estacionamiento.json")
+    data_usuario = LeerJson("Usuario.json")
+    parking = data_usuario[usuario]["IdEstacionamiento"]
 
+    pase = False
+    for i in contenido: 
+        if contenido[i]["Ocupado"] == 0:
+            contenido[i]["Ocupado"] = 1 
+            contenido[i]["Ocupante"] = usuario 
+            contenido[i]["Vencimiento"] = dia_final
+            pase = True
+            parking.append(i)
+            data_usuario[usuario]["IdEstacionamiento"] = parking
+            print("Se reservo un estacionamiento existente de forma exitosa.")
+            ActualizarJson("Estacionamiento.json" , contenido)
+            ActualizarJson("Usuario.json" , data_usuario)
+            return True
+            break
+    if not pase :
+        print("No hay estacionamiento disponible.") 
+        return False

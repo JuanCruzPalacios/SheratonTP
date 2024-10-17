@@ -444,23 +444,22 @@ def CancelarReservaEstacionamiento(usuario , id):
     except: 
         print("El usuario o el estacionamiento ingresado no existe.")
 
-def diferencia_dias(fecha1_str, fecha2_str):
-    fecha1 = datetime.strptime(fecha1_str, '%d/%m/%Y')
-    fecha2 = datetime.strptime(fecha2_str, '%d/%m/%Y')
+def diferencia_dias(fecha1_str, fecha2_str):#dia inicio y dia final se ponen AÑO,MES,DIA
+    fecha1 = datetime.strptime(fecha1_str, '%Y-%m-%d')
+    fecha2 = datetime.strptime(fecha2_str, '%Y-%m-%d')
     
     diferencia = abs((fecha2 - fecha1).days)
     return int(diferencia)
-  
-def CalcularPrecioHabitacion(habitacion, dia_inicio, dia_final):
+    
+def CalcularPrecioHabitacion(habitacion, dia_inicio, dia_final):#dia inicio y dia final se ponen AÑO,MES,DIA
     contenido = LeerJson("Habitaciones.json")
     precio = contenido[habitacion]["Precio"]
     return precio*diferencia_dias(dia_inicio,dia_final)
 
-def CalcularPrecioAmenities(dia_inicio,dia_final,cantidad_amenities):
+def CalcularPrecioAmenities(dia_inicio,dia_final,cantidad_amenities):#dia inicio y dia final se ponen AÑO,MES,DIA
     return ((50*cantidad_amenities)*diferencia_dias(dia_inicio,dia_final))
 
-def CalcularPrecioEstacionamiento(dia_final):
-    dia_inicio = datetime.now()
+def CalcularPrecioEstacionamiento(dia_inicio,dia_final):#dia inicio y dia final se ponen AÑO,MES,DIA
     return 4*diferencia_dias(dia_inicio,dia_final)
 
 def ReservarEstacionamiento(usuario , dia_final):

@@ -143,6 +143,8 @@ alter_mouse = False
 alter_barra = True
 ultimo_cambio_barra = pygame.time.get_ticks()
 
+posicion_cuadrado = (-100 , -100 , 10 , 10)
+
 texto_seleccionado =  texto1 
 texto_ingresado = ""
 
@@ -832,7 +834,7 @@ while running:
 
 
                     elif mouse_pos[0] < 253 and mouse_pos[0] > 76 and mouse_pos[1] < 512 and mouse_pos[1] > 475:#restablecer
-                        habitaciones_libres = Filtros("",0,100)
+                        habitaciones_libres = Filtros("",0,1000)
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         print(texto1)
                         barra = texto_seleccionado[1] + "|"  
@@ -975,17 +977,19 @@ while running:
 
                     elif mouse_pos[0] < 925 and mouse_pos[0] > 870 and mouse_pos[1] < 460 and mouse_pos[1] > 405: #efectivo
                                     
-                        pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+                        posicion_cuadrado = ( 877, 413, 41 , 41  )
+                        
 
 
                     elif mouse_pos[0] < 1006 and mouse_pos[0] > 954 and mouse_pos[1] < 534 and mouse_pos[1] > 480: #mercado pago
                                     
-                        pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+                        
+                        posicion_cuadrado = ( 960 , 490 , 41 , 41 )
 
 
                     elif mouse_pos[0] < 1108 and mouse_pos[0] > 1058 and mouse_pos[1] < 460 and mouse_pos[1] > 307: #tarjeta
-                                    
-                        pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+                        posicion_cuadrado = ( 1061, 416, 41 , 41  )        
+                        
 
 
 
@@ -1240,8 +1244,8 @@ while running:
                 barra = texto3[1] + "|"
                 ultimo_cambio_barra = pygame.time.get_ticks()
 
-
-            screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+            
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0))           
             screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
             screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
             screen.blit(fuente.render(texto2[1], True, (0, 0, 0)), texto2[0])
@@ -1251,6 +1255,7 @@ while running:
             screen.blit(fuente.render(texto6[1], True, (0, 0, 0)), texto6[0])
             screen.blit(fuente.render(texto7[1], True, (0, 0, 0)), texto7[0])
             screen.blit(fuente.render(texto8[1], True, (0, 0, 0)), texto8[0])
+            pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado)
             
 
         if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon", "reservar habitacion"]:

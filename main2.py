@@ -305,12 +305,12 @@ def cursor(mouse_pos):
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM) 
         
 
-        elif mouse_pos[0] < 330 and mouse_pos[0] > 225 and mouse_pos[1] < 375 and mouse_pos[1] > 335: #dia inicio        
+        elif mouse_pos[0] < 425 and mouse_pos[0] > 205 and mouse_pos[1] < 375 and mouse_pos[1] > 335: #dia inicio        
                         
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM) 
 
 
-        elif mouse_pos[0] < 490 and mouse_pos[0] > 386 and mouse_pos[1] < 380 and mouse_pos[1] > 335: #dia fin      
+        elif mouse_pos[0] < 710 and mouse_pos[0] > 485 and mouse_pos[1] < 375 and mouse_pos[1] > 335: #dia fin      
                         
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM) 
         

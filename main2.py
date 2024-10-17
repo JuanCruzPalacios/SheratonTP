@@ -380,27 +380,27 @@ def cursor(mouse_pos):
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
 
-        elif  mouse_pos[0] < 315 and mouse_pos[0] > 225 and mouse_pos[1] < 390 and mouse_pos[1] > 335: #inicia el horario
+        elif  mouse_pos[0] < 370 and mouse_pos[0] > 215 and mouse_pos[1] < 382 and mouse_pos[1] > 342: #inicia el horario
 
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
 
-        elif  mouse_pos[0] < 485 and mouse_pos[0] > 390 and mouse_pos[1] < 390 and mouse_pos[1] > 335: #termina el horario el horario
+        elif  mouse_pos[0] < 590 and mouse_pos[0] > 430 and mouse_pos[1] < 380 and mouse_pos[1] > 345: #termina el horario
 
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
 
-        elif  mouse_pos[0] < 580 and mouse_pos[0] > 200 and mouse_pos[1] < 460 and mouse_pos[1] > 415: #dia del evento
+        elif  mouse_pos[0] < 510 and mouse_pos[0] > 205 and mouse_pos[1] < 460 and mouse_pos[1] > 420: #dia del evento
 
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
 
-        elif  mouse_pos[0] < 590 and mouse_pos[0] > 310 and mouse_pos[1] < 527 and mouse_pos[1] > 490: #personal requerido
+        elif  mouse_pos[0] < 590 and mouse_pos[0] > 305 and mouse_pos[1] < 530 and mouse_pos[1] > 490: #personal requerido
 
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
 
-        elif  mouse_pos[0] < 590 and mouse_pos[0] > 225 and mouse_pos[1] < 600 and mouse_pos[1] > 560: #mail
+        elif  mouse_pos[0] < 690 and mouse_pos[0] > 220 and mouse_pos[1] < 605 and mouse_pos[1] > 565: #mail
 
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 

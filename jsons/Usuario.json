@@ -23,14 +23,16 @@
                 "-1"
             ]
         ],
-        "IdEstacionamiento": [
-            "1",
+        "IdEstacionamiento": [ "1" , 
             "2",
             "3",
             "4"
         ],
         "IdHabitacion": [
-            1
+            1,
+            2,
+            3,
+            4
         ]
     },
     "marco": {

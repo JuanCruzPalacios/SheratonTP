@@ -330,7 +330,10 @@ def ContratarAmenities(usuario,amenitie,fecha,precio):
 def CancelarReservaHabitaciones(usuario,id_habitacion):
     contenido = LeerJson("Usuario.json")
     contenido2 = LeerJson("Habitaciones.json")
-    contenido[usuario]["IdHabitacion"].pop(id_habitacion)
+    try:
+        contenido[usuario]["IdHabitacion"].pop(id_habitacion)
+    except:
+        print("Habitacion no encontrada")
     habitaciones = ["suite_balcon","habitacion_triple","habitacion_doble","habitacion_lujo","habitacion_cuadruple","suite_rio","habitacion_individual","suite_jacuzzi","suite_estandar"]
     for i in range(0,8):
         if contenido2[habitaciones[i]]["ID"] == id_habitacion:

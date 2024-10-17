@@ -300,17 +300,17 @@ def cursor(mouse_pos):
 
     elif fondo_actual[0] == "reservar habitacion":
 
-        if mouse_pos[0] < 690 and mouse_pos[0] > 400 and mouse_pos[1] < 295 and mouse_pos[1] > 255: #nombre y apellido        
+        if mouse_pos[0] < 690 and mouse_pos[0] > 255 and mouse_pos[1] < 300 and mouse_pos[1] > 250: #nombre       
                         
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM) 
         
 
-        elif mouse_pos[0] < 330 and mouse_pos[0] > 225 and mouse_pos[1] < 375 and mouse_pos[1] > 335: #dia inicio        
+        elif mouse_pos[0] < 425 and mouse_pos[0] > 205 and mouse_pos[1] < 375 and mouse_pos[1] > 335: #dia inicio        
                         
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM) 
 
 
-        elif mouse_pos[0] < 490 and mouse_pos[0] > 386 and mouse_pos[1] < 380 and mouse_pos[1] > 335: #dia fin      
+        elif mouse_pos[0] < 710 and mouse_pos[0] > 485 and mouse_pos[1] < 375 and mouse_pos[1] > 335: #dia fin      
                         
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM) 
         
@@ -1214,17 +1214,24 @@ while running:
 
         elif fondo_actual[0] == "reservar habitacion":
             texto1[0] = (415, 252) #Nombre
-            texto2[0] = (234, 335) #Dia1
-            texto3[0] = (398, 335) #Dia2
+            texto2[0] = (223, 336) #Dia1
+            texto3[0] = (484, 335) #Dia2
             texto4[0] = (302, 410) #Direccion
             texto5[0] = (286, 479) #Telefono
             texto6[0] = (249, 545) #Mail
             texto7[0] = (908, 176) #DNI
             texto8[0] = (945, 251)
+
             if texto_seleccionado != texto2:
-                texto2[1] = "AAAA/MM/DD"
+                texto2[1] = "DD/MM/AAAA"
+            else:
+                texto2[1] = texto_seleccionado[1]
+
             if texto_seleccionado != texto3:
-                texto3[1] = "AAAA/MM/DD"
+                texto3[1] = "DD/MM/AAAA"
+            else:
+                texto3[1] = texto_seleccionado[1]
+
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
             screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
             screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])

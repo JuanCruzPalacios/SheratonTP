@@ -461,3 +461,26 @@ def CalcularPrecioAmenities(dia_inicio,dia_final,cantidad_amenities):#dia inicio
 
 def CalcularPrecioEstacionamiento(dia_inicio,dia_final):#dia inicio y dia final se ponen AÑO,MES,DIA
     return 4*diferencia_dias(dia_inicio,dia_final)
+
+def ReservarEstacionamiento(usuario , dia_final):
+    contenido = LeerJson("Estacionamiento.json")
+    data_usuario = LeerJson("Usuario.json")
+    parking = data_usuario[usuario]["IdEstacionamiento"]
+
+    pase = False
+    for i in contenido: 
+        if contenido[i]["Ocupado"] == 0:
+            contenido[i]["Ocupado"] = 1 
+            contenido[i]["Ocupante"] = usuario 
+            contenido[i]["Vencimiento"] = dia_final
+            pase = True
+            parking.append(i)
+            data_usuario[usuario]["IdEstacionamiento"] = parking
+            print("Se reservo un estacionamiento existente de forma exitosa.")
+            ActualizarJson("Estacionamiento.json" , contenido)
+            ActualizarJson("Usuario.json" , data_usuario)
+            return True
+            break
+    if not pase :
+        print("No hay estacionamiento disponible.") 
+        return False

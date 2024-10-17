@@ -412,6 +412,7 @@ def CancelarReservaEstacionamiento(usuario , id):
         if id in parking: 
             data_parking[id]["Ocupado"] = 0
             data_parking[id]["Ocupante"] = "Nadie"
+            data_parking[id]["EstadoActual"] = "Afuera"
             parking.remove(id)
             data_usuario[usuario]["IdEstacionamiento"] = parking
             ActualizarJson("Usuario.json" , data_usuario)
@@ -421,8 +422,6 @@ def CancelarReservaEstacionamiento(usuario , id):
             print("El usuario no posee ese estacionamiento.")
     except: 
         print("El usuario o el estacionamiento ingresado no existe.")
-
-
 
 
 

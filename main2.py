@@ -900,13 +900,13 @@ while running:
 
                 elif fondo_actual[0] == "reservar habitacion":
 
-                    if mouse_pos[0] < 687 and mouse_pos[0] > 400 and mouse_pos[1] < 300 and mouse_pos[1] > 253: #nombre y apellido        
+                    if mouse_pos[0] < 690 and mouse_pos[0] > 255 and mouse_pos[1] < 300 and mouse_pos[1] > 250: #nombre        
                                     
                         texto_ingresado = texto1[1]
                         texto_seleccionado = texto1   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 11 
+                        limite = 14 
                     
 
                     elif mouse_pos[0] < 332 and mouse_pos[0] > 223 and mouse_pos[1] < 383 and mouse_pos[1] > 225: #dia inicio        
@@ -933,7 +933,7 @@ while running:
                         texto_seleccionado = texto4  
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 11 
+                        limite = 13 
 
                     
                     elif mouse_pos[0] < 690 and mouse_pos[0] > 273 and mouse_pos[1] < 520 and mouse_pos[1] > 480: #telefono     
@@ -942,7 +942,7 @@ while running:
                         texto_seleccionado = texto5   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 11 
+                        limite = 13 
                     
 
                     elif mouse_pos[0] < 690 and mouse_pos[0] > 232 and mouse_pos[1] < 588 and mouse_pos[1] > 546: #mail   
@@ -951,7 +951,7 @@ while running:
                         texto_seleccionado = texto6   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 11 
+                        limite = 14 
                                         
 
                     elif mouse_pos[0] < 1107 and mouse_pos[0] > 896 and mouse_pos[1] < 223 and mouse_pos[1] > 178: #dni/cuit   
@@ -960,7 +960,7 @@ while running:
                         texto_seleccionado = texto7   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 11 
+                        limite = 8 
                     
 
                     elif mouse_pos[0] < 1107 and mouse_pos[0] > 937 and mouse_pos[1] < 295 and mouse_pos[1] > 251: #codigo postal 
@@ -969,7 +969,7 @@ while running:
                         texto_seleccionado = texto8   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 11 
+                        limite = 6 
                     
 
                     elif mouse_pos[0] < 925 and mouse_pos[0] > 870 and mouse_pos[1] < 460 and mouse_pos[1] > 405: #efectivo
@@ -1213,14 +1213,14 @@ while running:
 
 
         elif fondo_actual[0] == "reservar habitacion":
-            texto1[0] = (415, 252) #Nombre
+            texto1[0] = (265, 255) #Nombre
             texto2[0] = (213, 333) #Dia1
             texto3[0] = (495, 333) #Dia2
-            texto4[0] = (302, 410) #Direccion
-            texto5[0] = (286, 479) #Telefono
-            texto6[0] = (249, 545) #Mail
-            texto7[0] = (908, 176) #DNI
-            texto8[0] = (945, 251) #codigo postal
+            texto4[0] = (300, 413) #Direccion
+            texto5[0] = (284, 480) #Telefono
+            texto6[0] = (246, 548) #Mail
+            texto7[0] = (906, 180) #DNI
+            texto8[0] = (944, 255) #codigo postal
 
             if texto_seleccionado != texto2 :
                 if texto2[1] == "" or texto2[1] == "DD/MM/AAAA" :

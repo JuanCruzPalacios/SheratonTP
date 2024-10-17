@@ -80,7 +80,7 @@ habitaciones = [suite_balcon_sola, habitacion_triple_sola, habitacion_doble_sola
                 habitacion_lujo_sola, habitacion_cuadruple_sola, suite_rio_sola,
                 habitacion_individual_sola, suite_jacuzzi_sola, suite_estandar_sola]
 
-habitaciones_libres = Filtros("",0,100)
+habitaciones_libres = Filtros("",0,1000)
 
 
 cambiar_nombre = []
@@ -597,9 +597,8 @@ while running:
                                 fondo_actual[0] = "menu habitaciones"
                                 fondo_actual[1] = 6
                                 texto_ingresado = ""
-                                texto1 = [(0,0),""]
-                                texto2 = [(0,0),""]
-                                texto3 = [(0,0),""]
+                                texto_seleccionado = [(-100,-100),""]
+                                reset_textos(texto1,texto2,texto3,texto4)
                             else:
                                 texto3[1] = "Contraseña erronea"
                         else:
@@ -613,9 +612,8 @@ while running:
                                 CrearActualizarUsuario(texto1[1] , texto2[1] , "" , "" , "" , texto3[1] , "" , "" , "" , "" , "")
                                 fondo_actual[0] = "menu habitaciones"
                                 fondo_actual[1] = 6
-                                texto_ingresado = ""
-                                texto1 = [(0,0),""]
-                                texto2 = [(0,0),""]  
+                                texto_seleccionado = [(-100,-100),""]
+                                reset_textos(texto1,texto2,texto3,texto4)
 
                             else:                       
                                 texto4[1] = chequeo_contraseña(texto3[1])    
@@ -910,16 +908,19 @@ while running:
         
 
                     elif mouse_pos[0] < 425 and mouse_pos[0] > 205 and mouse_pos[1] < 375 and mouse_pos[1] > 335: #dia inicio        
-                                    
+
+                        texto2[1]  = ""    
                         texto_ingresado = ""
                         texto_seleccionado = texto2   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
                         limite = 11 
+                        print(texto2)
 
 
                     elif mouse_pos[0] < 710 and mouse_pos[0] > 485 and mouse_pos[1] < 375 and mouse_pos[1] > 335: #dia fin       
                                     
+                        texto3[1]  = ""
                         texto_ingresado = ""
                         texto_seleccionado = texto3
                         barra = texto_seleccionado[1] + "|"  
@@ -1228,12 +1229,17 @@ while running:
                     texto2[1] = "DD/MM/AAAA"
             else:
                 texto2[1] = texto_seleccionado[1]
+                barra = texto2[1] + "|"
+                ultimo_cambio_barra = pygame.time.get_ticks()
 
             if texto_seleccionado != texto3 :
                 if texto3[1] == "" or texto3[1] == "DD/MM/AAAA":
                     texto3[1] = "DD/MM/AAAA"
             else:
                 texto3[1] = texto_seleccionado[1]
+                barra = texto3[1] + "|"
+                ultimo_cambio_barra = pygame.time.get_ticks()
+
 
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
             screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )

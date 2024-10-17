@@ -423,7 +423,6 @@ def CancelarReservaEstacionamiento(usuario , id):
         print("El usuario o el estacionamiento ingresado no existe.")
 
 
-CancelarReservaEstacionamiento("pepe" , 3)
 
 
 

@@ -387,6 +387,28 @@ def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contrase
 
     ActualizarJson("Usuario.json", contenido_actual)
 
+def CancelarReservaEstacionamiento(usuario , id):
+    id = str(id)
+    data_usuario = LeerJson("Usuario.json")
+    data_parking = LeerJson("Estacionamiento.json")
+    try:
+        parking = data_usuario[usuario]["IdEstacionamiento"]
+        if id in parking: 
+            data_parking[id]["Ocupado"] = 0
+            data_parking[id]["Ocupante"] = "Nadie"
+            parking.remove(id)
+            data_usuario[usuario]["IdEstacionamiento"] = parking
+            ActualizarJson("Usuario.json" , data_usuario)
+            ActualizarJson("Estacionamiento.json" , data_parking)
+            print("Reserva de estacionamiento cancelada con exito.")
+        else:
+            print("El usuario no posee ese estacionamiento.")
+    except: 
+        print("El usuario o el estacionamiento ingresado no existe.")
+
+
+CancelarReservaEstacionamiento("pepe" , 3)
+
 
 
 

@@ -911,16 +911,16 @@ while running:
 
                     elif mouse_pos[0] < 332 and mouse_pos[0] > 223 and mouse_pos[1] < 383 and mouse_pos[1] > 225: #dia inicio        
                                     
-                        texto_ingresado = texto2[1]
+                        texto_ingresado = ""
                         texto_seleccionado = texto2   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
                         limite = 11 
 
 
-                    elif mouse_pos[0] < 493 and mouse_pos[0] > 386 and mouse_pos[1] < 380 and mouse_pos[1] > 337: #dia fin      
+                    elif mouse_pos[0] < 490 and mouse_pos[0] > 386 and mouse_pos[1] < 380 and mouse_pos[1] > 335: #dia fin       
                                     
-                        texto_ingresado = texto3[1]
+                        texto_ingresado = ""
                         texto_seleccionado = texto3
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
@@ -1214,21 +1214,23 @@ while running:
 
         elif fondo_actual[0] == "reservar habitacion":
             texto1[0] = (415, 252) #Nombre
-            texto2[0] = (223, 336) #Dia1
-            texto3[0] = (484, 335) #Dia2
+            texto2[0] = (213, 333) #Dia1
+            texto3[0] = (495, 333) #Dia2
             texto4[0] = (302, 410) #Direccion
             texto5[0] = (286, 479) #Telefono
             texto6[0] = (249, 545) #Mail
             texto7[0] = (908, 176) #DNI
-            texto8[0] = (945, 251)
+            texto8[0] = (945, 251) #codigo postal
 
-            if texto_seleccionado != texto2:
-                texto2[1] = "DD/MM/AAAA"
+            if texto_seleccionado != texto2 :
+                if texto2[1] == "" or texto2[1] == "DD/MM/AAAA" :
+                    texto2[1] = "DD/MM/AAAA"
             else:
                 texto2[1] = texto_seleccionado[1]
 
-            if texto_seleccionado != texto3:
-                texto3[1] = "DD/MM/AAAA"
+            if texto_seleccionado != texto3 :
+                if texto3[1] == "" or texto3[1] == "DD/MM/AAAA":
+                    texto3[1] = "DD/MM/AAAA"
             else:
                 texto3[1] = texto_seleccionado[1]
 

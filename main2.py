@@ -16,6 +16,8 @@ fondo_registrarse = pygame.transform.scale(pygame.image.load("imagenes/registrar
 fondo_estacionamiento = pygame.transform.scale(pygame.image.load("imagenes/estacionamiento.jpg"), (1280, 720))
 fondo_habitacion = pygame.transform.scale(pygame.image.load("imagenes/habitacion.jpg"), (1280, 720))
 fondo_pagar = pygame.transform.scale(pygame.image.load("imagenes/reserva_de_habitacion.jpg"), (1280, 720))
+fondo_pagar_con_mercado = pygame.transform.scale(pygame.image.load("imagenes/pagar_con_mercado.jpg"), (1280, 720))
+fondo_pagar_con_tarjeta = pygame.transform.scale(pygame.image.load("imagenes/pagar_con_tarjeta.jpg"), (1280, 720))
 
 
 fondo_menu_amenities = pygame.transform.scale(pygame.image.load("imagenes/reserva_de_amenities.jpg"), (1280, 720))
@@ -88,22 +90,22 @@ temp =  []
 
 fondo_actual = ["iniciar sesion", 0]
 fondos = [
-    fondo_iniciar_sesion,             # 0
+    fondo_iniciar_sesion,              # 0
     fondo_registrarse,                 # 1
     fondo_estacionamiento,             # 2
     fondo_habitacion,                  # 3
-    "",
+    fondo_pagar_con_mercado,           # 4
     fondo_pagar,                       # 5
-    "",
+    fondo_pagar_con_tarjeta,           # 6
     fondo_menu_amenities,              # 7
     fondo_menu_salones,                # 8
     fondo_datos_usuario,               # 9
     fondo_menu_mantenimiento,           # 10
     fondo_mantenimiento_stock,          # 11
-    fondo_mantenimiento_notificaciones,  # 12
+    fondo_mantenimiento_notificaciones, # 12
     fondo_mantenimiento_notificaciones_archivadas,  # 13
     fondo_menu_recepcionista,          # 14
-    fondo_recepcionista_notificar,      # 15
+    fondo_recepcionista_notificar,     # 15
     fondo_recepcinista_eventos,        # 16
     fondo_recepcinista_limpieza,       # 17
     suite_balcon,                      # 18

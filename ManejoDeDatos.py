@@ -423,13 +423,4 @@ def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contrase
     ActualizarJson("Usuario.json", contenido_actual)
 
 
-
-def ReservarEstacionamiento(usuario):
-    contenido = LeerJson("Estacionamiento.json")
-    
-    nueva_clave = str(len(contenido))
-    contenido[nueva_clave]["Ocupado"] = 0
-    contenido[nueva_clave]["Ocupante"] = usuario
-    contenido[nueva_clave]["EstadoActual"] = 0
-
     

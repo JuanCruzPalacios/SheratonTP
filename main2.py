@@ -121,7 +121,11 @@ fondos = [
 
 
 
-fuente = pygame.font.Font("fuentes/Averia_Libre/AveriaLibre-Regular.ttf", 31)
+fuente1 = pygame.font.Font("fuentes/Averia_Libre/AveriaLibre-Regular.ttf", 31)
+
+fuente = pygame.font.Font("fuentes/Roboto_Mono/RobotoMono-VariableFont_wght.ttf", 31)
+#fuente = pygame.font.Font("fuentes/My Font - Glyphr Project - 2024.10.18-16.14.22.txt", 31)
+
 limite = 11
 
 usuario = ""
@@ -936,7 +940,7 @@ while running:
                         texto_seleccionado = texto4  
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 13 
+                        limite = 20
 
                     
                     elif mouse_pos[0] < 690 and mouse_pos[0] > 273 and mouse_pos[1] < 520 and mouse_pos[1] > 480: #telefono     
@@ -1245,7 +1249,7 @@ while running:
                 ultimo_cambio_barra = pygame.time.get_ticks()
 
             
-            screen.blit (fondos[fondo_actual[1]] , (0 , 0))           
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0))  
             screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
             screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
             screen.blit(fuente.render(texto2[1], True, (0, 0, 0)), texto2[0])

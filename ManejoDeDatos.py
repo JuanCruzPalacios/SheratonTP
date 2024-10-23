@@ -32,7 +32,7 @@ def LeerJson(archivo):
 
 def VerUsuario(usuario): 
     usuario_json = LeerJson("Usuario.json")
-    return usuario_json[usuario]
+    return usuario_json[usuario]["Nombre"], usuario_json[usuario]["Apellido"], usuario_json[usuario]["NumeroTelefono"], usuario_json[usuario]["Correo"], usuario_json[usuario]["CodigoPostal"],usuario_json[usuario]["DNI"]
 
 def TieneServicio(usuario):
     contr = []
@@ -548,3 +548,6 @@ def ChequearDatosReservaEventos(usuario,mail, hora1, hora2):
         contenido[usuario]["Correo"] = mail    
     elif mail != contenido[usuario]["Correo"]:
          return False , "El correo del usuario es incorrecto"
+     
+     
+

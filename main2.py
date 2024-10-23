@@ -123,7 +123,7 @@ fondos = [
 
 fuente1 = pygame.font.Font("fuentes/Averia_Libre/AveriaLibre-Regular.ttf", 31)
 
-fuente = pygame.font.Font("fuentes/MyFont-Regular.ttf", 31)
+fuente = pygame.font.Font("fuentes/Fuente_sheraton_mono.ttf", 31)
 #fuente = pygame.font.Font("fuentes/My Font - Glyphr Project - 2024.10.18-16.14.22.txt", 31)
 
 limite = 11
@@ -993,10 +993,30 @@ while running:
 
                     elif mouse_pos[0] < 1108 and mouse_pos[0] > 1058 and mouse_pos[1] < 460 and mouse_pos[1] > 307: #tarjeta
                         posicion_cuadrado = ( 1061, 416, 41 , 41  )        
+                    
+                    
+
+
+                elif fondo_actual[0] == "menu amenities":
+                   
+                    if mouse_pos[0] < 455 and mouse_pos[0] > 400 and mouse_pos[1] < 342 and mouse_pos[1] > 290: #spa
+                    
+                        posicion_cuadrado = (409,298, 41,41)
+                    
+
+                    elif mouse_pos[0] < 1005 and mouse_pos[0] > 948 and mouse_pos[1] < 345 and mouse_pos[1] > 290: #gimnasio
+                    
+                        posicion_cuadrado = (957,298, 41,41)
+
+
+                    elif mouse_pos[0] < 740 and mouse_pos[0] > 688 and mouse_pos[1] < 345 and mouse_pos[1] > 290: #pileta
+
+                        posicion_cuadrado = (695,298, 41,41)
+                    
+                    elif mouse_pos[0] < 708 and mouse_pos[0] > 568 and mouse_pos[1] < 676 and mouse_pos[1] > 636: 
+                        fondo_actual[0] = "reservar habitacion"
+                        fondo_actual[1] = 0
                         
-
-
-
 
 
                 if alter_usuario:
@@ -1212,6 +1232,7 @@ while running:
             
         elif fondo_actual[0] == "menu amenities":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+            pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado)
 
 
         elif fondo_actual[0] == "ver datos":
@@ -1263,6 +1284,7 @@ while running:
             
 
         if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon", "reservar habitacion"]:
+            
             screen.blit (barra_arriba, (0,0))
 
 

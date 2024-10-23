@@ -530,7 +530,8 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
             return False, "El periodo ingresado es invalido"
     except:
         return False, "El formato de dias esta mal enviado"
-        
+    ActualizarJson("Usuario.json")        
+    
 def ChequearDatosReservaEventos(usuario,mail, hora1, hora2):
     contenido = LeerJson("Usuario.json")
     hora1_str = "14:30"  
@@ -548,6 +549,11 @@ def ChequearDatosReservaEventos(usuario,mail, hora1, hora2):
         contenido[usuario]["Correo"] = mail    
     elif mail != contenido[usuario]["Correo"]:
          return False , "El correo del usuario es incorrecto"
+    ActualizarJson("Usuario.json")
      
-     
+def VerRegistros(id_estacionamiento):
+    contenido = LeerJson("Estacionamiento.json")
+    return contenido[str(id_estacionamiento)]["UltimoIngreso"],contenido[str(id_estacionamiento)]["UltimoEgreso"]
+
+    
 

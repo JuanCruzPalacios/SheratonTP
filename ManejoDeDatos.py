@@ -501,6 +501,7 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
     elif direccion != contenido[usuario]["Direccion"]:
          return False , "La direccion del usuario es incorrecto"
     
+    
     if contenido[usuario]["Correo"] == "":
         contenido[usuario]["Correo"] = mail    
     elif mail != contenido[usuario]["Correo"]:
@@ -518,6 +519,7 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
      
     if contenido[usuario]["NumeroTelefono"] == "":
         contenido[usuario]["NumeroTelefono"] = telefono
+        
     elif direccion != contenido[usuario]["NumeroTelefono"]:
          return False , "El numero ingresado es incorrecto"
      
@@ -530,5 +532,5 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         return False, "El formato de dias esta mal enviado"
         
         
-     
+
         

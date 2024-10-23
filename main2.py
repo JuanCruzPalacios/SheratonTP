@@ -123,7 +123,7 @@ fondos = [
 
 fuente1 = pygame.font.Font("fuentes/Averia_Libre/AveriaLibre-Regular.ttf", 31)
 
-fuente = pygame.font.Font("fuentes/Roboto_Mono/RobotoMono-VariableFont_wght.ttf", 31)
+fuente = pygame.font.Font("fuentes/MyFont-Regular.ttf", 31)
 #fuente = pygame.font.Font("fuentes/My Font - Glyphr Project - 2024.10.18-16.14.22.txt", 31)
 
 limite = 11

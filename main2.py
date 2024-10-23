@@ -1041,6 +1041,28 @@ while running:
 
 
 
+                elif fondo_actual[0] == "menu amenities":
+                   
+                    if mouse_pos[0] < 455 and mouse_pos[0] > 400 and mouse_pos[1] < 342 and mouse_pos[1] > 290: #spa
+                   
+                        posicion_cuadrado = (409,298, 41,41)
+
+                    elif mouse_pos[0] < 1005 and mouse_pos[0] > 948 and mouse_pos[1] < 345 and mouse_pos[1] > 290: #gimnasio
+                   
+                        posicion_cuadrado = (957,298, 41,41)
+
+                    elif mouse_pos[0] < 740 and mouse_pos[0] > 688 and mouse_pos[1] < 345 and mouse_pos[1] > 290: #pileta
+
+
+                        posicion_cuadrado = (695,298, 41,41)
+                   
+                    elif mouse_pos[0] < 708 and mouse_pos[0] > 568 and mouse_pos[1] < 676 and mouse_pos[1] > 636: #reservar
+                        fondo_actual[0] = "reservar habitacion"
+                        fondo_actual[1] = 5
+                        posicion_cuadrado = (0,0,0,0)
+                    
+                    
+
 
                 elif fondo_actual[0] == "reservar eventos":
 
@@ -1258,10 +1280,7 @@ while running:
 
                     elif mouse_pos[0] < 1220 and mouse_pos[0] > 1140 and mouse_pos[1] < 90 and mouse_pos[1] > 18:#boton usuario
                         alter_usuario = not(alter_usuario)
-<<<<<<< HEAD
-=======
                         
->>>>>>> b837383ba91a43889db0607e6c87dff3ed6f7870
                         
                         
 
@@ -1409,6 +1428,7 @@ while running:
             
         elif fondo_actual[0] == "menu amenities":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+            pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado)
 
 
         elif fondo_actual[0] == "ver datos":

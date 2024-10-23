@@ -487,3 +487,50 @@ def ReservarEstacionamiento(usuario , dia_final):
     if not pase :
         print("No hay estacionamiento disponible.") 
         return False
+
+def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, dni, codigo_postal):
+    contenido = LeerJson("Usuario.json")
+    
+    if contenido[usuario]["Nombre"] == "":
+        contenido[usuario]["Nombre"] = Nombre
+    elif Nombre != contenido[usuario]["Nombre"]:
+         return False , "El nombre del usuario es incorrecto"
+    
+    if contenido[usuario]["Direccion"] == "":
+        contenido[usuario]["Direccion"] = direccion
+    elif direccion != contenido[usuario]["Direccion"]:
+         return False , "La direccion del usuario es incorrecto"
+    
+    
+    if contenido[usuario]["Correo"] == "":
+        contenido[usuario]["Correo"] = mail    
+    elif mail != contenido[usuario]["Correo"]:
+         return False , "El correo del usuario es incorrecto"
+    
+    if contenido[usuario]["DNI"] == "":
+        contenido[usuario]["DNI"] = dni 
+    elif dni != contenido[usuario]["DNI"]:
+         return False , "El dni ingresado es incorrecto"
+     
+    if contenido[usuario]["CodigoPostal"] == "":
+        contenido[usuario]["CodigoPostal"] = codigo_postal 
+    elif codigo_postal != contenido[usuario]["CodigoPostal"]:
+         return False , "El codigo postal ingresado es incorrecto"
+     
+    if contenido[usuario]["NumeroTelefono"] == "":
+        contenido[usuario]["NumeroTelefono"] = telefono
+        
+    elif direccion != contenido[usuario]["NumeroTelefono"]:
+         return False , "El numero ingresado es incorrecto"
+     
+    try: 
+        if diferencia_dias(dia1,dia2) >= 1:
+            pass
+        else:
+            return False, "El periodo ingresado es invalido"
+    except:
+        return False, "El formato de dias esta mal enviado"
+        
+        
+
+        

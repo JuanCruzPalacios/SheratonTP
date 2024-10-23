@@ -9,6 +9,7 @@
         "NumeroTelefono": "+54 9 11 5920-3842",
         "NumeroDeCliente": 1,
         "CodigoPostal": "1993",
+        "Direccion": "Facaclocket 777",
         "Contrataciones": [
             [
                 "SPA",
@@ -47,6 +48,7 @@
         "NumeroTelefono": "+54 9 11 0303-4560",
         "NumeroDeCliente": 2,
         "CodigoPostal": "2007",
+        "Direccion": "Facaclocket 776",
         "Contrataciones": [],
         "IdEstacionamiento": [],
         "IdHabitacion": []
@@ -61,6 +63,7 @@
         "NumeroTelefono": "+54 9 11 0334-4560",
         "NumeroDeCliente": 3,
         "CodigoPostal": "2003",
+        "Direccion": "Facaclocket 775",
         "Contrataciones": [],
         "IdEstacionamiento": [],
         "IdHabitacion": []
@@ -75,6 +78,7 @@
         "NumeroTelefono": "+54 9 11 0334-4560",
         "NumeroDeCliente": 4,
         "CodigoPostal": "2003",
+        "Direccion": "Facaclocket 774",
         "Contrataciones": [],
         "IdEstacionamiento": [],
         "IdHabitacion": []

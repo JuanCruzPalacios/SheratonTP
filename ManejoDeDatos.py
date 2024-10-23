@@ -32,7 +32,7 @@ def LeerJson(archivo):
 
 def VerUsuario(usuario): 
     usuario_json = LeerJson("Usuario.json")
-    return usuario_json[usuario]
+    return usuario_json[usuario]["Nombre"], usuario_json[usuario]["Apellido"], usuario_json[usuario]["NumeroTelefono"], usuario_json[usuario]["Correo"], usuario_json[usuario]["CodigoPostal"],usuario_json[usuario]["DNI"]
 
 def TieneServicio(usuario):
     contr = []
@@ -487,3 +487,67 @@ def ReservarEstacionamiento(usuario , dia_final):
     if not pase :
         print("No hay estacionamiento disponible.") 
         return False
+
+def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, dni, codigo_postal):
+    contenido = LeerJson("Usuario.json")
+    
+    if contenido[usuario]["Nombre"] == "":
+        contenido[usuario]["Nombre"] = Nombre
+    elif Nombre != contenido[usuario]["Nombre"]:
+         return False , "El nombre del usuario es incorrecto"
+    
+    if contenido[usuario]["Direccion"] == "":
+        contenido[usuario]["Direccion"] = direccion
+    elif direccion != contenido[usuario]["Direccion"]:
+         return False , "La direccion del usuario es incorrecto"
+    
+    
+    if contenido[usuario]["Correo"] == "":
+        contenido[usuario]["Correo"] = mail    
+    elif mail != contenido[usuario]["Correo"]:
+         return False , "El correo del usuario es incorrecto"
+    
+    if contenido[usuario]["DNI"] == "":
+        contenido[usuario]["DNI"] = dni 
+    elif dni != contenido[usuario]["DNI"]:
+         return False , "El dni ingresado es incorrecto"
+     
+    if contenido[usuario]["CodigoPostal"] == "":
+        contenido[usuario]["CodigoPostal"] = codigo_postal 
+    elif codigo_postal != contenido[usuario]["CodigoPostal"]:
+         return False , "El codigo postal ingresado es incorrecto"
+     
+    if contenido[usuario]["NumeroTelefono"] == "":
+        contenido[usuario]["NumeroTelefono"] = telefono
+        
+    elif direccion != contenido[usuario]["NumeroTelefono"]:
+         return False , "El numero ingresado es incorrecto"
+     
+    try: 
+        if diferencia_dias(dia1,dia2) >= 1:
+            pass
+        else:
+            return False, "El periodo ingresado es invalido"
+    except:
+        return False, "El formato de dias esta mal enviado"
+        
+def ChequearDatosReservaEventos(usuario,mail, hora1, hora2):
+    contenido = LeerJson("Usuario.json")
+    hora1_str = "14:30"  
+    hora2_str = "16:45"  
+
+    hora1 = datetime.strptime(hora1_str, "%H:%M")
+    hora2 = datetime.strptime(hora2_str, "%H:%M")
+
+    if hora2 > hora1:
+        pass
+    else:
+        return False, "Error: la hora de finalizacion debe ser mas tarde que la hora de inicio."
+    
+    if contenido[usuario]["Correo"] == "":
+        contenido[usuario]["Correo"] = mail    
+    elif mail != contenido[usuario]["Correo"]:
+         return False , "El correo del usuario es incorrecto"
+     
+     
+

@@ -128,10 +128,10 @@ fondos = [
 
 
 
-fuente = pygame.font.Font("fuentes/Averia_Libre/AveriaLibre-Regular.ttf", 31)
 
-#fuente = pygame.font.Font("fuentes/Roboto_Mono/RobotoMono-VariableFont_wght.ttf", 31)
-#fuente = pygame.font.Font("fuentes/My Font - Glyphr Project - 2024.10.18-16.14.22.txt", 31)
+
+fuente = pygame.font.Font("fuentes/MyFont-Regular.ttf", 31)
+
 
 limite = 11
 
@@ -656,6 +656,7 @@ while running:
                 
             texto_seleccionado[1] = texto_ingresado
             barra = texto_seleccionado[1] + "|" 
+            print(texto_seleccionado)
             
 
             
@@ -937,7 +938,7 @@ while running:
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
                         limite = 11 
-                        print(texto2)
+                        
 
 
                     elif mouse_pos[0] < 710 and mouse_pos[0] > 485 and mouse_pos[1] < 375 and mouse_pos[1] > 335: #dia fin       
@@ -1008,7 +1009,117 @@ while running:
 
 
                     elif mouse_pos[0] < 1108 and mouse_pos[0] > 1058 and mouse_pos[1] < 460 and mouse_pos[1] > 307: #tarjeta
-                        posicion_cuadrado = ( 1061, 416, 41 , 41  )        
+                        posicion_cuadrado = ( 1061, 416, 41 , 41  ) 
+
+
+
+
+                elif fondo_actual[0] == "reservar eventos":
+
+                    if mouse_pos[0] < 580 and mouse_pos[0] > 300 and mouse_pos[1] < 300 and mouse_pos[1] > 260: #cantidad asistentes      
+                                    
+                        texto_ingresado = texto1[1]
+                        texto_seleccionado = texto1   
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 11 
+        
+
+                    elif  mouse_pos[0] < 370 and mouse_pos[0] > 215 and mouse_pos[1] < 382 and mouse_pos[1] > 342: #inicia el horario
+
+                        texto2[1]  = ""    
+                        texto_ingresado = ""
+                        texto_seleccionado = texto2   
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 11 
+                        
+
+
+                    elif  mouse_pos[0] < 590 and mouse_pos[0] > 430 and mouse_pos[1] < 380 and mouse_pos[1] > 345: #termina el horario 
+                                    
+                        texto3[1]  = ""
+                        texto_ingresado = ""
+                        texto_seleccionado = texto3
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 11  
+                    
+
+                    elif  mouse_pos[0] < 510 and mouse_pos[0] > 205 and mouse_pos[1] < 460 and mouse_pos[1] > 420: #dia del evento   
+                                    
+                        texto_ingresado = texto4[1]
+                        texto_seleccionado = texto4  
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 20
+
+                    
+                    elif  mouse_pos[0] < 590 and mouse_pos[0] > 305 and mouse_pos[1] < 530 and mouse_pos[1] > 490: #personal requerido  
+                                    
+                        texto_ingresado = texto5[1]
+                        texto_seleccionado = texto5   
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 13 
+                    
+
+                    elif  mouse_pos[0] < 690 and mouse_pos[0] > 220 and mouse_pos[1] < 605 and mouse_pos[1] > 565: #mail   
+                                    
+                        texto_ingresado = texto6[1]
+                        texto_seleccionado = texto6   
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 14 
+                                        
+
+                    elif  mouse_pos[0] < 480 and mouse_pos[0] > 260 and mouse_pos[1] < 690 and mouse_pos[1] > 620: #reservar salon de eventos 
+                                    
+                        texto_ingresado = texto7[1]
+                        texto_seleccionado = texto7   
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 8 
+                    
+
+                    elif  mouse_pos[0] < 1140 and mouse_pos[0] > 730 and mouse_pos[1] < 408 and mouse_pos[1] > 215: #especificaciones
+                                    
+                        texto_ingresado = texto8[1]
+                        texto_seleccionado = texto8   
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 6 
+                    
+
+                    
+                    
+
+                    elif  mouse_pos[0] < 920 and mouse_pos[0] > 865 and mouse_pos[1] < 580 and mouse_pos[1] > 530: #pago con efectivo
+                                    
+                        posicion_cuadrado = ( 877, 556, 41 , 41  )
+                        
+
+
+                    elif  mouse_pos[0] < 1105 and mouse_pos[0] > 1050 and mouse_pos[1] < 580 and mouse_pos[1] > 530: #pago con tarjeta
+                                    
+                        
+                        posicion_cuadrado = ( 1061 , 556 , 41 , 41 )
+
+
+                    elif  mouse_pos[0] < 1005 and mouse_pos[0] > 950 and mouse_pos[1] < 650 and mouse_pos[1] > 600: #pago con mercado pago
+                        posicion_cuadrado = ( 960, 620, 41 , 41  ) 
+
+
+
+
+
+
+
+
+
+
+
+
                         
 
 
@@ -1273,7 +1384,59 @@ while running:
 
 
         elif fondo_actual[0] == "reservar eventos":
-            screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0))  
+            
+            
+            texto1[0] = (300, 260) #Cantidad asistentes
+            texto2[0] = (215, 342) #Hora1
+            texto3[0] = (430, 380) #Hora2
+            texto4[0] = (205, 420) #Dia
+            texto5[0] = (305, 490) #Personal requerido
+            texto6[0] = (220, 556) #Mail
+            texto7[0] = (260, 220) #Cantidad de Personal
+            texto8[0] = (730, 215) #especificaciones
+            
+            if texto_seleccionado != texto2 :
+                if texto2[1] == "" or texto2[1] == "DD/MM/AAAA" :
+                    texto2[1] = "DD/MM/AAAA"
+            else:
+                texto2[1] = texto_seleccionado[1]
+                barra = texto2[1] + "|"
+                ultimo_cambio_barra = pygame.time.get_ticks()
+
+            if texto_seleccionado != texto3 :
+                if texto3[1] == "" or texto3[1] == "DD/MM/AAAA":
+                    texto3[1] = "DD/MM/AAAA"
+            else:
+                texto3[1] = texto_seleccionado[1]
+                barra = texto3[1] + "|"
+                ultimo_cambio_barra = pygame.time.get_ticks()
+        
+
+        
+
+
+
+
+
+            
+            
+            screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
+            screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
+            screen.blit(fuente.render(texto2[1], True, (0, 0, 0)), texto2[0])
+            screen.blit(fuente.render(texto3[1], True, (0, 0, 0)), texto3[0])
+            screen.blit(fuente.render(texto4[1], True, (0, 0, 0)), texto4[0])
+            screen.blit(fuente.render(texto5[1], True, (0, 0, 0)), texto5[0])
+            screen.blit(fuente.render(texto6[1], True, (0, 0, 0)), texto6[0])
+            screen.blit(fuente.render(texto7[1], True, (0, 0, 0)), texto7[0])
+            screen.blit(fuente.render(texto8[1], True, (0, 0, 0)), texto8[0])
+            pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado)
+
+
+
+
+
+            
 
 
         elif fondo_actual[0] == "reservar habitacion":
@@ -1301,6 +1464,13 @@ while running:
                 texto3[1] = texto_seleccionado[1]
                 barra = texto3[1] + "|"
                 ultimo_cambio_barra = pygame.time.get_ticks()
+        
+
+        
+
+
+
+
 
             
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))  
@@ -1316,13 +1486,13 @@ while running:
             pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado)
             
 
-        if fondo_actual[0] in ["registros","datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon", "reservar habitacion"]:
+        if fondo_actual[0] in ["registros","datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon", "reservar habitacion", "reservar eventos","ver datos"]:
             screen.blit (barra_arriba, (0,0))
 
 
-        if fondo_actual[0] in [ "reservar eventos","ver datos","habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"]:
-            screen.blit(fondos[fondo_actual[1]],(0,0))
-            screen.blit(barra_arriba,(0,0))
+        if fondo_actual[0] in ["habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"]:
+                screen.blit(fondos[fondo_actual[1]],(0,0))
+                screen.blit(barra_arriba,(0,0))
 
 
         if alter_usuario:

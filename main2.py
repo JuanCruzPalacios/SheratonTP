@@ -14,6 +14,7 @@ running = True
 fondo_iniciar_sesion = pygame.transform.scale(pygame.image.load("imagenes/iniciar_sesion.jpg"), (1280,720))
 fondo_registrarse = pygame.transform.scale(pygame.image.load("imagenes/registrarse.jpg"),(1280,720))
 fondo_estacionamiento = pygame.transform.scale(pygame.image.load("imagenes/estacionamiento.jpg"), (1280, 720))
+fondo_registros = pygame.transform.scale(pygame.image.load("imagenes/registros.jpg"), (1280, 720))
 fondo_habitacion = pygame.transform.scale(pygame.image.load("imagenes/habitacion.jpg"), (1280, 720))
 fondo_pagar = pygame.transform.scale(pygame.image.load("imagenes/reserva_de_habitacion.jpg"), (1280, 720))
 fondo_pagar_con_mercado = pygame.transform.scale(pygame.image.load("imagenes/pagar_con_mercado.jpg"), (1280, 720))
@@ -61,6 +62,11 @@ habitacion_individual_sola = pygame.image.load("imagenes/habitaciones_solas/7.jp
 suite_jacuzzi_sola = pygame.image.load("imagenes/habitaciones_solas/8.jpg")
 suite_estandar_sola = pygame.image.load("imagenes/habitaciones_solas/9.jpg")
 
+flecha_derecha = pygame.image.load("imagenes/flecha_adelante.png")
+flecha_izquierda = pygame.transform.flip ( flecha_derecha , True , False ) 
+
+
+
 suite_balcon_rect = [suite_balcon_sola.get_rect(topleft=(316, 150)), 0]
 habitacion_triple_rect = [habitacion_triple_sola.get_rect(topleft=(632, 150)), 1]
 habitacion_doble_rect = [habitacion_doble_sola.get_rect(topleft=(948, 150)), 2]
@@ -90,16 +96,16 @@ temp =  []
 
 fondo_actual = ["iniciar sesion", 0]
 fondos = [
-    fondo_iniciar_sesion,              # 0
-    fondo_registrarse,                 # 1
-    fondo_estacionamiento,             # 2
-    fondo_habitacion,                  # 3
-    fondo_pagar_con_mercado,           # 4
-    fondo_pagar,                       # 5
-    fondo_pagar_con_tarjeta,           # 6
-    fondo_menu_amenities,              # 7
-    fondo_menu_salones,                # 8
-    fondo_datos_usuario,               # 9
+    fondo_iniciar_sesion,               # 0
+    fondo_registrarse,                  # 1
+    fondo_estacionamiento,              # 2
+    fondo_habitacion,                   # 3
+    fondo_pagar_con_mercado,            # 4
+    fondo_pagar,                        # 5
+    fondo_pagar_con_tarjeta,            # 6
+    fondo_menu_amenities,               # 7
+    fondo_menu_salones,                 # 8
+    fondo_datos_usuario,                # 9
     fondo_menu_mantenimiento,           # 10
     fondo_mantenimiento_stock,          # 11
     fondo_mantenimiento_notificaciones, # 12
@@ -116,15 +122,16 @@ fondos = [
     suite_rio,                         # 23
     habitacion_individual,             # 24
     suite_jacuzzi,                     # 25
-    suite_estandar                     # 26
+    suite_estandar,                    # 26
+    fondo_registros                    # 27
 ]
 
 
 
-fuente1 = pygame.font.Font("fuentes/Averia_Libre/AveriaLibre-Regular.ttf", 31)
+
 
 fuente = pygame.font.Font("fuentes/MyFont-Regular.ttf", 31)
-#fuente = pygame.font.Font("fuentes/My Font - Glyphr Project - 2024.10.18-16.14.22.txt", 31)
+
 
 limite = 11
 
@@ -152,7 +159,7 @@ posicion_cuadrado = (-100 , -100 , 10 , 10)
 texto_seleccionado =  texto1 
 texto_ingresado = ""
 
-
+pagina = 0
 
 
 def reset_textos(*textos):
@@ -292,11 +299,20 @@ def cursor(mouse_pos):
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND) 
                     
 
-
         elif mouse_pos[0] < 1018 and mouse_pos[0] > 784 and mouse_pos[1] < 656 and mouse_pos[1] > 579:#cancelar reserva de parking        
                         
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND) 
         
+
+        elif mouse_pos[0] < 1225 and mouse_pos[0] > 1130 and mouse_pos[1] < 462 and mouse_pos[1] > 306:#flecha derecha   
+            if len(VerNumeroEstacionamiento(usuario)) > 1 and texto2[1] != VerNumeroEstacionamiento(usuario).pop( 0 ):
+                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif mouse_pos[0] < 149 and mouse_pos[0] > 55 and mouse_pos[1] < 467 and mouse_pos[1] > 309:#flecha izquierda  
+            if len(VerNumeroEstacionamiento(usuario)) > 1 and texto2[1] != VerNumeroEstacionamiento(usuario).pop( -1 ):    
+                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
 
         else:
 
@@ -1108,8 +1124,38 @@ while running:
 
 
 
+                elif fondo_actual[0] == "menu parking":
+                    if mouse_pos[0] < 490 and mouse_pos[0] > 260 and mouse_pos[1] < 656 and mouse_pos[1] > 579: #ver registros        
+                        
+                        fondo_actual[0] = "registros"
+                        fondo_actual[1] = 27
+                        texto_seleccionado = [(-100,-100),""]
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                                
+
+                    elif mouse_pos[0] < 757 and mouse_pos[0] > 522 and mouse_pos[1] < 656 and mouse_pos[1] > 579:#notificar ingreso        
+                                    
+                        NotificarIngresoEgreso(VerNumeroEstacionamiento(usuario).pop( -1 - pagina )) 
+                                
+
+                    elif mouse_pos[0] < 1018 and mouse_pos[0] > 784 and mouse_pos[1] < 656 and mouse_pos[1] > 579:#cancelar reserva de parking        
+                                    
+                        CancelarReservaEstacionamiento( usuario , VerNumeroEstacionamiento(usuario).pop( -1 - pagina ) )
+        
+                    elif mouse_pos[0] < 1225 and mouse_pos[0] > 1130 and mouse_pos[1] < 462 and mouse_pos[1] > 306:#flecha derecha   
+                        if len(VerNumeroEstacionamiento(usuario)) > 1 and texto2[1] != VerNumeroEstacionamiento(usuario).pop( 0 ):
+                            pagina += 1
 
 
+                    elif mouse_pos[0] < 149 and mouse_pos[0] > 55 and mouse_pos[1] < 467 and mouse_pos[1] > 309:#flecha izquierda  
+                        if len(VerNumeroEstacionamiento(usuario)) > 1 and texto2[1] != VerNumeroEstacionamiento(usuario).pop( -1 ):    
+                            pagina -= 1
+
+            
+                
+
+            
+                
                 if alter_usuario:
 
 
@@ -1186,7 +1232,7 @@ while running:
 
                     elif mouse_pos[0] < 1220 and mouse_pos[0] > 1140 and mouse_pos[1] < 90 and mouse_pos[1] > 18:#boton usuario
                         alter_usuario = not(alter_usuario)
-                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                        
                         
                         
 
@@ -1297,24 +1343,32 @@ while running:
 
 
         elif fondo_actual[0] == "menu parking":
-            screen.blit (fondos[fondo_actual[1]] , (0 , 0))
-            texto1[0] = (400, 350)     #(365, 350)
-            texto2[0] = (822, 350)     #(785, 350)  
+            screen.blit (fondos[fondo_actual[1]] , (0, 0))
+            if len(VerNumeroEstacionamiento(usuario)) > 1 and texto2[1] != VerNumeroEstacionamiento(usuario).pop( 0 ):
+                screen.blit (flecha_derecha , (1130 , 308) )
+
+            if len(VerNumeroEstacionamiento(usuario)) > 1 and texto2[1] != VerNumeroEstacionamiento(usuario).pop( -1 ):
+                screen.blit (flecha_izquierda , (55, 308) )
+
+            texto1[0] = (400, 350)     
+            texto2[0] = (822, 350) 
+            texto3[0] = (535, 473)    
             reset_textos(texto1,texto2)
-            try:
-                for i in range(len(VerNumeroHabitacion(usuario))):
-                    
-                    if i < 3:
-                        texto1[1] += str(VerNumeroHabitacion(usuario).pop( -1 - i ))
-                        texto2[1] += str(VerNumeroEstacionamiento(usuario).pop(-1 - i))
-                    if i < 2:
-                        texto1[1] += ", "
-                        texto2[1] += ", "
+            
+            
+
+            
+            try:            
+                texto1[1] = str(VerNumeroHabitacion(usuario).pop( -1 - pagina))
+                texto2[1] = str(VerNumeroEstacionamiento(usuario).pop( -1 - pagina))
+                texto3[1] = str(VencimientoEstacionamiento((VerNumeroEstacionamiento(usuario).pop( -1 - pagina))))
                 
             except:
                 """"""
+
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
             screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )
+            screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )
             
 
         elif fondo_actual[0] == "menu bedroom":
@@ -1432,7 +1486,7 @@ while running:
             pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado)
             
 
-        if fondo_actual[0] in ["datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon", "reservar habitacion", "reservar eventos","ver datos"]:
+        if fondo_actual[0] in ["registros","datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon", "reservar habitacion", "reservar eventos","ver datos"]:
             screen.blit (barra_arriba, (0,0))
 
 

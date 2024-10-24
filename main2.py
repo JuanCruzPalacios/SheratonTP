@@ -524,6 +524,7 @@ def cursor(mouse_pos):
 
 
 
+
     if fondo_actual[0] in ["registros","habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar", "datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "reservar eventos", "ver datos", "reservar habitacion"]:
 
 
@@ -546,8 +547,7 @@ def cursor(mouse_pos):
 
             elif mouse_pos[0] < 1220 and mouse_pos[0] > 1140 and mouse_pos[1] < 90 and mouse_pos[1] > 18:#boton usuario
                 pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-
-    
+  
 
 
 
@@ -992,7 +992,27 @@ while running:
                             pagina -= 1
                             alter_mouse = True
 
+                        
+                    if mouse_pos[0] < 481 and mouse_pos[0] > 250 and mouse_pos[1] < 655 and mouse_pos[1] > 576: #pedir limpieza
 
+                        print("")
+                        alter_mouse = True
+                    
+
+                    elif mouse_pos[0] < 752 and mouse_pos[0] > 516 and mouse_pos[1] < 655 and mouse_pos[1] > 576: #no molestar
+
+                        CambiarEstadoHabitacion(str(VerNumeroHabitacion(usuario).pop( -1 - pagina )))
+                        alter_mouse = True
+
+
+                    elif mouse_pos[0] < 1018 and mouse_pos[0] > 785 and mouse_pos[1] < 655 and mouse_pos[1] > 576: #cancelar reserva
+
+                        CancelarReservaHabitaciones(usuario , VerNumeroHabitacion(usuario).pop( -1 - pagina ) )
+                        alter_mouse = True
+                    
+                        
+
+                        
 
 
                 elif fondo_actual[0] == "reservar habitacion":
@@ -1461,11 +1481,12 @@ while running:
 
         elif fondo_actual[0] == "menu parking":
             screen.blit (fondos[fondo_actual[1]] , (0, 0))
-            if len(VerNumeroEstacionamiento(usuario)) > 1 and texto2[1] != VerNumeroEstacionamiento(usuario).pop( 0 ):
-                screen.blit (flecha_derecha , (1130 , 308) )
+            if VerNumeroEstacionamiento(usuario) != False:
+                if len(VerNumeroEstacionamiento(usuario)) > 1 and texto2[1] != VerNumeroEstacionamiento(usuario).pop( 0 ):
+                    screen.blit (flecha_derecha , (1130 , 308) )
 
-            if len(VerNumeroEstacionamiento(usuario)) > 1 and texto2[1] != VerNumeroEstacionamiento(usuario).pop( -1 ):
-                screen.blit (flecha_izquierda , (55, 308) )
+                if len(VerNumeroEstacionamiento(usuario)) > 1 and texto2[1] != VerNumeroEstacionamiento(usuario).pop( -1 ):
+                    screen.blit (flecha_izquierda , (55, 308) )
 
             texto1[0] = (345, 351)     
             texto2[0] = (822, 350) 
@@ -1502,11 +1523,12 @@ while running:
             texto2[0] = (799, 306)
             texto3[0] = (538, 369)
 
-            if len(VerNumeroHabitacion(usuario)) > 1 and texto1[1] !=VerNumeroHabitacion(usuario).pop( 0 ):
-                screen.blit (flecha_derecha , (1130 , 308) )
+            if VerNumeroHabitacion(usuario) != False:
+                if len(VerNumeroHabitacion(usuario)) > 1 and texto1[1] !=VerNumeroHabitacion(usuario).pop( 0 ):
+                    screen.blit (flecha_derecha , (1130 , 308) )
 
-            if len(VerNumeroHabitacion(usuario)) > 1 and texto1[1] != VerNumeroHabitacion(usuario).pop( -1 ):
-                screen.blit (flecha_izquierda , (55, 308) )
+                if len(VerNumeroHabitacion(usuario)) > 1 and texto1[1] != VerNumeroHabitacion(usuario).pop( -1 ):
+                    screen.blit (flecha_izquierda , (55, 308) )
             
 
             try:            

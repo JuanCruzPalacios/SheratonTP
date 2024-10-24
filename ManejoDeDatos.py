@@ -98,7 +98,6 @@ def VerFechaFinal(id_habitacion):
     except:
         return None
 
-
 def VerRolUsuario(usuario):
     contenido = LeerJson("Usuario.json")
     return contenido[usuario]["Tipo"]
@@ -309,12 +308,19 @@ def CancelarReservaEstacionamiento(usuario , id):
     except: 
         print("El usuario o el estacionamiento ingresado no existe.")
 
-def CambiarEstadoHabitacion(nombre_de_habitacion):
-    contenido = LeerJson("habitaciones.json")
-    if contenido[nombre_de_habitacion]["Estado"] == "Ninguno":
-        contenido[nombre_de_habitacion]["Estado"] = "No molestar"
+def CambiarEstadoHabitacion(id_habitacion):
+    habitacion_data = LeerJson("habitaciones.json")
+    id_habitacion = str(id_habitacion)
+    for habitacion in habitacion_data: 
+            if habitacion_data[habitacion]["ID"] == id_habitacion:
+                nombre_de_habitacion = habitacion
+                pass
+    if habitacion_data[nombre_de_habitacion]["Estado"] == "Ninguno":
+        habitacion_data[nombre_de_habitacion]["Estado"] = "No molestar"
     else:
-        contenido[nombre_de_habitacion]["Estado"] = "Ninguno"
+        habitacion_data[nombre_de_habitacion]["Estado"] = "Ninguno"
+    
+    ActualizarJson("habitaciones.json" , habitacion_data)
 
 def FijarDesfijarNotificaciones (id_notificacion):
     contenido = LeerJson("Notificaciones.json")

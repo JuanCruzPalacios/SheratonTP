@@ -5,6 +5,8 @@ import pygame
 
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
+pygame.display.set_caption("Sheraton")
+pygame.display.set_icon(pygame.image.load("imagenes/logo.png"))
 running = True
 
 

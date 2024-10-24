@@ -310,17 +310,20 @@ def CancelarReservaEstacionamiento(usuario , id):
 
 def CambiarEstadoHabitacion(id_habitacion):
     habitacion_data = LeerJson("habitaciones.json")
-    id_habitacion = str(id_habitacion)
-    for habitacion in habitacion_data: 
-            if habitacion_data[habitacion]["ID"] == id_habitacion:
-                nombre_de_habitacion = habitacion
-                pass
-    if habitacion_data[nombre_de_habitacion]["Estado"] == "Ninguno":
-        habitacion_data[nombre_de_habitacion]["Estado"] = "No molestar"
-    else:
-        habitacion_data[nombre_de_habitacion]["Estado"] = "Ninguno"
+    id_habitacion = int(id_habitacion)
+    try:
+        for habitacion in habitacion_data: 
+                if habitacion_data[habitacion]["ID"] == id_habitacion:
+                    nombre_de_habitacion = habitacion
+                    pass
+        if habitacion_data[nombre_de_habitacion]["Estado"] == "Ninguno":
+            habitacion_data[nombre_de_habitacion]["Estado"] = "No molestar"
+        else:
+            habitacion_data[nombre_de_habitacion]["Estado"] = "Ninguno"
     
-    ActualizarJson("habitaciones.json" , habitacion_data)
+        ActualizarJson("habitaciones.json" , habitacion_data)
+    except:
+        print ("Error en la habitacion")
 
 def FijarDesfijarNotificaciones (id_notificacion):
     contenido = LeerJson("Notificaciones.json")
@@ -565,3 +568,4 @@ def VerRegistrosEstacionamiento(id_estacionamiento):
     contenido = LeerJson("Estacionamiento.json")
     return contenido[id_estacionamiento]["UltimoIngreso"], contenido[id_estacionamiento]["UltimoEgreso"]
 
+CambiarEstadoHabitacion(4)

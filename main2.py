@@ -130,7 +130,7 @@ fondos = [
 
 
 
-fuente = pygame.font.Font("fuentes/MyFont-Regular.ttf", 31)
+fuente = pygame.font.Font("fuentes/Fuente_sheraton_mono.ttf", 31)
 
 
 limite = 11

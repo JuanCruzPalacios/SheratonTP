@@ -1345,6 +1345,7 @@ while running:
                         fondo_actual[1] = 2
                         texto_seleccionado = [(-100,-100),""]
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                        pagina = 0
                         
 
 
@@ -1354,6 +1355,7 @@ while running:
                         fondo_actual[1] = 3
                         texto_seleccionado = [(-100,-100),""]
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                        pagina = 0
                         
 
 
@@ -1521,8 +1523,8 @@ while running:
 
         elif fondo_actual[0] == "menu bedroom":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
-            texto1[0] = (395, 306)
-            texto2[0] = (799, 306)
+            texto1[0] = (408, 305)
+            texto2[0] = (767, 305)
             texto3[0] = (538, 369)
 
             if VerNumeroHabitacion(usuario) != False:
@@ -1532,20 +1534,29 @@ while running:
                 if len(VerNumeroHabitacion(usuario)) > 1 and texto1[1] != VerNumeroHabitacion(usuario).pop( -1 ):
                     screen.blit (flecha_izquierda , (55, 308) )
             
+            for i in range(len(VerNumeroEstacionamiento(usuario))):
+                texto2[1] += str(VerNumeroEstacionamiento(usuario).pop(-1 - i))
+                if i != len(VerNumeroEstacionamiento(usuario) ) - 1:
+                    texto2[1] += ","
 
-            try:            
-                texto1[1] = str(VerNumeroHabitacion(usuario).pop( -1 - pagina))
-                texto2[1] = str(VerNumeroEstacionamiento(usuario).pop( -1 ))
+            for i in range(1,4):
+                if TieneServicio(usuario)[i-1][0]:
+                    pygame.draw.rect(screen, (98,69,49) , ( 351 + 306 * ( i - 1 ) ,   496 , 41 , 41 )) #310
+
+            try:       
+
+                texto1[1] = str(VerNumeroHabitacion(usuario).pop( -1 - pagina))               
                 texto3[1] = str(VerFechaFinal((VerNumeroHabitacion(usuario).pop( -1 - pagina))))
                 
             except:
                 """"""
 
+            
 
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
             screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )
             screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )
-
+            reset_textos(texto2)
 
         elif fondo_actual[0] == "menu amenities":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))

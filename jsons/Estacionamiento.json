@@ -32,8 +32,8 @@
         "Vencimiento": "31/10/2024"
     },
     "5": {
-        "Ocupado": 1,
-        "Ocupante": "pepe",
+        "Ocupado": 0,
+        "Ocupante": "Nadie",
         "EstadoActual": "Afuera",
         "UltimoIngreso": [],
         "UltimoEgreso": [],

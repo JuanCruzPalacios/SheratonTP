@@ -760,7 +760,7 @@ while running:
                         texto_seleccionado = texto1 #Usuario / iniciar sesion   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 11
+                        limite = 18
 
                     
             
@@ -770,7 +770,7 @@ while running:
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()   
                         
-                        limite = 11
+                        limite = 18
 
 
 
@@ -815,7 +815,7 @@ while running:
                         texto_ingresado = texto1[1]
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()   
-                        limite = 11
+                        limite = 18
 
 
                     elif mouse_pos[0] <= 821 and mouse_pos[0] >= 460 and mouse_pos[1] <= 583 and mouse_pos[1] >= 544:#-----> Correo Electronico
@@ -824,7 +824,7 @@ while running:
                         texto_ingresado = texto2[1]
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()   
-                        limite = 11
+                        limite = 18
 
 
                     elif mouse_pos[0] <= 821 and mouse_pos[0] >= 460 and mouse_pos[1] <= 661 and mouse_pos[1] >= 621: #-----> Contraseña
@@ -833,7 +833,7 @@ while running:
                         texto_ingresado = texto3[1]
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()   
-                        limite = 11
+                        limite = 18
 
 
                     elif mouse_pos[0] <= 871 and mouse_pos[0] >= 832 and mouse_pos[1] <= 669 and mouse_pos[1] >= 633:#-----> Siguiente

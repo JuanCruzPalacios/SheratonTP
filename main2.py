@@ -522,6 +522,7 @@ def cursor(mouse_pos):
 
 
 
+
     if fondo_actual[0] in ["registros","habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar", "datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "reservar eventos", "ver datos", "reservar habitacion"]:
 
 
@@ -544,8 +545,7 @@ def cursor(mouse_pos):
 
             elif mouse_pos[0] < 1220 and mouse_pos[0] > 1140 and mouse_pos[1] < 90 and mouse_pos[1] > 18:#boton usuario
                 pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-
-    
+  
 
 
 
@@ -963,7 +963,12 @@ while running:
                             pagina -= 1
                             alter_mouse = True
 
+                        
 
+           
+               
+
+                        
 
 
                 elif fondo_actual[0] == "reservar habitacion":

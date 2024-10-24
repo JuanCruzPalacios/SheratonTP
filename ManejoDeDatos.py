@@ -310,17 +310,20 @@ def CancelarReservaEstacionamiento(usuario , id):
 
 def CambiarEstadoHabitacion(id_habitacion):
     habitacion_data = LeerJson("habitaciones.json")
-    id_habitacion = str(id_habitacion)
-    for habitacion in habitacion_data: 
-            if habitacion_data[habitacion]["ID"] == id_habitacion:
-                nombre_de_habitacion = habitacion
-                pass
-    if habitacion_data[nombre_de_habitacion]["Estado"] == "Ninguno":
-        habitacion_data[nombre_de_habitacion]["Estado"] = "No molestar"
-    else:
-        habitacion_data[nombre_de_habitacion]["Estado"] = "Ninguno"
+    id_habitacion = int(id_habitacion)
+    try:
+        for habitacion in habitacion_data: 
+                if habitacion_data[habitacion]["ID"] == id_habitacion:
+                    nombre_de_habitacion = habitacion
+                    pass
+        if habitacion_data[nombre_de_habitacion]["Estado"] == "Ninguno":
+            habitacion_data[nombre_de_habitacion]["Estado"] = "No molestar"
+        else:
+            habitacion_data[nombre_de_habitacion]["Estado"] = "Ninguno"
     
-    ActualizarJson("habitaciones.json" , habitacion_data)
+        ActualizarJson("habitaciones.json" , habitacion_data)
+    except:
+        print ("Error en la habitacion")
 
 def FijarDesfijarNotificaciones (id_notificacion):
     contenido = LeerJson("Notificaciones.json")
@@ -360,20 +363,23 @@ def ContratarAmenities(usuario,amenitie,fecha,precio):
     ActualizarJson("Usuario.json", contenido2)
 
 def CancelarReservaHabitaciones(usuario,id_habitacion):
-    contenido = LeerJson("Usuario.json")
-    contenido2 = LeerJson("Habitaciones.json")
-    try:
-        contenido[usuario]["IdHabitacion"].pop(id_habitacion)
-    except:
-        print("Habitacion no encontrada")
-    habitaciones = ["suite_balcon","habitacion_triple","habitacion_doble","habitacion_lujo","habitacion_cuadruple","suite_rio","habitacion_individual","suite_jacuzzi","suite_estandar"]
-    for i in range(0,8):
-        if contenido2[habitaciones[i]]["ID"] == id_habitacion:
-            contenido2[habitaciones[i]]["IdClienteOcupante"] == ""
-            contenido2[habitaciones[i]]["Fechas"] == [""]
-            contenido2[habitaciones[i]]["EstadoActual"] == [""]
-    ActualizarJson("Usuario.json", contenido)
-    ActualizarJson("Habitaciones.json", contenido2)
+    usuario_data = LeerJson("Usuario.json")
+    habitaciones_data = LeerJson("habitaciones.json")
+    try: 
+        for habitacion in habitaciones_data: 
+            if habitaciones_data[habitacion]["ID"] == id_habitacion:
+                nombre_habitacion = habitacion
+                pass
+        usuario_data[usuario]["IdHabitacion"].remove(id_habitacion)
+        habitaciones_data[nombre_habitacion]["IdClienteOcupante"] = ""
+        habitaciones_data[nombre_habitacion]["Ocupada"] = "No"
+        habitaciones_data[nombre_habitacion]["Fechas"] = [""]
+        habitaciones_data[nombre_habitacion]["ServiciosIncluidos"] = [""]
+        habitaciones_data[nombre_habitacion]["EstadoActual"] = [""]
+        ActualizarJson("Usuario.json", usuario_data)
+        ActualizarJson("Habitaciones.json", habitaciones_data)
+    except: 
+        print("Error al cancelar la reserva de habitacion")
 
 def ArchivarDesarchivarNotificaciones (id_notificacion):
     contenido = LeerJson("Notificaciones.json")
@@ -564,4 +570,3 @@ def VerRegistrosEstacionamiento(id_estacionamiento):
     id_estacionamiento = str(id_estacionamiento)
     contenido = LeerJson("Estacionamiento.json")
     return contenido[id_estacionamiento]["UltimoIngreso"], contenido[id_estacionamiento]["UltimoEgreso"]
-

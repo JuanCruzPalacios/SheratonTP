@@ -365,18 +365,21 @@ def ContratarAmenities(usuario,amenitie,fecha,precio):
 def CancelarReservaHabitaciones(usuario,id_habitacion):
     usuario_data = LeerJson("Usuario.json")
     habitaciones_data = LeerJson("habitaciones.json")
-    for habitacion in habitaciones_data: 
-        if habitaciones_data[habitacion]["ID"] == id_habitacion:
-            nombre_habitacion = habitacion
-            pass
-    usuario_data[usuario]["IdHabitacion"].remove(id_habitacion)
-    habitaciones_data[nombre_habitacion]["IdClienteOcupante"] = ""
-    habitaciones_data[nombre_habitacion]["Ocupada"] = "No"
-    habitaciones_data[nombre_habitacion]["Fechas"] = [""]
-    habitaciones_data[nombre_habitacion]["ServiciosIncluidos"] = [""]
-    habitaciones_data[nombre_habitacion]["EstadoActual"] = [""]
-    ActualizarJson("Usuario.json", usuario_data)
-    ActualizarJson("Habitaciones.json", habitaciones_data)
+    try: 
+        for habitacion in habitaciones_data: 
+            if habitaciones_data[habitacion]["ID"] == id_habitacion:
+                nombre_habitacion = habitacion
+                pass
+        usuario_data[usuario]["IdHabitacion"].remove(id_habitacion)
+        habitaciones_data[nombre_habitacion]["IdClienteOcupante"] = ""
+        habitaciones_data[nombre_habitacion]["Ocupada"] = "No"
+        habitaciones_data[nombre_habitacion]["Fechas"] = [""]
+        habitaciones_data[nombre_habitacion]["ServiciosIncluidos"] = [""]
+        habitaciones_data[nombre_habitacion]["EstadoActual"] = [""]
+        ActualizarJson("Usuario.json", usuario_data)
+        ActualizarJson("Habitaciones.json", habitaciones_data)
+    except: 
+        print("Error al cancelar la reserva de habitacion")
 
 def ArchivarDesarchivarNotificaciones (id_notificacion):
     contenido = LeerJson("Notificaciones.json")

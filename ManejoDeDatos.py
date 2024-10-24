@@ -98,7 +98,6 @@ def VerFechaFinal(id_habitacion):
     except:
         return None
 
-
 def VerRolUsuario(usuario):
     contenido = LeerJson("Usuario.json")
     return contenido[usuario]["Tipo"]
@@ -309,12 +308,22 @@ def CancelarReservaEstacionamiento(usuario , id):
     except: 
         print("El usuario o el estacionamiento ingresado no existe.")
 
-def CambiarEstadoHabitacion(nombre_de_habitacion):
-    contenido = LeerJson("habitaciones.json")
-    if contenido[nombre_de_habitacion]["Estado"] == "Ninguno":
-        contenido[nombre_de_habitacion]["Estado"] = "No molestar"
-    else:
-        contenido[nombre_de_habitacion]["Estado"] = "Ninguno"
+def CambiarEstadoHabitacion(id_habitacion):
+    habitacion_data = LeerJson("habitaciones.json")
+    id_habitacion = int(id_habitacion)
+    try:
+        for habitacion in habitacion_data: 
+                if habitacion_data[habitacion]["ID"] == id_habitacion:
+                    nombre_de_habitacion = habitacion
+                    pass
+        if habitacion_data[nombre_de_habitacion]["Estado"] == "Ninguno":
+            habitacion_data[nombre_de_habitacion]["Estado"] = "No molestar"
+        else:
+            habitacion_data[nombre_de_habitacion]["Estado"] = "Ninguno"
+    
+        ActualizarJson("habitaciones.json" , habitacion_data)
+    except:
+        print ("Error en la habitacion")
 
 def FijarDesfijarNotificaciones (id_notificacion):
     contenido = LeerJson("Notificaciones.json")
@@ -357,7 +366,7 @@ def CancelarReservaHabitaciones(usuario,id_habitacion):
     contenido = LeerJson("Usuario.json")
     contenido2 = LeerJson("Habitaciones.json")
     try:
-        contenido[usuario]["IdHabitacion"].pop(id_habitacion)
+        contenido[usuario]["IdHabitacion"].pop(id_habitacion -1)
     except:
         print("Habitacion no encontrada")
     habitaciones = ["suite_balcon","habitacion_triple","habitacion_doble","habitacion_lujo","habitacion_cuadruple","suite_rio","habitacion_individual","suite_jacuzzi","suite_estandar"]
@@ -559,3 +568,4 @@ def VerRegistrosEstacionamiento(id_estacionamiento):
     contenido = LeerJson("Estacionamiento.json")
     return contenido[id_estacionamiento]["UltimoIngreso"], contenido[id_estacionamiento]["UltimoEgreso"]
 
+CancelarReservaHabitaciones("pepe" , 4)

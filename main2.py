@@ -155,6 +155,8 @@ alter_barra = True
 ultimo_cambio_barra = pygame.time.get_ticks()
 
 posicion_cuadrado = (-100 , -100 , 10 , 10)
+posicion_cuadrado_2 = (-100 , -100 , 10 , 10)
+posicion_cuadrado_3 = (-100 , -100 , 10 , 10)
 
 texto_seleccionado =  texto1 
 texto_ingresado = ""
@@ -1037,29 +1039,44 @@ while running:
 
 
                     elif mouse_pos[0] < 1108 and mouse_pos[0] > 1058 and mouse_pos[1] < 460 and mouse_pos[1] > 307: #tarjeta
-                        posicion_cuadrado = ( 1061, 416, 41 , 41  ) 
+                        posicion_cuadrado = ( 1062, 415, 41 , 41  ) 
 
 
 
                 elif fondo_actual[0] == "menu amenities":
                    
-                    if mouse_pos[0] < 455 and mouse_pos[0] > 400 and mouse_pos[1] < 342 and mouse_pos[1] > 290: #spa
+                    if mouse_pos[0] < 455 and mouse_pos[0] > 400 and mouse_pos[1] < 342 and mouse_pos[1] > 290 and posicion_cuadrado != (409,298, 41,41): #spa aparece
                    
                         posicion_cuadrado = (409,298, 41,41)
+                    
+                    elif mouse_pos[0] < 455 and mouse_pos[0] > 400 and mouse_pos[1] < 342 and mouse_pos[1] > 290 and posicion_cuadrado == (409,298, 41,41): #spa desaparece
 
-                    elif mouse_pos[0] < 1005 and mouse_pos[0] > 948 and mouse_pos[1] < 345 and mouse_pos[1] > 290: #gimnasio
+                        posicion_cuadrado = (-100,-100,0,0)
+
+                    elif mouse_pos[0] < 1005 and mouse_pos[0] > 948 and mouse_pos[1] < 345 and mouse_pos[1] > 290 and posicion_cuadrado_2 != (957,298, 41,41): #gimnasio aparece
                    
-                        posicion_cuadrado = (957,298, 41,41)
+                        posicion_cuadrado_2 = (957,298, 41,41)
 
-                    elif mouse_pos[0] < 740 and mouse_pos[0] > 688 and mouse_pos[1] < 345 and mouse_pos[1] > 290: #pileta
+                    elif mouse_pos[0] < 1005 and mouse_pos[0] > 948 and mouse_pos[1] < 345 and mouse_pos[1] > 290 and posicion_cuadrado_2 == (957,298, 41,41): #gimnasio desaparece
 
+                        posicion_cuadrado_2 = (-100,-100,0,0)
 
-                        posicion_cuadrado = (695,298, 41,41)
+                    elif mouse_pos[0] < 740 and mouse_pos[0] > 688 and mouse_pos[1] < 345 and mouse_pos[1] > 290 and posicion_cuadrado_3 !=  (695,298, 41,41): #pileta aparece
+
+                        posicion_cuadrado_3 = (695,298, 41,41)
+
+                    elif  mouse_pos[0] < 740 and mouse_pos[0] > 688 and mouse_pos[1] < 345 and mouse_pos[1] > 290 and posicion_cuadrado_3 ==  (695,298, 41,41): #pileta desaparece
+
+                        posicion_cuadrado_3 = (-100,-100,0,0)
                    
                     elif mouse_pos[0] < 708 and mouse_pos[0] > 568 and mouse_pos[1] < 676 and mouse_pos[1] > 636: #reservar
-                        fondo_actual[0] = "reservar habitacion"
-                        fondo_actual[1] = 5
-                        posicion_cuadrado = (0,0,0,0)
+                        if posicion_cuadrado == (409,298, 41,41)  or posicion_cuadrado_2 == (957,298, 41,41) or posicion_cuadrado_3 == (695,298, 41,41):
+                            fondo_actual[0] = "reservar habitacion"
+                            fondo_actual[1] = 5
+                            posicion_cuadrado = (0,0,0,0)
+                            posicion_cuadrado_2 = (0,0,0,0)
+                            posicion_cuadrado_3 = (0,0,0,0)
+                        
                     
                     
 
@@ -1429,6 +1446,9 @@ while running:
         elif fondo_actual[0] == "menu amenities":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
             pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado)
+            pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado_2)
+            pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado_3)
+            
 
 
         elif fondo_actual[0] == "ver datos":

@@ -518,7 +518,7 @@ def cursor(mouse_pos):
 
 
 
-    if fondo_actual[0] in ["habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar", "datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "reservar eventos", "ver datos", "reservar habitacion"]:
+    if fondo_actual[0] in ["registros","habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar", "datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "reservar eventos", "ver datos", "reservar habitacion"]:
 
 
 
@@ -1041,6 +1041,28 @@ while running:
 
 
 
+                elif fondo_actual[0] == "menu amenities":
+                   
+                    if mouse_pos[0] < 455 and mouse_pos[0] > 400 and mouse_pos[1] < 342 and mouse_pos[1] > 290: #spa
+                   
+                        posicion_cuadrado = (409,298, 41,41)
+
+                    elif mouse_pos[0] < 1005 and mouse_pos[0] > 948 and mouse_pos[1] < 345 and mouse_pos[1] > 290: #gimnasio
+                   
+                        posicion_cuadrado = (957,298, 41,41)
+
+                    elif mouse_pos[0] < 740 and mouse_pos[0] > 688 and mouse_pos[1] < 345 and mouse_pos[1] > 290: #pileta
+
+
+                        posicion_cuadrado = (695,298, 41,41)
+                   
+                    elif mouse_pos[0] < 708 and mouse_pos[0] > 568 and mouse_pos[1] < 676 and mouse_pos[1] > 636: #reservar
+                        fondo_actual[0] = "reservar habitacion"
+                        fondo_actual[1] = 5
+                        posicion_cuadrado = (0,0,0,0)
+                    
+                    
+
 
                 elif fondo_actual[0] == "reservar eventos":
 
@@ -1214,7 +1236,7 @@ while running:
 
 
 
-                if fondo_actual[0] in ["reservar habitacion","habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar", "datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "reservar eventos", "ver datos"]:
+                if fondo_actual[0] in ["registros","reservar habitacion","habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar", "datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "reservar eventos", "ver datos"]:
 
 
 
@@ -1381,11 +1403,13 @@ while running:
             texto3[0] = (535, 473)    
             reset_textos(texto1,texto2)
             
-            
-
+            for i in range(len(VerNumeroHabitacion(usuario))):
+                texto1[1] += str(VerNumeroHabitacion(usuario).pop(-1 - i))
+                if i != len(VerNumeroHabitacion(usuario) - 1):
+                    texto1[1] += ","
             
             try:            
-                texto1[1] = str(VerNumeroHabitacion(usuario).pop( -1 - pagina))
+                
                 texto2[1] = str(VerNumeroEstacionamiento(usuario).pop( -1 - pagina))
                 texto3[1] = str(VencimientoEstacionamiento((VerNumeroEstacionamiento(usuario).pop( -1 - pagina))))
                 
@@ -1395,6 +1419,7 @@ while running:
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
             screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )
             screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )
+            texto1[1] = ""
             
 
         elif fondo_actual[0] == "menu bedroom":
@@ -1403,9 +1428,13 @@ while running:
             
         elif fondo_actual[0] == "menu amenities":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+            pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado)
 
 
         elif fondo_actual[0] == "ver datos":
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+
+        elif fondo_actual[0] == "registros":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
 
 
@@ -1456,14 +1485,7 @@ while running:
           
         
 
-        
-
-
-
-
-
-            
-            
+   
             screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
             screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
             screen.blit(fuente.render(texto2[1], True, (0, 0, 0)), texto2[0])
@@ -1474,12 +1496,6 @@ while running:
             screen.blit(fuente.render(texto7[1], True, (0, 0, 0)), texto7[0])
             screen.blit(fuente.render(texto8[1], True, (0, 0, 0)), texto8[0])
             pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado)
-
-
-
-
-
-            
 
 
         elif fondo_actual[0] == "reservar habitacion":

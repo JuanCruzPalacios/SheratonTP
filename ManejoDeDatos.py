@@ -310,7 +310,7 @@ def CancelarReservaEstacionamiento(usuario , id):
 
 def CambiarEstadoHabitacion(id_habitacion):
     habitacion_data = LeerJson("habitaciones.json")
-    id_habitacion = str(id_habitacion)
+    id_habitacion = int(id_habitacion)
     try:
         for habitacion in habitacion_data: 
                 if habitacion_data[habitacion]["ID"] == id_habitacion:
@@ -568,3 +568,4 @@ def VerRegistrosEstacionamiento(id_estacionamiento):
     contenido = LeerJson("Estacionamiento.json")
     return contenido[id_estacionamiento]["UltimoIngreso"], contenido[id_estacionamiento]["UltimoEgreso"]
 
+CambiarEstadoHabitacion(4)

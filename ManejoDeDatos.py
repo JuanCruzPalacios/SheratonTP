@@ -1,7 +1,7 @@
 # Funciones requeridas : 
 
 import json
-from datetime import datetime, timedelta
+from datetime import datetime
 
 def VerStock(): 
     Stock = LeerJson("Stock.json")

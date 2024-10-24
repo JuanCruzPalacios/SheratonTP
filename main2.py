@@ -950,13 +950,13 @@ while running:
                 elif fondo_actual[0] == "menu bedroom" and alter_mouse == False:
 
                     if mouse_pos[0] < 1225 and mouse_pos[0] > 1130 and mouse_pos[1] < 462 and mouse_pos[1] > 306:#flecha derecha   
-                        if len(VerNumeroHabitacion(usuario)) > 1 and texto2[1] != VerNumeroHabitacion(usuario).pop( 0 ):
+                        if len(VerNumeroHabitacion(usuario)) > 1 and texto1[1] != str(VerNumeroHabitacion(usuario).pop( 0 )):
                             pagina += 1
                             alter_mouse = True
 
 
                     elif mouse_pos[0] < 149 and mouse_pos[0] > 55 and mouse_pos[1] < 467 and mouse_pos[1] > 309:#flecha izquierda  
-                        if len(VerNumeroHabitacion(usuario)) > 1 and texto2[1] != VerNumeroHabitacion(usuario).pop( -1 ):    
+                        if len(VerNumeroHabitacion(usuario)) > 1 and texto1[1] != str(VerNumeroHabitacion(usuario).pop( -1 )):    
                             pagina -= 1
                             alter_mouse = True
 
@@ -1443,6 +1443,7 @@ while running:
 
             if len(VerNumeroHabitacion(usuario)) > 1 and texto1[1] != VerNumeroHabitacion(usuario).pop( -1 ):
                 screen.blit (flecha_izquierda , (55, 308) )
+            
 
             try:            
                 texto1[1] = str(VerNumeroHabitacion(usuario).pop( -1 - pagina))
@@ -1456,7 +1457,6 @@ while running:
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
             screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )
             screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )
-
 
 
         elif fondo_actual[0] == "menu amenities":
@@ -1557,12 +1557,6 @@ while running:
                 texto3[1] = texto_seleccionado[1]
                 barra = texto3[1] + "|"
                 ultimo_cambio_barra = pygame.time.get_ticks()
-        
-
-        
-
-
-
 
 
             

@@ -1062,8 +1062,10 @@ while running:
 
 
                     elif mouse_pos[0] < 1018 and mouse_pos[0] > 785 and mouse_pos[1] < 655 and mouse_pos[1] > 576: #cancelar reserva
-
-                        CancelarReservaHabitaciones(usuario , VerNumeroHabitacion(usuario).pop( -1 - pagina ) )
+                        try:
+                            CancelarReservaHabitaciones(usuario , VerNumeroHabitacion(usuario).pop( -1 - pagina ) )
+                        except:
+                            """"""
                         alter_mouse = True
                     
                         
@@ -1582,10 +1584,10 @@ while running:
             texto3[0] = (538, 369)
 
             if VerNumeroHabitacion(usuario) != False:
-                if len(VerNumeroHabitacion(usuario)) > 1 and texto1[1] !=VerNumeroHabitacion(usuario).pop( 0 ):
+                if len(VerNumeroHabitacion(usuario)) > 1 and texto1[1] != str(VerNumeroHabitacion(usuario).pop( 0 )):
                     screen.blit (flecha_derecha , (1130 , 308) )
 
-                if len(VerNumeroHabitacion(usuario)) > 1 and texto1[1] != VerNumeroHabitacion(usuario).pop( -1 ):
+                if len(VerNumeroHabitacion(usuario)) > 1 and texto1[1] != str(VerNumeroHabitacion(usuario).pop( -1 )):
                     screen.blit (flecha_izquierda , (55, 308) )
             
             for i in range(len(VerNumeroEstacionamiento(usuario))):
@@ -1603,7 +1605,7 @@ while running:
                 texto3[1] = str(VerFechaFinal((VerNumeroHabitacion(usuario).pop( -1 - pagina))))
                 
             except:
-                """"""
+                reset_textos(texto1,texto3)
 
             
 

@@ -15,18 +15,18 @@
     },
     "habitacion_triple": {
         "ID": 1,
-        "Ocupada": "Si",
+        "Ocupada": "No",
         "UltimaLimpieza": "02/10/2024",
         "Estado": "No molestar",
         "ServiciosIncluidos": [
-            "SPA",
-            "GYM"
+            ""
         ],
-        "EstadoActual": "Ninguno",
-        "IdClienteOcupante": 1,
+        "EstadoActual": [
+            ""
+        ],
+        "IdClienteOcupante": "",
         "Fechas": [
-            "10/10/2024",
-            "11/10/2024"
+            ""
         ],
         "Precio": 255,
         "RangoHuespedes": 3
@@ -39,7 +39,9 @@
         "ServiciosIncluidos": [
             ""
         ],
-        "EstadoActual": "",
+        "EstadoActual": [
+            ""
+        ],
         "IdClienteOcupante": "",
         "Fechas": [
             ""
@@ -53,11 +55,11 @@
         "UltimaLimpieza": "19/09/2024",
         "Estado": "Ninguno",
         "ServiciosIncluidos": [
-            "GYM",
-            "SPA",
-            "PISCINA"
+            ""
         ],
-        "EstadoActual": "",
+        "EstadoActual": [
+            ""
+        ],
         "IdClienteOcupante": "",
         "Fechas": [
             ""

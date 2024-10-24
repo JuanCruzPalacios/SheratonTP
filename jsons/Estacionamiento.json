@@ -2,9 +2,51 @@
     "1": {
         "Ocupado": 1,
         "Ocupante": "pepe",
-        "EstadoActual": "Afuera",
-        "UltimoIngreso": [],
-        "UltimoEgreso": [],
+        "EstadoActual": "Adentro",
+        "UltimoIngreso": [
+            [
+                "24/10/2024",
+                "13:29:43"
+            ],
+            [
+                "24/10/2024",
+                "13:29:44"
+            ],
+            [
+                "24/10/2024",
+                "13:29:44"
+            ],
+            [
+                "24/10/2024",
+                "13:29:44"
+            ],
+            [
+                "24/10/2024",
+                "13:29:44"
+            ]
+        ],
+        "UltimoEgreso": [
+            [
+                "24/10/2024",
+                "13:29:43"
+            ],
+            [
+                "24/10/2024",
+                "13:29:43"
+            ],
+            [
+                "24/10/2024",
+                "13:29:44"
+            ],
+            [
+                "24/10/2024",
+                "13:29:44"
+            ],
+            [
+                "24/10/2024",
+                "13:29:44"
+            ]
+        ],
         "Vencimiento": "31/10/2024"
     },
     "2": {
@@ -18,14 +60,19 @@
     "3": {
         "Ocupado": 1,
         "Ocupante": "pepe",
-        "EstadoActual": "Afuera",
+        "EstadoActual": "Fuera",
         "UltimoIngreso": [],
-        "UltimoEgreso": [],
+        "UltimoEgreso": [
+            [
+                "24/10/2024",
+                "13:29:6"
+            ]
+        ],
         "Vencimiento": "31/10/2024"
     },
     "4": {
-        "Ocupado": 1,
-        "Ocupante": "pepe",
+        "Ocupado": 0,
+        "Ocupante": "Nadie",
         "EstadoActual": "Afuera",
         "UltimoIngreso": [],
         "UltimoEgreso": [],

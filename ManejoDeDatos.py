@@ -366,7 +366,7 @@ def CancelarReservaHabitaciones(usuario,id_habitacion):
     contenido = LeerJson("Usuario.json")
     contenido2 = LeerJson("Habitaciones.json")
     try:
-        contenido[usuario]["IdHabitacion"].pop(id_habitacion)
+        contenido[usuario]["IdHabitacion"].pop(id_habitacion -1)
     except:
         print("Habitacion no encontrada")
     habitaciones = ["suite_balcon","habitacion_triple","habitacion_doble","habitacion_lujo","habitacion_cuadruple","suite_rio","habitacion_individual","suite_jacuzzi","suite_estandar"]
@@ -568,4 +568,4 @@ def VerRegistrosEstacionamiento(id_estacionamiento):
     contenido = LeerJson("Estacionamiento.json")
     return contenido[id_estacionamiento]["UltimoIngreso"], contenido[id_estacionamiento]["UltimoEgreso"]
 
-CambiarEstadoHabitacion(4)
+CancelarReservaHabitaciones("pepe" , 4)

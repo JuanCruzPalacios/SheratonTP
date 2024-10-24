@@ -1,7 +1,7 @@
 # Funciones requeridas : 
 
 import json
-from datetime import datetime, timedelta
+from datetime import datetime
 
 def VerStock(): 
     Stock = LeerJson("Stock.json")
@@ -87,13 +87,17 @@ def ExisteUsuario(Usuario):
         print("El usuario no existe.")
         return False
 
-def VerFechaFinal(cliente):
-    contenido = LeerJson("Usuario.json")
-    contenido2 = LeerJson("habitaciones.json")
-    habitaciones = ["suite_balcon","habitacion_triple","habitacion_doble","habitacion_lujo","habitacion_cuadruple","suite_rio","habitacion_individual","suite_jacuzzi","suite_estandar"]
-    for x in range(0,8):
-        if contenido[cliente]["IdHabitacion"] == contenido2[(habitaciones[x])]["IdClienteOcupante"]:
-            return contenido2[(habitaciones[x])]["Fechas"][1]
+def VerFechaFinal(id_habitacion):
+    try:
+        habitaciones_data = LeerJson("habitaciones.json")
+        for habitacion in habitaciones_data: 
+            if habitaciones_data[habitacion]["ID"] == id_habitacion:
+                habitacion_el = habitacion
+                pass
+        return(habitaciones_data[habitacion_el]["Fechas"][1])
+    except:
+        return None
+
 
 def VerRolUsuario(usuario):
     contenido = LeerJson("Usuario.json")

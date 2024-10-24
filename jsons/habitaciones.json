@@ -22,7 +22,7 @@
 "ServiciosIncluidos" : ["SPA","GYM"] , 
 "EstadoActual" : "Ninguno" ,  
 "IdClienteOcupante" : 1 , 
-"Fechas":[["10/10/2024"],["11/10/2024"]],
+"Fechas":["10/10/2024","11/10/2024"],
 "Precio" : 255,
 "RangoHuespedes": 3
 },

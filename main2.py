@@ -1006,8 +1006,10 @@ while running:
 
 
                     elif mouse_pos[0] < 1018 and mouse_pos[0] > 785 and mouse_pos[1] < 655 and mouse_pos[1] > 576: #cancelar reserva
-
-                        CancelarReservaHabitaciones(usuario , VerNumeroHabitacion(usuario).pop( -1 - pagina ) )
+                        try:
+                            CancelarReservaHabitaciones(usuario , VerNumeroHabitacion(usuario).pop( -1 - pagina ) )
+                        except:
+                            """"""
                         alter_mouse = True
                     
                         

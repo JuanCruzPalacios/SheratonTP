@@ -202,6 +202,7 @@ def VerificarContraseña(Usuario , contraseña):
 
 def NotificarIngresoEgreso(id_estacionamiento):
     ahora = datetime.now()
+    id_estacionamiento = str(id_estacionamiento)
     estacionamiento = LeerJson("Estacionamiento.json")
     if estacionamiento[id_estacionamiento]["EstadoActual"] == "Fuera":
         estacionamiento[id_estacionamiento]["EstadoActual"] = "Adentro"
@@ -548,3 +549,9 @@ def ChequearDatosReservaEventos(usuario,mail, hora1, hora2):
         contenido[usuario]["Correo"] = mail    
     elif mail != contenido[usuario]["Correo"]:
          return False , "El correo del usuario es incorrecto"
+     
+def VerRegistrosEstacionamiento(id_estacionamiento):
+    id_estacionamiento = str(id_estacionamiento)
+    contenido = LeerJson("Estacionamiento.json")
+    return contenido[id_estacionamiento]["UltimoIngreso"], contenido[id_estacionamiento]["UltimoEgreso"]
+

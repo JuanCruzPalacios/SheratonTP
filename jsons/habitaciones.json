@@ -1,122 +1,146 @@
 {
-
-"suite_balcon" : {
-
-"ID" : 0,
-"Ocupada" : "No",
-"UltimaLimpieza" : "19/09/2024" , 
-"Estado" : "Ninguno" , 
-"ServiciosIncluidos" : [""] , 
-"EstadoActual" : "" ,  
-"IdClienteOcupante" : "" , 
-"Fechas":[],
-"Precio" : 240,
-"RangoHuespedes": 2
-},
-
-"habitacion_triple" : {
-"ID" : 1,
-"Ocupada" : "Si",
-"UltimaLimpieza" : "02/10/2024" , 
-"Estado" : "No molestar" , 
-"ServiciosIncluidos" : ["SPA","GYM"] , 
-"EstadoActual" : "Ninguno" ,  
-"IdClienteOcupante" : 1 , 
-"Fechas":["10/10/2024","11/10/2024"],
-"Precio" : 255,
-"RangoHuespedes": 3
-},
-
-"habitacion_doble" : {
-"ID" : 2,
-"Ocupada" : "No",
-"UltimaLimpieza" : "01 /10/2024" , 
-"Estado" : "Ninguno" , 
-"ServiciosIncluidos" : [""] , 
-"EstadoActual" : "" ,  
-"IdClienteOcupante" : "" , 
-"Fechas":[""],
-"Precio" : 200,
-"RangoHuespedes": 2
-},
-
-"habitacion_lujo" : {
-"ID" : 3,
-"Ocupada" : "No",
-"UltimaLimpieza" : "19/09/2024" , 
-"Estado" : "Ninguno" , 
-"ServiciosIncluidos" : ["GYM","SPA","PISCINA"] , 
-"EstadoActual" : "" ,  
-"IdClienteOcupante" : "" , 
-"Fechas":[""],
-"Precio" : 410,
-"RangoHuespedes": 2
-},
-
-"habitacion_cuadruple" : {
-"ID" : 4,
-"Ocupada" : "No",
-"UltimaLimpieza" : "19/09/2024" , 
-"Estado" : "Ninguno" , 
-"ServiciosIncluidos" : [] , 
-"EstadoActual" : "" ,  
-"IdClienteOcupante" : "" , 
-"Fechas":[""],
-"Precio" : 297,
-"RangoHuespedes": 4
-},
-
-"suite_rio" : {
-"ID" : 5,
-"Ocupada" : "No",
-"UltimaLimpieza" : "02/10/2024" , 
-"Estado" : "Ninguno" , 
-"ServiciosIncluidos" : ["PISCINA"] , 
-"EstadoActual" : "" ,  
-"IdClienteOcupante" : "" , 
-"Fechas":[""],
-"Precio" : 290,
-"RangoHuespedes": 2
-},
-
-"habitacion_individual" : {
-"ID" : 6,
-"Ocupada" : "No",
-"UltimaLimpieza" : "02/10/2024" , 
-"Estado" : "Ninguno" , 
-"ServiciosIncluidos" : ["PISCINA"] , 
-"EstadoActual" : "" ,  
-"IdClienteOcupante" : "" , 
-"Fechas":[""],
-"Precio" : 180,
-"RangoHuespedes": 1
-},
-
-"suite_jacuzzi" : {
-"ID" : 7,
-"Ocupada" : "No",
-"UltimaLimpieza" : "02/10/2024" , 
-"Estado" : "Ninguno" , 
-"ServiciosIncluidos" : ["PISCINA"] , 
-"EstadoActual" : "" ,  
-"IdClienteOcupante" : "" , 
-"Fechas":[""],
-"Precio" : 325,
-"RangoHuespedes": 2
-},
-
-"suite_estandar" : {
-"ID" : 8,
-"Ocupada" : "No" ,
-"UltimaLimpieza" : "02/10/2024" , 
-"Estado" : "Ninguno" , 
-"ServiciosIncluidos" : ["PISCINA"] , 
-"EstadoActual" : "" ,  
-"IdClienteOcupante" : "" , 
-"Fechas":[""],
-"Precio" : 215,
-"RangoHuespedes": 2
+    "suite_balcon": {
+        "ID": 0,
+        "Ocupada": "No",
+        "UltimaLimpieza": "19/09/2024",
+        "Estado": "Ninguno",
+        "ServiciosIncluidos": [
+            ""
+        ],
+        "EstadoActual": "",
+        "IdClienteOcupante": "",
+        "Fechas": [],
+        "Precio": 240,
+        "RangoHuespedes": 2
+    },
+    "habitacion_triple": {
+        "ID": 1,
+        "Ocupada": "Si",
+        "UltimaLimpieza": "02/10/2024",
+        "Estado": "No molestar",
+        "ServiciosIncluidos": [
+            "SPA",
+            "GYM"
+        ],
+        "EstadoActual": "Ninguno",
+        "IdClienteOcupante": 1,
+        "Fechas": [
+            "10/10/2024",
+            "11/10/2024"
+        ],
+        "Precio": 255,
+        "RangoHuespedes": 3
+    },
+    "habitacion_doble": {
+        "ID": 2,
+        "Ocupada": "No",
+        "UltimaLimpieza": "01 /10/2024",
+        "Estado": "Ninguno",
+        "ServiciosIncluidos": [
+            ""
+        ],
+        "EstadoActual": "",
+        "IdClienteOcupante": "",
+        "Fechas": [
+            ""
+        ],
+        "Precio": 200,
+        "RangoHuespedes": 2
+    },
+    "habitacion_lujo": {
+        "ID": 3,
+        "Ocupada": "No",
+        "UltimaLimpieza": "19/09/2024",
+        "Estado": "Ninguno",
+        "ServiciosIncluidos": [
+            "GYM",
+            "SPA",
+            "PISCINA"
+        ],
+        "EstadoActual": "",
+        "IdClienteOcupante": "",
+        "Fechas": [
+            ""
+        ],
+        "Precio": 410,
+        "RangoHuespedes": 2
+    },
+    "habitacion_cuadruple": {
+        "ID": 4,
+        "Ocupada": "No",
+        "UltimaLimpieza": "19/09/2024",
+        "Estado": "No molestar",
+        "ServiciosIncluidos": [],
+        "EstadoActual": "",
+        "IdClienteOcupante": "",
+        "Fechas": [
+            ""
+        ],
+        "Precio": 297,
+        "RangoHuespedes": 4
+    },
+    "suite_rio": {
+        "ID": 5,
+        "Ocupada": "No",
+        "UltimaLimpieza": "02/10/2024",
+        "Estado": "Ninguno",
+        "ServiciosIncluidos": [
+            "PISCINA"
+        ],
+        "EstadoActual": "",
+        "IdClienteOcupante": "",
+        "Fechas": [
+            ""
+        ],
+        "Precio": 290,
+        "RangoHuespedes": 2
+    },
+    "habitacion_individual": {
+        "ID": 6,
+        "Ocupada": "No",
+        "UltimaLimpieza": "02/10/2024",
+        "Estado": "Ninguno",
+        "ServiciosIncluidos": [
+            "PISCINA"
+        ],
+        "EstadoActual": "",
+        "IdClienteOcupante": "",
+        "Fechas": [
+            ""
+        ],
+        "Precio": 180,
+        "RangoHuespedes": 1
+    },
+    "suite_jacuzzi": {
+        "ID": 7,
+        "Ocupada": "No",
+        "UltimaLimpieza": "02/10/2024",
+        "Estado": "Ninguno",
+        "ServiciosIncluidos": [
+            "PISCINA"
+        ],
+        "EstadoActual": "",
+        "IdClienteOcupante": "",
+        "Fechas": [
+            ""
+        ],
+        "Precio": 325,
+        "RangoHuespedes": 2
+    },
+    "suite_estandar": {
+        "ID": 8,
+        "Ocupada": "No",
+        "UltimaLimpieza": "02/10/2024",
+        "Estado": "Ninguno",
+        "ServiciosIncluidos": [
+            "PISCINA"
+        ],
+        "EstadoActual": "",
+        "IdClienteOcupante": "",
+        "Fechas": [
+            ""
+        ],
+        "Precio": 215,
+        "RangoHuespedes": 2
+    }
 }
-
-}
-

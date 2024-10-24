@@ -397,32 +397,32 @@ def cursor(mouse_pos):
     elif fondo_actual[0] == "reservar eventos":
 
 
-        if mouse_pos[0] < 580 and mouse_pos[0] > 300 and mouse_pos[1] < 300 and mouse_pos[1] > 260: #cantidad asistentes
+        if mouse_pos[0] < 560 and mouse_pos[0] > 445 and mouse_pos[1] < 298 and mouse_pos[1] > 252: #cantidad asistentes
 
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
 
-        elif  mouse_pos[0] < 370 and mouse_pos[0] > 215 and mouse_pos[1] < 382 and mouse_pos[1] > 342: #inicia el horario
+        elif  mouse_pos[0] < 332 and mouse_pos[0] > 214 and mouse_pos[1] < 382 and mouse_pos[1] > 340: #inicia el horario
 
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
 
-        elif  mouse_pos[0] < 590 and mouse_pos[0] > 430 and mouse_pos[1] < 380 and mouse_pos[1] > 345: #termina el horario
+        elif  mouse_pos[0] < 560 and mouse_pos[0] > 445 and mouse_pos[1] < 382 and mouse_pos[1] > 340: #termina el horario
 
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
 
-        elif  mouse_pos[0] < 510 and mouse_pos[0] > 205 and mouse_pos[1] < 460 and mouse_pos[1] > 420: #dia del evento
+        elif  mouse_pos[0] < 436 and mouse_pos[0] > 214 and mouse_pos[1] < 460 and mouse_pos[1] > 416: #dia del evento
 
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
 
-        elif  mouse_pos[0] < 590 and mouse_pos[0] > 305 and mouse_pos[1] < 530 and mouse_pos[1] > 490: #personal requerido
+        elif  mouse_pos[0] < 560 and mouse_pos[0] > 445 and mouse_pos[1] < 524 and mouse_pos[1] > 474: #personal requerido
 
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
 
-        elif  mouse_pos[0] < 690 and mouse_pos[0] > 220 and mouse_pos[1] < 605 and mouse_pos[1] > 565: #mail
+        elif  mouse_pos[0] < 684 and mouse_pos[0] > 212 and mouse_pos[1] < 605 and mouse_pos[1] > 565: #mail
 
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
@@ -432,22 +432,22 @@ def cursor(mouse_pos):
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
 
-        elif  mouse_pos[0] < 1140 and mouse_pos[0] > 730 and mouse_pos[1] < 408 and mouse_pos[1] > 215: #especificaciones
+        elif  mouse_pos[0] < 1140 and mouse_pos[0] > 730 and mouse_pos[1] < 294 and mouse_pos[1] > 215: #especificaciones
             
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
 
-        elif  mouse_pos[0] < 920 and mouse_pos[0] > 865 and mouse_pos[1] < 580 and mouse_pos[1] > 530: #pago con efectivo
+        elif  mouse_pos[0] < 920 and mouse_pos[0] > 865 and mouse_pos[1] < 468 and mouse_pos[1] > 410: #pago con efectivo
             
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
 
-        elif  mouse_pos[0] < 1105 and mouse_pos[0] > 1050 and mouse_pos[1] < 580 and mouse_pos[1] > 530: #pago con tarjeta
+        elif  mouse_pos[0] < 1105 and mouse_pos[0] > 1050 and mouse_pos[1] < 468 and mouse_pos[1] > 410: #pago con tarjeta
             
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
 
-        elif  mouse_pos[0] < 1005 and mouse_pos[0] > 950 and mouse_pos[1] < 650 and mouse_pos[1] > 600: #pago con mercado pago
+        elif  mouse_pos[0] < 1005 and mouse_pos[0] > 950 and mouse_pos[1] < 540 and mouse_pos[1] > 484: #pago con mercado pago
             
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
@@ -598,10 +598,30 @@ while running:
         if event.type == pygame.KEYDOWN:
                      
             if event.key == pygame.K_BACKSPACE:
+
+                
+                if fondo_actual[0] == "reservar eventos" and texto_seleccionado == texto8 and texto_ingresado == "":
+                    
+
+                    texto_seleccionado = texto7
+                    texto_aux = texto7[1]
+
+                    for i in range (0 , (len(texto_aux) - 1)) :
+
+                        texto_ingresado += texto_aux[i]
+
+
+
+
                 # Al presionar Retroceso, eliminar el último carácter del texto
                 texto_ingresado = texto_ingresado[:-1]
                 barra = barra[:-1] 
                 barra = barra[:-1] + "|"
+
+
+                
+
+
                 
                 
     
@@ -649,9 +669,9 @@ while running:
        
             else:                 
                 
-                '''if fondo_actual[0] == "reservar eventos" and texto_seleccionado == texto7:
+                if fondo_actual[0] == "reservar eventos" and texto_seleccionado == texto7:
                 
-                    if len(texto_ingresado) < limite:    
+                    if len(texto_ingresado) < limite - 1:    
 
                         if event.unicode .isprintable():
                             
@@ -659,8 +679,15 @@ while running:
                         
                     else:
 
+                        texto_seleccionado[1] += "-"
+
+
                         texto_seleccionado = texto8
                         texto_ingresado = texto8[1]
+
+                        if event.unicode .isprintable():
+                            
+                            texto_ingresado += event.unicode
 
 
                 else:
@@ -670,15 +697,15 @@ while running:
 
                         if event.unicode .isprintable():
                             
-                            texto_ingresado += event.unicode'''
+                            texto_ingresado += event.unicode
                 
                 
-            if len(texto_ingresado) < limite:           
+            '''if len(texto_ingresado) < limite:           
                 # Agregar caracteres al texto ingresado
 
                 if event.unicode .isprintable():
                             
-                    texto_ingresado += event.unicode
+                    texto_ingresado += event.unicode'''
 
             texto_seleccionado[1] = texto_ingresado
             barra = texto_seleccionado[1] + "|" 
@@ -1066,16 +1093,16 @@ while running:
 
                 elif fondo_actual[0] == "reservar eventos":
 
-                    if mouse_pos[0] < 580 and mouse_pos[0] > 300 and mouse_pos[1] < 300 and mouse_pos[1] > 260: #cantidad asistentes      
+                    if mouse_pos[0] < 560 and mouse_pos[0] > 445 and mouse_pos[1] < 298 and mouse_pos[1] > 252: #Cantidad asistentes
                                     
                         texto_ingresado = texto1[1]
                         texto_seleccionado = texto1   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 13
+                        limite = 3
         
 
-                    elif  mouse_pos[0] < 370 and mouse_pos[0] > 215 and mouse_pos[1] < 382 and mouse_pos[1] > 342: #inicia el horario
+                    elif  mouse_pos[0] < 332 and mouse_pos[0] > 214 and mouse_pos[1] < 382 and mouse_pos[1] > 340: #inicia el horario
 
                         texto2[1]  = ""    
                         texto_ingresado = ""
@@ -1086,7 +1113,7 @@ while running:
                         
 
 
-                    elif  mouse_pos[0] < 590 and mouse_pos[0] > 430 and mouse_pos[1] < 380 and mouse_pos[1] > 345: #termina el horario 
+                    elif  mouse_pos[0] < 560 and mouse_pos[0] > 445 and mouse_pos[1] < 382 and mouse_pos[1] > 340: #termina el horario 
                                     
                         texto3[1]  = ""
                         texto_ingresado = ""
@@ -1096,26 +1123,26 @@ while running:
                         limite = 5
                     
 
-                    elif  mouse_pos[0] < 510 and mouse_pos[0] > 205 and mouse_pos[1] < 460 and mouse_pos[1] > 420: #dia del evento   
+                    elif  mouse_pos[0] < 436 and mouse_pos[0] > 214 and mouse_pos[1] < 460 and mouse_pos[1] > 416: #dia del evento   
                                     
                         texto4[1]  = ""
                         texto_ingresado = ""
                         texto_seleccionado = texto4  
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 15
+                        limite = 10
 
                     
-                    elif  mouse_pos[0] < 590 and mouse_pos[0] > 305 and mouse_pos[1] < 530 and mouse_pos[1] > 490: #personal requerido  
+                    elif  mouse_pos[0] < 560 and mouse_pos[0] > 445 and mouse_pos[1] < 524 and mouse_pos[1] > 474: #personal requerido  
                                     
                         texto_ingresado = texto5[1]
                         texto_seleccionado = texto5   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 13 
+                        limite = 3 
                     
 
-                    elif  mouse_pos[0] < 690 and mouse_pos[0] > 220 and mouse_pos[1] < 605 and mouse_pos[1] > 565: #mail   
+                    elif  mouse_pos[0] < 684 and mouse_pos[0] > 212 and mouse_pos[1] < 605 and mouse_pos[1] > 565: #mail   
                                     
                         texto_ingresado = texto6[1]
                         texto_seleccionado = texto6   
@@ -1142,20 +1169,22 @@ while running:
                     
                     
 
-                    elif  mouse_pos[0] < 920 and mouse_pos[0] > 865 and mouse_pos[1] < 580 and mouse_pos[1] > 530: #pago con efectivo
+                    elif  mouse_pos[0] < 920 and mouse_pos[0] > 865 and mouse_pos[1] < 468 and mouse_pos[1] > 410: #pago con efectivo
                                     
-                        posicion_cuadrado = ( 873, 534, 41 , 41  )
+                        posicion_cuadrado = ( 873, 421, 41 , 41  )
                         
 
 
-                    elif  mouse_pos[0] < 1105 and mouse_pos[0] > 1050 and mouse_pos[1] < 580 and mouse_pos[1] > 530: #pago con tarjeta
+                    elif  mouse_pos[0] < 1105 and mouse_pos[0] > 1050 and mouse_pos[1] < 468 and mouse_pos[1] > 410: #pago con tarjeta
                                     
                         
-                        posicion_cuadrado = ( 1058 , 535 , 41 , 41 )
+                        posicion_cuadrado = ( 1058 , 421 , 41 , 41 )
 
 
-                    elif  mouse_pos[0] < 1005 and mouse_pos[0] > 950 and mouse_pos[1] < 650 and mouse_pos[1] > 600: #pago con mercado pago
-                        posicion_cuadrado = ( 956, 608, 41 , 41  ) 
+                    elif  mouse_pos[0] < 1005 and mouse_pos[0] > 950 and mouse_pos[1] < 540 and mouse_pos[1] > 484: #pago con mercado pago
+
+
+                        posicion_cuadrado = ( 956, 494, 41 , 41  ) 
 
 
 
@@ -1403,10 +1432,15 @@ while running:
             texto3[0] = (535, 473)    
             reset_textos(texto1,texto2)
             
-            for i in range(len(VerNumeroHabitacion(usuario))):
-                texto1[1] += str(VerNumeroHabitacion(usuario).pop(-1 - i))
-                if i != len(VerNumeroHabitacion(usuario) - 1):
-                    texto1[1] += ","
+            try:
+
+                for i in range(len(VerNumeroHabitacion(usuario))):
+                    texto1[1] += str(VerNumeroHabitacion(usuario).pop(-1 - i))
+                    if i != len(VerNumeroHabitacion(usuario) - 1):
+                        texto1[1] += ","    
+                
+            except:
+                """"""
             
             try:            
                 
@@ -1442,14 +1476,14 @@ while running:
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))  
             
             
-            texto1[0] = (305, 255) #Cantidad asistentes
-            texto2[0] = (218, 341) #Hora1
-            texto3[0] = (440, 340) #Hora2
-            texto4[0] = (210, 418) #Dia
-            texto5[0] = (310, 490) #Personal requerido
+            texto1[0] = (456, 251) #Cantidad asistentes
+            texto2[0] = (226, 340) #Hora1
+            texto3[0] = (454, 340) #Hora2
+            texto4[0] = (222, 418) #Dia
+            texto5[0] = (456, 474) #Personal requerido
             texto6[0] = (222, 560) #Mail
             texto7[0] = (734, 215) #especificaciones
-            texto7[0] = (734, 250) #especificaciones
+            texto8[0] = (734, 250) #especificaciones
 
             
             if texto_seleccionado != texto4 :

@@ -646,12 +646,40 @@ while running:
 
                             if VerificarContraseña(texto1[1],texto2[1]):
 
-                                usuario = texto1[1]
-                                fondo_actual[0] = "menu habitaciones"
-                                fondo_actual[1] = 6
-                                texto_ingresado = ""
-                                texto_seleccionado = [(-100,-100),""]
-                                reset_textos(texto1,texto2,texto3,texto4)
+
+                                if VerRolUsuario(texto1[1]).lower() == "cliente":
+
+                                    usuario = texto1[1]
+                                    fondo_actual[0] = "menu habitaciones"
+                                    fondo_actual[1] = 6
+                                    texto_ingresado = ""
+                                    texto_seleccionado = [(-100,-100),""]
+                                    reset_textos(texto1,texto2,texto3,texto4)
+                                
+
+                                elif VerRolUsuario(texto1[1]).lower() == "mantenimiento":
+
+                                    usuario = texto1[1]
+                                    fondo_actual[0] = "menu mantenimiento"
+                                    fondo_actual[1] = 10
+                                    texto_ingresado = ""
+                                    texto_seleccionado = [(-100,-100),""]
+                                    reset_textos(texto1,texto2,texto3,texto4)
+
+
+                                elif VerRolUsuario(texto1[1]).lower() == "recepcionista":
+
+                                    usuario = texto1[1]
+                                    fondo_actual[0] = "menu recepcionista"
+                                    fondo_actual[1] = 14
+                                    texto_ingresado = ""
+                                    texto_seleccionado = [(-100,-100),""]
+                                    reset_textos(texto1,texto2,texto3,texto4)
+
+                                    
+
+
+
                             else:
                                 texto3[1] = "Contraseña erronea"
                         else:
@@ -711,12 +739,7 @@ while running:
                             texto_ingresado += event.unicode
                 
                 
-            '''if len(texto_ingresado) < limite:           
-                # Agregar caracteres al texto ingresado
-
-                if event.unicode .isprintable():
-                            
-                    texto_ingresado += event.unicode'''
+            
 
             texto_seleccionado[1] = texto_ingresado
             barra = texto_seleccionado[1] + "|" 
@@ -788,17 +811,45 @@ while running:
 
                             if VerificarContraseña(texto1[1],texto2[1]):
 
-                                usuario = texto1[1]
-                                fondo_actual[0] = "menu habitaciones"
-                                fondo_actual[1] = 6
-                                texto_ingresado = ""
-                                texto_seleccionado = [(-100,-100),""]
-                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+
+                                if VerRolUsuario(texto1[1]).lower() == "cliente":
+
+                                    usuario = texto1[1]
+                                    fondo_actual[0] = "menu habitaciones"
+                                    fondo_actual[1] = 6
+                                    texto_ingresado = ""
+                                    texto_seleccionado = [(-100,-100),""]
+                                    reset_textos(texto1,texto2,texto3,texto4)
+                                
+
+                                elif VerRolUsuario(texto1[1]).lower() == "mantenimiento":
+
+                                    usuario = texto1[1]
+                                    fondo_actual[0] = "menu mantenimiento"
+                                    fondo_actual[1] = 10
+                                    texto_ingresado = ""
+                                    texto_seleccionado = [(-100,-100),""]
+                                    reset_textos(texto1,texto2,texto3,texto4)
+
+
+                                elif VerRolUsuario(texto1[1]).lower() == "recepcionista":
+
+                                    usuario = texto1[1]
+                                    fondo_actual[0] = "menu recepcionista"
+                                    fondo_actual[1] = 14
+                                    texto_ingresado = ""
+                                    texto_seleccionado = [(-100,-100),""]
+                                    reset_textos(texto1,texto2,texto3,texto4)
+
+
+
                                 
                             else:
                                 texto3[1] = "Contraseña erronea"
                         else:
                             texto3[1] = "Usuario inexistente"
+
+
 
 
 
@@ -1676,6 +1727,32 @@ while running:
             screen.blit(fuente.render(texto7[1], True, (0, 0, 0)), texto7[0])
             screen.blit(fuente.render(texto8[1], True, (0, 0, 0)), texto8[0])
             pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado_reserva)
+        
+
+        elif fondo_actual[0] == "menu mantenimiento":
+
+
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0))  
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        elif fondo_actual[0] == "menu recepcionista":
+
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0))  
             
 
         if fondo_actual[0] in ["registros","datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon", "reservar habitacion", "reservar eventos","ver datos"]:

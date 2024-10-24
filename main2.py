@@ -135,7 +135,7 @@ fondos = [
 fuente = pygame.font.Font("fuentes/Fuente_sheraton_mono.ttf", 31)
 
 
-limite = 11
+limite = 18
 
 usuario = ""
 
@@ -156,7 +156,7 @@ alter_mouse = False
 alter_barra = True
 ultimo_cambio_barra = pygame.time.get_ticks()
 
-posicion_cuadrado_habitacion = (-100 , -100 , 10 , 10)
+posicion_cuadrado_reserva = (-100 , -100 , 10 , 10)
 posicion_cuadrado_salon = (-100 , -100 , 10 , 10)
 posicion_cuadrado = (-100 , -100 , 10 , 10)
 posicion_cuadrado_2 = (-100 , -100 , 10 , 10)
@@ -598,6 +598,11 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         
+
+
+        
+    
+        
        
 
 
@@ -717,7 +722,7 @@ while running:
             barra = texto_seleccionado[1] + "|" 
             
             
-
+        
 
 
 
@@ -1098,19 +1103,19 @@ while running:
                     elif mouse_pos[0] < 925 and mouse_pos[0] > 870 and mouse_pos[1] < 460 and mouse_pos[1] > 405: #efectivo
 
 
-                        posicion_cuadrado_habitacion = ( 877, 413, 41 , 41  )
+                        posicion_cuadrado_reserva = ( 877, 413, 41 , 41  )
                 
 
                     elif mouse_pos[0] < 1006 and mouse_pos[0] > 954 and mouse_pos[1] < 534 and mouse_pos[1] > 480: #mercado pago
                                     
                         
-                        posicion_cuadrado_habitacion = ( 960 , 490 , 41 , 41 )
+                        posicion_cuadrado_reserva = ( 960 , 490 , 41 , 41 )
 
 
                     elif mouse_pos[0] < 1108 and mouse_pos[0] > 1058 and mouse_pos[1] < 460 and mouse_pos[1] > 307: #tarjeta
 
 
-                        posicion_cuadrado_habitacion = ( 1062, 415, 41 , 41  ) 
+                        posicion_cuadrado_reserva = ( 1062, 415, 41 , 41  ) 
 
 
 
@@ -1672,7 +1677,7 @@ while running:
             screen.blit(fuente.render(texto6[1], True, (0, 0, 0)), texto6[0])
             screen.blit(fuente.render(texto7[1], True, (0, 0, 0)), texto7[0])
             screen.blit(fuente.render(texto8[1], True, (0, 0, 0)), texto8[0])
-            pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado_habitacion)
+            pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado_reserva)
             
 
         if fondo_actual[0] in ["registros","datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon", "reservar habitacion", "reservar eventos","ver datos"]:

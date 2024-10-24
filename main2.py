@@ -156,6 +156,8 @@ alter_mouse = False
 alter_barra = True
 ultimo_cambio_barra = pygame.time.get_ticks()
 
+posicion_cuadrado_habitacion = (-100 , -100 , 10 , 10)
+posicion_cuadrado_salon = (-100 , -100 , 10 , 10)
 posicion_cuadrado = (-100 , -100 , 10 , 10)
 posicion_cuadrado_2 = (-100 , -100 , 10 , 10)
 posicion_cuadrado_3 = (-100 , -100 , 10 , 10)
@@ -995,6 +997,7 @@ while running:
 
                 elif fondo_actual[0] == "reservar habitacion":
 
+
                     if mouse_pos[0] < 690 and mouse_pos[0] > 255 and mouse_pos[1] < 300 and mouse_pos[1] > 250: #nombre        
                                     
                         texto_ingresado = texto1[1]
@@ -1071,24 +1074,27 @@ while running:
                     
 
                     elif mouse_pos[0] < 925 and mouse_pos[0] > 870 and mouse_pos[1] < 460 and mouse_pos[1] > 405: #efectivo
-                                    
-                        posicion_cuadrado = ( 877, 413, 41 , 41  )
-                        
 
+
+                        posicion_cuadrado_habitacion = ( 877, 413, 41 , 41  )
+                
 
                     elif mouse_pos[0] < 1006 and mouse_pos[0] > 954 and mouse_pos[1] < 534 and mouse_pos[1] > 480: #mercado pago
                                     
                         
-                        posicion_cuadrado = ( 960 , 490 , 41 , 41 )
+                        posicion_cuadrado_habitacion = ( 960 , 490 , 41 , 41 )
 
 
                     elif mouse_pos[0] < 1108 and mouse_pos[0] > 1058 and mouse_pos[1] < 460 and mouse_pos[1] > 307: #tarjeta
-                        posicion_cuadrado = ( 1062, 415, 41 , 41  ) 
+
+
+                        posicion_cuadrado_habitacion = ( 1062, 415, 41 , 41  ) 
 
 
 
 
                 elif fondo_actual[0] == "menu amenities":
+
                    
                     if mouse_pos[0] < 455 and mouse_pos[0] > 400 and mouse_pos[1] < 342 and mouse_pos[1] > 290 and posicion_cuadrado != (409,298, 41,41): #spa aparece
                    
@@ -1127,6 +1133,9 @@ while running:
 
 
                 elif fondo_actual[0] == "reservar eventos":
+
+
+                    
 
                     if mouse_pos[0] < 560 and mouse_pos[0] > 445 and mouse_pos[1] < 298 and mouse_pos[1] > 252: #Cantidad asistentes
                                     
@@ -1206,20 +1215,20 @@ while running:
 
                     elif  mouse_pos[0] < 920 and mouse_pos[0] > 865 and mouse_pos[1] < 468 and mouse_pos[1] > 410: #pago con efectivo
                                     
-                        posicion_cuadrado = ( 873, 421, 41 , 41  )
+                        posicion_cuadrado_salon = ( 873, 421, 41 , 41  )
                         
 
 
                     elif  mouse_pos[0] < 1105 and mouse_pos[0] > 1050 and mouse_pos[1] < 468 and mouse_pos[1] > 410: #pago con tarjeta
                                     
                         
-                        posicion_cuadrado = ( 1058 , 421 , 41 , 41 )
+                        posicion_cuadrado_salon = ( 1058 , 421 , 41 , 41 )
 
 
                     elif  mouse_pos[0] < 1005 and mouse_pos[0] > 950 and mouse_pos[1] < 540 and mouse_pos[1] > 484: #pago con mercado pago
 
 
-                        posicion_cuadrado = ( 956, 494, 41 , 41  ) 
+                        posicion_cuadrado_salon = ( 956, 494, 41 , 41  ) 
 
 
 
@@ -1283,6 +1292,7 @@ while running:
 
 
                     elif mouse_pos[0] < 1245 and mouse_pos[0] > 992 and mouse_pos[1] < 395 and mouse_pos[1] > 350: #reservar eventos
+                        
                         fondo_actual[0] = "reservar eventos"
                         fondo_actual[1] = 8
                         texto_seleccionado = [(-100,-100),""]
@@ -1327,6 +1337,7 @@ while running:
 
 
                     elif mouse_pos[0] < 860 and mouse_pos[0] > 745 and mouse_pos[1] < 100 and mouse_pos[1] > 15 and fondo_actual != "menu amenities" :#Services
+                        
                         fondo_actual[0] = "menu amenities"
                         fondo_actual[1] = 7
                         texto_seleccionado = [(-100,-100),""]
@@ -1347,6 +1358,7 @@ while running:
                     alter_mouse = True
                     if mouse_pos[0] < 1008 and mouse_pos[0] > 785 and mouse_pos[1] < 666 and mouse_pos[1] > 605:#reservar
                         fondo_actual[0] = "reservar habitacion"
+                        
                         texto_seleccionado = [(-100,-100),""]
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         
@@ -1584,7 +1596,7 @@ while running:
             screen.blit(fuente.render(texto6[1], True, (0, 0, 0)), texto6[0])
             screen.blit(fuente.render(texto7[1], True, (0, 0, 0)), texto7[0])
             screen.blit(fuente.render(texto8[1], True, (0, 0, 0)), texto8[0])
-            pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado)
+            pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado_salon)
 
 
         elif fondo_actual[0] == "reservar habitacion":
@@ -1625,7 +1637,7 @@ while running:
             screen.blit(fuente.render(texto6[1], True, (0, 0, 0)), texto6[0])
             screen.blit(fuente.render(texto7[1], True, (0, 0, 0)), texto7[0])
             screen.blit(fuente.render(texto8[1], True, (0, 0, 0)), texto8[0])
-            pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado)
+            pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado_habitacion)
             
 
         if fondo_actual[0] in ["registros","datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon", "reservar habitacion", "reservar eventos","ver datos"]:

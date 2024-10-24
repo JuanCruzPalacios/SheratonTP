@@ -1528,10 +1528,10 @@ while running:
             texto3[0] = (538, 369)
 
             if VerNumeroHabitacion(usuario) != False:
-                if len(VerNumeroHabitacion(usuario)) > 1 and texto1[1] !=VerNumeroHabitacion(usuario).pop( 0 ):
+                if len(VerNumeroHabitacion(usuario)) > 1 and texto1[1] != str(VerNumeroHabitacion(usuario).pop( 0 )):
                     screen.blit (flecha_derecha , (1130 , 308) )
 
-                if len(VerNumeroHabitacion(usuario)) > 1 and texto1[1] != VerNumeroHabitacion(usuario).pop( -1 ):
+                if len(VerNumeroHabitacion(usuario)) > 1 and texto1[1] != str(VerNumeroHabitacion(usuario).pop( -1 )):
                     screen.blit (flecha_izquierda , (55, 308) )
             
             for i in range(len(VerNumeroEstacionamiento(usuario))):
@@ -1549,7 +1549,7 @@ while running:
                 texto3[1] = str(VerFechaFinal((VerNumeroHabitacion(usuario).pop( -1 - pagina))))
                 
             except:
-                """"""
+                reset_textos(texto1,texto3)
 
             
 

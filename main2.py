@@ -1258,10 +1258,7 @@ while running:
 
                     elif mouse_pos[0] < 1220 and mouse_pos[0] > 1140 and mouse_pos[1] < 90 and mouse_pos[1] > 18:#boton usuario
                         alter_usuario = not(alter_usuario)
-<<<<<<< HEAD
-=======
                         
->>>>>>> b837383ba91a43889db0607e6c87dff3ed6f7870
                         
                         
 

@@ -516,6 +516,11 @@ def cursor(mouse_pos):
 
 
 
+    elif fondo_actual[0] == "menu mantenimiento":
+
+        pass
+
+
     if fondo_actual[0] in ["habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"]:
             if mouse_pos[0] < 1008 and mouse_pos[0] > 785 and mouse_pos[1] < 666 and mouse_pos[1] > 605:#reservar       
                 pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)    
@@ -696,7 +701,7 @@ while running:
                                 texto_seleccionado = [(-100,-100),""]
                                 reset_textos(texto1,texto2,texto3,texto4)
 
-                            else:                       
+                            else:
                                 texto4[1] = chequeo_contraseña(texto3[1])    
                         else:
                             texto4[1] = "El usuario ingresado ya existe"
@@ -1275,9 +1280,20 @@ while running:
                                         
 
                     elif  mouse_pos[0] < 480 and mouse_pos[0] > 260 and mouse_pos[1] < 690 and mouse_pos[1] > 620: #reservar salon de eventos 
-                                    
-                        pass
-                    
+
+                        
+                        if ChequearDatosReservaEventos(usuario , texto6[1] , texto2[1] , texto3[1] , texto1[1] , texto5[1] , texto4[1]) == True:
+
+                            if posicion_cuadrado_salon == ( 956, 494, 41 , 41  ):
+
+                                fondo_actual[0] = "pagar mercado pago"
+                                fondo_actual[0] = 4
+                            
+                            elif posicion_cuadrado_salon == ( 1058 , 421 , 41 , 41 ):
+
+                                fondo_actual[0] = "pagar tarjeta"
+                                fondo_actual[1] = 6
+
 
                     elif  mouse_pos[0] < 1140 and mouse_pos[0] > 730 and mouse_pos[1] < 408 and mouse_pos[1] > 215: #especificaciones
                                     
@@ -1736,16 +1752,6 @@ while running:
 
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))  
         
-
-
-
-
-
-
-
-
-
-
 
 
 

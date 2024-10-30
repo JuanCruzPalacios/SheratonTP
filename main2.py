@@ -39,7 +39,7 @@ fondo_recepcinista_limpieza = pygame.image.load("imagenes/recepcionista_limpieza
 
 barra_arriba = pygame.image.load("imagenes/barra_arriba.jpg")
 
-imagen_usuario = pygame.image.load("imagenes/usuario.png"), (321, 394)
+imagen_usuario = pygame.image.load("imagenes/usuario.png")
 imagen_filtro = pygame.image.load("imagenes/NICOLAS.png")
 alter_usuario = False
 
@@ -518,7 +518,28 @@ def cursor(mouse_pos):
 
     elif fondo_actual[0] == "menu mantenimiento":
 
-        pass
+
+        if mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 342 and mouse_pos[1] > 285: #notificaciones
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+
+        elif mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 440 and mouse_pos[1] > 378: #ver stcok
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+
+        elif mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 535 and mouse_pos[1] > 470: #salir
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+        else:
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
+
+
 
 
     if fondo_actual[0] in ["habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"]:
@@ -1308,12 +1329,16 @@ while running:
                             if posicion_cuadrado_salon == ( 956, 494, 41 , 41  ):
 
                                 fondo_actual[0] = "pagar mercado pago"
-                                fondo_actual[0] = 4
+                                fondo_actual[1] = 4
+                                texto_seleccionado = [(-100,-100),""]
+                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
                             
                             elif posicion_cuadrado_salon == ( 1058 , 421 , 41 , 41 ):
 
                                 fondo_actual[0] = "pagar tarjeta"
                                 fondo_actual[1] = 6
+                                texto_seleccionado = [(-100,-100),""]
+                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
 
 
                     elif  mouse_pos[0] < 1140 and mouse_pos[0] > 730 and mouse_pos[1] < 408 and mouse_pos[1] > 215: #especificaciones
@@ -1382,8 +1407,26 @@ while running:
                             alter_mouse = True
 
                 
+                elif fondo_actual[0] == "menu mantenimiento":
+                    
+                    if mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 342 and mouse_pos[1] > 285: #notificaciones
 
-            
+                        fondo_actual[0] = "mantenimiento notificaciones"
+                        fondo_actual[1] = 12
+                    
+
+                    elif mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 440 and mouse_pos[1] > 378: #ver stcok
+
+                        fondo_actual[0] = "mantenimiento stock"
+                        fondo_actual[1] = 11
+                    
+
+                    elif mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 535 and mouse_pos[1] > 470: #salir
+
+                        fondo_actual[0] = "iniciar sesion"
+                        fondo_actual[1] = 0
+                    
+
                 
                 if alter_usuario:
 
@@ -1769,9 +1812,23 @@ while running:
             pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado_reserva)
         
 
+
         elif fondo_actual[0] == "menu mantenimiento":
 
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))  
+
+
+        elif fondo_actual[0] == "mantenimiento notificaciones":
+        
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+
+        elif fondo_actual[0] == "mantenimiento stock":
+
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+
+
+
+
 
 
         elif fondo_actual[0] == "pagar mercado pago":
@@ -1787,6 +1844,11 @@ while running:
 
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))  
             
+
+        
+
+
+
 
         if fondo_actual[0] in ["pagar tarjeta","pagar mercado pago","registros","datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon", "reservar habitacion", "reservar eventos","ver datos"]:
             screen.blit (barra_arriba, (0,0))

@@ -62,16 +62,16 @@
         "IdHabitacion": []
     },
     "": {
-        "Correo": "",
+        "Correo": "www",
         "Tipo": "Cliente",
-        "Nombre": "",
-        "Apellido": "",
+        "Nombre": "www",
+        "Apellido": "www",
         "Password": "",
-        "DNI": "48116355",
-        "NumeroTelefono": "+54 9 11 0334-4560",
+        "DNI": "www",
+        "NumeroTelefono": "www",
         "NumeroDeCliente": 4,
-        "CodigoPostal": "2003",
-        "Direccion": "Facaclocket 774",
+        "CodigoPostal": "www",
+        "Direccion": "www",
         "Contrataciones": [],
         "IdEstacionamiento": [],
         "IdHabitacion": []

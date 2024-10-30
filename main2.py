@@ -13,33 +13,33 @@ running = True
 
 
 
-fondo_iniciar_sesion = pygame.transform.scale(pygame.image.load("imagenes/iniciar_sesion.jpg"), (1280,720))
-fondo_registrarse = pygame.transform.scale(pygame.image.load("imagenes/registrarse.jpg"),(1280,720))
-fondo_estacionamiento = pygame.transform.scale(pygame.image.load("imagenes/estacionamiento.jpg"), (1280, 720))
-fondo_registros = pygame.transform.scale(pygame.image.load("imagenes/registros.jpg"), (1280, 720))
-fondo_habitacion = pygame.transform.scale(pygame.image.load("imagenes/habitacion.jpg"), (1280, 720))
-fondo_pagar = pygame.transform.scale(pygame.image.load("imagenes/reserva_de_habitacion.jpg"), (1280, 720))
-fondo_pagar_con_mercado = pygame.transform.scale(pygame.image.load("imagenes/pagar_con_mercado.jpg"), (1280, 720))
-fondo_pagar_con_tarjeta = pygame.transform.scale(pygame.image.load("imagenes/pagar_con_tarjeta.jpg"), (1280, 720))
+fondo_iniciar_sesion = pygame.image.load("imagenes/iniciar_sesion.jpg")
+fondo_registrarse = pygame.image.load("imagenes/registrarse.jpg")
+fondo_estacionamiento = pygame.image.load("imagenes/estacionamiento.jpg")
+fondo_registros = pygame.image.load("imagenes/registros.jpg")
+fondo_habitacion = pygame.image.load("imagenes/habitacion.jpg")
+fondo_pagar = pygame.image.load("imagenes/reserva_de_habitacion.jpg")
+fondo_pagar_con_mercado = pygame.image.load("imagenes/pagar_con_mercado.jpg")
+fondo_pagar_con_tarjeta = pygame.image.load("imagenes/pagar_con_tarjeta.jpg")
 
 
-fondo_menu_amenities = pygame.transform.scale(pygame.image.load("imagenes/reserva_de_amenities.jpg"), (1280, 720))
-fondo_menu_salones = pygame.transform.scale(pygame.image.load("imagenes/reserva_de_salon.jpg"), (1280, 720))
-fondo_datos_usuario = pygame.transform.scale(pygame.image.load("imagenes/datos_usuario.jpg"), (1280, 720))
-fondo_menu_mantenimiento = pygame.transform.scale(pygame.image.load("imagenes/menu_mantenimiento.jpg"), (1280, 720))
+fondo_menu_amenities = pygame.image.load("imagenes/reserva_de_amenities.jpg")
+fondo_menu_salones = pygame.image.load("imagenes/reserva_de_salon.jpg")
+fondo_datos_usuario = pygame.image.load("imagenes/datos_usuario.jpg")
+fondo_menu_mantenimiento = pygame.image.load("imagenes/menu_mantenimiento.jpg")
 
-fondo_mantenimiento_stock = pygame.transform.scale(pygame.image.load("imagenes/stock_mantenimiento.jpg"), (1280, 720))
-fondo_mantenimiento_notificaciones = pygame.transform.scale(pygame.image.load("imagenes/notificaciones_mantenimiento.jpg"), (1280, 720))
-fondo_mantenimiento_notificaciones_archivadas = pygame.transform.scale(pygame.image.load("imagenes/mantenimiento_notificaciones_archivadas.jpg"), (1280, 720))
+fondo_mantenimiento_stock = pygame.image.load("imagenes/stock_mantenimiento.jpg")
+fondo_mantenimiento_notificaciones = pygame.image.load("imagenes/notificaciones_mantenimiento.jpg")
+fondo_mantenimiento_notificaciones_archivadas = pygame.image.load("imagenes/mantenimiento_notificaciones_archivadas.jpg")
 
-fondo_menu_recepcionista = pygame.transform.scale(pygame.image.load("imagenes/menu_recepcionista.jpg"), (1280, 720))
-fondo_recepcionista_notificar = pygame.transform.scale(pygame.image.load("imagenes/recepcionista_notificar.jpg"), (1280, 720))
-fondo_recepcinista_eventos = pygame.transform.scale(pygame.image.load("imagenes/recepcionista_eventos.jpg"), (1280, 720))
-fondo_recepcinista_limpieza = pygame.transform.scale(pygame.image.load("imagenes/recepcionista_limpieza.jpg"), (1280, 720))
+fondo_menu_recepcionista = pygame.image.load("imagenes/menu_recepcionista.jpg")
+fondo_recepcionista_notificar = pygame.image.load("imagenes/recepcionista_notificar.jpg")
+fondo_recepcinista_eventos = pygame.image.load("imagenes/recepcionista_eventos.jpg")
+fondo_recepcinista_limpieza = pygame.image.load("imagenes/recepcionista_limpieza.jpg")
 
 barra_arriba = pygame.image.load("imagenes/barra_arriba.jpg")
 
-imagen_usuario = pygame.transform.scale(pygame.image.load("imagenes/usuario.png"), (321, 394))
+imagen_usuario = pygame.image.load("imagenes/usuario.png"), (321, 394)
 imagen_filtro = pygame.image.load("imagenes/NICOLAS.png")
 alter_usuario = False
 
@@ -1061,8 +1061,8 @@ while running:
                     
 
                     elif mouse_pos[0] < 752 and mouse_pos[0] > 516 and mouse_pos[1] < 655 and mouse_pos[1] > 576: #no molestar
-
-                        CambiarEstadoHabitacion(VerNumeroHabitacion(usuario).pop( -1 - pagina ))
+                        if TieneHabitacion(usuario) != False:
+                            CambiarEstadoHabitacion(VerNumeroHabitacion(usuario).pop( -1 - pagina ))
                         alter_mouse = True
 
 
@@ -1077,7 +1077,6 @@ while running:
 
                         
 
-
                 elif fondo_actual[0] == "reservar habitacion":
 
 
@@ -1087,7 +1086,7 @@ while running:
                         texto_seleccionado = texto1   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 11 
+                        limite = 22
         
 
                     elif mouse_pos[0] < 425 and mouse_pos[0] > 205 and mouse_pos[1] < 375 and mouse_pos[1] > 335: #dia inicio        
@@ -1097,9 +1096,8 @@ while running:
                         texto_seleccionado = texto2   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 11 
+                        limite = 10
                         
-
 
                     elif mouse_pos[0] < 710 and mouse_pos[0] > 485 and mouse_pos[1] < 375 and mouse_pos[1] > 335: #dia fin       
                                     
@@ -1108,7 +1106,7 @@ while running:
                         texto_seleccionado = texto3
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 11  
+                        limite = 10 
                     
 
                     elif mouse_pos[0] < 690 and mouse_pos[0] > 289 and mouse_pos[1] < 453 and mouse_pos[1] > 411: #direccion      
@@ -1126,7 +1124,7 @@ while running:
                         texto_seleccionado = texto5   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 13 
+                        limite = 21
                     
 
                     elif mouse_pos[0] < 690 and mouse_pos[0] > 232 and mouse_pos[1] < 588 and mouse_pos[1] > 546: #mail   
@@ -1135,7 +1133,7 @@ while running:
                         texto_seleccionado = texto6   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 14 
+                        limite = 23
                                         
 
                     elif mouse_pos[0] < 1107 and mouse_pos[0] > 896 and mouse_pos[1] < 223 and mouse_pos[1] > 178: #dni/cuit   
@@ -1144,7 +1142,7 @@ while running:
                         texto_seleccionado = texto7   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 8 
+                        limite = 11 
                     
 
                     elif mouse_pos[0] < 1107 and mouse_pos[0] > 937 and mouse_pos[1] < 295 and mouse_pos[1] > 251: #codigo postal 
@@ -1172,6 +1170,29 @@ while running:
 
 
                         posicion_cuadrado_reserva = ( 1062, 415, 41 , 41  ) 
+
+
+                    elif mouse_pos[0] < 528 and mouse_pos[0] > 307 and mouse_pos[1] < 670 and mouse_pos[1] > 615: #pagar
+                        if ChequearDatosUsuario(usuario,texto1[1],texto2[1], texto3[1], texto4[1], texto5[1], texto6[1], texto7[1], texto2[1]) != False:
+                            if posicion_cuadrado_reserva == ( 877, 413, 41 , 41  ):
+                                
+                                fondo_actual[0] = "menu habitaciones"
+                                texto_seleccionado = [(-100,-100),""]
+                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+
+                            elif posicion_cuadrado_reserva == ( 960 , 490 , 41 , 41 ):
+                                fondo_actual[0] = "pagar mercado pago"
+                                fondo_actual[1] = 4
+                                texto_seleccionado = [(-100,-100),""]
+                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+
+                            elif posicion_cuadrado_reserva == ( 1062, 415, 41 , 41  ):
+                                fondo_actual[0] = "pagar tarjeta"
+                                fondo_actual[1] = 6
+                                texto_seleccionado = [(-100,-100),""]
+                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+
+
 
 
 
@@ -1397,7 +1418,7 @@ while running:
 
 
 
-                if fondo_actual[0] in ["registros","reservar habitacion","habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar", "datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "reservar eventos", "ver datos"]:
+                if fondo_actual[0] in ["pagar tarjeta","pagar mercado pago","registros","reservar habitacion","habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar", "datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "reservar eventos", "ver datos"]:
 
 
 
@@ -1630,6 +1651,7 @@ while running:
             screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )
             reset_textos(texto2)
 
+
         elif fondo_actual[0] == "menu amenities":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
             pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado)
@@ -1749,12 +1771,15 @@ while running:
 
         elif fondo_actual[0] == "menu mantenimiento":
 
-
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))  
-        
 
 
+        elif fondo_actual[0] == "pagar mercado pago":
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0))
 
+
+        elif fondo_actual[0] == "pagar tarjeta":
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0))
 
 
 
@@ -1763,7 +1788,7 @@ while running:
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))  
             
 
-        if fondo_actual[0] in ["registros","datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon", "reservar habitacion", "reservar eventos","ver datos"]:
+        if fondo_actual[0] in ["pagar tarjeta","pagar mercado pago","registros","datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "menu salon", "reservar habitacion", "reservar eventos","ver datos"]:
             screen.blit (barra_arriba, (0,0))
 
 

@@ -731,7 +731,7 @@ while running:
                                 texto_seleccionado = [(-100,-100),""]
                                 reset_textos(texto1,texto2,texto3,texto4)
 
-                            else:                       
+                            else:
                                 texto4[1] = chequeo_contraseña(texto3[1])    
                         else:
                             texto4[1] = "El usuario ingresado ya existe"
@@ -1331,9 +1331,20 @@ while running:
                                         
 
                     elif  mouse_pos[0] < 480 and mouse_pos[0] > 260 and mouse_pos[1] < 690 and mouse_pos[1] > 620: #reservar salon de eventos 
-                                    
-                        pass
-                    
+
+                        
+                        if ChequearDatosReservaEventos(usuario , texto6[1] , texto2[1] , texto3[1] , texto1[1] , texto5[1] , texto4[1]) == True:
+
+                            if posicion_cuadrado_salon == ( 956, 494, 41 , 41  ):
+
+                                fondo_actual[0] = "pagar mercado pago"
+                                fondo_actual[0] = 4
+                            
+                            elif posicion_cuadrado_salon == ( 1058 , 421 , 41 , 41 ):
+
+                                fondo_actual[0] = "pagar tarjeta"
+                                fondo_actual[1] = 6
+
 
                     elif  mouse_pos[0] < 1140 and mouse_pos[0] > 730 and mouse_pos[1] < 408 and mouse_pos[1] > 215: #especificaciones
                                     
@@ -1867,16 +1878,6 @@ while running:
             screen.blit(fuente.render(texto3[1], True, (0, 0, 0)), texto3[0])
             screen.blit(fuente.render(texto4[1], True, (0, 0, 0)), texto4[0])
             screen.blit(fuente.render(texto5[1], True, (0, 0, 0)), texto5[0])
-
-
-
-
-
-
-
-
-
-
 
 
 

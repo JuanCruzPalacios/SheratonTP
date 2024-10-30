@@ -548,23 +548,68 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
     except:
         return False, "El formato de dias esta mal enviado"
         
-def ChequearDatosReservaEventos(usuario,mail, hora1, hora2):
+def ChequearDatosReservaEventos(usuario,mail, hora1, hora2 , asistentes , personal , fecha):
     contenido = LeerJson("Usuario.json")
-    hora1_str = "14:30"  
-    hora2_str = "16:45"  
+    hora1_str = hora1  
+    hora2_str = hora2  
 
-    hora1 = datetime.strptime(hora1_str, "%H:%M")
-    hora2 = datetime.strptime(hora2_str, "%H:%M")
+    try:
+        
+
+        hora1 = datetime.strptime(hora1_str, "%H:%M")
+        hora2 = datetime.strptime(hora2_str, "%H:%M")
+    
+    except:
+        
+        return False
 
     if hora2 > hora1:
         pass
     else:
-        return False, "Error: la hora de finalizacion debe ser mas tarde que la hora de inicio."
+        
+        return False
+
+    try:
+        if asistentes != "":
+            int(asistentes)     
+        else:
+            return False
+    except: 
+        
+        return False
+
+    try:
+        if personal != "":
+            int(personal)     
+        else:
+            return False
+    except: 
+        
+        return False
     
+    
+    try:
+        fecha_actual = datetime.now()
+        fecha_ingresada = datetime.strptime(fecha, "%d/%m/%Y")
+
+        if fecha_ingresada < fecha_actual:
+            
+            return False
+
+    except:
+        
+        return False
+
+
+
     if contenido[usuario]["Correo"] == "":
         contenido[usuario]["Correo"] = mail    
     elif mail != contenido[usuario]["Correo"]:
-         return False , "El correo del usuario es incorrecto"
+        return False , "El correo del usuario es incorrecto"
+
+    
+
+    return True
      
 def VerRegistrosEstacionamiento(id_estacionamiento):
     id_estacionamiento = str(id_estacionamiento)

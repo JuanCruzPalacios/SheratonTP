@@ -677,3 +677,29 @@ def VerRegistrosEstacionamiento(id_estacionamiento):
     contenido = LeerJson("Estacionamiento.json")
     return contenido[id_estacionamiento]["UltimoIngreso"], contenido[id_estacionamiento]["UltimoEgreso"]
 
+def ChequearDatosTarjeta(numero_tarjeta,vencimiento,codigo):  
+    chequeadormaximo = []
+    if len(numero_tarjeta) != 16:
+        return False, "El formato de tarjeta es incorrecto"
+    else:
+        chequeadormaximo.append(1)
+     
+    try:
+        fecha_actual = datetime.now()
+        fecha_ingresada = datetime.strptime(vencimiento, "%m/%Y")
+
+        if fecha_ingresada < fecha_actual:
+            return False, "La tarjeta vencio"
+        else:
+            chequeadormaximo.append(1)
+    except:
+        return False, "hubo un error"
+
+            
+    if len(codigo) != 3:
+        return False, "El formato de codigo es incorrecto"
+    else:
+        chequeadormaximo.append(1)
+    
+    return chequeadormaximo
+        

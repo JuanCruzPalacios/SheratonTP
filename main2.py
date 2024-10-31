@@ -560,6 +560,23 @@ def cursor(mouse_pos):
              pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
 
+    elif fondo_actual[0] == "menu mantenimiento":
+        if mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 342 and mouse_pos[1] > 285: #notificaciones
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+        elif mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 440 and mouse_pos[1] > 378: #ver stcok
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+        elif mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 535 and mouse_pos[1] > 470: #salir
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+            
+        else:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
+    elif fondo_actual[0] == "mantenimiento notificaciones":
+        if mouse_pos[0] < 400 and mouse_pos[0] > 170 and mouse_pos[1] < 555 and mouse_pos[1] > 505: #archivadas
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
     elif fondo_actual[0] == "menu recepcionista":
 
         if mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 294 and mouse_pos[1] > 229: # notificar
@@ -641,6 +658,29 @@ def cursor(mouse_pos):
 
 
         
+        elif mouse_pos[0] < 400 and mouse_pos[0] > 170 and mouse_pos[1] < 630 and mouse_pos[1] > 575: #volver
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+        elif mouse_pos[0] < 970 and mouse_pos[0] > 820 and mouse_pos[1] < 665 and mouse_pos[1] > 625: #archivar
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+        elif mouse_pos[0] < 1140 and mouse_pos[0] > 990 and mouse_pos[1] < 665 and mouse_pos[1] > 625: #fijar
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+        else:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+        
+    elif fondo_actual[0] == "mantenimiento stock":
+        if mouse_pos[0] < 465 and mouse_pos[0] > 330 and mouse_pos[1] < 665 and mouse_pos[1] > 625: #añadir
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+        elif mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: #volver
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+        else:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
     if fondo_actual[0] in ["habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"]:
             if mouse_pos[0] < 1008 and mouse_pos[0] > 785 and mouse_pos[1] < 666 and mouse_pos[1] > 605:#reservar       
                 pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)    
@@ -1561,7 +1601,19 @@ while running:
                         alter_mouse = True
                         fondo_actual[0] = "iniciar sesion"
                         fondo_actual[1] = 0
-                    
+                
+
+                elif fondo_actual[0] == "mantenimiento notificaciones":
+                    if mouse_pos[0] < 400 and mouse_pos[0] > 170 and mouse_pos[1] < 630 and mouse_pos[1] > 575: #volver
+                        fondo_actual[0] = "menu mantenimiento"
+                        fondo_actual[1] = 10
+
+
+                elif fondo_actual[0] == "mantenimiento stock":
+                    if mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: #volver
+                        fondo_actual[0] = "menu mantenimiento"
+                        fondo_actual[1] = 10
+
 
                 elif fondo_actual[0] == "pagar mercado pago" and alter_mouse == False:
 

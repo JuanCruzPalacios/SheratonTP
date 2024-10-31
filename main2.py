@@ -576,8 +576,18 @@ def cursor(mouse_pos,alter_usuario):
 
 
     elif fondo_actual[0] == "mantenimiento notificaciones":
+
         if mouse_pos[0] < 400 and mouse_pos[0] > 170 and mouse_pos[1] < 555 and mouse_pos[1] > 505: #archivadas
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        elif mouse_pos[0] < 400 and mouse_pos[0] > 170 and mouse_pos[1] < 630 and mouse_pos[1] > 575: #volver
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+
+        else:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+       
+        
+
     elif fondo_actual[0] == "menu recepcionista":
 
         if mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 294 and mouse_pos[1] > 229: # notificar
@@ -651,23 +661,6 @@ def cursor(mouse_pos,alter_usuario):
 
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)    
         
-
-        elif mouse_pos[0] < 400 and mouse_pos[0] > 170 and mouse_pos[1] < 630 and mouse_pos[1] > 575: #volver
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-        
-
-        elif mouse_pos[0] < 970 and mouse_pos[0] > 820 and mouse_pos[1] < 665 and mouse_pos[1] > 625: #archivar
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-        
-
-        elif mouse_pos[0] < 1140 and mouse_pos[0] > 990 and mouse_pos[1] < 665 and mouse_pos[1] > 625: #fijar
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-        
-
-        else:
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
-        
-
     elif fondo_actual[0] == "mantenimiento stock":
         if mouse_pos[0] < 465 and mouse_pos[0] > 330 and mouse_pos[1] < 665 and mouse_pos[1] > 625: #añadir
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)

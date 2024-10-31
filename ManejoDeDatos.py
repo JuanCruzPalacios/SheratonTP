@@ -499,14 +499,20 @@ def diferencia_dias(fecha1_str, fecha2_str):
 def CalcularPrecioHabitacion(habitacion, dia_inicio, dia_final):
     contenido = LeerJson("Habitaciones.json")
     precio = contenido[habitacion]["Precio"]
-    return precio*diferencia_dias(dia_inicio,dia_final)
+    precio_final = precio*diferencia_dias(dia_inicio, dia_final)
+    print("Precio final: " , precio_final)
+    return precio_final
 
 def CalcularPrecioAmenities(dia_inicio,dia_final,cantidad_amenities):
-    return ((50*cantidad_amenities)*diferencia_dias(dia_inicio,dia_final))
+    precio_final = ((50*cantidad_amenities)*diferencia_dias(dia_inicio,dia_final))
+    print("Precio final: " , precio_final)
+    return precio_final
 
 def CalcularPrecioEstacionamiento(dia_final):
     dia_inicio = datetime.now()
-    return 4*diferencia_dias(dia_inicio,dia_final)
+    precio_final = 4*diferencia_dias(dia_inicio,dia_final)
+    print("Precio final: " , precio_final)
+    return precio_final
 
 def ReservarEstacionamiento(usuario , dia_final):
     contenido = LeerJson("Estacionamiento.json")

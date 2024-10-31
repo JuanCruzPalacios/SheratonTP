@@ -1117,7 +1117,7 @@ while running:
                         
                     if mouse_pos[0] < 481 and mouse_pos[0] > 250 and mouse_pos[1] < 655 and mouse_pos[1] > 576: #pedir limpieza
 
-                        print("")
+                        print("Limpieza pedida.")
                         alter_mouse = True
                     
 

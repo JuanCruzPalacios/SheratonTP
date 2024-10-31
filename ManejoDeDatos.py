@@ -225,13 +225,28 @@ def NotificarIngresoEgreso(id_estacionamiento):
     ActualizarJson("Estacionamiento.json", estacionamiento )
 
 def Filtros(huespedes, precio_min, precio_max):
+    print ("Precio maximo: "  , precio_max)
+    print ("Precio minimo: "  , precio_min)
     filtro = LeerJson("habitaciones.json")
-    habitacioneslist = ["suite_balcon","habitacion_triple","habitacion_doble","habitacion_lujo","habitacion_cuadruple","suite_rio","habitacion_individual","suite_jacuzzi","suite_estandar"]
     habitaciones_ocupado = []
     habitaciones_precio = []
     resultado_ocupado = []
     resultado_precio = []
     resultado_final = []
+    if precio_min == "": 
+        precio_min = 0
+    else: 
+        precio_min = int(precio_min)
+    if precio_max == "": 
+        precio_max = 9999999999999
+    else:
+        precio_max = int(precio_max)
+    if huespedes == "": 
+        fil_huespedes = False
+    else:
+        fil_huespedes = True
+        huespedes = int(huespedes)
+
     if str(huespedes) != "" and str(precio_max) != "" and str(precio_min) != "":
         try:
             for habitacion in filtro: 
@@ -242,12 +257,15 @@ def Filtros(huespedes, precio_min, precio_max):
                 if int(filtro[habitacion]["Precio"]) >= int(precio_min) and int(filtro[habitacion]["Precio"]) <= int(precio_max) : 
                     resultado_precio.append(filtro[habitacion]["ID"])
                     habitaciones_precio.append(habitacion)
-            for habitacion in habitaciones_precio:
-                if int(filtro[habitacion]["RangoHuespedes"]) == int(huespedes): 
-                    resultado_final.append(filtro[habitacion]["ID"])
-            return resultado_final
-        except ValueError:
-            """"""
+            if fil_huespedes:
+                for habitacion in habitaciones_precio:
+                    if int(filtro[habitacion]["RangoHuespedes"]) == int(huespedes): 
+                        resultado_final.append(filtro[habitacion]["ID"])
+                return resultado_final
+            else: 
+                resultado_final = habitaciones_precio
+        except:
+            print ("error al filtrar")
     
    
         try:
@@ -272,7 +290,7 @@ def Filtros(huespedes, precio_min, precio_max):
                 if filtro[habitacion]["Ocupada"] == "No" :
                     resultado_ocupado.append(filtro[habitacion]["ID"])
                     habitaciones_ocupado.append(filtro[habitacion]["ID"])
-            for habitacion in habitacioneslist:
+            for habitacion in filtro:
                 if filtro[habitacion]["ID"] in habitaciones_ocupado:
                     if int(filtro[habitacion]["Precio"]) >= int(precio_min) and int(filtro[habitacion]["Precio"]) <= int(precio_max): 
                         resultado_precio.append(filtro[habitacion]["ID"])
@@ -507,46 +525,63 @@ def ReservarEstacionamiento(usuario , dia_final):
 
 def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, dni, codigo_postal):
     contenido = LeerJson("Usuario.json")
+    chequeadormaximo = []
     
     if contenido[usuario]["Nombre"] == "":
         contenido[usuario]["Nombre"] = Nombre
     elif Nombre != contenido[usuario]["Nombre"]:
          return False , "El nombre del usuario es incorrecto"
+    else:
+        chequeadormaximo.append(1)
     
     if contenido[usuario]["Direccion"] == "":
         contenido[usuario]["Direccion"] = direccion
     elif direccion != contenido[usuario]["Direccion"]:
          return False , "La direccion del usuario es incorrecto"
+    else:
+        chequeadormaximo.append(1)
     
     
     if contenido[usuario]["Correo"] == "":
         contenido[usuario]["Correo"] = mail    
     elif mail != contenido[usuario]["Correo"]:
          return False , "El correo del usuario es incorrecto"
+    else:
+        chequeadormaximo.append(1)
     
     if contenido[usuario]["DNI"] == "":
         contenido[usuario]["DNI"] = dni 
     elif dni != contenido[usuario]["DNI"]:
          return False , "El dni ingresado es incorrecto"
+    else:
+        chequeadormaximo.append(1)
      
     if contenido[usuario]["CodigoPostal"] == "":
         contenido[usuario]["CodigoPostal"] = codigo_postal 
     elif codigo_postal != contenido[usuario]["CodigoPostal"]:
          return False , "El codigo postal ingresado es incorrecto"
+    else:
+        chequeadormaximo.append(1)
      
     if contenido[usuario]["NumeroTelefono"] == "":
         contenido[usuario]["NumeroTelefono"] = telefono
         
     elif direccion != contenido[usuario]["NumeroTelefono"]:
          return False , "El numero ingresado es incorrecto"
+    else:
+        chequeadormaximo.append(1)
      
     try: 
         if diferencia_dias(dia1,dia2) >= 1:
-            pass
+            chequeadormaximo.append(1)
         else:
             return False, "El periodo ingresado es invalido"
     except:
         return False, "El formato de dias esta mal enviado"
+
+    if chequeadormaximo == [1,1,1,1,1,1,1]:
+        return True, "Estaria todo okey a mi parecer"
+                
         
 def ChequearDatosReservaEventos(usuario,mail, hora1, hora2 , asistentes , personal , fecha):
     contenido = LeerJson("Usuario.json")

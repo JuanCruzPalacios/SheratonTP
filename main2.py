@@ -1,6 +1,6 @@
-import tkinter
 from ManejoDeDatos import *
 import pygame
+
 
 
 pygame.init()
@@ -91,7 +91,7 @@ habitaciones = [suite_balcon_sola, habitacion_triple_sola, habitacion_doble_sola
 habitaciones_libres = Filtros("",0,99999999999)
 
 
-cambiar_nombre = []
+posiciones_rects = []
 temp =  []
 
 
@@ -176,7 +176,7 @@ def reset_textos(*textos):
 
 
 
-def cursor(mouse_pos):
+def cursor(mouse_pos,alter_usuario):
     
 
     if fondo_actual[0] == "iniciar sesion":
@@ -249,8 +249,18 @@ def cursor(mouse_pos):
         elif mouse_pos[0] < 253 and mouse_pos[0] > 76 and mouse_pos[1] < 512 and mouse_pos[1] > 475:#restablecer
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
+        else:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
+        for i in rects:
+            if i[0].collidepoint(mouse_pos):
+                if not(mouse_pos[0] < 1280 and mouse_pos[0] > 0 and mouse_pos[1] < 125 and mouse_pos[1] > 0): #-----> habitaciones
+                    if not(mouse_pos[0] < 1275 and mouse_pos[0] > 962 and mouse_pos[1] < 519 and mouse_pos[1] > 131) or alter_usuario == False:
+                        pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         
-        elif suite_balcon_rect[0].collidepoint(mouse_pos):
+       
+        """elif suite_balcon_rect[0].collidepoint(mouse_pos):
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
 
@@ -283,12 +293,11 @@ def cursor(mouse_pos):
 
 
         elif suite_estandar_rect[0].collidepoint(mouse_pos):
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)"""
              
 
 
-        else:
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+        
 
 
 
@@ -552,6 +561,33 @@ def cursor(mouse_pos):
              pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
 
+    elif fondo_actual[0] == "menu mantenimiento":
+        if mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 342 and mouse_pos[1] > 285: #notificaciones
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+        elif mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 440 and mouse_pos[1] > 378: #ver stcok
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+        elif mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 535 and mouse_pos[1] > 470: #salir
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+            
+        else:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
+    elif fondo_actual[0] == "mantenimiento notificaciones":
+
+        if mouse_pos[0] < 400 and mouse_pos[0] > 170 and mouse_pos[1] < 555 and mouse_pos[1] > 505: #archivadas
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        elif mouse_pos[0] < 400 and mouse_pos[0] > 170 and mouse_pos[1] < 630 and mouse_pos[1] > 575: #volver
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+
+        else:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+       
+        
+
     elif fondo_actual[0] == "menu recepcionista":
 
         if mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 294 and mouse_pos[1] > 229: # notificar
@@ -621,18 +657,21 @@ def cursor(mouse_pos):
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         
 
-
         elif mouse_pos[0] < 500 and mouse_pos[0] > 332 and mouse_pos[1] < 660 and mouse_pos[1] > 612: # enviar limpieza
 
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)    
+        
+    elif fondo_actual[0] == "mantenimiento stock":
+        if mouse_pos[0] < 465 and mouse_pos[0] > 330 and mouse_pos[1] < 665 and mouse_pos[1] > 625: #añadir
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-
-
+        
+        elif mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: #volver
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
         else:
-
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
 
-        
     if fondo_actual[0] in ["habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"]:
             if mouse_pos[0] < 1008 and mouse_pos[0] > 785 and mouse_pos[1] < 666 and mouse_pos[1] > 605:#reservar       
                 pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)    
@@ -714,13 +753,6 @@ while running:
 
         if event.type == pygame.QUIT:
             running = False
-        
-
-
-        
-    
-        
-       
 
 
         if event.type == pygame.KEYDOWN:
@@ -894,7 +926,6 @@ while running:
 
             if event.button == 1:
                 
-
                 print(mouse_pos)   
 
 
@@ -1103,8 +1134,17 @@ while running:
 
                     if not(mouse_pos[0] < 1280 and mouse_pos[0] > 0 and mouse_pos[1] < 125 and mouse_pos[1] > 0): #-----> habitaciones
                         if not(mouse_pos[0] < 1275 and mouse_pos[0] > 962 and mouse_pos[1] < 519 and mouse_pos[1] > 131) or alter_usuario == False:
-                            alter_mouse = True
-                            if suite_balcon_rect[0].collidepoint(mouse_pos):
+                            
+
+                            for i in rects:
+                                if i[0].collidepoint(mouse_pos):
+                                    alter_mouse = True
+                                    fondo_actual[1] = i[1] + 18
+                                    fondo_actual[0] = "habitacion balcon"
+                                    texto_seleccionado = [(-100,-100),""]
+                                    habitacion_seleccionada = i[1]
+
+                            """if suite_balcon_rect[0].collidepoint(mouse_pos):
                                 fondo_actual[0] = "habitacion balcon"
                                 fondo_actual[1] = 18
                                 habitacion_seleccionada = "suite_balcon"
@@ -1156,7 +1196,7 @@ while running:
                                 fondo_actual[0] = "suite estandar"
                                 fondo_actual[1] = 26
                                 texto_seleccionado = [(-100,-100),""]
-                                habitacion_seleccionada = "suite_estandar"
+                                habitacion_seleccionada = "suite_estandar" """
 
 
 
@@ -1552,7 +1592,19 @@ while running:
                         alter_mouse = True
                         fondo_actual[0] = "iniciar sesion"
                         fondo_actual[1] = 0
-                    
+                
+
+                elif fondo_actual[0] == "mantenimiento notificaciones":
+                    if mouse_pos[0] < 400 and mouse_pos[0] > 170 and mouse_pos[1] < 630 and mouse_pos[1] > 575: #volver
+                        fondo_actual[0] = "menu mantenimiento"
+                        fondo_actual[1] = 10
+
+
+                elif fondo_actual[0] == "mantenimiento stock":
+                    if mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: #volver
+                        fondo_actual[0] = "menu mantenimiento"
+                        fondo_actual[1] = 10
+
 
                 elif fondo_actual[0] == "pagar mercado pago" and alter_mouse == False:
 
@@ -1785,11 +1837,11 @@ while running:
                     alter_mouse = True
                     if mouse_pos[0] < 1008 and mouse_pos[0] > 785 and mouse_pos[1] < 666 and mouse_pos[1] > 605:#reservar
                         fondo_actual[0] = "reservar habitacion"
-                        
+                        fondo_actual[1] = 5
                         texto_seleccionado = [(-100,-100),""]
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         
-                        fondo_actual[1] = 5
+                        
 
 
 
@@ -1814,7 +1866,7 @@ while running:
                 barra = texto_seleccionado[1]
         
         
-    cursor(mouse_pos)
+    cursor(mouse_pos,alter_usuario)
 
 
     #fondos :)
@@ -1850,14 +1902,14 @@ while running:
 
             screen.fill((253,246,228))
             cont = 0
-            cambiar_nombre = []
+            posiciones_rects = []
 
             for i in habitaciones_libres:   
 
                 x = 316 * (cont  % 3 + 1) 
                 y = posicion + 425 * (cont // 3)
                 screen.blit(habitaciones[i], (x, y))
-                cambiar_nombre.append((x,y))
+                posiciones_rects.append((x,y))
                 
 
                 cont += 1
@@ -1866,10 +1918,10 @@ while running:
                 
                 if i[1] in habitaciones_libres:
                     
-                    i[0][0] = cambiar_nombre[0][0] #posicion del rect en x
-                    i[0][1] = cambiar_nombre[0][1] #posicion del rect en y
+                    i[0][0] = posiciones_rects[0][0] #posicion del rect en x
+                    i[0][1] = posiciones_rects[0][1] #posicion del rect en y
                     
-                    cambiar_nombre.pop(0)
+                    posiciones_rects.pop(0)
                 
                 else:
                     i[0][0] = 1000 #posicion del rect en x
@@ -2150,8 +2202,8 @@ while running:
 
 
         if fondo_actual[0] in ["habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"]:
-                screen.blit(fondos[fondo_actual[1]],(0,0))
-                screen.blit(barra_arriba,(0,0))
+            screen.blit(fondos[fondo_actual[1]],(0,0))
+            screen.blit(barra_arriba,(0,0))
 
 
         if alter_usuario:

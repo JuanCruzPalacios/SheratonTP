@@ -398,6 +398,7 @@ def CancelarReservaHabitaciones(usuario,id_habitacion):
         habitaciones_data[nombre_habitacion]["EstadoActual"] = [""]
         ActualizarJson("Usuario.json", usuario_data)
         ActualizarJson("Habitaciones.json", habitaciones_data)
+        print("Reserva de habitacion cancelada exitosamente.")
     except: 
         print("Error al cancelar la reserva de habitacion")
 
@@ -405,7 +406,9 @@ def ArchivarDesarchivarNotificaciones (id_notificacion):
     contenido = LeerJson("Notificaciones.json")
     if contenido[id_notificacion]["Archivada"] == 0:
         contenido[id_notificacion]["Archivada"] = 1
+        print("Notificacion archivada.")
     else:
+        print("Notificacion desarchivada.")
         contenido[id_notificacion]["Archivada"] = 0
     ActualizarJson("Notificaciones.json", contenido)
 

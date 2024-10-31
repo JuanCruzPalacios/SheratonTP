@@ -1124,14 +1124,16 @@ while running:
                     elif mouse_pos[0] < 752 and mouse_pos[0] > 516 and mouse_pos[1] < 655 and mouse_pos[1] > 576: #no molestar
                         if TieneHabitacion(usuario)[0] != False:
                             CambiarEstadoHabitacion(VerNumeroHabitacion(usuario).pop( -1 - pagina ))
+                        else: 
+                            print("El usuario no tiene habitacion en la cual cambiar el estado.")
                         alter_mouse = True
 
 
                     elif mouse_pos[0] < 1018 and mouse_pos[0] > 785 and mouse_pos[1] < 655 and mouse_pos[1] > 576: #cancelar reserva
-                        try:
+                        if TieneHabitacion(usuario)[0]:
                             CancelarReservaHabitaciones(usuario , VerNumeroHabitacion(usuario).pop( -1 - pagina ) )
-                        except:
-                            """"""
+                        else:
+                            print("El usuario no tiene habitacion de la cual cancelar la reserva.")
                         alter_mouse = True
                     
                         

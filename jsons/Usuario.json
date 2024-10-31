@@ -74,6 +74,8 @@
         "Direccion": "www",
         "Contrataciones": [],
         "IdEstacionamiento": [],
-        "IdHabitacion": []
+        "IdHabitacion": [
+            3
+        ]
     }
 }

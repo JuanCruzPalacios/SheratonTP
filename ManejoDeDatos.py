@@ -562,7 +562,7 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         return False, "El formato de dias esta mal enviado"
 
     if chequeadormaximo == [1,1,1,1,1,1,1]:
-        return True,"hola"
+        return True, "Estaria todo okey a mi parecer"
                 
         
 def ChequearDatosReservaEventos(usuario,mail, hora1, hora2 , asistentes , personal , fecha):

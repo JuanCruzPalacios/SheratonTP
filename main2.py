@@ -635,16 +635,16 @@ def cursor(mouse_pos):
 
 
 def chequeo_contraseña(conteraseña):
-    if len(conteraseña) > 8:
+    if len(conteraseña) >= 8:
         if  any( caracter in conteraseña for caracter in ["@", "#", "$", "*", "%", "&", "/", "!", "?", "-", "_"] ):
             if any( caracter in conteraseña for caracter in ["1","2","3","4","5","6","7","8","9","0"] ):
                 return "aprobado"
             else:   
-                return "Debe haber algun numero"
+                return "La contraseña debe tener numeros."
         else:
-            return "Debe haber caracteres especiales"    
+            return "La contraseña debe tener caracteres especiales."    
     else:
-        return "Deben haber al menos 8 caracteres"
+        return "La contraseña debe tener al menos 8 caracteres."
 
 
 
@@ -747,9 +747,9 @@ while running:
 
 
                             else:
-                                texto3[1] = "Contraseña erronea"
+                                texto3[1] = "Contraseña incorrecta."
                         else:
-                            texto3[1] = "Usuario inexistente"
+                            texto3[1] = "Usuario no encontrado."
                 elif fondo_actual[0] == "registrarse": 
                     if len(texto1[1]) > 3 and len(texto2[1]) > 3 :
                         if not(ExisteUsuario(texto1[1])) :
@@ -765,9 +765,9 @@ while running:
                             else:
                                 texto4[1] = chequeo_contraseña(texto3[1])    
                         else:
-                            texto4[1] = "El usuario ingresado ya existe"
+                            texto4[1] = "El usuario ingresado ya existe."
                     else:
-                        texto4[1] = "usuario o mail muy cortos" 
+                        texto4[1] = "El usuario/mail ingresado es demasiado corto." 
                 else:
                     texto_seleccionado[1] = ""
        
@@ -911,9 +911,9 @@ while running:
 
                                 
                             else:
-                                texto3[1] = "Contraseña erronea"
+                                texto3[1] = "Contraseña incorrecta."
                         else:
-                            texto3[1] = "Usuario inexistente"
+                            texto3[1] = "Usuario no encontrado."
 
 
 
@@ -978,9 +978,9 @@ while running:
                                 else:                       
                                     texto4[1] = chequeo_contraseña(texto3[1])    
                             else:
-                                texto4[1] = "El usuario ingresado ya existe"
+                                texto4[1] = "El usuario ingresado ya existe."
                         else:
-                            texto4[1] = "usuario o mail muy cortos"
+                            texto4[1] = "El usuario/mail ingresado es demasiado corto."
 
                           
                     elif mouse_pos[0] <= 748 and mouse_pos[0] >= 519 and mouse_pos[1] <= 682 and mouse_pos[1] >= 670:#-----> Iniciar Sesion

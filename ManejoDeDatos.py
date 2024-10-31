@@ -615,3 +615,4 @@ def VerRegistrosEstacionamiento(id_estacionamiento):
     id_estacionamiento = str(id_estacionamiento)
     contenido = LeerJson("Estacionamiento.json")
     return contenido[id_estacionamiento]["UltimoIngreso"], contenido[id_estacionamiento]["UltimoEgreso"]
+print(ChequearDatosUsuario("","www", "31/10/2024", "12/12/2024", "www", "www", "www", "www", "www"))

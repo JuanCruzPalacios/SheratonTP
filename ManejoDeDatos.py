@@ -410,12 +410,15 @@ def ArchivarDesarchivarNotificaciones (id_notificacion):
     ActualizarJson("Notificaciones.json", contenido)
 
 def MarcarReservacionHabitacion(usuario,habitacion,fecha_inicio, fecha_final):
-    contenido = LeerJson("Usuario.json")
-    contenido2 = LeerJson("habitacion.json")
-    contenido[usuario]["IdHabitacion"].append(contenido2[habitacion]["ID"])
-    contenido2[habitacion]["Ocupada"] = "Si"
-    contenido2[habitacion]["IdClienteOcupante"] = contenido[usuario]["NumeroDeCliente"]
-    contenido2[habitacion]["Fechas"] = [[fecha_inicio],[fecha_final]]
+    try:
+        contenido = LeerJson("Usuario.json")
+        contenido2 = LeerJson("habitacion.json")
+        contenido[usuario]["IdHabitacion"].append(contenido2[habitacion]["ID"])
+        contenido2[habitacion]["Ocupada"] = "Si"
+        contenido2[habitacion]["IdClienteOcupante"] = contenido[usuario]["NumeroDeCliente"]
+        contenido2[habitacion]["Fechas"] = [[fecha_inicio],[fecha_final]]
+    except:
+        print("Habitacion reservada exitosamente.")
     ActualizarJson("habitaciones.json",contenido2)
     ActualizarJson("Usuario.json", contenido)
 

@@ -650,5 +650,3 @@ def VerRegistrosEstacionamiento(id_estacionamiento):
     id_estacionamiento = str(id_estacionamiento)
     contenido = LeerJson("Estacionamiento.json")
     return contenido[id_estacionamiento]["UltimoIngreso"], contenido[id_estacionamiento]["UltimoEgreso"]
-
-print(ChequearDatosUsuario("pepe","Pepe",))

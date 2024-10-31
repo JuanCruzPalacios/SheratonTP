@@ -225,13 +225,28 @@ def NotificarIngresoEgreso(id_estacionamiento):
     ActualizarJson("Estacionamiento.json", estacionamiento )
 
 def Filtros(huespedes, precio_min, precio_max):
+    print ("Precio maximo: "  , precio_max)
+    print ("Precio minimo: "  , precio_min)
     filtro = LeerJson("habitaciones.json")
-    habitacioneslist = ["suite_balcon","habitacion_triple","habitacion_doble","habitacion_lujo","habitacion_cuadruple","suite_rio","habitacion_individual","suite_jacuzzi","suite_estandar"]
     habitaciones_ocupado = []
     habitaciones_precio = []
     resultado_ocupado = []
     resultado_precio = []
     resultado_final = []
+    if precio_min == "": 
+        precio_min = 0
+    else: 
+        precio_min = int(precio_min)
+    if precio_max == "": 
+        precio_max = 9999999999999
+    else:
+        precio_max = int(precio_max)
+    if huespedes == "": 
+        fil_huespedes = False
+    else:
+        fil_huespedes = True
+        huespedes = int(huespedes)
+
     if str(huespedes) != "" and str(precio_max) != "" and str(precio_min) != "":
         try:
             for habitacion in filtro: 
@@ -242,12 +257,15 @@ def Filtros(huespedes, precio_min, precio_max):
                 if int(filtro[habitacion]["Precio"]) >= int(precio_min) and int(filtro[habitacion]["Precio"]) <= int(precio_max) : 
                     resultado_precio.append(filtro[habitacion]["ID"])
                     habitaciones_precio.append(habitacion)
-            for habitacion in habitaciones_precio:
-                if int(filtro[habitacion]["RangoHuespedes"]) == int(huespedes): 
-                    resultado_final.append(filtro[habitacion]["ID"])
-            return resultado_final
-        except ValueError:
-            """"""
+            if fil_huespedes:
+                for habitacion in habitaciones_precio:
+                    if int(filtro[habitacion]["RangoHuespedes"]) == int(huespedes): 
+                        resultado_final.append(filtro[habitacion]["ID"])
+                return resultado_final
+            else: 
+                resultado_final = habitaciones_precio
+        except:
+            print ("error al filtrar")
     
    
         try:
@@ -272,7 +290,7 @@ def Filtros(huespedes, precio_min, precio_max):
                 if filtro[habitacion]["Ocupada"] == "No" :
                     resultado_ocupado.append(filtro[habitacion]["ID"])
                     habitaciones_ocupado.append(filtro[habitacion]["ID"])
-            for habitacion in habitacioneslist:
+            for habitacion in filtro:
                 if filtro[habitacion]["ID"] in habitaciones_ocupado:
                     if int(filtro[habitacion]["Precio"]) >= int(precio_min) and int(filtro[habitacion]["Precio"]) <= int(precio_max): 
                         resultado_precio.append(filtro[habitacion]["ID"])
@@ -632,5 +650,3 @@ def VerRegistrosEstacionamiento(id_estacionamiento):
     id_estacionamiento = str(id_estacionamiento)
     contenido = LeerJson("Estacionamiento.json")
     return contenido[id_estacionamiento]["UltimoIngreso"], contenido[id_estacionamiento]["UltimoEgreso"]
-
-

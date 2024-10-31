@@ -515,6 +515,7 @@ def cursor(mouse_pos):
              pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
 
+
     elif fondo_actual[0] == "pagar mercado pago":
 
         if mouse_pos[0] < 842 and mouse_pos[0] > 437 and mouse_pos[1] < 647 and mouse_pos[1] > 243: #QR
@@ -549,6 +550,36 @@ def cursor(mouse_pos):
 
         else:
              pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
+    elif fondo_actual[0] == "menu recepcionista":
+
+        if mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 294 and mouse_pos[1] > 229: # notificar
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+        elif mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 373 and mouse_pos[1] > 312: # ver eventos
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+
+        elif mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 455 and mouse_pos[1] > 398: # enviar limpieza
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+
+        elif mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 548 and mouse_pos[1] > 482: # salir
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        else:
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
+
+
 
         
     if fondo_actual[0] in ["habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"]:

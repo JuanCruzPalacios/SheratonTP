@@ -515,6 +515,7 @@ def cursor(mouse_pos):
              pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
 
+
     elif fondo_actual[0] == "pagar mercado pago":
 
         if mouse_pos[0] < 842 and mouse_pos[0] > 437 and mouse_pos[1] < 647 and mouse_pos[1] > 243: #QR
@@ -549,6 +550,36 @@ def cursor(mouse_pos):
 
         else:
              pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
+    elif fondo_actual[0] == "menu recepcionista":
+
+        if mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 294 and mouse_pos[1] > 229: # notificar
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+        elif mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 373 and mouse_pos[1] > 312: # ver eventos
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+
+        elif mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 455 and mouse_pos[1] > 398: # enviar limpieza
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+
+        elif mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 548 and mouse_pos[1] > 482: # salir
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        else:
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
+
+
 
         
     if fondo_actual[0] in ["habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"]:
@@ -1203,9 +1234,10 @@ while running:
 
 
                     elif mouse_pos[0] < 528 and mouse_pos[0] > 307 and mouse_pos[1] < 670 and mouse_pos[1] > 615: #pagar
-                        if ChequearDatosUsuario(usuario,texto1[1],texto2[1], texto3[1], texto4[1], texto5[1], texto6[1], texto7[1], texto2[1]) != False:
-
-                            if posicion_cuadrado_reserva == ( 877, 413, 41 , 41  ):                                
+                        
+                        if ChequearDatosUsuario(usuario,texto1[1],texto2[1], texto3[1], texto4[1], texto5[1], texto6[1], texto7[1], texto8[1])[0] != False:
+                            
+                            if posicion_cuadrado_reserva == ( 877, 413, 41 , 41 ):                                
                                 fondo_actual[0] = "menu habitaciones"
                                 texto_seleccionado = [(-100,-100),""]
                                 reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
@@ -1768,7 +1800,6 @@ while running:
             pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado_2)
             pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado_3)
             
-
 
         elif fondo_actual[0] == "ver datos":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))

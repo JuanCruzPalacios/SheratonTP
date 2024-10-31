@@ -1091,7 +1091,7 @@ while running:
                     
 
                     elif mouse_pos[0] < 752 and mouse_pos[0] > 516 and mouse_pos[1] < 655 and mouse_pos[1] > 576: #no molestar
-                        if TieneHabitacion(usuario) != False:
+                        if TieneHabitacion(usuario)[0] != False:
                             CambiarEstadoHabitacion(VerNumeroHabitacion(usuario).pop( -1 - pagina ))
                         alter_mouse = True
 

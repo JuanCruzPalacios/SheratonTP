@@ -107,8 +107,10 @@ def TieneHabitacion(usuario):
         usuarios_json = LeerJson("Usuario.json")
         Estacionamiento = usuarios_json[usuario]["IdHabitacion"] 
         if len(Estacionamiento) >= 1: 
+            print("El usuario si tiene habitaciones")
             return True , Estacionamiento
         else:
+            print ("El usuario no tiene habitacion")
             return False , False
     except:
         print("El usuario no existe o hubo un error al hacer la operacion")

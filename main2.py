@@ -88,7 +88,7 @@ habitaciones = [suite_balcon_sola, habitacion_triple_sola, habitacion_doble_sola
                 habitacion_lujo_sola, habitacion_cuadruple_sola, suite_rio_sola,
                 habitacion_individual_sola, suite_jacuzzi_sola, suite_estandar_sola]
 
-habitaciones_libres = Filtros("",0,1000)
+habitaciones_libres = Filtros("",0,99999999999)
 
 
 cambiar_nombre = []
@@ -515,6 +515,7 @@ def cursor(mouse_pos):
              pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
 
+
     elif fondo_actual[0] == "pagar mercado pago":
 
         if mouse_pos[0] < 842 and mouse_pos[0] > 437 and mouse_pos[1] < 647 and mouse_pos[1] > 243: #QR
@@ -549,6 +550,36 @@ def cursor(mouse_pos):
 
         else:
              pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
+    elif fondo_actual[0] == "menu recepcionista":
+
+        if mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 294 and mouse_pos[1] > 229: # notificar
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+        elif mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 373 and mouse_pos[1] > 312: # ver eventos
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+
+        elif mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 455 and mouse_pos[1] > 398: # enviar limpieza
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+
+        elif mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 548 and mouse_pos[1] > 482: # salir
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        else:
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
+
+
 
         
     if fondo_actual[0] in ["habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"]:
@@ -999,15 +1030,15 @@ while running:
 
                     elif mouse_pos[0] < 253 and mouse_pos[0] > 76 and mouse_pos[1] < 561 and mouse_pos[1] > 525:#buscar
                         try:
-                            habitaciones_libres = Filtros(int(texto1[1]),int(texto2[1]),int(texto3[1]))
-                        except ValueError:
-                            """"""
+                            habitaciones_libres = Filtros(texto1[1],texto2[1],texto3[1])
+                        except:
+                            print("Error al filtrar")
                         alter_mouse = True
 
 
 
                     elif mouse_pos[0] < 253 and mouse_pos[0] > 76 and mouse_pos[1] < 512 and mouse_pos[1] > 475:#restablecer
-                        habitaciones_libres = Filtros("",0,1000)
+                        habitaciones_libres = Filtros("",0,999999999)
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         print(texto1)
                         barra = texto_seleccionado[1] + "|"  
@@ -1533,7 +1564,7 @@ while running:
 
 
                     if mouse_pos[0] < 410 and mouse_pos[0] > 290 and mouse_pos[1] < 100 and mouse_pos[1] > 15 and fondo_actual != "menu habitaciones" : #Home 
-                        habitaciones_libres = Filtros((""),0,1000)
+                        habitaciones_libres = Filtros((""),0,9999999999)
                         fondo_actual[0] = "menu habitaciones"
                         fondo_actual[1] = 6
                         texto_seleccionado = [(-100,-100),""]

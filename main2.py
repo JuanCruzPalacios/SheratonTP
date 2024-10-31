@@ -1056,47 +1056,56 @@ while running:
                             if suite_balcon_rect[0].collidepoint(mouse_pos):
                                 fondo_actual[0] = "habitacion balcon"
                                 fondo_actual[1] = 18
+                                habitacion_seleccionada = "suite_balcon"
                                 texto_seleccionado = [(-100,-100),""]
 
                             elif habitacion_triple_rect[0].collidepoint(mouse_pos):
                                 fondo_actual[0] = "habitacion triple"
                                 fondo_actual[1] = 19
+                                habitacion_seleccionada = "habitacion_triple"
                                 texto_seleccionado = [(-100,-100),""]
 
                             elif habitacion_doble_rect[0].collidepoint(mouse_pos):
                                 fondo_actual[0] = "habitacion doble"
                                 fondo_actual[1] = 20
+                                habitacion_seleccionada = "habitacion_doble"
                                 texto_seleccionado = [(-100,-100),""]
 
                             elif habitacion_lujo_rect[0].collidepoint(mouse_pos):
                                 fondo_actual[0] = "habitacion lujo"
                                 fondo_actual[1] = 21
+                                habitacion_seleccionada = "habitacion_lujo"
                                 texto_seleccionado = [(-100,-100),""]
 
                             elif habitacion_cuadruple_rect[0].collidepoint(mouse_pos):
                                 fondo_actual[0] = "habitacion cuadruple"
                                 fondo_actual[1] = 22
                                 texto_seleccionado = [(-100,-100),""]
+                                habitacion_seleccionada = "habitacion_cuadruple"
 
                             elif suite_rio_rect[0].collidepoint(mouse_pos):
                                 fondo_actual[0] = "suite rio"
                                 fondo_actual[1] = 23
                                 texto_seleccionado = [(-100,-100),""]
+                                habitacion_seleccionada = "suite_rio"
 
                             elif habitacion_individual_rect[0].collidepoint(mouse_pos):
                                 fondo_actual[0] = "habitacion individual"
                                 fondo_actual[1] = 24
                                 texto_seleccionado = [(-100,-100),""]
+                                habitacion_seleccionada = "habitacion_individual"
 
                             elif suite_jacuzzi_rect[0].collidepoint(mouse_pos):
                                 fondo_actual[0] = "suite jacuzzi"
                                 fondo_actual[1] = 25
                                 texto_seleccionado = [(-100,-100),""]
+                                habitacion_seleccionada = "suite_jacuzzi"
 
                             elif suite_estandar_rect[0].collidepoint(mouse_pos):
                                 fondo_actual[0] = "suite estandar"
                                 fondo_actual[1] = 26
                                 texto_seleccionado = [(-100,-100),""]
+                                habitacion_seleccionada = "suite_estandar"
 
 
 
@@ -1138,7 +1147,7 @@ while running:
 
                         
 
-                elif fondo_actual[0] == "reservar habitacion":
+                elif fondo_actual[0] == "reservar habitacion" and alter_mouse == False:
 
 
                     if mouse_pos[0] < 690 and mouse_pos[0] > 255 and mouse_pos[1] < 300 and mouse_pos[1] > 250: #nombre        
@@ -1148,6 +1157,7 @@ while running:
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
                         limite = 22
+                        alter_mouse = True
         
 
                     elif mouse_pos[0] < 425 and mouse_pos[0] > 205 and mouse_pos[1] < 375 and mouse_pos[1] > 335: #dia inicio        
@@ -1158,6 +1168,7 @@ while running:
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
                         limite = 10
+                        alter_mouse = True
                         
 
                     elif mouse_pos[0] < 710 and mouse_pos[0] > 485 and mouse_pos[1] < 375 and mouse_pos[1] > 335: #dia fin       
@@ -1168,6 +1179,7 @@ while running:
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
                         limite = 10 
+                        alter_mouse = True
                     
 
                     elif mouse_pos[0] < 690 and mouse_pos[0] > 289 and mouse_pos[1] < 453 and mouse_pos[1] > 411: #direccion      
@@ -1177,6 +1189,7 @@ while running:
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
                         limite = 20
+                        alter_mouse = True
 
                     
                     elif mouse_pos[0] < 690 and mouse_pos[0] > 273 and mouse_pos[1] < 520 and mouse_pos[1] > 480: #telefono     
@@ -1186,6 +1199,7 @@ while running:
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
                         limite = 21
+                        alter_mouse = True
                     
 
                     elif mouse_pos[0] < 690 and mouse_pos[0] > 232 and mouse_pos[1] < 588 and mouse_pos[1] > 546: #mail   
@@ -1195,6 +1209,7 @@ while running:
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
                         limite = 23
+                        alter_mouse = True
                                         
 
                     elif mouse_pos[0] < 1107 and mouse_pos[0] > 896 and mouse_pos[1] < 223 and mouse_pos[1] > 178: #dni/cuit   
@@ -1204,7 +1219,8 @@ while running:
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
                         limite = 11 
-                    
+                        alter_mouse = True
+
 
                     elif mouse_pos[0] < 1107 and mouse_pos[0] > 937 and mouse_pos[1] < 295 and mouse_pos[1] > 251: #codigo postal 
                                     
@@ -1213,42 +1229,52 @@ while running:
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
                         limite = 6 
+                        alter_mouse = True
                     
 
                     elif mouse_pos[0] < 925 and mouse_pos[0] > 870 and mouse_pos[1] < 460 and mouse_pos[1] > 405: #efectivo
 
-
+                        alter_mouse = True
                         posicion_cuadrado_reserva = ( 877, 413, 41 , 41  )
                 
 
                     elif mouse_pos[0] < 1006 and mouse_pos[0] > 954 and mouse_pos[1] < 534 and mouse_pos[1] > 480: #mercado pago
                                     
-                        
+                        alter_mouse = True
                         posicion_cuadrado_reserva = ( 960 , 490 , 41 , 41 )
 
 
                     elif mouse_pos[0] < 1108 and mouse_pos[0] > 1058 and mouse_pos[1] < 460 and mouse_pos[1] > 307: #tarjeta
 
-
+                        alter_mouse = True
                         posicion_cuadrado_reserva = ( 1062, 415, 41 , 41  ) 
 
 
                     elif mouse_pos[0] < 528 and mouse_pos[0] > 307 and mouse_pos[1] < 670 and mouse_pos[1] > 615: #pagar
-                        
-                        if ChequearDatosUsuario(usuario,texto1[1],texto2[1], texto3[1], texto4[1], texto5[1], texto6[1], texto7[1], texto8[1])[0] != False:
+
+
+                        #SACAR ESTO DESPUES PLS :)
+
+
+                        if True or ChequearDatosUsuario(usuario,texto1[1],texto2[1], texto3[1], texto4[1], texto5[1], texto6[1], texto7[1], texto8[1])[0] != False:
                             
-                            if posicion_cuadrado_reserva == ( 877, 413, 41 , 41 ):                                
+                            if posicion_cuadrado_reserva == ( 877, 413, 41 , 41 ):       
+                                alter_mouse = True                         
                                 fondo_actual[0] = "menu habitaciones"
                                 texto_seleccionado = [(-100,-100),""]
                                 reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
 
                             elif posicion_cuadrado_reserva == ( 960 , 490 , 41 , 41 ):
+                                alter_mouse = True
                                 fondo_actual[0] = "pagar mercado pago"
                                 fondo_actual[1] = 4
                                 texto_seleccionado = [(-100,-100),""]
-                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                                texto1[1] = "total: " + str(CalcularPrecioHabitacion(habitacion_seleccionada, texto2[1],texto3[1]))
+                                
+                                
 
                             elif posicion_cuadrado_reserva == ( 1062, 415, 41 , 41  ):
+                                alter_mouse = True
                                 fondo_actual[0] = "pagar tarjeta"
                                 fondo_actual[1] = 6
                                 texto_seleccionado = [(-100,-100),""]
@@ -1259,31 +1285,31 @@ while running:
 
 
 
-                elif fondo_actual[0] == "menu amenities":
+                elif fondo_actual[0] == "menu amenities" and alter_mouse == False:
 
                    
                     if mouse_pos[0] < 455 and mouse_pos[0] > 400 and mouse_pos[1] < 342 and mouse_pos[1] > 290 and posicion_cuadrado != (409,298, 41,41): #spa aparece
-                   
+                        alter_mouse = True
                         posicion_cuadrado = (409,298, 41,41)
                     
                     elif mouse_pos[0] < 455 and mouse_pos[0] > 400 and mouse_pos[1] < 342 and mouse_pos[1] > 290 and posicion_cuadrado == (409,298, 41,41): #spa desaparece
-
+                        alter_mouse = True
                         posicion_cuadrado = (-100,-100,0,0)
 
                     elif mouse_pos[0] < 1005 and mouse_pos[0] > 948 and mouse_pos[1] < 345 and mouse_pos[1] > 290 and posicion_cuadrado_2 != (957,298, 41,41): #gimnasio aparece
-                   
+                        alter_mouse = True
                         posicion_cuadrado_2 = (957,298, 41,41)
 
                     elif mouse_pos[0] < 1005 and mouse_pos[0] > 948 and mouse_pos[1] < 345 and mouse_pos[1] > 290 and posicion_cuadrado_2 == (957,298, 41,41): #gimnasio desaparece
-
+                        alter_mouse = True
                         posicion_cuadrado_2 = (-100,-100,0,0)
 
                     elif mouse_pos[0] < 740 and mouse_pos[0] > 688 and mouse_pos[1] < 345 and mouse_pos[1] > 290 and posicion_cuadrado_3 !=  (695,298, 41,41): #pileta aparece
-
+                        alter_mouse = True
                         posicion_cuadrado_3 = (695,298, 41,41)
 
                     elif  mouse_pos[0] < 740 and mouse_pos[0] > 688 and mouse_pos[1] < 345 and mouse_pos[1] > 290 and posicion_cuadrado_3 ==  (695,298, 41,41): #pileta desaparece
-
+                        alter_mouse = True
                         posicion_cuadrado_3 = (-100,-100,0,0)
                    
                     elif mouse_pos[0] < 708 and mouse_pos[0] > 568 and mouse_pos[1] < 676 and mouse_pos[1] > 636: #reservar
@@ -1298,13 +1324,13 @@ while running:
                     
 
 
-                elif fondo_actual[0] == "reservar eventos":
+                elif fondo_actual[0] == "reservar eventos" and alter_mouse == False:
 
 
                     
 
                     if mouse_pos[0] < 560 and mouse_pos[0] > 445 and mouse_pos[1] < 298 and mouse_pos[1] > 252: #Cantidad asistentes
-                                    
+                        alter_mouse = True            
                         texto_ingresado = texto1[1]
                         texto_seleccionado = texto1   
                         barra = texto_seleccionado[1] + "|"  
@@ -1313,7 +1339,7 @@ while running:
         
 
                     elif  mouse_pos[0] < 332 and mouse_pos[0] > 214 and mouse_pos[1] < 382 and mouse_pos[1] > 340: #inicia el horario
-
+                        alter_mouse = True
                         texto2[1]  = ""    
                         texto_ingresado = ""
                         texto_seleccionado = texto2   
@@ -1324,7 +1350,7 @@ while running:
 
 
                     elif  mouse_pos[0] < 560 and mouse_pos[0] > 445 and mouse_pos[1] < 382 and mouse_pos[1] > 340: #termina el horario 
-                                    
+                        alter_mouse = True           
                         texto3[1]  = ""
                         texto_ingresado = ""
                         texto_seleccionado = texto3
@@ -1334,7 +1360,7 @@ while running:
                     
 
                     elif  mouse_pos[0] < 436 and mouse_pos[0] > 214 and mouse_pos[1] < 460 and mouse_pos[1] > 416: #dia del evento   
-                                    
+                        alter_mouse = True         
                         texto4[1]  = ""
                         texto_ingresado = ""
                         texto_seleccionado = texto4  
@@ -1344,7 +1370,7 @@ while running:
 
                     
                     elif  mouse_pos[0] < 560 and mouse_pos[0] > 445 and mouse_pos[1] < 524 and mouse_pos[1] > 474: #personal requerido  
-                                    
+                        alter_mouse = True            
                         texto_ingresado = texto5[1]
                         texto_seleccionado = texto5   
                         barra = texto_seleccionado[1] + "|"  
@@ -1353,7 +1379,7 @@ while running:
                     
 
                     elif  mouse_pos[0] < 684 and mouse_pos[0] > 212 and mouse_pos[1] < 605 and mouse_pos[1] > 565: #mail   
-                                    
+                        alter_mouse = True           
                         texto_ingresado = texto6[1]
                         texto_seleccionado = texto6   
                         barra = texto_seleccionado[1] + "|"  
@@ -1361,10 +1387,9 @@ while running:
                         limite = 24
 
                                         
-
                     elif  mouse_pos[0] < 480 and mouse_pos[0] > 260 and mouse_pos[1] < 690 and mouse_pos[1] > 620: #reservar salon de eventos 
 
-                        
+                        alter_mouse = True
                         if ChequearDatosReservaEventos(usuario , texto6[1] , texto2[1] , texto3[1] , texto1[1] , texto5[1] , texto4[1]) == True:
 
                             if posicion_cuadrado_salon == ( 956, 494, 41 , 41  ):
@@ -1383,7 +1408,8 @@ while running:
 
 
                     elif  mouse_pos[0] < 1140 and mouse_pos[0] > 730 and mouse_pos[1] < 408 and mouse_pos[1] > 215: #especificaciones
-                                    
+
+                        alter_mouse = True           
                         texto_ingresado = texto7[1]
                         texto_seleccionado = texto7   
                         barra = texto_seleccionado[1] + "|"  
@@ -1448,79 +1474,95 @@ while running:
                             alter_mouse = True
 
                 
-                elif fondo_actual[0] == "menu mantenimiento":
+                elif fondo_actual[0] == "menu mantenimiento" and alter_mouse == False:
                     
                     if mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 342 and mouse_pos[1] > 285: #notificaciones
 
+                        alter_mouse = True
                         fondo_actual[0] = "mantenimiento notificaciones"
                         fondo_actual[1] = 12
                     
 
                     elif mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 440 and mouse_pos[1] > 378: #ver stcok
 
+                        alter_mouse = True
                         fondo_actual[0] = "mantenimiento stock"
                         fondo_actual[1] = 11
                     
 
                     elif mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 535 and mouse_pos[1] > 470: #salir
 
+                        alter_mouse = True
                         fondo_actual[0] = "iniciar sesion"
                         fondo_actual[1] = 0
                     
 
-                elif fondo_actual[0] == "pagar mercado pago":
+                elif fondo_actual[0] == "pagar mercado pago" and alter_mouse == False:
+
                     if mouse_pos[0] < 842 and mouse_pos[0] > 437 and mouse_pos[1] < 647 and mouse_pos[1] > 243: #QR
 
+                        alter_mouse = True
                         fondo_actual[0] = "menu habitaciones"
                         texto_seleccionado = [(-100,-100),""]
+                        MarcarReservacionHabitacion(usuario, habitacion_seleccionada , texto2[1] , texto3[1])
+                        habitaciones_libres = Filtros((""),0,9999999999)
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
 
+
                     elif mouse_pos[0] < 1127 and mouse_pos[0] > 907 and mouse_pos[1] < 662 and mouse_pos[1] > 599: #VOLVER
+
+                        alter_mouse = True
                         fondo_actual[0] = "reservar habitacion"
                         fondo_actual[1] = 5
                         texto_seleccionado = [(-100,-100),""]
-                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                        
             
 
 
-                elif fondo_actual[0] == "pagar tarjeta":
+                elif fondo_actual[0] == "pagar tarjeta" and alter_mouse == False:
 
                     if mouse_pos[0] < 996 and mouse_pos[0] > 441 and mouse_pos[1] < 314 and mouse_pos[1] > 268: #Nombre del titular
+                        alter_mouse = True
                         texto_ingresado = texto1[1]
                         texto_seleccionado = texto1 #Usuario / iniciar sesion   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 18
+                        limite = 28
 
                     elif mouse_pos[0] < 996 and mouse_pos[0] > 441 and mouse_pos[1] < 379 and mouse_pos[1] > 335: #VOLVER
+                        alter_mouse = True
                         texto_ingresado = texto2[1]
                         texto_seleccionado = texto2 #Usuario / iniciar sesion   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 18   
+                        limite = 28   
 
                     elif mouse_pos[0] < 996 and mouse_pos[0] > 364 and mouse_pos[1] < 448 and mouse_pos[1] > 404: #Vencimiento
+                        alter_mouse = True
                         texto_ingresado = texto3[1]
                         texto_seleccionado = texto3 #Usuario / iniciar sesion   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 18 
+                        limite = 32 
 
                     elif mouse_pos[0] < 996 and mouse_pos[0] > 465 and mouse_pos[1] < 516 and mouse_pos[1] > 471: #Codigo de seguridad
+                        alter_mouse = True
                         texto_ingresado = texto4[1]
                         texto_seleccionado = texto4 #Usuario / iniciar sesion   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 18  
+                        limite = 27  
 
                     elif mouse_pos[0] < 996 and mouse_pos[0] > 486 and mouse_pos[1] < 584 and mouse_pos[1] > 542: #Documento
+                        alter_mouse = True
                         texto_ingresado = texto5[1]
                         texto_seleccionado = texto5 #Usuario / iniciar sesion   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 18  
+                        limite = 25  
 
                     elif mouse_pos[0] < 1128 and mouse_pos[0] > 906 and mouse_pos[1] < 665 and mouse_pos[1] > 605: #Pagar
+                        alter_mouse = True
                         fondo_actual[0] = "menu habitaciones"
                         texto_seleccionado = [(-100,-100),""]
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
@@ -1931,6 +1973,10 @@ while running:
 
         elif fondo_actual[0] == "pagar mercado pago":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+            texto1[0] = (151, 298)
+    
+            screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
+            screen.blit( fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
 
 
         elif fondo_actual[0] == "pagar tarjeta":

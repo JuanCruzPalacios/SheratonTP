@@ -411,7 +411,7 @@ def ArchivarDesarchivarNotificaciones (id_notificacion):
 
 def MarcarReservacionHabitacion(usuario,habitacion,fecha_inicio, fecha_final):
     contenido = LeerJson("Usuario.json")
-    contenido2 = LeerJson("habitacion.json")
+    contenido2 = LeerJson("habitaciones.json")
     contenido[usuario]["IdHabitacion"].append(contenido2[habitacion]["ID"])
     contenido2[habitacion]["Ocupada"] = "Si"
     contenido2[habitacion]["IdClienteOcupante"] = contenido[usuario]["NumeroDeCliente"]
@@ -572,7 +572,16 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
          return False , "El numero ingresado es incorrecto"
     else:
         chequeadormaximo.append(1)
-     
+    
+    try:
+        fecha_actual = datetime.now()
+        fecha_ingresada = datetime.strptime(dia1, "%d/%m/%Y")
+
+        if fecha_ingresada < fecha_actual:
+            return False, "La fecha ya paso"
+    except :
+        print("error")
+        
     try: 
         if diferencia_dias(dia1,dia2) >= 1:
             chequeadormaximo.append(1)
@@ -599,11 +608,6 @@ def ChequearDatosReservaEventos(usuario,mail, hora1, hora2 , asistentes , person
         
         return False
 
-    if hora2 > hora1:
-        pass
-    else:
-        
-        return False
 
     try:
         if asistentes != "":
@@ -651,3 +655,4 @@ def VerRegistrosEstacionamiento(id_estacionamiento):
     id_estacionamiento = str(id_estacionamiento)
     contenido = LeerJson("Estacionamiento.json")
     return contenido[id_estacionamiento]["UltimoIngreso"], contenido[id_estacionamiento]["UltimoEgreso"]
+

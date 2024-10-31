@@ -1426,14 +1426,18 @@ while running:
                                 
 
                     elif mouse_pos[0] < 757 and mouse_pos[0] > 522 and mouse_pos[1] < 656 and mouse_pos[1] > 579 and alter_mouse == False:#notificar ingreso        
-                                    
-                        NotificarIngresoEgreso(VerNumeroEstacionamiento(usuario).pop( -1 - pagina )) 
+                        if TieneEstacionamiento(usuario)[0]:          
+                            NotificarIngresoEgreso(VerNumeroEstacionamiento(usuario).pop( -1 - pagina )) 
+                        else: 
+                            print ("El usuario no tiene un estacionamiento del cual notificar ingreso/egreso.")
                         alter_mouse = True
                                 
 
                     elif mouse_pos[0] < 1018 and mouse_pos[0] > 784 and mouse_pos[1] < 656 and mouse_pos[1] > 579 and alter_mouse == False:#cancelar reserva de parking        
-                                    
-                        CancelarReservaEstacionamiento( usuario , VerNumeroEstacionamiento(usuario).pop( -1 - pagina ) )
+                        if TieneEstacionamiento(usuario)[0]:           
+                            CancelarReservaEstacionamiento( usuario , VerNumeroEstacionamiento(usuario).pop( -1 - pagina ) )
+                        else: 
+                            print ("El usuario no tiene un estacionamiento del cual cancelar la reserva.")
                         alter_mouse = True
         
                     elif mouse_pos[0] < 1225 and mouse_pos[0] > 1130 and mouse_pos[1] < 462 and mouse_pos[1] > 306 and alter_mouse == False:#flecha derecha   

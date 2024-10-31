@@ -581,12 +581,7 @@ def cursor(mouse_pos):
         elif mouse_pos[0] < 400 and mouse_pos[0] > 170 and mouse_pos[1] < 630 and mouse_pos[1] > 575: #volver
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         
-        elif mouse_pos[0] < 970 and mouse_pos[0] > 820 and mouse_pos[1] < 665 and mouse_pos[1] > 625: #archivar
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-        
-        elif mouse_pos[0] < 1140 and mouse_pos[0] > 990 and mouse_pos[1] < 665 and mouse_pos[1] > 625: #fijar
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-        
+
         else:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
        

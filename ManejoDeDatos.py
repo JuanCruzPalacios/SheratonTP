@@ -532,6 +532,7 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
     if contenido[usuario]["Nombre"] == "":
         contenido[usuario]["Nombre"] = Nombre
     elif Nombre != contenido[usuario]["Nombre"]:
+         print("El nombre del usuario es incorrecto")
          return False , "El nombre del usuario es incorrecto"
     else:
         chequeadormaximo.append(1)
@@ -539,6 +540,7 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
     if contenido[usuario]["Direccion"] == "":
         contenido[usuario]["Direccion"] = direccion
     elif direccion != contenido[usuario]["Direccion"]:
+         print("La direccion del usuario es incorrecto")
          return False , "La direccion del usuario es incorrecto"
     else:
         chequeadormaximo.append(1)
@@ -547,6 +549,7 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
     if contenido[usuario]["Correo"] == "":
         contenido[usuario]["Correo"] = mail    
     elif mail != contenido[usuario]["Correo"]:
+         print("El correo del usuario es incorrecto")
          return False , "El correo del usuario es incorrecto"
     else:
         chequeadormaximo.append(1)
@@ -554,6 +557,7 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
     if contenido[usuario]["DNI"] == "":
         contenido[usuario]["DNI"] = dni 
     elif dni != contenido[usuario]["DNI"]:
+         print("El dni ingresado es incorrecto")
          return False , "El dni ingresado es incorrecto"
     else:
         chequeadormaximo.append(1)
@@ -561,6 +565,7 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
     if contenido[usuario]["CodigoPostal"] == "":
         contenido[usuario]["CodigoPostal"] = codigo_postal 
     elif codigo_postal != contenido[usuario]["CodigoPostal"]:
+         print("El codigo postal ingresado es incorrecto")
          return False , "El codigo postal ingresado es incorrecto"
     else:
         chequeadormaximo.append(1)
@@ -568,8 +573,9 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
     if contenido[usuario]["NumeroTelefono"] == "":
         contenido[usuario]["NumeroTelefono"] = telefono
         
-    elif direccion != contenido[usuario]["NumeroTelefono"]:
-         return False , "El numero ingresado es incorrecto"
+    elif telefono != contenido[usuario]["NumeroTelefono"]:
+        print("El numero ingresado es incorrecto")
+        return False , "El numero ingresado es incorrecto"
     else:
         chequeadormaximo.append(1)
      
@@ -577,11 +583,14 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         if diferencia_dias(dia1,dia2) >= 1:
             chequeadormaximo.append(1)
         else:
+            print("El periodo ingresado es invalido")
             return False, "El periodo ingresado es invalido"
     except:
+        print("El formato de dias esta mal enviado")
         return False, "El formato de dias esta mal enviado"
 
     if chequeadormaximo == [1,1,1,1,1,1,1]:
+        print("Los datos ingresados son correctos.")
         return True, "Estaria todo okey a mi parecer"
            
 def ChequearDatosReservaEventos(usuario,mail, hora1, hora2 , asistentes , personal , fecha):

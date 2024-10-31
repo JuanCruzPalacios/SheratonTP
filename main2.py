@@ -686,16 +686,16 @@ def cursor(mouse_pos):
 
 
 def chequeo_contraseña(conteraseña):
-    if len(conteraseña) > 8:
+    if len(conteraseña) >= 8:
         if  any( caracter in conteraseña for caracter in ["@", "#", "$", "*", "%", "&", "/", "!", "?", "-", "_"] ):
             if any( caracter in conteraseña for caracter in ["1","2","3","4","5","6","7","8","9","0"] ):
                 return "aprobado"
             else:   
-                return "Debe haber algun numero"
+                return "La contraseña debe tener numeros."
         else:
-            return "Debe haber caracteres especiales"    
+            return "La contraseña debe tener caracteres especiales."    
     else:
-        return "Deben haber al menos 8 caracteres"
+        return "La contraseña debe tener al menos 8 caracteres."
 
 
 
@@ -798,9 +798,9 @@ while running:
 
 
                             else:
-                                texto3[1] = "Contraseña erronea"
+                                texto3[1] = "Contraseña incorrecta."
                         else:
-                            texto3[1] = "Usuario inexistente"
+                            texto3[1] = "Usuario no encontrado."
                 elif fondo_actual[0] == "registrarse": 
                     if len(texto1[1]) > 3 and len(texto2[1]) > 3 :
                         if not(ExisteUsuario(texto1[1])) :
@@ -816,9 +816,9 @@ while running:
                             else:
                                 texto4[1] = chequeo_contraseña(texto3[1])    
                         else:
-                            texto4[1] = "El usuario ingresado ya existe"
+                            texto4[1] = "El usuario ingresado ya existe."
                     else:
-                        texto4[1] = "usuario o mail muy cortos" 
+                        texto4[1] = "El usuario/mail ingresado es demasiado corto." 
                 else:
                     texto_seleccionado[1] = ""
        
@@ -962,9 +962,9 @@ while running:
 
                                 
                             else:
-                                texto3[1] = "Contraseña erronea"
+                                texto3[1] = "Contraseña incorrecta."
                         else:
-                            texto3[1] = "Usuario inexistente"
+                            texto3[1] = "Usuario no encontrado."
 
 
 
@@ -1029,9 +1029,9 @@ while running:
                                 else:                       
                                     texto4[1] = chequeo_contraseña(texto3[1])    
                             else:
-                                texto4[1] = "El usuario ingresado ya existe"
+                                texto4[1] = "El usuario ingresado ya existe."
                         else:
-                            texto4[1] = "usuario o mail muy cortos"
+                            texto4[1] = "El usuario/mail ingresado es demasiado corto."
 
                           
                     elif mouse_pos[0] <= 748 and mouse_pos[0] >= 519 and mouse_pos[1] <= 682 and mouse_pos[1] >= 670:#-----> Iniciar Sesion
@@ -1173,7 +1173,7 @@ while running:
                     
 
                     elif mouse_pos[0] < 752 and mouse_pos[0] > 516 and mouse_pos[1] < 655 and mouse_pos[1] > 576: #no molestar
-                        if TieneHabitacion(usuario) != False:
+                        if TieneHabitacion(usuario)[0] != False:
                             CambiarEstadoHabitacion(VerNumeroHabitacion(usuario).pop( -1 - pagina ))
                         alter_mouse = True
 
@@ -1285,9 +1285,10 @@ while running:
 
 
                     elif mouse_pos[0] < 528 and mouse_pos[0] > 307 and mouse_pos[1] < 670 and mouse_pos[1] > 615: #pagar
-                        if ChequearDatosUsuario(usuario,texto1[1],texto2[1], texto3[1], texto4[1], texto5[1], texto6[1], texto7[1], texto2[1]) != False:
-
-                            if posicion_cuadrado_reserva == ( 877, 413, 41 , 41  ):                                
+                        
+                        if ChequearDatosUsuario(usuario,texto1[1],texto2[1], texto3[1], texto4[1], texto5[1], texto6[1], texto7[1], texto8[1])[0] != False:
+                            
+                            if posicion_cuadrado_reserva == ( 877, 413, 41 , 41 ):                                
                                 fondo_actual[0] = "menu habitaciones"
                                 texto_seleccionado = [(-100,-100),""]
                                 reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
@@ -1476,14 +1477,18 @@ while running:
                                 
 
                     elif mouse_pos[0] < 757 and mouse_pos[0] > 522 and mouse_pos[1] < 656 and mouse_pos[1] > 579 and alter_mouse == False:#notificar ingreso        
-                                    
-                        NotificarIngresoEgreso(VerNumeroEstacionamiento(usuario).pop( -1 - pagina )) 
+                        if TieneEstacionamiento(usuario)[0]:          
+                            NotificarIngresoEgreso(VerNumeroEstacionamiento(usuario).pop( -1 - pagina )) 
+                        else: 
+                            print ("El usuario no tiene un estacionamiento del cual notificar ingreso/egreso.")
                         alter_mouse = True
                                 
 
                     elif mouse_pos[0] < 1018 and mouse_pos[0] > 784 and mouse_pos[1] < 656 and mouse_pos[1] > 579 and alter_mouse == False:#cancelar reserva de parking        
-                                    
-                        CancelarReservaEstacionamiento( usuario , VerNumeroEstacionamiento(usuario).pop( -1 - pagina ) )
+                        if TieneEstacionamiento(usuario)[0]:           
+                            CancelarReservaEstacionamiento( usuario , VerNumeroEstacionamiento(usuario).pop( -1 - pagina ) )
+                        else: 
+                            print ("El usuario no tiene un estacionamiento del cual cancelar la reserva.")
                         alter_mouse = True
         
                     elif mouse_pos[0] < 1225 and mouse_pos[0] > 1130 and mouse_pos[1] < 462 and mouse_pos[1] > 306 and alter_mouse == False:#flecha derecha   
@@ -1919,7 +1924,6 @@ while running:
             pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado_2)
             pygame.draw.rect(screen, (98,69,49) , posicion_cuadrado_3)
             
-
 
         elif fondo_actual[0] == "ver datos":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))

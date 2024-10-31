@@ -107,8 +107,10 @@ def TieneHabitacion(usuario):
         usuarios_json = LeerJson("Usuario.json")
         Estacionamiento = usuarios_json[usuario]["IdHabitacion"] 
         if len(Estacionamiento) >= 1: 
+            print("El usuario si tiene habitaciones")
             return True , Estacionamiento
         else:
+            print ("El usuario no tiene habitacion")
             return False , False
     except:
         print("El usuario no existe o hubo un error al hacer la operacion")
@@ -225,13 +227,28 @@ def NotificarIngresoEgreso(id_estacionamiento):
     ActualizarJson("Estacionamiento.json", estacionamiento )
 
 def Filtros(huespedes, precio_min, precio_max):
+    print ("Precio maximo: "  , precio_max)
+    print ("Precio minimo: "  , precio_min)
     filtro = LeerJson("habitaciones.json")
-    habitacioneslist = ["suite_balcon","habitacion_triple","habitacion_doble","habitacion_lujo","habitacion_cuadruple","suite_rio","habitacion_individual","suite_jacuzzi","suite_estandar"]
     habitaciones_ocupado = []
     habitaciones_precio = []
     resultado_ocupado = []
     resultado_precio = []
     resultado_final = []
+    if precio_min == "": 
+        precio_min = 0
+    else: 
+        precio_min = int(precio_min)
+    if precio_max == "": 
+        precio_max = 9999999999999
+    else:
+        precio_max = int(precio_max)
+    if huespedes == "": 
+        fil_huespedes = False
+    else:
+        fil_huespedes = True
+        huespedes = int(huespedes)
+
     if str(huespedes) != "" and str(precio_max) != "" and str(precio_min) != "":
         try:
             for habitacion in filtro: 
@@ -242,12 +259,15 @@ def Filtros(huespedes, precio_min, precio_max):
                 if int(filtro[habitacion]["Precio"]) >= int(precio_min) and int(filtro[habitacion]["Precio"]) <= int(precio_max) : 
                     resultado_precio.append(filtro[habitacion]["ID"])
                     habitaciones_precio.append(habitacion)
-            for habitacion in habitaciones_precio:
-                if int(filtro[habitacion]["RangoHuespedes"]) == int(huespedes): 
-                    resultado_final.append(filtro[habitacion]["ID"])
-            return resultado_final
-        except ValueError:
-            """"""
+            if fil_huespedes:
+                for habitacion in habitaciones_precio:
+                    if int(filtro[habitacion]["RangoHuespedes"]) == int(huespedes): 
+                        resultado_final.append(filtro[habitacion]["ID"])
+                return resultado_final
+            else: 
+                resultado_final = habitaciones_precio
+        except:
+            print ("error al filtrar")
     
    
         try:
@@ -272,7 +292,7 @@ def Filtros(huespedes, precio_min, precio_max):
                 if filtro[habitacion]["Ocupada"] == "No" :
                     resultado_ocupado.append(filtro[habitacion]["ID"])
                     habitaciones_ocupado.append(filtro[habitacion]["ID"])
-            for habitacion in habitacioneslist:
+            for habitacion in filtro:
                 if filtro[habitacion]["ID"] in habitaciones_ocupado:
                     if int(filtro[habitacion]["Precio"]) >= int(precio_min) and int(filtro[habitacion]["Precio"]) <= int(precio_max): 
                         resultado_precio.append(filtro[habitacion]["ID"])
@@ -378,6 +398,7 @@ def CancelarReservaHabitaciones(usuario,id_habitacion):
         habitaciones_data[nombre_habitacion]["EstadoActual"] = [""]
         ActualizarJson("Usuario.json", usuario_data)
         ActualizarJson("Habitaciones.json", habitaciones_data)
+        print("Reserva de habitacion cancelada exitosamente.")
     except: 
         print("Error al cancelar la reserva de habitacion")
 
@@ -385,17 +406,22 @@ def ArchivarDesarchivarNotificaciones (id_notificacion):
     contenido = LeerJson("Notificaciones.json")
     if contenido[id_notificacion]["Archivada"] == 0:
         contenido[id_notificacion]["Archivada"] = 1
+        print("Notificacion archivada.")
     else:
+        print("Notificacion desarchivada.")
         contenido[id_notificacion]["Archivada"] = 0
     ActualizarJson("Notificaciones.json", contenido)
 
 def MarcarReservacionHabitacion(usuario,habitacion,fecha_inicio, fecha_final):
-    contenido = LeerJson("Usuario.json")
-    contenido2 = LeerJson("habitacion.json")
-    contenido[usuario]["IdHabitacion"].append(contenido2[habitacion]["ID"])
-    contenido2[habitacion]["Ocupada"] = "Si"
-    contenido2[habitacion]["IdClienteOcupante"] = contenido[usuario]["NumeroDeCliente"]
-    contenido2[habitacion]["Fechas"] = [[fecha_inicio],[fecha_final]]
+    try:
+        contenido = LeerJson("Usuario.json")
+        contenido2 = LeerJson("habitacion.json")
+        contenido[usuario]["IdHabitacion"].append(contenido2[habitacion]["ID"])
+        contenido2[habitacion]["Ocupada"] = "Si"
+        contenido2[habitacion]["IdClienteOcupante"] = contenido[usuario]["NumeroDeCliente"]
+        contenido2[habitacion]["Fechas"] = [[fecha_inicio],[fecha_final]]
+    except:
+        print("Habitacion reservada exitosamente.")
     ActualizarJson("habitaciones.json",contenido2)
     ActualizarJson("Usuario.json", contenido)
 
@@ -467,20 +493,26 @@ def diferencia_dias(fecha1_str, fecha2_str):
     fecha1 = datetime.strptime(fecha1_str, '%d/%m/%Y')
     fecha2 = datetime.strptime(fecha2_str, '%d/%m/%Y')
     
-    diferencia = abs((fecha2 - fecha1).days)
+    diferencia = (fecha2 - fecha1).days
     return int(diferencia)
   
 def CalcularPrecioHabitacion(habitacion, dia_inicio, dia_final):
     contenido = LeerJson("Habitaciones.json")
     precio = contenido[habitacion]["Precio"]
-    return precio*diferencia_dias(dia_inicio,dia_final)
+    precio_final = precio*diferencia_dias(dia_inicio, dia_final)
+    print("Precio final: " , precio_final)
+    return precio_final
 
 def CalcularPrecioAmenities(dia_inicio,dia_final,cantidad_amenities):
-    return ((50*cantidad_amenities)*diferencia_dias(dia_inicio,dia_final))
+    precio_final = ((50*cantidad_amenities)*diferencia_dias(dia_inicio,dia_final))
+    print("Precio final: " , precio_final)
+    return precio_final
 
 def CalcularPrecioEstacionamiento(dia_final):
     dia_inicio = datetime.now()
-    return 4*diferencia_dias(dia_inicio,dia_final)
+    precio_final = 4*diferencia_dias(dia_inicio,dia_final)
+    print("Precio final: " , precio_final)
+    return precio_final
 
 def ReservarEstacionamiento(usuario , dia_final):
     contenido = LeerJson("Estacionamiento.json")
@@ -507,47 +539,81 @@ def ReservarEstacionamiento(usuario , dia_final):
 
 def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, dni, codigo_postal):
     contenido = LeerJson("Usuario.json")
+    chequeadormaximo = []
     
     if contenido[usuario]["Nombre"] == "":
         contenido[usuario]["Nombre"] = Nombre
     elif Nombre != contenido[usuario]["Nombre"]:
+         print("El nombre del usuario es incorrecto")
          return False , "El nombre del usuario es incorrecto"
+    else:
+        chequeadormaximo.append(1)
     
     if contenido[usuario]["Direccion"] == "":
         contenido[usuario]["Direccion"] = direccion
     elif direccion != contenido[usuario]["Direccion"]:
+         print("La direccion del usuario es incorrecto")
          return False , "La direccion del usuario es incorrecto"
+    else:
+        chequeadormaximo.append(1)
     
     
     if contenido[usuario]["Correo"] == "":
         contenido[usuario]["Correo"] = mail    
     elif mail != contenido[usuario]["Correo"]:
+         print("El correo del usuario es incorrecto")
          return False , "El correo del usuario es incorrecto"
+    else:
+        chequeadormaximo.append(1)
     
     if contenido[usuario]["DNI"] == "":
         contenido[usuario]["DNI"] = dni 
     elif dni != contenido[usuario]["DNI"]:
+         print("El dni ingresado es incorrecto")
          return False , "El dni ingresado es incorrecto"
+    else:
+        chequeadormaximo.append(1)
      
     if contenido[usuario]["CodigoPostal"] == "":
         contenido[usuario]["CodigoPostal"] = codigo_postal 
     elif codigo_postal != contenido[usuario]["CodigoPostal"]:
+         print("El codigo postal ingresado es incorrecto")
          return False , "El codigo postal ingresado es incorrecto"
+    else:
+        chequeadormaximo.append(1)
      
     if contenido[usuario]["NumeroTelefono"] == "":
         contenido[usuario]["NumeroTelefono"] = telefono
         
-    elif direccion != contenido[usuario]["NumeroTelefono"]:
-         return False , "El numero ingresado es incorrecto"
-     
+    elif telefono != contenido[usuario]["NumeroTelefono"]:
+        print("El numero ingresado es incorrecto")
+        return False , "El numero ingresado es incorrecto"
+    else:
+        chequeadormaximo.append(1)
+    
+    try:
+        fecha_actual = datetime.now()
+        fecha_ingresada = datetime.strptime(dia1, "%d/%m/%Y")
+
+        if fecha_ingresada < fecha_actual:
+            return False, "La fecha ya paso"
+    except :
+        print("error")
+        
     try: 
         if diferencia_dias(dia1,dia2) >= 1:
-            pass
+            chequeadormaximo.append(1)
         else:
+            print("El periodo ingresado es invalido")
             return False, "El periodo ingresado es invalido"
     except:
+        print("El formato de dias esta mal enviado")
         return False, "El formato de dias esta mal enviado"
-        
+
+    if chequeadormaximo == [1,1,1,1,1,1,1]:
+        print("Los datos ingresados son correctos.")
+        return True, "Estaria todo okey a mi parecer"
+           
 def ChequearDatosReservaEventos(usuario,mail, hora1, hora2 , asistentes , personal , fecha):
     contenido = LeerJson("Usuario.json")
     hora1_str = hora1  
@@ -563,11 +629,6 @@ def ChequearDatosReservaEventos(usuario,mail, hora1, hora2 , asistentes , person
         
         return False
 
-    if hora2 > hora1:
-        pass
-    else:
-        
-        return False
 
     try:
         if asistentes != "":
@@ -615,3 +676,30 @@ def VerRegistrosEstacionamiento(id_estacionamiento):
     id_estacionamiento = str(id_estacionamiento)
     contenido = LeerJson("Estacionamiento.json")
     return contenido[id_estacionamiento]["UltimoIngreso"], contenido[id_estacionamiento]["UltimoEgreso"]
+
+def ChequearDatosTarjeta(numero_tarjeta,vencimiento,codigo):  
+    chequeadormaximo = []
+    if len(numero_tarjeta) != 16:
+        return False, "El formato de tarjeta es incorrecto"
+    else:
+        chequeadormaximo.append(1)
+     
+    try:
+        fecha_actual = datetime.now()
+        fecha_ingresada = datetime.strptime(vencimiento, "%m/%Y")
+
+        if fecha_ingresada < fecha_actual:
+            return False, "La tarjeta vencio"
+        else:
+            chequeadormaximo.append(1)
+    except:
+        return False, "hubo un error"
+
+            
+    if len(codigo) != 3:
+        return False, "El formato de codigo es incorrecto"
+    else:
+        chequeadormaximo.append(1)
+    
+    return chequeadormaximo
+        

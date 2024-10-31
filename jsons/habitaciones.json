@@ -51,7 +51,7 @@
     },
     "habitacion_lujo": {
         "ID": 3,
-        "Ocupada": "No",
+        "Ocupada": "Si",
         "UltimaLimpieza": "19/09/2024",
         "Estado": "Ninguno",
         "ServiciosIncluidos": [
@@ -60,9 +60,14 @@
         "EstadoActual": [
             ""
         ],
-        "IdClienteOcupante": "",
+        "IdClienteOcupante": 4,
         "Fechas": [
-            ""
+            [
+                "10/10/2012"
+            ],
+            [
+                "10/10/2024"
+            ]
         ],
         "Precio": 410,
         "RangoHuespedes": 2

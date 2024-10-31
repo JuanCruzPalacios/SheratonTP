@@ -507,46 +507,63 @@ def ReservarEstacionamiento(usuario , dia_final):
 
 def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, dni, codigo_postal):
     contenido = LeerJson("Usuario.json")
+    chequeadormaximo = []
     
     if contenido[usuario]["Nombre"] == "":
         contenido[usuario]["Nombre"] = Nombre
     elif Nombre != contenido[usuario]["Nombre"]:
          return False , "El nombre del usuario es incorrecto"
+    else:
+        chequeadormaximo.append(1)
     
     if contenido[usuario]["Direccion"] == "":
         contenido[usuario]["Direccion"] = direccion
     elif direccion != contenido[usuario]["Direccion"]:
          return False , "La direccion del usuario es incorrecto"
+    else:
+        chequeadormaximo.append(1)
     
     
     if contenido[usuario]["Correo"] == "":
         contenido[usuario]["Correo"] = mail    
     elif mail != contenido[usuario]["Correo"]:
          return False , "El correo del usuario es incorrecto"
+    else:
+        chequeadormaximo.append(1)
     
     if contenido[usuario]["DNI"] == "":
         contenido[usuario]["DNI"] = dni 
     elif dni != contenido[usuario]["DNI"]:
          return False , "El dni ingresado es incorrecto"
+    else:
+        chequeadormaximo.append(1)
      
     if contenido[usuario]["CodigoPostal"] == "":
         contenido[usuario]["CodigoPostal"] = codigo_postal 
     elif codigo_postal != contenido[usuario]["CodigoPostal"]:
          return False , "El codigo postal ingresado es incorrecto"
+    else:
+        chequeadormaximo.append(1)
      
     if contenido[usuario]["NumeroTelefono"] == "":
         contenido[usuario]["NumeroTelefono"] = telefono
         
     elif direccion != contenido[usuario]["NumeroTelefono"]:
          return False , "El numero ingresado es incorrecto"
+    else:
+        chequeadormaximo.append(1)
      
     try: 
         if diferencia_dias(dia1,dia2) >= 1:
-            pass
+            chequeadormaximo.append(1)
         else:
             return False, "El periodo ingresado es invalido"
     except:
         return False, "El formato de dias esta mal enviado"
+
+    if chequeadormaximo == [1,1,1,1,1,1,1]:
+        return True
+                
         
 def ChequearDatosReservaEventos(usuario,mail, hora1, hora2 , asistentes , personal , fecha):
     contenido = LeerJson("Usuario.json")
@@ -615,4 +632,5 @@ def VerRegistrosEstacionamiento(id_estacionamiento):
     id_estacionamiento = str(id_estacionamiento)
     contenido = LeerJson("Estacionamiento.json")
     return contenido[id_estacionamiento]["UltimoIngreso"], contenido[id_estacionamiento]["UltimoEgreso"]
-print(ChequearDatosUsuario("","www", "31/10/2024", "12/12/2024", "www", "www", "www", "www", "www"))
+
+

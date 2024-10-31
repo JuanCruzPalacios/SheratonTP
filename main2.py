@@ -176,7 +176,7 @@ def reset_textos(*textos):
 
 
 
-def cursor(mouse_pos):
+def cursor(mouse_pos,alter_usuario):
     
 
     if fondo_actual[0] == "iniciar sesion":
@@ -255,8 +255,9 @@ def cursor(mouse_pos):
 
         for i in rects:
             if i[0].collidepoint(mouse_pos):
-                
-                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+                if not(mouse_pos[0] < 1280 and mouse_pos[0] > 0 and mouse_pos[1] < 125 and mouse_pos[1] > 0): #-----> habitaciones
+                    if not(mouse_pos[0] < 1275 and mouse_pos[0] > 962 and mouse_pos[1] < 519 and mouse_pos[1] > 131) or alter_usuario == False:
+                        pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         
        
         """elif suite_balcon_rect[0].collidepoint(mouse_pos):
@@ -646,30 +647,27 @@ def cursor(mouse_pos):
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         
 
-
         elif mouse_pos[0] < 500 and mouse_pos[0] > 332 and mouse_pos[1] < 660 and mouse_pos[1] > 612: # enviar limpieza
 
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-
-
-        else:
-
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
-
-
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)    
         
+
         elif mouse_pos[0] < 400 and mouse_pos[0] > 170 and mouse_pos[1] < 630 and mouse_pos[1] > 575: #volver
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         
+
         elif mouse_pos[0] < 970 and mouse_pos[0] > 820 and mouse_pos[1] < 665 and mouse_pos[1] > 625: #archivar
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         
+
         elif mouse_pos[0] < 1140 and mouse_pos[0] > 990 and mouse_pos[1] < 665 and mouse_pos[1] > 625: #fijar
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         
+
         else:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
         
+
     elif fondo_actual[0] == "mantenimiento stock":
         if mouse_pos[0] < 465 and mouse_pos[0] > 330 and mouse_pos[1] < 665 and mouse_pos[1] > 625: #añadir
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
@@ -1875,7 +1873,7 @@ while running:
                 barra = texto_seleccionado[1]
         
         
-    cursor(mouse_pos)
+    cursor(mouse_pos,alter_usuario)
 
 
     #fondos :)

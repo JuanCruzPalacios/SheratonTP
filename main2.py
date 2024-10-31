@@ -1,6 +1,6 @@
-import tkinter
 from ManejoDeDatos import *
 import pygame
+
 
 
 pygame.init()
@@ -91,7 +91,7 @@ habitaciones = [suite_balcon_sola, habitacion_triple_sola, habitacion_doble_sola
 habitaciones_libres = Filtros("",0,99999999999)
 
 
-cambiar_nombre = []
+posiciones_rects = []
 temp =  []
 
 
@@ -249,8 +249,17 @@ def cursor(mouse_pos):
         elif mouse_pos[0] < 253 and mouse_pos[0] > 76 and mouse_pos[1] < 512 and mouse_pos[1] > 475:#restablecer
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
+        else:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
+        for i in rects:
+            if i[0].collidepoint(mouse_pos):
+                
+                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         
-        elif suite_balcon_rect[0].collidepoint(mouse_pos):
+       
+        """elif suite_balcon_rect[0].collidepoint(mouse_pos):
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
 
@@ -283,12 +292,11 @@ def cursor(mouse_pos):
 
 
         elif suite_estandar_rect[0].collidepoint(mouse_pos):
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)"""
              
 
 
-        else:
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+        
 
 
 
@@ -714,13 +722,6 @@ while running:
 
         if event.type == pygame.QUIT:
             running = False
-        
-
-
-        
-    
-        
-       
 
 
         if event.type == pygame.KEYDOWN:
@@ -894,7 +895,6 @@ while running:
 
             if event.button == 1:
                 
-
                 print(mouse_pos)   
 
 
@@ -1103,8 +1103,17 @@ while running:
 
                     if not(mouse_pos[0] < 1280 and mouse_pos[0] > 0 and mouse_pos[1] < 125 and mouse_pos[1] > 0): #-----> habitaciones
                         if not(mouse_pos[0] < 1275 and mouse_pos[0] > 962 and mouse_pos[1] < 519 and mouse_pos[1] > 131) or alter_usuario == False:
-                            alter_mouse = True
-                            if suite_balcon_rect[0].collidepoint(mouse_pos):
+                            
+
+                            for i in rects:
+                                if i[0].collidepoint(mouse_pos):
+                                    alter_mouse = True
+                                    fondo_actual[1] = i[1] + 18
+                                    fondo_actual[0] = "habitacion balcon"
+                                    texto_seleccionado = [(-100,-100),""]
+                                    habitacion_seleccionada = i[1]
+
+                            """if suite_balcon_rect[0].collidepoint(mouse_pos):
                                 fondo_actual[0] = "habitacion balcon"
                                 fondo_actual[1] = 18
                                 habitacion_seleccionada = "suite_balcon"
@@ -1156,7 +1165,7 @@ while running:
                                 fondo_actual[0] = "suite estandar"
                                 fondo_actual[1] = 26
                                 texto_seleccionado = [(-100,-100),""]
-                                habitacion_seleccionada = "suite_estandar"
+                                habitacion_seleccionada = "suite_estandar" """
 
 
 
@@ -1785,11 +1794,11 @@ while running:
                     alter_mouse = True
                     if mouse_pos[0] < 1008 and mouse_pos[0] > 785 and mouse_pos[1] < 666 and mouse_pos[1] > 605:#reservar
                         fondo_actual[0] = "reservar habitacion"
-                        
+                        fondo_actual[1] = 5
                         texto_seleccionado = [(-100,-100),""]
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         
-                        fondo_actual[1] = 5
+                        
 
 
 
@@ -1850,14 +1859,14 @@ while running:
 
             screen.fill((253,246,228))
             cont = 0
-            cambiar_nombre = []
+            posiciones_rects = []
 
             for i in habitaciones_libres:   
 
                 x = 316 * (cont  % 3 + 1) 
                 y = posicion + 425 * (cont // 3)
                 screen.blit(habitaciones[i], (x, y))
-                cambiar_nombre.append((x,y))
+                posiciones_rects.append((x,y))
                 
 
                 cont += 1
@@ -1866,10 +1875,10 @@ while running:
                 
                 if i[1] in habitaciones_libres:
                     
-                    i[0][0] = cambiar_nombre[0][0] #posicion del rect en x
-                    i[0][1] = cambiar_nombre[0][1] #posicion del rect en y
+                    i[0][0] = posiciones_rects[0][0] #posicion del rect en x
+                    i[0][1] = posiciones_rects[0][1] #posicion del rect en y
                     
-                    cambiar_nombre.pop(0)
+                    posiciones_rects.pop(0)
                 
                 else:
                     i[0][0] = 1000 #posicion del rect en x
@@ -2150,8 +2159,8 @@ while running:
 
 
         if fondo_actual[0] in ["habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"]:
-                screen.blit(fondos[fondo_actual[1]],(0,0))
-                screen.blit(barra_arriba,(0,0))
+            screen.blit(fondos[fondo_actual[1]],(0,0))
+            screen.blit(barra_arriba,(0,0))
 
 
         if alter_usuario:

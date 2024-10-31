@@ -515,33 +515,42 @@ def cursor(mouse_pos):
              pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
 
+    elif fondo_actual[0] == "pagar mercado pago":
 
-    elif fondo_actual[0] == "menu mantenimiento":
-
-
-        if mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 342 and mouse_pos[1] > 285: #notificaciones
-
+        if mouse_pos[0] < 842 and mouse_pos[0] > 437 and mouse_pos[1] < 647 and mouse_pos[1] > 243: #QR
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-        
 
-        elif mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 440 and mouse_pos[1] > 378: #ver stcok
+        elif mouse_pos[0] < 1127 and mouse_pos[0] > 907 and mouse_pos[1] < 662 and mouse_pos[1] > 599: #VOLVER
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)    
 
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-        
-
-        elif mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 535 and mouse_pos[1] > 470: #salir
-
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-        
         else:
+             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+    
+    
+    elif fondo_actual[0] == "pagar tarjeta":
 
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+        if mouse_pos[0] < 996 and mouse_pos[0] > 441 and mouse_pos[1] < 314 and mouse_pos[1] > 268: #Nombre del titular
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
+        elif mouse_pos[0] < 996 and mouse_pos[0] > 441 and mouse_pos[1] < 379 and mouse_pos[1] > 335: #VOLVER
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)    
 
+        elif mouse_pos[0] < 996 and mouse_pos[0] > 364 and mouse_pos[1] < 448 and mouse_pos[1] > 404: #Vencimiento
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)  
 
+        elif mouse_pos[0] < 996 and mouse_pos[0] > 465 and mouse_pos[1] < 516 and mouse_pos[1] > 471: #Codigo de seguridad
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)  
 
+        elif mouse_pos[0] < 996 and mouse_pos[0] > 486 and mouse_pos[1] < 584 and mouse_pos[1] > 542: #Documento
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)  
 
+        elif mouse_pos[0] < 1128 and mouse_pos[0] > 906 and mouse_pos[1] < 665 and mouse_pos[1] > 605: #Pagar
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)  
 
+        else:
+             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+        
     if fondo_actual[0] in ["habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"]:
             if mouse_pos[0] < 1008 and mouse_pos[0] > 785 and mouse_pos[1] < 666 and mouse_pos[1] > 605:#reservar       
                 pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)    
@@ -551,7 +560,7 @@ def cursor(mouse_pos):
 
 
 
-    if fondo_actual[0] in ["registros","habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar", "datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "reservar eventos", "ver datos", "reservar habitacion"]:
+    if fondo_actual[0] in ["pagar mercado pago","pagar tarjeta","registros","habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar", "datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "reservar eventos", "ver datos", "reservar habitacion"]:
 
 
 
@@ -1195,8 +1204,8 @@ while running:
 
                     elif mouse_pos[0] < 528 and mouse_pos[0] > 307 and mouse_pos[1] < 670 and mouse_pos[1] > 615: #pagar
                         if ChequearDatosUsuario(usuario,texto1[1],texto2[1], texto3[1], texto4[1], texto5[1], texto6[1], texto7[1], texto2[1]) != False:
-                            if posicion_cuadrado_reserva == ( 877, 413, 41 , 41  ):
-                                
+
+                            if posicion_cuadrado_reserva == ( 877, 413, 41 , 41  ):                                
                                 fondo_actual[0] = "menu habitaciones"
                                 texto_seleccionado = [(-100,-100),""]
                                 reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
@@ -1427,7 +1436,65 @@ while running:
                         fondo_actual[1] = 0
                     
 
-                
+                elif fondo_actual[0] == "pagar mercado pago":
+                    if mouse_pos[0] < 842 and mouse_pos[0] > 437 and mouse_pos[1] < 647 and mouse_pos[1] > 243: #QR
+
+                        fondo_actual[0] = "menu habitaciones"
+                        texto_seleccionado = [(-100,-100),""]
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+
+                    elif mouse_pos[0] < 1127 and mouse_pos[0] > 907 and mouse_pos[1] < 662 and mouse_pos[1] > 599: #VOLVER
+                        fondo_actual[0] = "reservar habitacion"
+                        fondo_actual[1] = 5
+                        texto_seleccionado = [(-100,-100),""]
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+            
+
+
+                elif fondo_actual[0] == "pagar tarjeta":
+
+                    if mouse_pos[0] < 996 and mouse_pos[0] > 441 and mouse_pos[1] < 314 and mouse_pos[1] > 268: #Nombre del titular
+                        texto_ingresado = texto1[1]
+                        texto_seleccionado = texto1 #Usuario / iniciar sesion   
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 18
+
+                    elif mouse_pos[0] < 996 and mouse_pos[0] > 441 and mouse_pos[1] < 379 and mouse_pos[1] > 335: #VOLVER
+                        texto_ingresado = texto2[1]
+                        texto_seleccionado = texto2 #Usuario / iniciar sesion   
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 18   
+
+                    elif mouse_pos[0] < 996 and mouse_pos[0] > 364 and mouse_pos[1] < 448 and mouse_pos[1] > 404: #Vencimiento
+                        texto_ingresado = texto3[1]
+                        texto_seleccionado = texto3 #Usuario / iniciar sesion   
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 18 
+
+                    elif mouse_pos[0] < 996 and mouse_pos[0] > 465 and mouse_pos[1] < 516 and mouse_pos[1] > 471: #Codigo de seguridad
+                        texto_ingresado = texto4[1]
+                        texto_seleccionado = texto4 #Usuario / iniciar sesion   
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 18  
+
+                    elif mouse_pos[0] < 996 and mouse_pos[0] > 486 and mouse_pos[1] < 584 and mouse_pos[1] > 542: #Documento
+                        texto_ingresado = texto5[1]
+                        texto_seleccionado = texto5 #Usuario / iniciar sesion   
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 18  
+
+                    elif mouse_pos[0] < 1128 and mouse_pos[0] > 906 and mouse_pos[1] < 665 and mouse_pos[1] > 605: #Pagar
+                        fondo_actual[0] = "menu habitaciones"
+                        texto_seleccionado = [(-100,-100),""]
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+
+
+
                 if alter_usuario:
 
 
@@ -1837,6 +1904,17 @@ while running:
 
         elif fondo_actual[0] == "pagar tarjeta":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+            texto1[0] = (448, 271)
+            texto2[0] = (448, 340)
+            texto3[0] = (372, 409)
+            texto4[0] = (471, 476)
+            texto5[0] = (494, 544)
+            screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
+            screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
+            screen.blit(fuente.render(texto2[1], True, (0, 0, 0)), texto2[0])
+            screen.blit(fuente.render(texto3[1], True, (0, 0, 0)), texto3[0])
+            screen.blit(fuente.render(texto4[1], True, (0, 0, 0)), texto4[0])
+            screen.blit(fuente.render(texto5[1], True, (0, 0, 0)), texto5[0])
 
 
 

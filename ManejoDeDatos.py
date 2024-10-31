@@ -496,12 +496,26 @@ def diferencia_dias(fecha1_str, fecha2_str):
     diferencia = (fecha2 - fecha1).days
     return int(diferencia)
   
-def CalcularPrecioHabitacion(habitacion, dia_inicio, dia_final):
-    contenido = LeerJson("Habitaciones.json")
-    precio = contenido[habitacion]["Precio"]
-    precio_final = precio*diferencia_dias(dia_inicio, dia_final)
-    print("Precio final: " , precio_final)
+def CalcularPrecioHabitacion(id_habitacion, dia_inicio, dia_final):
+    habitacion_data = LeerJson("Habitaciones.json")
+    id_habitacion = int(id_habitacion)
+    try:
+        for habitacion in habitacion_data: 
+            if habitacion_data[habitacion]["ID"] == id_habitacion:
+                nombre_de_habitacion = habitacion
+                pass
+        
+        
+        precio = habitacion_data[nombre_de_habitacion]["Precio"]
+        
+        precio_final = precio*diferencia_dias(dia_inicio, dia_final)
+        print("Precio final: " , precio_final)
+    except:
+        print("Error al calcular el precio de la habitacion. (Revisar fecha ingresada)")
+        precio_final = False
     return precio_final
+
+print(CalcularPrecioHabitacion(5,"10/8/2024","24/4/2026"))
 
 def CalcularPrecioAmenities(dia_inicio,dia_final,cantidad_amenities):
     precio_final = ((50*cantidad_amenities)*diferencia_dias(dia_inicio,dia_final))

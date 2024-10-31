@@ -578,7 +578,58 @@ def cursor(mouse_pos):
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
 
+    elif fondo_actual[0] == "recepcionista notificar":
 
+        
+        if mouse_pos[0] < 1250 and mouse_pos[0] > 1189 and mouse_pos[1] < 702 and mouse_pos[1] > 645: # salir
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+            
+        
+
+        elif mouse_pos[0] < 536 and mouse_pos[0] > 302 and mouse_pos[1] < 673 and mouse_pos[1] > 614: # enviar notificacion
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+            
+
+        else:
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
+    
+    elif fondo_actual[0] == "recepcionista eventos":
+
+
+
+        if mouse_pos[0] < 314 and mouse_pos[0] > 78 and mouse_pos[1] < 664 and mouse_pos[1] > 606: # volver
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+        else:
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
+
+    elif fondo_actual[0] == "recepcionista limpieza":
+
+
+
+        if mouse_pos[0] < 1253 and mouse_pos[0] > 1194 and mouse_pos[1] < 698 and mouse_pos[1] > 647: # salir
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+
+
+        elif mouse_pos[0] < 500 and mouse_pos[0] > 332 and mouse_pos[1] < 660 and mouse_pos[1] > 612: # enviar limpieza
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        else:
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
 
         
@@ -1533,6 +1584,75 @@ while running:
 
 
 
+                elif fondo_actual[0] == "menu recepcionista":
+
+                    if mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 294 and mouse_pos[1] > 229: # notificar
+
+                        fondo_actual[0] = "recepcionista notificar"
+                        fondo_actual[1] = 15
+                    
+                    elif mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 373 and mouse_pos[1] > 312: # ver eventos
+
+                        fondo_actual[0] = "recepcionista eventos"
+                        fondo_actual[1] = 16
+                    
+
+                    elif mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 455 and mouse_pos[1] > 398: # enviar limpieza
+
+                        fondo_actual[0] = "recepcionista limpieza"
+                        fondo_actual[1] = 17
+                    
+
+                    elif mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 548 and mouse_pos[1] > 482: # salir
+
+                        fondo_actual[0] = "iniciar sesion"
+                        fondo_actual[1] = 0
+
+
+
+
+                elif fondo_actual[0] == "recepcionista notificar":
+
+        
+                    if mouse_pos[0] < 1250 and mouse_pos[0] > 1189 and mouse_pos[1] < 702 and mouse_pos[1] > 645: # salir
+
+                        fondo_actual[0] = "menu recepcionista"
+                        fondo_actual[1] = 14
+                        
+                    
+
+                    elif mouse_pos[0] < 536 and mouse_pos[0] > 302 and mouse_pos[1] < 673 and mouse_pos[1] > 614: # enviar notificacion
+
+                        pass
+
+                
+                elif fondo_actual[0] == "recepcionista eventos":
+
+
+                    if mouse_pos[0] < 314 and mouse_pos[0] > 78 and mouse_pos[1] < 664 and mouse_pos[1] > 606: # volver
+
+                        fondo_actual[0] = "menu recepcionista"
+                        fondo_actual[1] = 14
+
+
+                
+                elif fondo_actual[0] == "recepcionista limpieza":
+
+
+
+                    if mouse_pos[0] < 1253 and mouse_pos[0] > 1194 and mouse_pos[1] < 698 and mouse_pos[1] > 647: # salir
+
+                        fondo_actual[0] = "menu recepcionista"
+                        fondo_actual[1] = 14
+                    
+
+
+                    elif mouse_pos[0] < 500 and mouse_pos[0] > 332 and mouse_pos[1] < 660 and mouse_pos[1] > 612: # enviar limpieza
+
+                        pass
+
+
+
                 if alter_usuario:
 
 
@@ -1958,6 +2078,20 @@ while running:
         elif fondo_actual[0] == "menu recepcionista":
 
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))  
+        
+        elif fondo_actual[0] == "recepcionista notificar":
+
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0))  
+        
+        elif fondo_actual[0] == "recepcionista eventos":
+
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0))  
+
+        elif fondo_actual[0] == "recepcionista limpieza":
+
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0))  
+
+        
             
 
         

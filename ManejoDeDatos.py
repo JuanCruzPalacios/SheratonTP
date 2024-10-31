@@ -485,7 +485,7 @@ def diferencia_dias(fecha1_str, fecha2_str):
     fecha1 = datetime.strptime(fecha1_str, '%d/%m/%Y')
     fecha2 = datetime.strptime(fecha2_str, '%d/%m/%Y')
     
-    diferencia = abs((fecha2 - fecha1).days)
+    diferencia = (fecha2 - fecha1).days
     return int(diferencia)
   
 def CalcularPrecioHabitacion(habitacion, dia_inicio, dia_final):
@@ -581,8 +581,7 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
 
     if chequeadormaximo == [1,1,1,1,1,1,1]:
         return True, "Estaria todo okey a mi parecer"
-                
-        
+           
 def ChequearDatosReservaEventos(usuario,mail, hora1, hora2 , asistentes , personal , fecha):
     contenido = LeerJson("Usuario.json")
     hora1_str = hora1  

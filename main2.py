@@ -623,9 +623,24 @@ def cursor(mouse_pos,alter_usuario):
             
         
 
-        elif mouse_pos[0] < 536 and mouse_pos[0] > 302 and mouse_pos[1] < 673 and mouse_pos[1] > 614: # enviar notificacion
-
+        elif mouse_pos[0] < 514 and mouse_pos[0] > 264 and mouse_pos[1] < 578 and mouse_pos[1] > 515: # enviar notificacion
+        
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+
+        elif mouse_pos[0] < 630 and mouse_pos[0] > 148 and mouse_pos[1] < 318 and mouse_pos[1] > 264: # objeto a reponer
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+        
+
+        elif mouse_pos[0] < 334 and mouse_pos[0] > 120 and mouse_pos[1] < 425 and mouse_pos[1] > 370: # Cantidad
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+        
+
+        elif mouse_pos[0] < 657 and mouse_pos[0] > 450 and mouse_pos[1] < 425 and mouse_pos[1] > 374: # Habitacion
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
             
 
         else:
@@ -660,6 +675,10 @@ def cursor(mouse_pos,alter_usuario):
         elif mouse_pos[0] < 500 and mouse_pos[0] > 332 and mouse_pos[1] < 660 and mouse_pos[1] > 612: # enviar limpieza
 
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)    
+        
+        else:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
         
     elif fondo_actual[0] == "mantenimiento stock":
         if mouse_pos[0] < 465 and mouse_pos[0] > 330 and mouse_pos[1] < 665 and mouse_pos[1] > 625: #añadir
@@ -1681,26 +1700,30 @@ while running:
                 elif fondo_actual[0] == "menu recepcionista":
 
                     if mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 294 and mouse_pos[1] > 229: # notificar
-
+                        
                         fondo_actual[0] = "recepcionista notificar"
                         fondo_actual[1] = 15
+                        
                     
                     elif mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 373 and mouse_pos[1] > 312: # ver eventos
-
+                                             
                         fondo_actual[0] = "recepcionista eventos"
                         fondo_actual[1] = 16
+                        
                     
 
                     elif mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 455 and mouse_pos[1] > 398: # enviar limpieza
 
                         fondo_actual[0] = "recepcionista limpieza"
                         fondo_actual[1] = 17
+
                     
 
                     elif mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 548 and mouse_pos[1] > 482: # salir
 
                         fondo_actual[0] = "iniciar sesion"
                         fondo_actual[1] = 0
+
 
 
 
@@ -1712,12 +1735,43 @@ while running:
 
                         fondo_actual[0] = "menu recepcionista"
                         fondo_actual[1] = 14
-                        
                     
 
-                    elif mouse_pos[0] < 536 and mouse_pos[0] > 302 and mouse_pos[1] < 673 and mouse_pos[1] > 614: # enviar notificacion
-
+                    elif mouse_pos[0] < 514 and mouse_pos[0] > 264 and mouse_pos[1] < 578 and mouse_pos[1] > 515: # enviar notificacion
+                    
                         pass
+
+
+                    elif mouse_pos[0] < 630 and mouse_pos[0] > 148 and mouse_pos[1] < 318 and mouse_pos[1] > 264: # objeto a reponer
+
+                        alter_mouse = True           
+                        texto_ingresado = texto1[1]
+                        texto_seleccionado = texto1  
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 24
+                    
+
+                    elif mouse_pos[0] < 334 and mouse_pos[0] > 120 and mouse_pos[1] < 425 and mouse_pos[1] > 370: # Cantidad
+
+                        alter_mouse = True           
+                        texto_ingresado = texto2[1]
+                        texto_seleccionado = texto2   
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 3
+                    
+
+                    elif mouse_pos[0] < 657 and mouse_pos[0] > 450 and mouse_pos[1] < 425 and mouse_pos[1] > 374: # Habitacion
+
+                        alter_mouse = True           
+                        texto_ingresado = texto3[1]
+                        texto_seleccionado = texto3  
+                        barra = texto_seleccionado[1] + "|"  
+                        ultimo_cambio_barra  = pygame.time.get_ticks()                   
+                        limite = 2
+                        
+                    
 
                 
                 elif fondo_actual[0] == "recepcionista eventos":
@@ -2180,6 +2234,17 @@ while running:
         elif fondo_actual[0] == "recepcionista notificar":
 
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))  
+
+            texto1[0] = (162, 270) #objeto a reponer
+            texto2[0] = (185, 378) #cantidad
+            texto3[0] = (535, 378) #habitacion
+
+
+            screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
+            screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
+            screen.blit(fuente.render(texto2[1], True, (0, 0, 0)), texto2[0])
+            screen.blit(fuente.render(texto3[1], True, (0, 0, 0)), texto3[0])
+
         
         elif fondo_actual[0] == "recepcionista eventos":
 

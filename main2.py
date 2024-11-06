@@ -759,7 +759,6 @@ def chequeo_contraseña(conteraseña):
 
 
 
-
 while running:
 
 
@@ -843,6 +842,9 @@ while running:
                                     texto_ingresado = ""
                                     texto_seleccionado = [(-100,-100),""]
                                     reset_textos(texto1,texto2,texto3,texto4)
+                                
+
+                                datos_usuario = VerUsuario(usuario)
 
                                     
 
@@ -895,6 +897,73 @@ while running:
                         if event.unicode .isprintable():
                             
                             texto_ingresado += event.unicode
+
+                elif fondo_actual[0] == "reservar habitacion" and (texto_seleccionado == texto2 or texto_seleccionado == texto3):
+
+                    if len(texto_ingresado) == 1 or len(texto_ingresado) == 4:
+
+
+                        if event.unicode .isprintable():
+                                
+                            texto_ingresado += event.unicode
+                            texto_ingresado += "/"
+                    
+                    else:
+
+                        if len(texto_ingresado) < limite:           
+                        # Agregar caracteres al texto ingresado
+
+                            if event.unicode .isprintable():
+                                
+                                texto_ingresado += event.unicode
+
+
+                elif fondo_actual[0] == "reservar eventos" and ( texto_seleccionado == texto2 or texto_seleccionado == texto3 or texto_seleccionado == texto4):
+
+                    if texto_seleccionado == texto2 or texto_seleccionado == texto3:
+
+
+                        if len(texto_ingresado) == 1:
+
+
+                            if event.unicode .isprintable():
+                                    
+                                texto_ingresado += event.unicode
+                                texto_ingresado += ":"
+                        
+                        else:
+
+                            if len(texto_ingresado) < limite:           
+                            # Agregar caracteres al texto ingresado
+
+                                if event.unicode .isprintable():
+                                    
+                                    texto_ingresado += event.unicode
+                    
+                    elif texto_seleccionado == texto4:
+
+
+                        if len(texto_ingresado) == 1 or len(texto_ingresado) == 4:
+
+
+                            if event.unicode .isprintable():
+                                    
+                                texto_ingresado += event.unicode
+                                texto_ingresado += "/"
+                        
+                        else:
+
+                            if len(texto_ingresado) < limite:           
+                            # Agregar caracteres al texto ingresado
+
+                                if event.unicode .isprintable():
+                                    
+                                    texto_ingresado += event.unicode
+
+
+
+
+
 
 
                 else:
@@ -1009,6 +1078,9 @@ while running:
                                     reset_textos(texto1,texto2,texto3,texto4)
 
 
+                                    datos_usuario = VerUsuario(usuario)
+
+
 
                                 
                             else:
@@ -1074,6 +1146,8 @@ while running:
                                     texto_ingresado = ""
                                     texto_seleccionado = [(-100,-100),""]
                                     reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+
+                                    
                                     
 
                                 else:                       
@@ -1819,6 +1893,13 @@ while running:
                         texto_seleccionado = [(-100,-100),""]
                         alter_usuario = not(alter_usuario)
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                        
+                        texto1[1] = datos_usuario["Nombre"] + " " + datos_usuario["Apellido"]
+                        texto2[1] = datos_usuario["Direccion"]
+                        texto3[1] = datos_usuario["NumeroTelefono"]
+                        texto4[1] = datos_usuario["Correo"]
+                        texto5[1] = datos_usuario["CodigoPostal"]
+                        texto6[1] = datos_usuario["DNI"]
                                             
 
 
@@ -2076,7 +2157,24 @@ while running:
             
 
         elif fondo_actual[0] == "ver datos":
+
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+
+            texto1[0] = (420, 260) #Nombre y apellido
+            texto2[0] = (302, 320) #direccion
+            texto3[0] = (302, 382) #telefono
+            texto4[0] = (233, 447) #mail
+            texto5[0] = (358, 516) #codigo postal
+            texto6[0] = (308, 576) #dni
+
+
+            screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
+            screen.blit(fuente.render(texto2[1], True, (0, 0, 0)), texto2[0])
+            screen.blit(fuente.render(texto3[1], True, (0, 0, 0)), texto3[0])
+            screen.blit(fuente.render(texto4[1], True, (0, 0, 0)), texto4[0])
+            screen.blit(fuente.render(texto5[1], True, (0, 0, 0)), texto5[0])
+            screen.blit(fuente.render(texto6[1], True, (0, 0, 0)), texto6[0])
+
 
 
         elif fondo_actual[0] == "registros":
@@ -2227,6 +2325,7 @@ while running:
 
 
 
+
         elif fondo_actual[0] == "menu recepcionista":
 
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))  
@@ -2280,3 +2379,4 @@ while running:
 
 
 pygame.quit()
+

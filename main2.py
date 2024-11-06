@@ -1671,6 +1671,7 @@ while running:
                         alter_mouse = True
                         fondo_actual[0] = "mantenimiento notificaciones"
                         fondo_actual[1] = 12
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                     
 
                     elif mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 440 and mouse_pos[1] > 378: #ver stcok
@@ -1678,6 +1679,7 @@ while running:
                         alter_mouse = True
                         fondo_actual[0] = "mantenimiento stock"
                         fondo_actual[1] = 11
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                     
 
                     elif mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 535 and mouse_pos[1] > 470: #salir
@@ -1685,18 +1687,24 @@ while running:
                         alter_mouse = True
                         fondo_actual[0] = "iniciar sesion"
                         fondo_actual[1] = 0
+                        texto_seleccionado = [(-100,-100),""]
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                 
 
                 elif fondo_actual[0] == "mantenimiento notificaciones":
                     if mouse_pos[0] < 400 and mouse_pos[0] > 170 and mouse_pos[1] < 630 and mouse_pos[1] > 575: #volver
+
                         fondo_actual[0] = "menu mantenimiento"
                         fondo_actual[1] = 10
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
 
 
                 elif fondo_actual[0] == "mantenimiento stock":
                     if mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: #volver
+
                         fondo_actual[0] = "menu mantenimiento"
                         fondo_actual[1] = 10
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
 
 
                 elif fondo_actual[0] == "pagar mercado pago" and alter_mouse == False:
@@ -1709,6 +1717,7 @@ while running:
                         MarcarReservacionHabitacion(usuario, habitacion_seleccionada , texto2[1] , texto3[1])
                         habitaciones_libres = Filtros((""),0,9999999999)
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                        
 
 
                     elif mouse_pos[0] < 1127 and mouse_pos[0] > 907 and mouse_pos[1] < 662 and mouse_pos[1] > 599: #VOLVER
@@ -1717,6 +1726,7 @@ while running:
                         fondo_actual[0] = "reservar habitacion"
                         fondo_actual[1] = 5
                         texto_seleccionado = [(-100,-100),""]
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         
             
 
@@ -1777,12 +1787,14 @@ while running:
                         
                         fondo_actual[0] = "recepcionista notificar"
                         fondo_actual[1] = 15
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         
                     
                     elif mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 373 and mouse_pos[1] > 312: # ver eventos
                                              
                         fondo_actual[0] = "recepcionista eventos"
                         fondo_actual[1] = 16
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
                         
                     
 
@@ -1790,6 +1802,7 @@ while running:
 
                         fondo_actual[0] = "recepcionista limpieza"
                         fondo_actual[1] = 17
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
 
                     
 
@@ -1797,6 +1810,8 @@ while running:
 
                         fondo_actual[0] = "iniciar sesion"
                         fondo_actual[1] = 0
+                        texto_seleccionado = [(-100,-100),""]
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
 
 
 
@@ -1809,6 +1824,7 @@ while running:
 
                         fondo_actual[0] = "menu recepcionista"
                         fondo_actual[1] = 14
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                     
 
                     elif mouse_pos[0] < 514 and mouse_pos[0] > 264 and mouse_pos[1] < 578 and mouse_pos[1] > 515: # enviar notificacion
@@ -1855,6 +1871,8 @@ while running:
 
                         fondo_actual[0] = "menu recepcionista"
                         fondo_actual[1] = 14
+                        texto_seleccionado = [(-100,-100),""]
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
 
 
                 
@@ -1866,6 +1884,8 @@ while running:
 
                         fondo_actual[0] = "menu recepcionista"
                         fondo_actual[1] = 14
+                        texto_seleccionado = [(-100,-100),""]
+                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                     
 
 

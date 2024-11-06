@@ -568,6 +568,7 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         chequeadormaximo.append(1)
     
     if contenido[usuario]["Direccion"] == "":
+        
         contenido[usuario]["Direccion"] = direccion
     elif direccion != contenido[usuario]["Direccion"]:
          print("La direccion del usuario es incorrecto")
@@ -585,15 +586,36 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         chequeadormaximo.append(1)
     
     if contenido[usuario]["DNI"] == "":
-        contenido[usuario]["DNI"] = dni 
+
+        try:
+
+            if len(str(int(dni))) == 8 or len(int(dni)) == 1:
+
+                contenido[usuario]["DNI"] = dni 
+
+        except:
+            """"""
+        
+    
+    
     elif dni != contenido[usuario]["DNI"]:
          print("El dni ingresado es incorrecto")
          return False , "El dni ingresado es incorrecto"
     else:
         chequeadormaximo.append(1)
      
+
     if contenido[usuario]["CodigoPostal"] == "":
-        contenido[usuario]["CodigoPostal"] = codigo_postal 
+
+        try:
+
+            if len(str(int(codigo_postal))) == 4:
+
+                contenido[usuario]["CodigoPostal"] = codigo_postal 
+
+        except:
+            """"""
+
     elif codigo_postal != contenido[usuario]["CodigoPostal"]:
          print("El codigo postal ingresado es incorrecto")
          return False , "El codigo postal ingresado es incorrecto"
@@ -601,14 +623,33 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         chequeadormaximo.append(1)
      
     if contenido[usuario]["NumeroTelefono"] == "":
-        contenido[usuario]["NumeroTelefono"] = telefono
-        
+
+        try:
+
+            for i in telefono:
+
+                if i.isdigit():
+
+                    tel_aux += i 
+            
+
+            if str(int(tel_aux)) == 13:
+
+                    
+                contenido[usuario]["NumeroTelefono"] = telefono
+
+        except:
+            """"""
+
+
+
     elif telefono != contenido[usuario]["NumeroTelefono"]:
         print("El numero ingresado es incorrecto")
         return False , "El numero ingresado es incorrecto"
     else:
         chequeadormaximo.append(1)
     
+
     try:
         fecha_actual = datetime.now()
         fecha_ingresada = datetime.strptime(dia1, "%d/%m/%Y")

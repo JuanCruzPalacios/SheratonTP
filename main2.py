@@ -1047,7 +1047,7 @@ while running:
                                     reset_textos(texto1,texto2,texto3,texto4)
 
 
-                                    datos_usuario = VerUsuario(usuario)
+                                datos_usuario = VerUsuario(usuario)
 
 
 

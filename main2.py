@@ -1400,11 +1400,12 @@ while running:
                                     fondo_actual[1] = 4
                                     texto_seleccionado = [(-100,-100),""]
                                     servicio_pagar = 0
-                                    if posicion_cuadrado[0] != -100:
+                                    print(posicion_cuadrado_3)
+                                    if posicion_cuadrado[1] == 298:
                                         servicio_pagar += 1
-                                    if posicion_cuadrado_2[0] != -100:
+                                    if posicion_cuadrado_2[1] == 298:
                                         servicio_pagar += 1
-                                    if posicion_cuadrado_3[0] != -100:
+                                    if posicion_cuadrado_3[1] == 298:
                                         servicio_pagar += 1
                                     texto1[1] = "total: " + str(CalcularPrecioAmenities(texto2[1],texto3[1],servicio_pagar))
                                     servicio_pagar = ""
@@ -1452,9 +1453,7 @@ while running:
                         if posicion_cuadrado == (409,298, 41,41)  or posicion_cuadrado_2 == (957,298, 41,41) or posicion_cuadrado_3 == (695,298, 41,41):
                             fondo_actual[0] = "pagar servicio"
                             fondo_actual[1] = 5
-                            posicion_cuadrado = (0,0,0,0)
-                            posicion_cuadrado_2 = (0,0,0,0)
-                            posicion_cuadrado_3 = (0,0,0,0)
+                            
                         
                     
                     
@@ -1671,19 +1670,19 @@ while running:
                             alter_mouse = True
                             fondo_actual[0] = "menu habitaciones"
                             texto_seleccionado = [(-100,-100),""]
-                            for i in range(3):
+                            
 
-                                if posicion_cuadrado[0] != -100:
-                                    print("SPA reservado")
-                                    ContratarAmenities(usuario, "SPA", (texto2[1],texto3[1]),texto1[1])
+                            if posicion_cuadrado[1] == 298:
+                                print("SPA reservado")
+                                ContratarAmenities(usuario, "SPA", (texto2[1],texto3[1]),texto1[1])
 
-                                if posicion_cuadrado[0] != -100:
-                                    print("Piscina reservado")
-                                    ContratarAmenities(usuario, "Piscina", (texto2[1],texto3[1]),texto1[1])
-
-                                if posicion_cuadrado[0] != -100:
-                                    print("Gimnasio reservado")
-                                    ContratarAmenities(usuario, "Gimnasio", (texto2[1],texto3[1]),texto1[1])
+                            if posicion_cuadrado_3[1] == 298:
+                                print("Piscina reservado")
+                                ContratarAmenities(usuario, "Piscina", (texto2[1],texto3[1]),texto1[1])
+                            
+                            if posicion_cuadrado_2[1] == 298:
+                                print("Gimnasio reservado")
+                                ContratarAmenities(usuario, "Gimnasio", (texto2[1],texto3[1]),texto1[1])
 
                             habitaciones_libres = Filtros((""),0,9999999999)
                             reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 

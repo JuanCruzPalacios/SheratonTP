@@ -372,12 +372,16 @@ def AgregarEliminarStock (nombre_stock , cantidad) :
 def ContratarAmenities(usuario,amenitie,fecha,precio):
     contenido = LeerJson("Contrataciones.json")
     contenido2 = LeerJson("Usuario.json")
-    nueva_clave = str(len(contenido ) - 1) # error
-    contenido[nueva_clave]["ServiciosContratados"] = amenitie
-    contenido[nueva_clave]["FechaContratada"] = fecha
-    contenido[nueva_clave]["Estado"] = "No vencido"
-    contenido[nueva_clave]["Precio"] = precio
-    contenido[nueva_clave]["Usuario"] = usuario
+
+    nueva_clave = str(len(contenido))
+    nuevo = {
+        "ServiciosContratados": amenitie,
+        "FechaContratada":fecha,
+        "Estado":"No Vencido",
+        "Precio": precio,
+        "Usuario": usuario
+    } 
+    contenido[nueva_clave] = nuevo
     contenido2[usuario]["Contrataciones"] = amenitie
     ActualizarJson("Contrataciones.json", contenido)
     ActualizarJson("Usuario.json", contenido2)

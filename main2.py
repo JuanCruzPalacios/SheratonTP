@@ -2001,7 +2001,7 @@ while running:
             try:       
 
                 texto1[1] = str(VerNumeroHabitacion(usuario).pop( -1 - pagina))               
-                texto3[1] = str(VerFechaFinal((VerNumeroHabitacion(usuario).pop( -1 - pagina))))
+                texto3[1] = str(VerFechaFinal((VerNumeroHabitacion(usuario).pop( -1 - pagina)))[0])
                 
             except:
                 reset_textos(texto1,texto3)

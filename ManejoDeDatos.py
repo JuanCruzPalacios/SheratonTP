@@ -465,7 +465,7 @@ def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contrase
     try: 
         nueva_clave = contenido_actual[Usuario]["NumeroDeCliente"]
     except:
-        nueva_clave = str(len(contenido_actual)) 
+        nueva_clave = str(len(contenido_actual)+1) 
 
     nuevo_usuario = {
         "Correo" : Correo , 
@@ -535,8 +535,6 @@ def CalcularPrecioHabitacion(id_habitacion, dia_inicio, dia_final):
         print("Error al calcular el precio de la habitacion. (Revisar fecha ingresada)")
         precio_final = False
     return precio_final
-
-print(TieneServicio(""))
 
 def CalcularPrecioAmenities(dia_inicio,dia_final,cantidad_amenities):
     precio_final = ((50*cantidad_amenities)*diferencia_dias(dia_inicio,dia_final))

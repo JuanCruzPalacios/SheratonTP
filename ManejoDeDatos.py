@@ -338,8 +338,10 @@ def CambiarEstadoHabitacion(id_habitacion):
                     pass
         if habitacion_data[nombre_de_habitacion]["Estado"] == "Ninguno":
             habitacion_data[nombre_de_habitacion]["Estado"] = "No molestar"
+            print ("La habitacion ahora esta en estado: No molestar")
         else:
             habitacion_data[nombre_de_habitacion]["Estado"] = "Ninguno"
+            print ("La habitacion ahora esta en estado: Ninguno")
     
         ActualizarJson("habitaciones.json" , habitacion_data)
     except:

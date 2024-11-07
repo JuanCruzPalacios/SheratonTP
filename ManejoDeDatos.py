@@ -441,22 +441,22 @@ def ArchivarDesarchivarNotificaciones (id_notificacion):
     ActualizarJson("Notificaciones.json", contenido)
 
 def MarcarReservacionHabitacion(usuario,idhabitacion,fecha_inicio, fecha_final):
-    #try:
-    contenido = LeerJson("Usuario.json")
-    contenido2 = LeerJson("habitaciones.json")
-    for habitacion in contenido2: 
-        if contenido2[habitacion]["ID"] == idhabitacion:
-            habitacion = habitacion
-            break
-    contenido[usuario]["IdHabitacion"].append(contenido2[habitacion]["ID"])
-    contenido2[habitacion]["Ocupada"] = "Si"
-    contenido2[habitacion]["IdClienteOcupante"] = contenido[usuario]["NumeroDeCliente"]
-    contenido2[habitacion]["Fechas"] = [[fecha_inicio],[fecha_final]]
-    ActualizarJson("habitaciones.json",contenido2)
-    ActualizarJson("Usuario.json", contenido)
-    print("Habitacion reservada exitosamente.")
-    #except:
-    print("error al reservar habitacion")
+    try:
+        contenido = LeerJson("Usuario.json")
+        contenido2 = LeerJson("habitaciones.json")
+        for habitacion in contenido2: 
+            if contenido2[habitacion]["ID"] == idhabitacion:
+                habitacion = habitacion
+                break
+        contenido[usuario]["IdHabitacion"].append(contenido2[habitacion]["ID"])
+        contenido2[habitacion]["Ocupada"] = "Si"
+        contenido2[habitacion]["IdClienteOcupante"] = contenido[usuario]["NumeroDeCliente"]
+        contenido2[habitacion]["Fechas"] = [[fecha_inicio],[fecha_final]]
+        ActualizarJson("habitaciones.json",contenido2)
+        ActualizarJson("Usuario.json", contenido)
+        print("Habitacion reservada exitosamente.")
+    except:
+        print ("Error al reservar la habitacion")
 
 
 def ReservarEvento(precio,cliente,salon,asistentes,hora,dia,cantidad_personal,mail,especificaciones):

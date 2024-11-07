@@ -446,7 +446,7 @@ def ReservarEvento(precio,cliente,salon,asistentes,hora,dia,cantidad_personal,ma
     contenido[nueva_clave]["Usuario"] = cliente
     ActualizarJson("ContratacionEventos.json", contenido)
 
-def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal , IdContrataciones , IdHabitacion):    
+def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal , Direccion ,Contrataciones ,IdEstacionamiento ,IdHabitacion):    
     contenido_actual = LeerJson("Usuario.json")
 
     try: 
@@ -464,7 +464,9 @@ def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contrase
         "NumeroTelefono" : NumeroTelefono , 
         "NumeroDeCliente": nueva_clave , 
         "CodigoPostal" : CodigoPostal ,
-        "IdContrataciones": IdContrataciones, 
+        "Direccion": Direccion,
+        "Contrataciones": Contrataciones, 
+        "IdEstacionamiento": IdEstacionamiento,
         "IdHabitacion" : IdHabitacion
     }
 

@@ -13,15 +13,15 @@
         "Contrataciones": [
             [
                 "SPA",
-                "-1"
+                "0"
             ],
             [
                 "PISCINA",
-                "-1"
+                "0"
             ],
             [
                 "GYM",
-                "-1"
+                "0"
             ]
         ],
         "IdEstacionamiento": [
@@ -73,10 +73,13 @@
         "CodigoPostal": "www",
         "Direccion": "www",
         "Contrataciones": [
-            ["PISCINA","3"],
             [
                 "GYM",
-                "5"
+                "1"
+            ],
+            [
+                "SPA",
+                "2"
             ]
         ],
         "IdEstacionamiento": [],

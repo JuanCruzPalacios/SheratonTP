@@ -2091,7 +2091,8 @@ while running:
                 texto3[1] = str(VencimientoEstacionamiento((VerNumeroEstacionamiento(usuario).pop( -1 - pagina))))
                 
             except:
-                """"""
+                texto2[1] = "-"
+                texto3[1] = "---"
 
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
             screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )
@@ -2116,6 +2117,8 @@ while running:
                 texto2[1] += str(VerNumeroEstacionamiento(usuario).pop(-1 - i))
                 if i != len(VerNumeroEstacionamiento(usuario) ) - 1:
                     texto2[1] += ","
+            if len(VerNumeroEstacionamiento(usuario)) == 0:
+                texto2[1] = "-"
 
             for i in range(1,4):
                 print(TieneServicio(usuario))
@@ -2128,8 +2131,8 @@ while running:
                 texto3[1] = str(VerFechaFinal((VerNumeroHabitacion(usuario).pop( -1 - pagina)))[0])
                 
             except:
-                reset_textos(texto1,texto3)
-
+                texto1[1] = "-"
+                texto3[1] = "---"
             
 
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )

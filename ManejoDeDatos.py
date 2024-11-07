@@ -54,9 +54,9 @@ def TieneServicio(usuario):
             if contrataciones[i][0] == "SPA":
                 contr.append([True , contrataciones[i][1]])
                 n += 1
-            
+
         if n == 0:
-            contr.append([False])
+            contr.append(["False"])#
             
         n = 0
         
@@ -152,7 +152,6 @@ def AgregarNotificacion(objeto , cantidad , habitacion):
     except:
         """"""
 
-
 def VerNumeroHabitacion(cliente):
 
     contenido = LeerJson("Usuario.json")
@@ -195,7 +194,6 @@ def VerNotificacion(numero_de_notificacion):
     except: 
         print("No existe ninguna notificacion con ese numero.")
         return False
-
 
 def VerificarContraseña(Usuario , contraseña): 
 

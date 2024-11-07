@@ -151,7 +151,6 @@ def AgregarNotificacion(objeto , cantidad , habitacion):
     except:
         """"""
 
-
 def VerNumeroHabitacion(cliente):
 
     contenido = LeerJson("Usuario.json")
@@ -203,9 +202,6 @@ def VerNotificacion():
     
 
     return lista_notificaciones
-
-
-
 
 def VerificarContraseña(Usuario , contraseña): 
 

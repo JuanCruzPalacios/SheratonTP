@@ -14,7 +14,7 @@
         "Usuario": ""
     },
     "1": {
-        "ServiciosContratados": "Piscina",
+        "ServiciosContratados": "PISCINA",
         "FechaContratada": [
             "12/12/2024",
             "13/12/2024"
@@ -24,7 +24,7 @@
         "Usuario": ""
     },
     "2": {
-        "ServiciosContratados": "Gimnasio",
+        "ServiciosContratados": "GYM",
         "FechaContratada": [
             "12/12/2024",
             "13/12/2024"

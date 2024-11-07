@@ -521,7 +521,7 @@ def CalcularPrecioHabitacion(id_habitacion, dia_inicio, dia_final):
         precio_final = False
     return precio_final
 
-print(CalcularPrecioHabitacion(5,"10/8/2024","24/4/2026"))
+print(TieneServicio(""))
 
 def CalcularPrecioAmenities(dia_inicio,dia_final,cantidad_amenities):
     precio_final = ((50*cantidad_amenities)*diferencia_dias(dia_inicio,dia_final))

@@ -124,7 +124,7 @@ def CambiarEstadoAmenitie(id):
     ActualizarJson("Contrataciones.json", contenido)
     ActualizarJson("Usuario.json", contenido2)
 
-def AgregarNotificacion(texto):
+def AgregarNotificacion(objeto , cantidad , habitacion):
    
     contenido_actual = LeerJson("Notificaciones.json")
     
@@ -132,16 +132,26 @@ def AgregarNotificacion(texto):
 
     fecha_enviada = datetime.now().strftime("%d/%m/%Y")
 
-    nueva_notificacion = {
-        "Archivada": 0,
-        "Fijada": 0,
-        "Texto": texto,
-        "FechaEnviada": fecha_enviada
-    }
 
-    contenido_actual[nueva_clave] = nueva_notificacion
+    try:
 
-    ActualizarJson("Notificaciones.json", contenido_actual)
+
+        nueva_notificacion = {
+            "Archivada": 0,
+            "Fijada": 0,
+            "Objeto": objeto,
+            "Cantidad": str(int(cantidad)),
+            "Id_habitacion": str(int(habitacion)),
+            "FechaEnviada": fecha_enviada
+        }
+
+        contenido_actual[nueva_clave] = nueva_notificacion
+
+        ActualizarJson("Notificaciones.json", contenido_actual)
+    
+    except:
+        """"""
+
 
 def VerNumeroHabitacion(cliente):
 
@@ -179,11 +189,13 @@ def VerNumeroEstacionamiento(cliente):
 def VerNotificacion(numero_de_notificacion):
     numero_de_notificacion = str(numero_de_notificacion) 
     Notificaciones = LeerJson("Notificaciones.json")
+
     try:
-        return Notificaciones[numero_de_notificacion]["Archivada"] , Notificaciones[numero_de_notificacion]["Fijada"] , Notificaciones[numero_de_notificacion]["Texto"] , Notificaciones[numero_de_notificacion]["FechaEnviada"]
+        return Notificaciones[numero_de_notificacion]["Archivada"] , Notificaciones[numero_de_notificacion]["Fijada"] , Notificaciones[numero_de_notificacion]["Objeto"] , Notificaciones[numero_de_notificacion]["Cantidad"] , Notificaciones[numero_de_notificacion]["Id_habitacion"] ,Notificaciones[numero_de_notificacion]["FechaEnviada"]
     except: 
         print("No existe ninguna notificacion con ese numero.")
         return False
+
 
 def VerificarContraseña(Usuario , contraseña): 
 

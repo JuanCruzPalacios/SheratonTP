@@ -1798,7 +1798,8 @@ while running:
 
                     elif mouse_pos[0] < 514 and mouse_pos[0] > 264 and mouse_pos[1] < 578 and mouse_pos[1] > 515: # enviar notificacion
                     
-                        pass
+                        
+                        AgregarNotificacion(texto1[1] , texto2[1] , texto3[1])
 
 
                     elif mouse_pos[0] < 630 and mouse_pos[0] > 148 and mouse_pos[1] < 318 and mouse_pos[1] > 264: # objeto a reponer
@@ -2284,7 +2285,9 @@ while running:
 
 
         elif fondo_actual[0] == "mantenimiento notificaciones":
-        
+            
+            VerNotificacion('1')
+
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
 
         elif fondo_actual[0] == "mantenimiento stock":
@@ -2374,4 +2377,3 @@ while running:
 
 
 pygame.quit()
-

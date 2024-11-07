@@ -32,5 +32,35 @@
         "Estado": "No Vencido",
         "Precio": "total: 100",
         "Usuario": ""
+    },
+    "3": {
+        "ServiciosContratados": "PISCINA",
+        "FechaContratada": [
+            "12/12/2024",
+            "15/12/2024"
+        ],
+        "Estado": "No Vencido",
+        "Precio": "total: 150",
+        "Usuario": ""
+    },
+    "4": {
+        "ServiciosContratados": "SPA",
+        "FechaContratada": [
+            "12/12/2024",
+            "15/12/2024"
+        ],
+        "Estado": "No Vencido",
+        "Precio": "total: 150",
+        "Usuario": ""
+    },
+    "5": {
+        "ServiciosContratados": "GYM",
+        "FechaContratada": [
+            "12/11/2024",
+            "11/12/2024"
+        ],
+        "Estado": "No Vencido",
+        "Precio": "total: 1450",
+        "Usuario": ""
     }
 }

@@ -54,9 +54,9 @@ def TieneServicio(usuario):
             if contrataciones[i][0] == "SPA":
                 contr.append([True , contrataciones[i][1]])
                 n += 1
-
+            
         if n == 0:
-            contr.append(["False"])#
+            contr.append([False])
             
         n = 0
         
@@ -99,11 +99,8 @@ def VerFechaFinal(id_habitacion):
         return None
 
 def VerRolUsuario(usuario):
-    try:
-        contenido = LeerJson("Usuario.json")
-        return contenido[usuario]["Tipo"]
-    except:
-        """"""
+    contenido = LeerJson("Usuario.json")
+    return contenido[usuario]["Tipo"]
 
 def TieneHabitacion(usuario): 
     try:
@@ -141,7 +138,6 @@ def AgregarNotificacion(objeto , cantidad , habitacion):
 
         nueva_notificacion = {
             "Archivada": 0,
-            "Fijada": 0,
             "Objeto": objeto,
             "Cantidad": str(int(cantidad)),
             "Id_habitacion": str(int(habitacion)),
@@ -188,15 +184,24 @@ def VerNumeroEstacionamiento(cliente):
     contenido = LeerJson("Usuario.json")
     return contenido[cliente]["IdEstacionamiento"]
 
-def VerNotificacion(numero_de_notificacion):
-    numero_de_notificacion = str(numero_de_notificacion) 
+def VerNotificacion():
+    lista_notificaciones = []
     Notificaciones = LeerJson("Notificaciones.json")
 
-    try:
-        return Notificaciones[numero_de_notificacion]["Archivada"] , Notificaciones[numero_de_notificacion]["Fijada"] , Notificaciones[numero_de_notificacion]["Objeto"] , Notificaciones[numero_de_notificacion]["Cantidad"] , Notificaciones[numero_de_notificacion]["Id_habitacion"] ,Notificaciones[numero_de_notificacion]["FechaEnviada"]
-    except: 
-        print("No existe ninguna notificacion con ese numero.")
-        return False
+    for clave , valores in Notificaciones.items():
+
+        lista_aux = []
+
+
+        if str(Notificaciones[clave]["Archivada"]) == "0":
+            
+            lista_aux.append (Notificaciones[clave]["Objeto"])
+            lista_aux.append (Notificaciones[clave]["Cantidad"])
+            lista_notificaciones.append(lista_aux)
+
+    
+
+    return lista_notificaciones
 
 def VerificarContraseña(Usuario , contraseña): 
 
@@ -431,18 +436,23 @@ def ArchivarDesarchivarNotificaciones (id_notificacion):
         contenido[id_notificacion]["Archivada"] = 0
     ActualizarJson("Notificaciones.json", contenido)
 
-def MarcarReservacionHabitacion(usuario,habitacion,fecha_inicio, fecha_final):
+def MarcarReservacionHabitacion(usuario,idhabitacion,fecha_inicio, fecha_final):
     try:
         contenido = LeerJson("Usuario.json")
-        contenido2 = LeerJson("habitacion.json")
+        contenido2 = LeerJson("habitaciones.json")
+        for habitacion in contenido2: 
+            if contenido2[habitacion]["ID"] == idhabitacion:
+                habitacion = habitacion
+                break
         contenido[usuario]["IdHabitacion"].append(contenido2[habitacion]["ID"])
         contenido2[habitacion]["Ocupada"] = "Si"
         contenido2[habitacion]["IdClienteOcupante"] = contenido[usuario]["NumeroDeCliente"]
         contenido2[habitacion]["Fechas"] = [[fecha_inicio],[fecha_final]]
-    except:
+        ActualizarJson("habitaciones.json",contenido2)
+        ActualizarJson("Usuario.json", contenido)
         print("Habitacion reservada exitosamente.")
-    ActualizarJson("habitaciones.json",contenido2)
-    ActualizarJson("Usuario.json", contenido)
+    except:
+        print ("Error al reservar la habitacion")
 
 def ReservarEvento(precio,cliente,salon,asistentes,hora,dia,cantidad_personal,mail,especificaciones):
     contenido = LeerJson("ContratacionEventos")
@@ -459,13 +469,13 @@ def ReservarEvento(precio,cliente,salon,asistentes,hora,dia,cantidad_personal,ma
     contenido[nueva_clave]["Usuario"] = cliente
     ActualizarJson("ContratacionEventos.json", contenido)
 
-def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal , Direccion ,Contrataciones ,IdEstacionamiento ,IdHabitacion):    
+def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal , Contrataciones , IdHabitacion):    
     contenido_actual = LeerJson("Usuario.json")
 
     try: 
         nueva_clave = contenido_actual[Usuario]["NumeroDeCliente"]
     except:
-        nueva_clave = str(len(contenido_actual)) 
+        nueva_clave = str(len(contenido_actual)+1) 
 
     nuevo_usuario = {
         "Correo" : Correo , 
@@ -477,9 +487,7 @@ def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contrase
         "NumeroTelefono" : NumeroTelefono , 
         "NumeroDeCliente": nueva_clave , 
         "CodigoPostal" : CodigoPostal ,
-        "Direccion": Direccion,
-        "Contrataciones": Contrataciones, 
-        "IdEstacionamiento": IdEstacionamiento,
+        "Contrataciones": [Contrataciones], 
         "IdHabitacion" : IdHabitacion
     }
 
@@ -511,9 +519,9 @@ def CancelarReservaEstacionamiento(usuario , id):
         print("El usuario o el estacionamiento ingresado no existe.")
 
 def diferencia_dias(fecha1_str, fecha2_str):
-    fecha1 = datetime.strptime(fecha1_str, '%d/%m/%Y')
-    fecha2 = datetime.strptime(fecha2_str, '%d/%m/%Y')
-    
+    fecha1 = datetime.strptime(str(fecha1_str), '%d/%m/%Y')
+    fecha2 = datetime.strptime(str(fecha2_str), '%d/%m/%Y')
+    print (fecha1 , fecha2)
     diferencia = (fecha2 - fecha1).days
     return int(diferencia)
   
@@ -536,15 +544,12 @@ def CalcularPrecioHabitacion(id_habitacion, dia_inicio, dia_final):
         precio_final = False
     return precio_final
 
-print(TieneServicio(""))
-
 def CalcularPrecioAmenities(dia_inicio,dia_final,cantidad_amenities):
     precio_final = ((50*cantidad_amenities)*diferencia_dias(dia_inicio,dia_final))
     print("Precio final: " , precio_final)
     return precio_final
 
-def CalcularPrecioEstacionamiento(dia_final):
-    dia_inicio = datetime.now()
+def CalcularPrecioEstacionamiento(dia_inicio , dia_final):
     precio_final = 4*diferencia_dias(dia_inicio,dia_final)
     print("Precio final: " , precio_final)
     return precio_final
@@ -670,8 +675,11 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
     try:
         fecha_actual = datetime.now()
         fecha_ingresada = datetime.strptime(dia1, "%d/%m/%Y")
+        fecha_actual = fecha_actual.strftime("%d/%m/%Y")
+        fecha_ingresada = fecha_ingresada.strftime("%d/%m/%Y")
 
         if fecha_ingresada < fecha_actual:
+            print("la fecha ya paso")
             return False, "La fecha ya paso"
     except :
         print("error")

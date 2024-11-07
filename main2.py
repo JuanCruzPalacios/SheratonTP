@@ -1678,11 +1678,11 @@ while running:
 
                             if posicion_cuadrado_3[1] == 298:
                                 print("Piscina reservado")
-                                ContratarAmenities(usuario, "Piscina", (texto2[1],texto3[1]),texto1[1])
+                                ContratarAmenities(usuario, "PISCINA", (texto2[1],texto3[1]),texto1[1])
                             
                             if posicion_cuadrado_2[1] == 298:
                                 print("Gimnasio reservado")
-                                ContratarAmenities(usuario, "Gimnasio", (texto2[1],texto3[1]),texto1[1])
+                                ContratarAmenities(usuario, "GYM", (texto2[1],texto3[1]),texto1[1])
 
                             habitaciones_libres = Filtros((""),0,9999999999)
                             reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 

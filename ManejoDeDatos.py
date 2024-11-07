@@ -138,7 +138,6 @@ def AgregarNotificacion(objeto , cantidad , habitacion):
 
         nueva_notificacion = {
             "Archivada": 0,
-            "Fijada": 0,
             "Objeto": objeto,
             "Cantidad": str(int(cantidad)),
             "Id_habitacion": str(int(habitacion)),
@@ -195,6 +194,7 @@ def VerNotificacion(numero_de_notificacion):
     except: 
         print("No existe ninguna notificacion con ese numero.")
         return False
+
 
 
 def VerificarContraseña(Usuario , contraseña): 

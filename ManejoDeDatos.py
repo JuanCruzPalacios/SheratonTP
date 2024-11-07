@@ -136,23 +136,20 @@ def AgregarNotificacion(objeto , cantidad , habitacion):
     fecha_enviada = datetime.now().strftime("%d/%m/%Y")
 
 
-    try:
+    for clave , valores in Notificaciones.items():
+
+        lista_aux = []
 
 
-        nueva_notificacion = {
-            "Archivada": 0,
-            "Objeto": objeto,
-            "Cantidad": str(int(cantidad)),
-            "Id_habitacion": str(int(habitacion)),
-            "FechaEnviada": fecha_enviada
-        }
+        if str(Notificaciones[clave]["Archivada"]) == "0":
+            
+            lista_aux.append (Notificaciones[clave]["Objeto"])
+            lista_aux.append (Notificaciones[clave]["Cantidad"])
+            lista_notificaciones.append(lista_aux)
 
-        contenido_actual[nueva_clave] = nueva_notificacion
-
-        ActualizarJson("Notificaciones.json", contenido_actual)
     
-    except:
-        """"""
+
+    return lista_notificaciones
 
 def VerNumeroHabitacion(cliente):
 

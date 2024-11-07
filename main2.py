@@ -1011,7 +1011,7 @@ while running:
 
                     elif mouse_pos[0] <= 871 and mouse_pos[0] >= 830 and mouse_pos[1] <= 669 and mouse_pos[1] >= 634:#-----> Siguiente
                         
-
+                        print(VerRolUsuario(texto1[1]))
                         if ExisteUsuario(texto1[1]):
 
                             if VerificarContraseña(texto1[1],texto2[1]):
@@ -1109,7 +1109,8 @@ while running:
 
                                 if chequeo_contraseña(texto3[1]) == "aprobado":
 
-                                    CrearActualizarUsuario(texto1[1] , texto2[1] , "" , "" , "" , texto3[1] , "" , "" , "" , "" , "")
+                                    CrearActualizarUsuario(texto1[1] , texto2[1] , "Cliente" , "" , "" , texto3[1] , "" , "" , "" , "" , "")
+                                    usuario = texto1[1]
                                     fondo_actual[0] = "menu habitaciones"
                                     fondo_actual[1] = 6
                                     texto_ingresado = ""
@@ -1881,13 +1882,15 @@ while running:
                         texto_seleccionado = [(-100,-100),""]
                         alter_usuario = not(alter_usuario)
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
-                        
-                        texto1[1] = datos_usuario["Nombre"] + " " + datos_usuario["Apellido"]
-                        texto2[1] = datos_usuario["Direccion"]
-                        texto3[1] = datos_usuario["NumeroTelefono"]
-                        texto4[1] = datos_usuario["Correo"]
-                        texto5[1] = datos_usuario["CodigoPostal"]
-                        texto6[1] = datos_usuario["DNI"]
+                        try:
+                            texto1[1] = datos_usuario["Nombre"] + " " + datos_usuario["Apellido"]
+                            texto2[1] = datos_usuario["Direccion"]
+                            texto3[1] = datos_usuario["NumeroTelefono"]
+                            texto4[1] = datos_usuario["Correo"]
+                            texto5[1] = datos_usuario["CodigoPostal"]
+                            texto6[1] = datos_usuario["DNI"]
+                        except:
+                            """"""
                                             
 
 

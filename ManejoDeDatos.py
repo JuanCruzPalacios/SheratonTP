@@ -99,8 +99,11 @@ def VerFechaFinal(id_habitacion):
         return None
 
 def VerRolUsuario(usuario):
-    contenido = LeerJson("Usuario.json")
-    return contenido[usuario]["Tipo"]
+    try:
+        contenido = LeerJson("Usuario.json")
+        return contenido[usuario]["Tipo"]
+    except:
+        """"""
 
 def TieneHabitacion(usuario): 
     try:

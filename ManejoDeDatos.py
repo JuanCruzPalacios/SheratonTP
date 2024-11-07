@@ -436,18 +436,24 @@ def ArchivarDesarchivarNotificaciones (id_notificacion):
         contenido[id_notificacion]["Archivada"] = 0
     ActualizarJson("Notificaciones.json", contenido)
 
-def MarcarReservacionHabitacion(usuario,habitacion,fecha_inicio, fecha_final):
-    try:
-        contenido = LeerJson("Usuario.json")
-        contenido2 = LeerJson("habitaciones.json")
-        contenido[usuario]["IdHabitacion"].append(contenido2[habitacion]["ID"])
-        contenido2[habitacion]["Ocupada"] = "Si"
-        contenido2[habitacion]["IdClienteOcupante"] = contenido[usuario]["NumeroDeCliente"]
-        contenido2[habitacion]["Fechas"] = [[fecha_inicio],[fecha_final]]
-    except:
-        print("Error al reservar habitacion.")
+def MarcarReservacionHabitacion(usuario,idhabitacion,fecha_inicio, fecha_final):
+    #try:
+    contenido = LeerJson("Usuario.json")
+    contenido2 = LeerJson("habitaciones.json")
+    for habitacion in contenido2: 
+        if contenido2[habitacion]["ID"] == idhabitacion:
+            habitacion = habitacion
+            break
+    contenido[usuario]["IdHabitacion"].append(contenido2[habitacion]["ID"])
+    contenido2[habitacion]["Ocupada"] = "Si"
+    contenido2[habitacion]["IdClienteOcupante"] = contenido[usuario]["NumeroDeCliente"]
+    contenido2[habitacion]["Fechas"] = [[fecha_inicio],[fecha_final]]
     ActualizarJson("habitaciones.json",contenido2)
     ActualizarJson("Usuario.json", contenido)
+    print("Habitacion reservada exitosamente.")
+    #except:
+    print("error al reservar habitacion")
+
 
 def ReservarEvento(precio,cliente,salon,asistentes,hora,dia,cantidad_personal,mail,especificaciones):
     contenido = LeerJson("ContratacionEventos")
@@ -514,9 +520,9 @@ def CancelarReservaEstacionamiento(usuario , id):
         print("El usuario o el estacionamiento ingresado no existe.")
 
 def diferencia_dias(fecha1_str, fecha2_str):
-    fecha1 = datetime.strptime(fecha1_str, '%d/%m/%Y')
-    fecha2 = datetime.strptime(fecha2_str, '%d/%m/%Y')
-    
+    fecha1 = datetime.strptime(str(fecha1_str), '%d/%m/%Y')
+    fecha2 = datetime.strptime(str(fecha2_str), '%d/%m/%Y')
+    print (fecha1 , fecha2)
     diferencia = (fecha2 - fecha1).days
     return int(diferencia)
   
@@ -544,8 +550,7 @@ def CalcularPrecioAmenities(dia_inicio,dia_final,cantidad_amenities):
     print("Precio final: " , precio_final)
     return precio_final
 
-def CalcularPrecioEstacionamiento(dia_final):
-    dia_inicio = datetime.now()
+def CalcularPrecioEstacionamiento(dia_inicio , dia_final):
     precio_final = 4*diferencia_dias(dia_inicio,dia_final)
     print("Precio final: " , precio_final)
     return precio_final
@@ -671,8 +676,11 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
     try:
         fecha_actual = datetime.now()
         fecha_ingresada = datetime.strptime(dia1, "%d/%m/%Y")
+        fecha_actual = fecha_actual.strftime("%d/%m/%Y")
+        fecha_ingresada = fecha_ingresada.strftime("%d/%m/%Y")
 
         if fecha_ingresada < fecha_actual:
+            print("la fecha ya paso")
             return False, "La fecha ya paso"
     except :
         print("error")

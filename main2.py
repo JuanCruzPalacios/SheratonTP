@@ -2118,6 +2118,7 @@ while running:
                     texto2[1] += ","
 
             for i in range(1,4):
+                print(TieneServicio(usuario))
                 if TieneServicio(usuario)[i-1][0]:
                     pygame.draw.rect(screen, (98,69,49) , ( 351 + 306 * ( i - 1 ) ,   496 , 41 , 41 )) #310
 

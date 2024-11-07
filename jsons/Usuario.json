@@ -72,7 +72,7 @@
         "NumeroDeCliente": 4,
         "CodigoPostal": "www",
         "Direccion": "www",
-        "Contrataciones": [],
+        "Contrataciones": "Gimnasio",
         "IdEstacionamiento": [],
         "IdHabitacion": [
             3

@@ -72,7 +72,13 @@
         "NumeroDeCliente": 4,
         "CodigoPostal": "www",
         "Direccion": "www",
-        "Contrataciones": [["PISCINA","1"]],
+        "Contrataciones": [
+            ["PISCINA","3"],
+            [
+                "GYM",
+                "5"
+            ]
+        ],
         "IdEstacionamiento": [],
         "IdHabitacion": [
             3

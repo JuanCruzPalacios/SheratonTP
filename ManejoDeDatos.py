@@ -384,7 +384,7 @@ def ContratarAmenities(usuario,amenitie,fecha,precio):
         "Usuario": usuario
     } 
     contenido[nueva_clave] = nuevo
-    contenido2[usuario]["Contrataciones"] = amenitie
+    contenido2[usuario]["Contrataciones"].append([amenitie, nueva_clave])
     ActualizarJson("Contrataciones.json", contenido)
     ActualizarJson("Usuario.json", contenido2)
 

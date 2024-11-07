@@ -830,7 +830,8 @@ while running:
 
                                 if chequeo_contraseña(texto3[1]) == "aprobado":
 
-                                    CrearActualizarUsuario(texto1[1] , texto2[1] , "" , "" , "" , texto3[1] , "" , "" , "" , "" , "")
+                                    usuario = texto1[1]
+                                    CrearActualizarUsuario(texto1[1] , texto2[1] , " " , " " , " " , texto3[1] , " " , " " , " " ," " )
                                     fondo_actual[0] = "menu habitaciones"
                                     fondo_actual[1] = 6
                                     texto_seleccionado = [(-100,-100),""]
@@ -841,7 +842,7 @@ while running:
                             else:
                                 texto4[1] = "         El usuario ingresado ya existe."
                         else:
-                            texto4[1] = "Falta @ en el mail."
+                            texto4[1] = "            Falta @ en el mail."
                     else:
                         texto4[1] = "El usuario/mail ingresado es demasiado corto." 
                 else:
@@ -1070,6 +1071,7 @@ while running:
                         texto_ingresado = ""
                         texto_seleccionado = [(-100,-100),""]
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+
                                       
 
     
@@ -1108,27 +1110,35 @@ while running:
                     elif mouse_pos[0] <= 871 and mouse_pos[0] >= 832 and mouse_pos[1] <= 669 and mouse_pos[1] >= 633:#-----> Siguiente
                 
                         if len(texto1[1]) > 3 and len(texto2[1]) > 3 :
-                            if not(ExisteUsuario(texto1[1])) :
+                            if "@" in texto2[1]:
+                                if not(ExisteUsuario(texto1[1])) :
 
-                                if chequeo_contraseña(texto3[1]) == "aprobado":
+                                    if chequeo_contraseña(texto3[1]) == "aprobado":
 
-                                    CrearActualizarUsuario(texto1[1] , texto2[1] , "Cliente" , "" , "" , texto3[1], "" , "" , "" , "" , "" , "" , "")
-                                    usuario = texto1[1]
-                                    fondo_actual[0] = "menu habitaciones"
-                                    fondo_actual[1] = 6
-                                    texto_ingresado = ""
-                                    texto_seleccionado = [(-100,-100),""]
-                                    reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                                        CrearActualizarUsuario(texto1[1] , texto2[1] , "Cliente" , " " , " " , texto3[1], " " , " " , " " , " " , " " , " " , " ")
+                                        usuario = texto1[1]
+                                        fondo_actual[0] = "menu habitaciones"
+                                        fondo_actual[1] = 6
+                                        texto_ingresado = ""
+                                        texto_seleccionado = [(-100,-100),""]
+                                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                                        datos_usuario = VerUsuario(usuario)
 
-                                    
-                                    
+                                        
+                                        
 
-                                else:                       
-                                    texto4[1] = chequeo_contraseña(texto3[1])    
+                                    else:                       
+                                        texto4[1] = chequeo_contraseña(texto3[1])    
+                                else:
+                                    texto4[1] = "El usuario ingresado ya existe."
                             else:
-                                texto4[1] = "El usuario ingresado ya existe."
+
+                                texto4[1] = "            Falta @ en el mail."
+
                         else:
                             texto4[1] = "El usuario/mail ingresado es demasiado corto."
+
+                        
 
                           
                     elif mouse_pos[0] <= 748 and mouse_pos[0] >= 519 and mouse_pos[1] <= 682 and mouse_pos[1] >= 670:#-----> Iniciar Sesion
@@ -1886,8 +1896,10 @@ while running:
                         texto_seleccionado = [(-100,-100),""]
                         alter_usuario = not(alter_usuario)
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                        
+
                         try:
-                            texto1[1] = datos_usuario["Nombre"] + " " + datos_usuario["Apellido"]
+                            texto1[1] = datos_usuario["Nombre"]
                             texto2[1] = datos_usuario["Direccion"]
                             texto3[1] = datos_usuario["NumeroTelefono"]
                             texto4[1] = datos_usuario["Correo"]
@@ -1895,7 +1907,6 @@ while running:
                             texto6[1] = datos_usuario["DNI"]
                         except:
                             """"""
-                                            
 
 
                     elif mouse_pos[0] < 1245 and mouse_pos[0] > 992 and mouse_pos[1] < 395 and mouse_pos[1] > 350: #reservar eventos
@@ -2090,7 +2101,7 @@ while running:
                         texto1[1] += ","    
                 
             except:
-                """"""
+                texto1[1] = "   -"
             
             try:            
                 
@@ -2099,7 +2110,7 @@ while running:
                 
             except:
                 texto2[1] = "-"
-                texto3[1] = "---"
+                texto3[1] = "    ---"
 
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
             screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )
@@ -2119,13 +2130,15 @@ while running:
 
                 if len(VerNumeroHabitacion(usuario)) > 1 and texto1[1] != str(VerNumeroHabitacion(usuario).pop( -1 )):
                     screen.blit (flecha_izquierda , (55, 308) )
-            
-            for i in range(len(VerNumeroEstacionamiento(usuario))):
-                texto2[1] += str(VerNumeroEstacionamiento(usuario).pop(-1 - i))
-                if i != len(VerNumeroEstacionamiento(usuario) ) - 1:
-                    texto2[1] += ","
-            if len(VerNumeroEstacionamiento(usuario)) == 0:
-                texto2[1] = "-"
+
+
+            try:
+                for i in range(len(VerNumeroEstacionamiento(usuario))):
+                    texto2[1] += str(VerNumeroEstacionamiento(usuario).pop(-1 - i))
+                    if i != len(VerNumeroEstacionamiento(usuario) ) - 1:
+                        texto2[1] += ","
+            except:
+                texto2[1] = "  -"
 
             for i in range(1,4):
                 print(TieneServicio(usuario))
@@ -2139,7 +2152,7 @@ while running:
                 
             except:
                 texto1[1] = "-"
-                texto3[1] = "---"
+                texto3[1] = "    ---"
             
 
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )

@@ -54,9 +54,9 @@ def TieneServicio(usuario):
             if contrataciones[i][0] == "SPA":
                 contr.append([True , contrataciones[i][1]])
                 n += 1
-            
+
         if n == 0:
-            contr.append([False])
+            contr.append(["False"])#
             
         n = 0
         
@@ -99,8 +99,11 @@ def VerFechaFinal(id_habitacion):
         return None
 
 def VerRolUsuario(usuario):
-    contenido = LeerJson("Usuario.json")
-    return contenido[usuario]["Tipo"]
+    try:
+        contenido = LeerJson("Usuario.json")
+        return contenido[usuario]["Tipo"]
+    except:
+        """"""
 
 def TieneHabitacion(usuario): 
     try:
@@ -151,7 +154,6 @@ def AgregarNotificacion(objeto , cantidad , habitacion):
     except:
         """"""
 
-
 def VerNumeroHabitacion(cliente):
 
     contenido = LeerJson("Usuario.json")
@@ -195,8 +197,11 @@ def VerNotificacion(numero_de_notificacion):
         print("No existe ninguna notificacion con ese numero.")
         return False
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> c4ed0dc0bc5da7b4df25debb37f8c10a79b19783
 def VerificarContraseña(Usuario , contraseña): 
 
     usuarios = LeerJson("Usuario.json")
@@ -458,7 +463,7 @@ def ReservarEvento(precio,cliente,salon,asistentes,hora,dia,cantidad_personal,ma
     contenido[nueva_clave]["Usuario"] = cliente
     ActualizarJson("ContratacionEventos.json", contenido)
 
-def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal , IdContrataciones , IdHabitacion):    
+def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal , Direccion ,Contrataciones ,IdEstacionamiento ,IdHabitacion):    
     contenido_actual = LeerJson("Usuario.json")
 
     try: 
@@ -476,7 +481,9 @@ def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contrase
         "NumeroTelefono" : NumeroTelefono , 
         "NumeroDeCliente": nueva_clave , 
         "CodigoPostal" : CodigoPostal ,
-        "IdContrataciones": IdContrataciones, 
+        "Direccion": Direccion,
+        "Contrataciones": Contrataciones, 
+        "IdEstacionamiento": IdEstacionamiento,
         "IdHabitacion" : IdHabitacion
     }
 

@@ -718,7 +718,7 @@ def chequeo_contraseña(conteraseña):
             if any( caracter in conteraseña for caracter in ["1","2","3","4","5","6","7","8","9","0"] ):
                 return "aprobado"
             else:   
-                return "La contraseña debe tener numeros."
+                return "    La contraseña debe tener numeros."
         else:
             return "La contraseña debe tener caracteres especiales."    
     else:
@@ -825,20 +825,23 @@ while running:
                             texto3[1] = "Usuario no encontrado."
                 elif fondo_actual[0] == "registrarse": 
                     if len(texto1[1]) > 3 and len(texto2[1]) > 3 :
-                        if not(ExisteUsuario(texto1[1])) :
+                        if "@" in texto2[1]:
+                            if not(ExisteUsuario(texto1[1])) :
 
-                            if chequeo_contraseña(texto3[1]) == "aprobado":
+                                if chequeo_contraseña(texto3[1]) == "aprobado":
 
-                                CrearActualizarUsuario(texto1[1] , texto2[1] , "" , "" , "" , texto3[1] , "" , "" , "" , "" , "")
-                                fondo_actual[0] = "menu habitaciones"
-                                fondo_actual[1] = 6
-                                texto_seleccionado = [(-100,-100),""]
-                                reset_textos(texto1,texto2,texto3,texto4)
+                                    CrearActualizarUsuario(texto1[1] , texto2[1] , "" , "" , "" , texto3[1] , "" , "" , "" , "" , "")
+                                    fondo_actual[0] = "menu habitaciones"
+                                    fondo_actual[1] = 6
+                                    texto_seleccionado = [(-100,-100),""]
+                                    reset_textos(texto1,texto2,texto3,texto4)
 
+                                else:
+                                    texto4[1] = chequeo_contraseña(texto3[1])    
                             else:
-                                texto4[1] = chequeo_contraseña(texto3[1])    
+                                texto4[1] = "         El usuario ingresado ya existe."
                         else:
-                            texto4[1] = "El usuario ingresado ya existe."
+                            texto4[1] = "Falta @ en el mail."
                     else:
                         texto4[1] = "El usuario/mail ingresado es demasiado corto." 
                 else:
@@ -2004,7 +2007,7 @@ while running:
         if fondo_actual[0] == "iniciar sesion":
             texto1[0] = ( 467 , 487 )
             texto2[0] = ( 467 , 593 )
-            texto3[0] = ( 420 , 377 )
+            texto3[0] = ( 420 , 375 )
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))       
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
             screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )
@@ -2017,7 +2020,7 @@ while running:
             texto1[0] = ( 467 , 466 )
             texto2[0] = ( 467 , 543 )    
             texto3[0] = ( 467 , 620 ) 
-            texto4[0] = ( 415 , 378 )
+            texto4[0] = ( 250 , 375 )
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
             screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )  
             screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )

@@ -124,7 +124,7 @@ def CambiarEstadoAmenitie(id):
     ActualizarJson("Contrataciones.json", contenido)
     ActualizarJson("Usuario.json", contenido2)
 
-def AgregarNotificacion(texto):
+def AgregarNotificacion(objeto , cantidad , habitacion):
    
     contenido_actual = LeerJson("Notificaciones.json")
     
@@ -132,16 +132,25 @@ def AgregarNotificacion(texto):
 
     fecha_enviada = datetime.now().strftime("%d/%m/%Y")
 
-    nueva_notificacion = {
-        "Archivada": 0,
-        "Fijada": 0,
-        "Texto": texto,
-        "FechaEnviada": fecha_enviada
-    }
 
-    contenido_actual[nueva_clave] = nueva_notificacion
+    try:
 
-    ActualizarJson("Notificaciones.json", contenido_actual)
+
+        nueva_notificacion = {
+            "Archivada": 0,
+            "Objeto": objeto,
+            "Cantidad": str(int(cantidad)),
+            "Id_habitacion": str(int(habitacion)),
+            "FechaEnviada": fecha_enviada
+        }
+
+        contenido_actual[nueva_clave] = nueva_notificacion
+
+        ActualizarJson("Notificaciones.json", contenido_actual)
+    
+    except:
+        """"""
+
 
 def VerNumeroHabitacion(cliente):
 
@@ -176,14 +185,27 @@ def VerNumeroEstacionamiento(cliente):
     contenido = LeerJson("Usuario.json")
     return contenido[cliente]["IdEstacionamiento"]
 
-def VerNotificacion(numero_de_notificacion):
-    numero_de_notificacion = str(numero_de_notificacion) 
+def VerNotificacion():
+    lista_notificaciones = []
     Notificaciones = LeerJson("Notificaciones.json")
-    try:
-        return Notificaciones[numero_de_notificacion]["Archivada"] , Notificaciones[numero_de_notificacion]["Fijada"] , Notificaciones[numero_de_notificacion]["Texto"] , Notificaciones[numero_de_notificacion]["FechaEnviada"]
-    except: 
-        print("No existe ninguna notificacion con ese numero.")
-        return False
+
+    for clave , valores in Notificaciones.items():
+
+        lista_aux = []
+
+
+        if str(Notificaciones[clave]["Archivada"]) == "0":
+            
+            lista_aux.append (Notificaciones[clave]["Objeto"])
+            lista_aux.append (Notificaciones[clave]["Cantidad"])
+            lista_notificaciones.append(lista_aux)
+
+    
+
+    return lista_notificaciones
+
+
+
 
 def VerificarContraseña(Usuario , contraseña): 
 
@@ -384,7 +406,7 @@ def ContratarAmenities(usuario,amenitie,fecha,precio):
         "Usuario": usuario
     } 
     contenido[nueva_clave] = nuevo
-    contenido2[usuario]["Contrataciones"] = amenitie
+    contenido2[usuario]["Contrataciones"].append([amenitie, nueva_clave])
     ActualizarJson("Contrataciones.json", contenido)
     ActualizarJson("Usuario.json", contenido2)
 
@@ -458,7 +480,7 @@ def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contrase
     try: 
         nueva_clave = contenido_actual[Usuario]["NumeroDeCliente"]
     except:
-        nueva_clave = str(len(contenido_actual)) 
+        nueva_clave = str(len(contenido_actual)+1) 
 
     nuevo_usuario = {
         "Correo" : Correo , 
@@ -526,8 +548,6 @@ def CalcularPrecioHabitacion(id_habitacion, dia_inicio, dia_final):
         print("Error al calcular el precio de la habitacion. (Revisar fecha ingresada)")
         precio_final = False
     return precio_final
-
-print(CalcularPrecioHabitacion(5,"10/8/2024","24/4/2026"))
 
 def CalcularPrecioAmenities(dia_inicio,dia_final,cantidad_amenities):
     precio_final = ((50*cantidad_amenities)*diferencia_dias(dia_inicio,dia_final))

@@ -1,13 +1,10 @@
 {
 
- "-1" : { 
-
-    "Archivada": 0 , 
-    "Fijada" : 0 ,
-    "Texto" : "Hay que llamar al provedor ..."   ,
-    "FechaEnviada" : "19/09/2024"
-
-
- }
-
+    "1": {
+        "Archivada": 0,
+        "Objeto": "objeto",
+        "Cantidad": "1",
+        "Id_habitacion": "1",
+        "FechaEnviada": "07/11/2024"
+    }
 }

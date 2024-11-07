@@ -728,7 +728,7 @@ def chequeo_contraseña(conteraseña):
             if any( caracter in conteraseña for caracter in ["1","2","3","4","5","6","7","8","9","0"] ):
                 return "aprobado"
             else:   
-                return "La contraseña debe tener numeros."
+                return "    La contraseña debe tener numeros."
         else:
             return "La contraseña debe tener caracteres especiales."    
     else:
@@ -835,20 +835,23 @@ while running:
                             texto3[1] = "Usuario no encontrado."
                 elif fondo_actual[0] == "registrarse": 
                     if len(texto1[1]) > 3 and len(texto2[1]) > 3 :
-                        if not(ExisteUsuario(texto1[1])) :
+                        if "@" in texto2[1]:
+                            if not(ExisteUsuario(texto1[1])) :
 
-                            if chequeo_contraseña(texto3[1]) == "aprobado":
+                                if chequeo_contraseña(texto3[1]) == "aprobado":
 
-                                CrearActualizarUsuario(texto1[1] , texto2[1] , "" , "" , "" , texto3[1] , "" , "" , "" , "" , "")
-                                fondo_actual[0] = "menu habitaciones"
-                                fondo_actual[1] = 6
-                                texto_seleccionado = [(-100,-100),""]
-                                reset_textos(texto1,texto2,texto3,texto4)
+                                    CrearActualizarUsuario(texto1[1] , texto2[1] , "" , "" , "" , texto3[1] , "" , "" , "" , "" , "")
+                                    fondo_actual[0] = "menu habitaciones"
+                                    fondo_actual[1] = 6
+                                    texto_seleccionado = [(-100,-100),""]
+                                    reset_textos(texto1,texto2,texto3,texto4)
 
+                                else:
+                                    texto4[1] = chequeo_contraseña(texto3[1])    
                             else:
-                                texto4[1] = chequeo_contraseña(texto3[1])    
+                                texto4[1] = "         El usuario ingresado ya existe."
                         else:
-                            texto4[1] = "El usuario ingresado ya existe."
+                            texto4[1] = "Falta @ en el mail."
                     else:
                         texto4[1] = "El usuario/mail ingresado es demasiado corto." 
                 else:
@@ -1021,7 +1024,7 @@ while running:
 
                     elif mouse_pos[0] <= 871 and mouse_pos[0] >= 830 and mouse_pos[1] <= 669 and mouse_pos[1] >= 634:#-----> Siguiente
                         
-
+                        print(VerRolUsuario(texto1[1]))
                         if ExisteUsuario(texto1[1]):
 
                             if VerificarContraseña(texto1[1],texto2[1]):
@@ -1119,7 +1122,8 @@ while running:
 
                                 if chequeo_contraseña(texto3[1]) == "aprobado":
 
-                                    CrearActualizarUsuario(texto1[1] , texto2[1] , "" , "" , "" , texto3[1] , "" , "" , "" , "" , "")
+                                    CrearActualizarUsuario(texto1[1] , texto2[1] , "Cliente" , "" , "" , texto3[1], "" , "" , "" , "" , "" , "" , "")
+                                    usuario = texto1[1]
                                     fondo_actual[0] = "menu habitaciones"
                                     fondo_actual[1] = 6
                                     texto_ingresado = ""
@@ -1728,11 +1732,11 @@ while running:
 
                             if posicion_cuadrado_3[1] == 298:
                                 print("Piscina reservado")
-                                ContratarAmenities(usuario, "Piscina", (texto2[1],texto3[1]),texto1[1])
+                                ContratarAmenities(usuario, "PISCINA", (texto2[1],texto3[1]),texto1[1])
                             
                             if posicion_cuadrado_2[1] == 298:
                                 print("Gimnasio reservado")
-                                ContratarAmenities(usuario, "Gimnasio", (texto2[1],texto3[1]),texto1[1])
+                                ContratarAmenities(usuario, "GYM", (texto2[1],texto3[1]),texto1[1])
 
                             habitaciones_libres = Filtros((""),0,9999999999)
                             reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
@@ -1847,7 +1851,8 @@ while running:
 
                     elif mouse_pos[0] < 514 and mouse_pos[0] > 264 and mouse_pos[1] < 578 and mouse_pos[1] > 515: # enviar notificacion
                     
-                        pass
+                        
+                        AgregarNotificacion(texto1[1] , texto2[1] , texto3[1])
 
 
                     elif mouse_pos[0] < 630 and mouse_pos[0] > 148 and mouse_pos[1] < 318 and mouse_pos[1] > 264: # objeto a reponer
@@ -1931,13 +1936,15 @@ while running:
                         texto_seleccionado = [(-100,-100),""]
                         alter_usuario = not(alter_usuario)
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
-                        
-                        texto1[1] = datos_usuario["Nombre"] + " " + datos_usuario["Apellido"]
-                        texto2[1] = datos_usuario["Direccion"]
-                        texto3[1] = datos_usuario["NumeroTelefono"]
-                        texto4[1] = datos_usuario["Correo"]
-                        texto5[1] = datos_usuario["CodigoPostal"]
-                        texto6[1] = datos_usuario["DNI"]
+                        try:
+                            texto1[1] = datos_usuario["Nombre"] + " " + datos_usuario["Apellido"]
+                            texto2[1] = datos_usuario["Direccion"]
+                            texto3[1] = datos_usuario["NumeroTelefono"]
+                            texto4[1] = datos_usuario["Correo"]
+                            texto5[1] = datos_usuario["CodigoPostal"]
+                            texto6[1] = datos_usuario["DNI"]
+                        except:
+                            """"""
                                             
 
 
@@ -2050,7 +2057,7 @@ while running:
         if fondo_actual[0] == "iniciar sesion":
             texto1[0] = ( 467 , 487 )
             texto2[0] = ( 467 , 593 )
-            texto3[0] = ( 420 , 377 )
+            texto3[0] = ( 420 , 375 )
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))       
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
             screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )
@@ -2063,7 +2070,7 @@ while running:
             texto1[0] = ( 467 , 466 )
             texto2[0] = ( 467 , 543 )    
             texto3[0] = ( 467 , 620 ) 
-            texto4[0] = ( 415 , 378 )
+            texto4[0] = ( 250 , 375 )
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
             screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )  
             screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )
@@ -2173,8 +2180,11 @@ while running:
                 texto2[1] += str(VerNumeroEstacionamiento(usuario).pop(-1 - i))
                 if i != len(VerNumeroEstacionamiento(usuario) ) - 1:
                     texto2[1] += ","
+            if len(VerNumeroEstacionamiento(usuario)) == 0:
+                texto2[1] = "-"
 
             for i in range(1,4):
+                print(TieneServicio(usuario))
                 if TieneServicio(usuario)[i-1][0]:
                     pygame.draw.rect(screen, (98,69,49) , ( 351 + 306 * ( i - 1 ) ,   496 , 41 , 41 )) #310
 
@@ -2184,8 +2194,8 @@ while running:
                 texto3[1] = str(VerFechaFinal((VerNumeroHabitacion(usuario).pop( -1 - pagina)))[0])
                 
             except:
-                reset_textos(texto1,texto3)
-
+                texto1[1] = "-"
+                texto3[1] = "---"
             
 
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
@@ -2334,7 +2344,9 @@ while running:
 
 
         elif fondo_actual[0] == "mantenimiento notificaciones":
-        
+            
+            VerNotificacion('1')
+
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
 
         elif fondo_actual[0] == "mantenimiento stock":
@@ -2424,4 +2436,3 @@ while running:
 
 
 pygame.quit()
-

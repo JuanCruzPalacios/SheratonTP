@@ -54,9 +54,9 @@ def TieneServicio(usuario):
             if contrataciones[i][0] == "SPA":
                 contr.append([True , contrataciones[i][1]])
                 n += 1
-
+            
         if n == 0:
-            contr.append(["False"])#
+            contr.append([False])
             
         n = 0
         
@@ -99,11 +99,8 @@ def VerFechaFinal(id_habitacion):
         return None
 
 def VerRolUsuario(usuario):
-    try:
-        contenido = LeerJson("Usuario.json")
-        return contenido[usuario]["Tipo"]
-    except:
-        """"""
+    contenido = LeerJson("Usuario.json")
+    return contenido[usuario]["Tipo"]
 
 def TieneHabitacion(usuario): 
     try:
@@ -141,7 +138,6 @@ def AgregarNotificacion(objeto , cantidad , habitacion):
 
         nueva_notificacion = {
             "Archivada": 0,
-            "Fijada": 0,
             "Objeto": objeto,
             "Cantidad": str(int(cantidad)),
             "Id_habitacion": str(int(habitacion)),
@@ -154,6 +150,7 @@ def AgregarNotificacion(objeto , cantidad , habitacion):
     
     except:
         """"""
+
 
 def VerNumeroHabitacion(cliente):
 
@@ -188,15 +185,27 @@ def VerNumeroEstacionamiento(cliente):
     contenido = LeerJson("Usuario.json")
     return contenido[cliente]["IdEstacionamiento"]
 
-def VerNotificacion(numero_de_notificacion):
-    numero_de_notificacion = str(numero_de_notificacion) 
+def VerNotificacion():
+    lista_notificaciones = []
     Notificaciones = LeerJson("Notificaciones.json")
 
-    try:
-        return Notificaciones[numero_de_notificacion]["Archivada"] , Notificaciones[numero_de_notificacion]["Fijada"] , Notificaciones[numero_de_notificacion]["Objeto"] , Notificaciones[numero_de_notificacion]["Cantidad"] , Notificaciones[numero_de_notificacion]["Id_habitacion"] ,Notificaciones[numero_de_notificacion]["FechaEnviada"]
-    except: 
-        print("No existe ninguna notificacion con ese numero.")
-        return False
+    for clave , valores in Notificaciones.items():
+
+        lista_aux = []
+
+
+        if str(Notificaciones[clave]["Archivada"]) == "0":
+            
+            lista_aux.append (Notificaciones[clave]["Objeto"])
+            lista_aux.append (Notificaciones[clave]["Cantidad"])
+            lista_notificaciones.append(lista_aux)
+
+    
+
+    return lista_notificaciones
+
+
+
 
 def VerificarContraseña(Usuario , contraseña): 
 
@@ -459,7 +468,7 @@ def ReservarEvento(precio,cliente,salon,asistentes,hora,dia,cantidad_personal,ma
     contenido[nueva_clave]["Usuario"] = cliente
     ActualizarJson("ContratacionEventos.json", contenido)
 
-def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal , Direccion ,Contrataciones ,IdEstacionamiento ,IdHabitacion):    
+def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal , IdContrataciones , IdHabitacion):    
     contenido_actual = LeerJson("Usuario.json")
 
     try: 
@@ -477,9 +486,7 @@ def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contrase
         "NumeroTelefono" : NumeroTelefono , 
         "NumeroDeCliente": nueva_clave , 
         "CodigoPostal" : CodigoPostal ,
-        "Direccion": Direccion,
-        "Contrataciones": Contrataciones, 
-        "IdEstacionamiento": IdEstacionamiento,
+        "IdContrataciones": IdContrataciones, 
         "IdHabitacion" : IdHabitacion
     }
 

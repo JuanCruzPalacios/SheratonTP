@@ -32,5 +32,15 @@
         "Estado": "No Vencido",
         "Precio": "total: 150",
         "Usuario": ""
+    },
+    "3": {
+        "ServiciosContratados": "PISCINA",
+        "FechaContratada": [
+            "12/12/2024",
+            "13/12/2024"
+        ],
+        "Estado": "No Vencido",
+        "Precio": "total: 290",
+        "Usuario": ""
     }
-    }
+}

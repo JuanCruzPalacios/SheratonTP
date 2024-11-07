@@ -1112,7 +1112,7 @@ while running:
 
                                 if chequeo_contraseña(texto3[1]) == "aprobado":
 
-                                    CrearActualizarUsuario(texto1[1] , texto2[1] , "Cliente" , "" , "" , texto3[1] , "" , "" , "" , "" , "")
+                                    CrearActualizarUsuario(texto1[1] , texto2[1] , "Cliente" , "" , "" , texto3[1], "" , "" , "" , "" , "" , "" , "")
                                     usuario = texto1[1]
                                     fondo_actual[0] = "menu habitaciones"
                                     fondo_actual[1] = 6

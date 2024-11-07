@@ -80,11 +80,45 @@
             [
                 "SPA",
                 "2"
+            ],
+            [
+                "PISCINA",
+                "3"
             ]
         ],
         "IdEstacionamiento": [],
         "IdHabitacion": [
             3
         ]
+    },
+    "nico": {
+        "Correo": "nico",
+        "Tipo": "Cliente",
+        "Nombre": "",
+        "Apellido": "",
+        "Password": "wdsawdsa123@",
+        "DNI": "",
+        "NumeroTelefono": "",
+        "NumeroDeCliente": "5",
+        "CodigoPostal": "",
+        "Direccion": "",
+        "Contrataciones": "",
+        "IdEstacionamiento": "",
+        "IdHabitacion": ""
+    },
+    "nico2": {
+        "Correo": "nico2",
+        "Tipo": "Cliente",
+        "Nombre": "",
+        "Apellido": "",
+        "Password": "nico@123",
+        "DNI": "",
+        "NumeroTelefono": "",
+        "NumeroDeCliente": "6",
+        "CodigoPostal": "",
+        "Direccion": "",
+        "Contrataciones": "",
+        "IdEstacionamiento": "",
+        "IdHabitacion": ""
     }
 }

@@ -198,6 +198,10 @@ def VerNotificacion():
             lista_aux.append (Notificaciones[clave]["Objeto"])
             lista_aux.append (Notificaciones[clave]["Cantidad"])
             lista_notificaciones.append(lista_aux)
+        
+        if len (lista_notificaciones) > 4:
+
+            lista_notificaciones = lista_notificaciones.pop(0)
 
     
 

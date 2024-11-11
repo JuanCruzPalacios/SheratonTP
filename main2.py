@@ -151,6 +151,8 @@ texto6 = [(0,0), ""]
 texto7 = [(0,0), ""]
 texto8 = [(0,0), ""]
 
+gracias = False
+
 barra = "|"
 
 posicion = 150
@@ -181,7 +183,7 @@ def reset_textos(*textos):
 
 
 
-def cursor(mouse_pos,alter_usuario):
+def cursor(mouse_pos,alter_usuario , gracias):
     
 
     if fondo_actual[0] == "iniciar sesion":
@@ -233,36 +235,49 @@ def cursor(mouse_pos,alter_usuario):
 
     elif fondo_actual[0] == "menu habitaciones":
 
+        if gracias == False:
+
+            if mouse_pos[0] < 282 and mouse_pos[0] > 185 and mouse_pos[1] < 302 and mouse_pos[1] > 267:#personas        
+                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
 
-        if mouse_pos[0] < 282 and mouse_pos[0] > 185 and mouse_pos[1] < 302 and mouse_pos[1] > 267:#personas        
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+            elif mouse_pos[0] < 142 and mouse_pos[0] > 46 and mouse_pos[1] < 450 and mouse_pos[1] > 415:#precio "desde"
+                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
 
-        elif mouse_pos[0] < 142 and mouse_pos[0] > 46 and mouse_pos[1] < 450 and mouse_pos[1] > 415:#precio "desde"
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+            elif mouse_pos[0] < 284 and mouse_pos[0] > 185 and mouse_pos[1] < 450 and mouse_pos[1] > 416:#precio "hasta"
+                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
 
-        elif mouse_pos[0] < 284 and mouse_pos[0] > 185 and mouse_pos[1] < 450 and mouse_pos[1] > 416:#precio "hasta"
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
+            elif mouse_pos[0] < 253 and mouse_pos[0] > 76 and mouse_pos[1] < 561 and mouse_pos[1] > 525:#buscar
+                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
 
-        elif mouse_pos[0] < 253 and mouse_pos[0] > 76 and mouse_pos[1] < 561 and mouse_pos[1] > 525:#buscar
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+            elif mouse_pos[0] < 253 and mouse_pos[0] > 76 and mouse_pos[1] < 512 and mouse_pos[1] > 475:#restablecer
+                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
+            else:
+                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+            
 
-        elif mouse_pos[0] < 253 and mouse_pos[0] > 76 and mouse_pos[1] < 512 and mouse_pos[1] > 475:#restablecer
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-
+            for i in rects:
+                if i[0].collidepoint(mouse_pos):
+                    if not(mouse_pos[0] < 1280 and mouse_pos[0] > 0 and mouse_pos[1] < 125 and mouse_pos[1] > 0): #-----> habitaciones
+                        if not(mouse_pos[0] < 1275 and mouse_pos[0] > 962 and mouse_pos[1] < 519 and mouse_pos[1] > 131) or alter_usuario == False:
+                            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
         else:
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
 
-        for i in rects:
-            if i[0].collidepoint(mouse_pos):
-                if not(mouse_pos[0] < 1280 and mouse_pos[0] > 0 and mouse_pos[1] < 125 and mouse_pos[1] > 0): #-----> habitaciones
-                    if not(mouse_pos[0] < 1275 and mouse_pos[0] > 962 and mouse_pos[1] < 519 and mouse_pos[1] > 131) or alter_usuario == False:
-                        pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+            if mouse_pos[0] < 1130 and mouse_pos[0] > 898 and mouse_pos[1] < 664 and mouse_pos[1] > 598:#continuar
+                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+            else:
+                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
+
+        
         
        
         
@@ -669,6 +684,11 @@ def cursor(mouse_pos,alter_usuario):
         
         else:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
+
+
+
+    
 
 
     if fondo_actual[0] in ["habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar"]:
@@ -1163,7 +1183,7 @@ while running:
 
 
 
-                elif fondo_actual[0] == "menu habitaciones" and alter_mouse == False:
+                elif fondo_actual[0] == "menu habitaciones" and alter_mouse == False and gracias == False:
                     
                     
 
@@ -1389,6 +1409,7 @@ while running:
                                 if posicion_cuadrado_reserva == ( 877, 413, 41 , 41 ):       
                                     alter_mouse = True                         
                                     fondo_actual[0] = "menu habitaciones"
+                                    gracias = True
                                     texto_seleccionado = [(-100,-100),""]
                                     reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
 
@@ -1436,6 +1457,7 @@ while running:
                                 if posicion_cuadrado_reserva == ( 877, 413, 41 , 41 ):       
                                     alter_mouse = True                         
                                     fondo_actual[0] = "menu habitaciones"
+                                    gracias = True
                                     texto_seleccionado = [(-100,-100),""]
                                     reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
 
@@ -1719,6 +1741,7 @@ while running:
                             print ("Pago habitacion con mercado pago")
                             alter_mouse = True
                             fondo_actual[0] = "menu habitaciones"
+                            gracias = True
                             texto_seleccionado = [(-100,-100),""]
                             MarcarReservacionHabitacion(usuario, servicio_pagar , texto2[1] , texto3[1])
                             habitaciones_libres = Filtros((""),0,9999999999)
@@ -1734,6 +1757,7 @@ while running:
                             print("Pago un amenitie con mercado pago")
                             alter_mouse = True
                             fondo_actual[0] = "menu habitaciones"
+                            gracias = True
                             texto_seleccionado = [(-100,-100),""]
                             
 
@@ -1809,6 +1833,7 @@ while running:
                     elif mouse_pos[0] < 1128 and mouse_pos[0] > 906 and mouse_pos[1] < 665 and mouse_pos[1] > 605: #Pagar
                         alter_mouse = True
                         fondo_actual[0] = "menu habitaciones"
+                        gracias = True
                         texto_seleccionado = [(-100,-100),""]
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
 
@@ -1969,8 +1994,12 @@ while running:
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         
 
+                if gracias == True:
 
+                    if mouse_pos[0] < 1130 and mouse_pos[0] > 898 and mouse_pos[1] < 664 and mouse_pos[1] > 598:#continuar
+                        gracias = False
 
+        
 
                 if fondo_actual[0] in ["pagar tarjeta","pagar mercado pago","registros","pagar servicio","habitacion balcon", "habitacion triple", "habitacion doble", "habitacion lujo", "habitacion cuadruple", "suite rio", "habitacion individual", "suite jacuzzi", "suite estandar", "datos usuario", "menu parking", "menu bedroom", "menu habitaciones", "menu amenities", "reservar eventos", "ver datos"]:
 
@@ -1981,6 +2010,7 @@ while running:
                         fondo_actual[0] = "menu habitaciones"
                         fondo_actual[1] = 6
                         texto_seleccionado = [(-100,-100),""]
+                        gracias = False
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         
                         
@@ -1991,6 +2021,7 @@ while running:
                         fondo_actual[0] = "menu parking"
                         fondo_actual[1] = 2
                         texto_seleccionado = [(-100,-100),""]
+                        gracias = False
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         pagina = 0
                         
@@ -2001,6 +2032,7 @@ while running:
                         fondo_actual[0] = "menu bedroom"
                         fondo_actual[1] = 3
                         texto_seleccionado = [(-100,-100),""]
+                        gracias = False
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         pagina = 0
                         
@@ -2012,6 +2044,7 @@ while running:
                         fondo_actual[0] = "menu amenities"
                         fondo_actual[1] = 7
                         texto_seleccionado = [(-100,-100),""]
+                        gracias = False
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         
                     
@@ -2019,6 +2052,7 @@ while running:
 
                     elif mouse_pos[0] < 1220 and mouse_pos[0] > 1140 and mouse_pos[1] < 90 and mouse_pos[1] > 18:#boton usuario
                         alter_usuario = not(alter_usuario)
+                        gracias = False
                         
                         
                         
@@ -2058,7 +2092,7 @@ while running:
                 barra = texto_seleccionado[1]
         
         
-    cursor(mouse_pos,alter_usuario)
+    cursor(mouse_pos,alter_usuario , gracias)
 
 
     #fondos :)
@@ -2075,6 +2109,8 @@ while running:
             screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )
             screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )
             screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
+
+            
 
         
         elif fondo_actual[0] == "registrarse":
@@ -2128,6 +2164,11 @@ while running:
             screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )  
             screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )   
             screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
+
+
+            if gracias == True:
+
+                screen.blit(fondo_gracias , ( 0 , 0))
 
 
         elif fondo_actual[0] == "menu parking":
@@ -2360,9 +2401,65 @@ while running:
 
         elif fondo_actual[0] == "mantenimiento notificaciones":
             
-            VerNotificacion()
 
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+
+            
+            for i in range (1 , 5):
+
+                if i <= len (VerNotificacion()):
+
+                    screen.blit (notificiaciones_mantenimiento , (562 , 145 * i))
+
+                
+
+
+            texto1[0] = (578 , 145)
+            texto1[1] = VerNotificacion() [0][0]
+
+            texto2[0] = (980 , 145)
+            texto2[1] = VerNotificacion() [0][1]
+
+
+
+            texto3[0] = (578 , 290)
+            texto3[1] = VerNotificacion() [0][0]
+
+            texto4[0] = (980 , 290)
+            texto4[1] = VerNotificacion() [0][1]
+        
+
+            texto5[0] = (578 , 145 * 3)
+            texto5[1] = VerNotificacion() [2][0]
+
+            texto6[0] = (980 , 145 * 3)
+            texto6[1] = VerNotificacion() [2][1]
+        
+
+
+            texto7[0] = (578 , 145 * 4)
+            texto7[1] = VerNotificacion() [3][0]
+
+            texto8[0] = (980 , 145 * 4)
+            texto8[1] = VerNotificacion() [3][1]
+
+
+
+
+
+            screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
+            screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )
+            screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )
+            screen.blit( fuente.render(texto4[1] , True , (0,0,0) ), texto1[0] )
+            screen.blit( fuente.render(texto5[1] , True , (0,0,0) ), texto2[0] )
+            screen.blit( fuente.render(texto6[1] , True , (0,0,0) ), texto3[0] )
+            screen.blit( fuente.render(texto7[1] , True , (0,0,0) ), texto1[0] )
+            screen.blit( fuente.render(texto8[1] , True , (0,0,0) ), texto2[0] )
+
+
+
+
+
 
         elif fondo_actual[0] == "mantenimiento stock":
 

@@ -7,9 +7,11 @@
         "ServiciosIncluidos": [
             ""
         ],
-        "EstadoActual": "",
-        "IdClienteOcupante": "",
-        "Fechas": [],
+        "EstadoActual": "", 
+        "IdClienteOcupante": "" ,
+        "Fechas": [
+
+        ],
         "Precio": 240,
         "RangoHuespedes": 2
     },
@@ -24,9 +26,11 @@
         "EstadoActual": [
             ""
         ],
-        "IdClienteOcupante": "",
+        "IdClienteOcupante":  ""
+        
+        ,
         "Fechas": [
-            ""
+
         ],
         "Precio": 255,
         "RangoHuespedes": 3
@@ -42,16 +46,16 @@
         "EstadoActual": [
             ""
         ],
-        "IdClienteOcupante": "",
+        "IdClienteOcupante":  "",
         "Fechas": [
-            ""
+
         ],
         "Precio": 200,
         "RangoHuespedes": 2
     },
     "habitacion_lujo": {
         "ID": 3,
-        "Ocupada": "Si",
+        "Ocupada": "No",
         "UltimaLimpieza": "19/09/2024",
         "Estado": "Ninguno",
         "ServiciosIncluidos": [
@@ -60,14 +64,9 @@
         "EstadoActual": [
             ""
         ],
-        "IdClienteOcupante": 4,
+        "IdClienteOcupante":  "",
         "Fechas": [
-            [
-                "10/10/2012"
-            ],
-            [
-                "10/10/2024"
-            ]
+
         ],
         "Precio": 410,
         "RangoHuespedes": 2
@@ -81,7 +80,7 @@
         "EstadoActual": "",
         "IdClienteOcupante": "",
         "Fechas": [
-            ""
+
         ],
         "Precio": 297,
         "RangoHuespedes": 4
@@ -113,7 +112,7 @@
         "EstadoActual": "",
         "IdClienteOcupante": "",
         "Fechas": [
-            ""
+
         ],
         "Precio": 180,
         "RangoHuespedes": 1
@@ -129,7 +128,7 @@
         "EstadoActual": "",
         "IdClienteOcupante": "",
         "Fechas": [
-            ""
+
         ],
         "Precio": 325,
         "RangoHuespedes": 2

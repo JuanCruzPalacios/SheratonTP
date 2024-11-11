@@ -6,5 +6,27 @@
         "Cantidad": "1",
         "Id_habitacion": "1",
         "FechaEnviada": "07/11/2024"
+    },
+    
+    "2": {
+        "Archivada": 0,
+        "Objeto": "objeto",
+        "Cantidad": "1",
+        "Id_habitacion": "1",
+        "FechaEnviada": "07/11/2024"
+    },
+    "3": {
+        "Archivada": 0,
+        "Objeto": "objeto",
+        "Cantidad": "1",
+        "Id_habitacion": "1",
+        "FechaEnviada": "07/11/2024"
+    },
+    "4": {
+        "Archivada": 0,
+        "Objeto": "objeto",
+        "Cantidad": "1",
+        "Id_habitacion": "1",
+        "FechaEnviada": "07/11/2024"
     }
 }

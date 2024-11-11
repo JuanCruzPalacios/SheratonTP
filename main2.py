@@ -128,12 +128,7 @@ fondos = [
     suite_jacuzzi,                     # 25
     suite_estandar,                    # 26
     fondo_registros,                   # 27
-<<<<<<< Updated upstream
     fondo_estacionamiento_final        # 28
-=======
-    notificiaciones_mantenimiento,     # 28
-    fondo_gracias                      # 29
->>>>>>> Stashed changes
 ]
 
 

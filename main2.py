@@ -290,30 +290,30 @@ def cursor(mouse_pos,alter_usuario , gracias):
 
     elif fondo_actual[0] == "menu parking":
 
-        if fondo_actual[1] == 28:
-
-            if mouse_pos[0] < 490 and mouse_pos[0] > 260 and mouse_pos[1] < 656 and mouse_pos[1] > 579: #ver registros        
-                            
-                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND) 
-                    
-
-            elif mouse_pos[0] < 757 and mouse_pos[0] > 522 and mouse_pos[1] < 656 and mouse_pos[1] > 579:#notificar ingreso        
-                            
-                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND) 
-                        
-
-            elif mouse_pos[0] < 1018 and mouse_pos[0] > 784 and mouse_pos[1] < 656 and mouse_pos[1] > 579:#cancelar reserva de parking        
-                            
-                pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND) 
-            
-
-        if mouse_pos[0] < 757 and mouse_pos[0] > 522 and mouse_pos[1] < 656 and mouse_pos[1] > 579:#Reservar        
+        if mouse_pos[0] < 757 and mouse_pos[0] > 522 and mouse_pos[1] < 656 and mouse_pos[1] > 579 and len(VerNumeroEstacionamiento(usuario)) == pagina:#Reservar        
                             
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND) 
+
+        if mouse_pos[0] < 490 and mouse_pos[0] > 260 and mouse_pos[1] < 656 and mouse_pos[1] > 579: #ver registros        
+                        
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND) 
+                
+
+        elif mouse_pos[0] < 757 and mouse_pos[0] > 522 and mouse_pos[1] < 656 and mouse_pos[1] > 579:#notificar ingreso        
+                        
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND) 
+                    
+
+        elif mouse_pos[0] < 1018 and mouse_pos[0] > 784 and mouse_pos[1] < 656 and mouse_pos[1] > 579:#cancelar reserva de parking        
+                        
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND) 
+        
+        
+       
             
 
         elif mouse_pos[0] < 1225 and mouse_pos[0] > 1130 and mouse_pos[1] < 462 and mouse_pos[1] > 306:#flecha derecha   
-            if len(VerNumeroEstacionamiento(usuario)) > 0: #abigail
+            if len(VerNumeroEstacionamiento(usuario)) > 0: 
                     if texto2[1] != (VerNumeroEstacionamiento(usuario).pop( 0 )) or pagina != (len(VerNumeroEstacionamiento(usuario))):
                         if pagina != (len(VerNumeroEstacionamiento(usuario))):
                             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
@@ -534,19 +534,19 @@ def cursor(mouse_pos,alter_usuario , gracias):
     
     elif fondo_actual[0] == "pagar tarjeta":
 
-        if mouse_pos[0] < 996 and mouse_pos[0] > 441 and mouse_pos[1] < 314 and mouse_pos[1] > 268: #Nombre del titular
+        if mouse_pos[0] < 1022 and mouse_pos[0] > 485 and mouse_pos[1] < 305 and mouse_pos[1] > 270: #Nombre del titular
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)
 
-        elif mouse_pos[0] < 996 and mouse_pos[0] > 441 and mouse_pos[1] < 379 and mouse_pos[1] > 335: #VOLVER
+        elif mouse_pos[0] < 1022 and mouse_pos[0] > 485 and mouse_pos[1] < 375 and mouse_pos[1] > 335: #Numero de tarjeta
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)    
 
-        elif mouse_pos[0] < 996 and mouse_pos[0] > 364 and mouse_pos[1] < 448 and mouse_pos[1] > 404: #Vencimiento
+        elif mouse_pos[0] < 1018 and mouse_pos[0] > 485 and mouse_pos[1] < 445 and mouse_pos[1] > 405: #Documento
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)  
 
-        elif mouse_pos[0] < 996 and mouse_pos[0] > 465 and mouse_pos[1] < 516 and mouse_pos[1] > 471: #Codigo de seguridad
+        elif mouse_pos[0] < 737 and mouse_pos[0] > 485 and mouse_pos[1] < 515 and mouse_pos[1] > 475: #Vencimiento
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)  
 
-        elif mouse_pos[0] < 996 and mouse_pos[0] > 486 and mouse_pos[1] < 584 and mouse_pos[1] > 542: #Documento
+        elif mouse_pos[0] < 740 and mouse_pos[0] > 483 and mouse_pos[1] < 584 and mouse_pos[1] > 542: #Codigo de seguridad
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_IBEAM)  
 
         elif mouse_pos[0] < 1128 and mouse_pos[0] > 906 and mouse_pos[1] < 665 and mouse_pos[1] > 605: #Pagar
@@ -1433,6 +1433,7 @@ while running:
                                 if posicion_cuadrado_reserva == ( 877, 413, 41 , 41 ):       
                                     alter_mouse = True                         
                                     fondo_actual[0] = "menu parking"
+                                    ReservarEstacionamiento(usuario, texto3[1])
                                     texto_seleccionado = [(-100,-100),""]
                                     reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
 
@@ -1645,50 +1646,54 @@ while running:
 
 
                 elif fondo_actual[0] == "menu parking":
-                    if mouse_pos[0] < 490 and mouse_pos[0] > 260 and mouse_pos[1] < 656 and mouse_pos[1] > 579 and alter_mouse == False: #ver registros        
-                        
-                        fondo_actual[0] = "registros"
-                        fondo_actual[1] = 27
-                        texto_seleccionado = [(-100,-100),""]
-                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
-                        alter_mouse = True
-                                
 
-                    elif mouse_pos[0] < 757 and mouse_pos[0] > 522 and mouse_pos[1] < 656 and mouse_pos[1] > 579 and alter_mouse == False:#notificar ingreso
-                        if fondo_actual[1] != 28:     
-                            if TieneEstacionamiento(usuario)[0]:          
-                                NotificarIngresoEgreso(VerNumeroEstacionamiento(usuario).pop( -1 - pagina )) 
-                            else: 
-                                print ("El usuario no tiene un estacionamiento del cual notificar ingreso/egreso.")
+                    if len(VerNumeroEstacionamiento(usuario) ) != pagina:   
+
+                        if mouse_pos[0] < 490 and mouse_pos[0] > 260 and mouse_pos[1] < 656 and mouse_pos[1] > 579 and alter_mouse == False: #ver registros        
+                            
+                            fondo_actual[0] = "registros"
+                            fondo_actual[1] = 27
+                            texto_seleccionado = [(-100,-100),""]
+                            reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                             alter_mouse = True
-                        else:
+                                    
+
+                        elif mouse_pos[0] < 757 and mouse_pos[0] > 522 and mouse_pos[1] < 656 and mouse_pos[1] > 579 and alter_mouse == False:#notificar ingreso
+                                        
+                            NotificarIngresoEgreso(VerNumeroEstacionamiento(usuario).pop( -1 - pagina )) 
+                            alter_mouse = True
+
+                            
+                                    
+
+                        elif mouse_pos[0] < 1018 and mouse_pos[0] > 784 and mouse_pos[1] < 656 and mouse_pos[1] > 579 and alter_mouse == False:#cancelar reserva de parking                 
+                            CancelarReservaEstacionamiento( usuario , VerNumeroEstacionamiento(usuario).pop( -1 - pagina ) )
+                            alter_mouse = True
+            
+                       
+                    else:            
+                        if mouse_pos[0] < 757 and mouse_pos[0] > 522 and mouse_pos[1] < 656 and mouse_pos[1] > 579 and alter_mouse == False: #ReservarEstacionamiento(usuario)
                             print ("Reservar estacionamiento")
                             servicio_pagar = "Estacionamiento" 
                             reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                             fondo_actual[0] = "pagar servicio"
                             fondo_actual[1] = 5
-                            #ReservarEstacionamiento(usuario)
-                                
+                            alter_mouse = True
 
-                    elif mouse_pos[0] < 1018 and mouse_pos[0] > 784 and mouse_pos[1] < 656 and mouse_pos[1] > 579 and alter_mouse == False:#cancelar reserva de parking        
-                        if TieneEstacionamiento(usuario)[0]:           
-                            CancelarReservaEstacionamiento( usuario , VerNumeroEstacionamiento(usuario).pop( -1 - pagina ) )
-                        else: 
-                            print ("El usuario no tiene un estacionamiento del cual cancelar la reserva.")
-                        alter_mouse = True
-        
-                    elif mouse_pos[0] < 1225 and mouse_pos[0] > 1130 and mouse_pos[1] < 462 and mouse_pos[1] > 306 and alter_mouse == False:#flecha derecha   
-                        if len(VerNumeroEstacionamiento(usuario)) > 0: #abigail
+
+                    if mouse_pos[0] < 1225 and mouse_pos[0] > 1130 and mouse_pos[1] < 462 and mouse_pos[1] > 306 and alter_mouse == False:#flecha derecha   
+                        if len(VerNumeroEstacionamiento(usuario)) > 0: 
                             if texto2[1] != (VerNumeroEstacionamiento(usuario).pop( 0 )) or pagina != (len(VerNumeroEstacionamiento(usuario))):
                                 if pagina != (len(VerNumeroEstacionamiento(usuario))):
                                     pagina += 1
                                     alter_mouse = True
 
 
-                    elif mouse_pos[0] < 149 and mouse_pos[0] > 55 and mouse_pos[1] < 467 and mouse_pos[1] > 309 and alter_mouse == False:#flecha izquierda  
+                    if mouse_pos[0] < 149 and mouse_pos[0] > 55 and mouse_pos[1] < 467 and mouse_pos[1] > 309 and alter_mouse == False:#flecha izquierda  
                         if len(VerNumeroEstacionamiento(usuario)) > 0 and texto2[1] != VerNumeroEstacionamiento(usuario).pop( -1 ):    
                             pagina -= 1
                             alter_mouse = True
+                    
 
                 
                 elif fondo_actual[0] == "menu mantenimiento" and alter_mouse == False:
@@ -1790,45 +1795,47 @@ while running:
 
                 elif fondo_actual[0] == "pagar tarjeta" and alter_mouse == False:
 
-                    if mouse_pos[0] < 996 and mouse_pos[0] > 441 and mouse_pos[1] < 314 and mouse_pos[1] > 268: #Nombre del titular
+                    if mouse_pos[0] < 1022 and mouse_pos[0] > 485 and mouse_pos[1] < 305 and mouse_pos[1] > 270: #Nombre del titular
                         alter_mouse = True
                         texto_ingresado = texto1[1]
                         texto_seleccionado = texto1 #Usuario / iniciar sesion   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 28
+                        limite = 27
 
-                    elif mouse_pos[0] < 996 and mouse_pos[0] > 441 and mouse_pos[1] < 379 and mouse_pos[1] > 335: #VOLVER
+                    elif mouse_pos[0] < 1022 and mouse_pos[0] > 485 and mouse_pos[1] < 375 and mouse_pos[1] > 335: #Numero de tarjeta
                         alter_mouse = True
                         texto_ingresado = texto2[1]
                         texto_seleccionado = texto2 #Usuario / iniciar sesion   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 28   
+                        limite = 20 
 
-                    elif mouse_pos[0] < 996 and mouse_pos[0] > 364 and mouse_pos[1] < 448 and mouse_pos[1] > 404: #Vencimiento
+                
+                    elif mouse_pos[0] < 1018 and mouse_pos[0] > 485 and mouse_pos[1] < 445 and mouse_pos[1] > 405: #Documento
                         alter_mouse = True
                         texto_ingresado = texto3[1]
                         texto_seleccionado = texto3 #Usuario / iniciar sesion   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 32 
+                        limite = 8
 
-                    elif mouse_pos[0] < 996 and mouse_pos[0] > 465 and mouse_pos[1] < 516 and mouse_pos[1] > 471: #Codigo de seguridad
+                    
+                    elif mouse_pos[0] < 737 and mouse_pos[0] > 485 and mouse_pos[1] < 515 and mouse_pos[1] > 475: #Vencimiento
                         alter_mouse = True
                         texto_ingresado = texto4[1]
                         texto_seleccionado = texto4 #Usuario / iniciar sesion   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 27  
+                        limite = 8 
 
-                    elif mouse_pos[0] < 996 and mouse_pos[0] > 486 and mouse_pos[1] < 584 and mouse_pos[1] > 542: #Documento
+                    elif mouse_pos[0] < 740 and mouse_pos[0] > 483 and mouse_pos[1] < 584 and mouse_pos[1] > 542: #Codigo de seguridad
                         alter_mouse = True
                         texto_ingresado = texto5[1]
                         texto_seleccionado = texto5 #Usuario / iniciar sesion   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 25  
+                        limite = 3 
 
                     elif mouse_pos[0] < 1128 and mouse_pos[0] > 906 and mouse_pos[1] < 665 and mouse_pos[1] > 605: #Pagar
                         alter_mouse = True
@@ -2480,11 +2487,11 @@ while running:
 
         elif fondo_actual[0] == "pagar tarjeta":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
-            texto1[0] = (448, 271)
-            texto2[0] = (448, 340)
-            texto3[0] = (372, 409)
-            texto4[0] = (471, 476)
-            texto5[0] = (494, 544)
+            texto1[0] = (489, 271)
+            texto2[0] = (489, 340)
+            texto3[0] = (489, 409)
+            texto4[0] = (489, 476)
+            texto5[0] = (489, 544)
             screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
             screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
             screen.blit(fuente.render(texto2[1], True, (0, 0, 0)), texto2[0])

@@ -2385,40 +2385,41 @@ while running:
     
             try:
                 
-                texto1[0] = (287 , 320 * 1)
-                texto1[1] = VerRegistrosEstacionamiento (usuario) [0] [0] + "       " + VerRegistrosEstacionamiento (usuario) [1] [0]
+                texto1[0] = (285 , 320)
+                texto1[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [0] [0] + " ; " + VerRegistrosEstacionamiento (usuario , pagina) [0] [0] [1])
 
 
-                texto2[0] = (287, 320 * 2)
-                texto2[1] = VerRegistrosEstacionamiento (usuario) [0] [1] + "       " + VerRegistrosEstacionamiento (usuario) [1] [1]
+                texto2[0] = (287, 350)
+                texto2[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [1] [0])
 
 
-                texto3[0] = (287, 320 * 3)
-                texto3[1] = VerRegistrosEstacionamiento (usuario) [0] [2] + "       " + VerRegistrosEstacionamiento (usuario) [1] [2]
+                texto3[0] = (287, 370)
+                texto3[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [2] [0])
 
 
-                texto4[0] = (287, 320 * 4)
-                texto4[1] = VerRegistrosEstacionamiento (usuario) [0] [3] + "       " + VerRegistrosEstacionamiento (usuario) [1] [3]
+                texto4[0] = (287, 320 + 40 * 4)
+                texto4[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [3] [0])
 
 
-                texto5[0] = (287, 320 * 5)
-                texto5[1] = VerRegistrosEstacionamiento (usuario) [0] [4] + "       " + VerRegistrosEstacionamiento (usuario) [1] [4]
+                texto5[0] = (287, 320 + 40 * 5)
+                texto5[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [4] [0])
 
 
-                texto6[0] = (287, 320 * 6)
-                texto6[1] = VerRegistrosEstacionamiento (usuario) [0] [5] + "       " + VerRegistrosEstacionamiento (usuario) [1] [5]
+                texto6[0] = (287, 320 + 40 * 6)
+                texto6[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [5] [0])
 
 
                 texto7[0] = (287, 320 * 7)
-                texto7[1] = VerRegistrosEstacionamiento (usuario) [0] [6] + "       " + VerRegistrosEstacionamiento (usuario) [1] [6]
+                texto7[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [6] [0])
 
 
                 texto8[0] = (287, 320 * 8)
-                texto8[1] = VerRegistrosEstacionamiento (usuario) [0] [7] + "       " + VerRegistrosEstacionamiento (usuario) [1] [7]
+                texto8[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [7] [0])
 
 
 
             except:
+
                 """"""
 
             screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])

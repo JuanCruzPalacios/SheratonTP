@@ -197,11 +197,13 @@ def VerNotificacion():
             
             lista_aux.append (Notificaciones[clave]["Objeto"])
             lista_aux.append (Notificaciones[clave]["Cantidad"])
+            lista_aux.append (clave)
             lista_notificaciones.append(lista_aux)
         
         if len (lista_notificaciones) > 4:
 
             lista_notificaciones = lista_notificaciones.pop(0)
+        
 
     
 
@@ -556,7 +558,7 @@ def CalcularPrecioAmenities(dia_inicio,dia_final,cantidad_amenities):
     return precio_final
 
 def CalcularPrecioEstacionamiento(dia_inicio , dia_final):
-    precio_final = 4*diferencia_dias(dia_inicio,dia_final)
+    precio_final = 15*diferencia_dias(dia_inicio,dia_final)
     print("Precio final: " , precio_final)
     return precio_final
 
@@ -795,5 +797,20 @@ def ChequearDatosTarjeta(numero_tarjeta,vencimiento,codigo):
     else:
         chequeadormaximo.append(1)
     
-    return chequeadormaximo
-        
+    return True
+
+def PedirLimpieza(numero_habitacion): 
+    habitaciones = LeerJson("habitaciones.json")
+    try: 
+        for habitacion in habitaciones: 
+            if habitaciones[habitacion]["ID"] == numero_habitacion: 
+                break
+        fecha_actual = datetime.now()
+        fecha_actual = datetime.strftime(fecha_actual , "%d/%m/%Y")
+        habitaciones[habitacion]["UltimaLimpieza"] = fecha_actual
+        ActualizarJson("habitaciones.json" , habitaciones)
+    except Exception as e:
+        print ("Error al solicitar limpieza")
+        print(f"Se ha producido un error: {type(e).__name__}")
+
+

@@ -2,7 +2,7 @@
     "pepe": {
         "Correo": "pepito123@gmail.com",
         "Tipo": "Cliente",
-        "Nombre": "Pepe",
+        "Nombre": "pepe",
         "Apellido": "Palacios",
         "Password": "pepito123",
         "DNI": "47873319",
@@ -34,7 +34,7 @@
     "marco": {
         "Correo": "marco123@gmail.com",
         "Tipo": "Mantenimiento",
-        "Nombre": "Marco",
+        "Nombre": "marco",
         "Apellido": "Ougust",
         "Password": "marco123",
         "DNI": "48696969",
@@ -49,7 +49,7 @@
     "ezequiel": {
         "Correo": "ezequiel123@gmail.com",
         "Tipo": "Recepcionista",
-        "Nombre": "Ezequiel",
+        "Nombre": "ezequiel",
         "Apellido": "Lavezzi",
         "Password": "ezequiel123",
         "DNI": "48116344",
@@ -87,8 +87,21 @@
             ]
         ],
         "IdEstacionamiento": [],
-        "IdHabitacion": [
-
-        ]
+        "IdHabitacion": []
+    },
+    "sigurd": {
+        "Correo": "sss",
+        "Tipo": "Cliente",
+        "Nombre": "sigurd",
+        "Apellido": " ",
+        "Password": "sigurd123",
+        "DNI": " ",
+        "NumeroTelefono": " ",
+        "NumeroDeCliente": "5",
+        "CodigoPostal": " ",
+        "Direccion": " ",
+        "Contrataciones": [],
+        "IdEstacionamiento": [],
+        "IdHabitacion": []
     }
 }

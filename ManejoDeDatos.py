@@ -483,8 +483,8 @@ def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contrase
 
     nuevo_usuario = {
         "Correo" : Correo , 
-        "Tipo" : Tipo,  
-        "Nombre" : Nombre ,
+        "Tipo" : "Cliente",  
+        "Nombre" : Usuario ,
         "Apellido" : Apellido , 
         "Password" : Contraseña , 
         "DNI" : DNI , 
@@ -528,7 +528,6 @@ def CancelarReservaEstacionamiento(usuario , id):
 def diferencia_dias(fecha1_str, fecha2_str):
     fecha1 = datetime.strptime(str(fecha1_str), '%d/%m/%Y')
     fecha2 = datetime.strptime(str(fecha2_str), '%d/%m/%Y')
-    print (fecha1 , fecha2)
     diferencia = (fecha2 - fecha1).days
     return int(diferencia)
   
@@ -588,33 +587,33 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
     contenido = LeerJson("Usuario.json")
     chequeadormaximo = []
     
-    if contenido[usuario]["Nombre"] == "":
+    if contenido[usuario]["Nombre"] == " ":
         contenido[usuario]["Nombre"] = Nombre
     elif Nombre != contenido[usuario]["Nombre"]:
          print("El nombre del usuario es incorrecto")
-         return False , "El nombre del usuario es incorrecto"
+         return False 
     else:
         chequeadormaximo.append(1)
     
-    if contenido[usuario]["Direccion"] == "":
+    if contenido[usuario]["Direccion"] == " ":
         
         contenido[usuario]["Direccion"] = direccion
     elif direccion != contenido[usuario]["Direccion"]:
          print("La direccion del usuario es incorrecto")
-         return False , "La direccion del usuario es incorrecto"
+         return False 
     else:
         chequeadormaximo.append(1)
     
     
-    if contenido[usuario]["Correo"] == "":
+    if contenido[usuario]["Correo"] == " ":
         contenido[usuario]["Correo"] = mail    
     elif mail != contenido[usuario]["Correo"]:
          print("El correo del usuario es incorrecto")
-         return False , "El correo del usuario es incorrecto"
+         return False 
     else:
         chequeadormaximo.append(1)
     
-    if contenido[usuario]["DNI"] == "":
+    if contenido[usuario]["DNI"] == " ":
 
         try:
 
@@ -629,12 +628,12 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
     
     elif dni != contenido[usuario]["DNI"]:
          print("El dni ingresado es incorrecto")
-         return False , "El dni ingresado es incorrecto"
+         return False 
     else:
         chequeadormaximo.append(1)
      
 
-    if contenido[usuario]["CodigoPostal"] == "":
+    if contenido[usuario]["CodigoPostal"] == " ":
 
         try:
 
@@ -647,11 +646,11 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
 
     elif codigo_postal != contenido[usuario]["CodigoPostal"]:
          print("El codigo postal ingresado es incorrecto")
-         return False , "El codigo postal ingresado es incorrecto"
+         return False
     else:
         chequeadormaximo.append(1)
      
-    if contenido[usuario]["NumeroTelefono"] == "":
+    if contenido[usuario]["NumeroTelefono"] == " ":
 
         try:
 
@@ -674,7 +673,7 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
 
     elif telefono != contenido[usuario]["NumeroTelefono"]:
         print("El numero ingresado es incorrecto")
-        return False , "El numero ingresado es incorrecto"
+        return False 
     else:
         chequeadormaximo.append(1)
     
@@ -682,29 +681,32 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
     try:
         fecha_actual = datetime.now()
         fecha_ingresada = dia1
-        fecha_ingresada = fecha_ingresada.datetime.strptime("%d/%m/%Y")
+        fecha_ingresada = datetime.strptime(dia1,"%d/%m/%Y")
+        print(fecha_ingresada)
         fecha_actual = fecha_actual.strftime("%d/%m/%Y")
-        fecha_ingresada = fecha_ingresada.strftime("%d/%m/%Y")
+        fecha_actual = datetime.strptime(fecha_actual,"%d/%m/%Y")
+        print(fecha_actual)
 
         if fecha_ingresada < fecha_actual:
             print("la fecha ya paso")
-            return False, "La fecha ya paso"
-    except :
-        print("error")
+            return False
+    except:
+       print("error")
+       print(TypeError)
         
     try: 
         if diferencia_dias(dia1,dia2) >= 1:
             chequeadormaximo.append(1)
         else:
             print("El periodo ingresado es invalido")
-            return False, "El periodo ingresado es invalido"
+            return False
     except:
         print("El formato de dias esta mal enviado")
-        return False, "El formato de dias esta mal enviado"
+        return False
 
     if chequeadormaximo == [1,1,1,1,1,1,1]:
         print("Los datos ingresados son correctos.")
-        return True, "Estaria todo okey a mi parecer"
+        return True
            
 def ChequearDatosReservaEventos(usuario,mail, hora1, hora2 , asistentes , personal , fecha):
     contenido = LeerJson("Usuario.json")

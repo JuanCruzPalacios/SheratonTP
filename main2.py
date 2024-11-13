@@ -1146,7 +1146,7 @@ while running:
 
                                     if chequeo_contraseña(texto3[1]) == "aprobado":
 
-                                        CrearActualizarUsuario(texto1[1] , texto2[1] , "Cliente" , " " , " " , texto3[1], " " , " " , " " , " " , " " , " " , " ")
+                                        CrearActualizarUsuario(texto1[1] , texto2[1] , "Cliente" , " " , " " , texto3[1], " " , " " , " " , " " )
                                         usuario = texto1[1]
                                         fondo_actual[0] = "menu habitaciones"
                                         fondo_actual[1] = 6
@@ -1401,7 +1401,7 @@ while running:
                     elif mouse_pos[0] < 528 and mouse_pos[0] > 307 and mouse_pos[1] < 670 and mouse_pos[1] > 615: #pagar
 
 
-                        if ChequearDatosUsuario(usuario,texto1[1],texto2[1], texto3[1], texto4[1], texto5[1], texto6[1], texto7[1], texto8[1])[0] != False:
+                        if ChequearDatosUsuario(usuario,texto1[1],texto2[1], texto3[1], texto4[1], texto5[1], texto6[1], texto7[1], texto8[1]) != False:
                             
                             
                             if servicio_pagar != "" and servicio_pagar != "Estacionamiento":

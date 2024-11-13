@@ -769,10 +769,37 @@ def ChequearDatosReservaEventos(usuario,mail, hora1, hora2 , asistentes , person
 
     return True
      
-def VerRegistrosEstacionamiento(id_estacionamiento):
-    id_estacionamiento = str(id_estacionamiento)
+def VerRegistrosEstacionamiento(usuario):
+
     contenido = LeerJson("Estacionamiento.json")
-    return contenido[id_estacionamiento]["UltimoIngreso"], contenido[id_estacionamiento]["UltimoEgreso"]
+
+    lista_ingreso = []
+    lista_egreso = []
+
+    
+
+    for clave , valores in contenido.items():
+
+        if contenido[clave]["Ocupante"] == usuario:
+
+            id_estacionamiento = clave
+
+    
+    try:
+
+        for i in range (0 , 8):
+
+            lista_ingreso.append (contenido[id_estacionamiento]["UltimoIngreso"] [len ( contenido[id_estacionamiento]["UltimoIngreso"] ) - i ])
+            
+            lista_egreso.append (contenido[id_estacionamiento]["UltimoEgreso"] [len ( contenido[id_estacionamiento]["UltimoEgreso"] ) - i ])
+
+    except:
+        """"""
+
+    
+
+
+    return lista_ingreso, lista_egreso
 
 def ChequearDatosTarjeta(numero_tarjeta,vencimiento,codigo):  
     chequeadormaximo = []

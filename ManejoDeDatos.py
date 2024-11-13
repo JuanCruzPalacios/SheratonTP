@@ -475,7 +475,7 @@ def ReservarEvento(precio,cliente,salon,asistentes,hora,dia,cantidad_personal,ma
     contenido[nueva_clave]["Usuario"] = cliente
     ActualizarJson("ContratacionEventos.json", contenido)
 
-def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal, Direccion):    
+def CrearActualizarUsuario(Usuario, Correo , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal, Direccion):    
     contenido_actual = LeerJson("Usuario.json")
 
     try: 
@@ -675,6 +675,7 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
 
     elif telefono != contenido[usuario]["NumeroTelefono"]:
         print("El numero ingresado es incorrecto")
+        ActualizarJson("Usuario.json" , contenido)
         return False 
     else:
         chequeadormaximo.append(1)

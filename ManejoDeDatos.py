@@ -782,10 +782,10 @@ def ChequearDatosTarjeta(numero_tarjeta,vencimiento,codigo):
      
     try:
         fecha_actual = datetime.now()
-        fecha_ingresada = datetime.strptime(vencimiento, "%m/%Y")
+        fecha_ingresada = datetime.strptime(vencimiento, "%m-%Y")
 
         if fecha_ingresada < fecha_actual:
-            return False, "La tarjeta vencio"
+           return False, "La tarjeta vencio"
         else:
             chequeadormaximo.append(1)
     except:

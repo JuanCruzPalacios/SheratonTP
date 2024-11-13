@@ -1841,11 +1841,15 @@ while running:
 
                     elif mouse_pos[0] < 1128 and mouse_pos[0] > 906 and mouse_pos[1] < 665 and mouse_pos[1] > 605: #Pagar
                         alter_mouse = True
-                        fondo_actual[0] = "menu habitaciones"
-                        gracias = True
-                        texto_seleccionado = [(-100,-100),""]
-                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
-
+                        print(ChequearDatosTarjeta (texto2[1],texto4[1],texto5[1]))
+                        if ChequearDatosTarjeta (texto2[1],texto4[1],texto5[1])[0] :
+                            #fondo_actual[0] = "menu habitaciones"
+                            #fondo_actual[1] = 6
+                            #gracias = True
+                            print("Yeye")
+                            texto_seleccionado = [(-100,-100),""]
+                            reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
+                        
 
 
                 elif fondo_actual[0] == "menu recepcionista":

@@ -2381,7 +2381,7 @@ while running:
 
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
 
-            texto1[0] = (200 , 330)
+            texto1[0] = (200 , 325)
             texto2[0] = (200 , 400)
             texto3[0] = (200 , 470)
             texto4[0] = (200 , 540)

@@ -794,4 +794,19 @@ def ChequearDatosTarjeta(numero_tarjeta,vencimiento,codigo):
         chequeadormaximo.append(1)
     
     return True
-        
+
+def PedirLimpieza(numero_habitacion): 
+    habitaciones = LeerJson("habitaciones.json")
+    try: 
+        for habitacion in habitaciones: 
+            if habitaciones[habitacion]["ID"] == numero_habitacion: 
+                break
+        fecha_actual = datetime.now()
+        fecha_actual = datetime.strftime(fecha_actual , "%d/%m/%Y")
+        habitaciones[habitacion]["UltimaLimpieza"] = fecha_actual
+        ActualizarJson("habitaciones.json" , habitaciones)
+    except Exception as e:
+        print ("Error al solicitar limpieza")
+        print(f"Se ha producido un error: {type(e).__name__}")
+
+

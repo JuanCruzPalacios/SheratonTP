@@ -1420,11 +1420,13 @@ while running:
                             
                             if servicio_pagar != "" and servicio_pagar != "Estacionamiento":
                                 print("reservando habitacion")
-                                if posicion_cuadrado_reserva == ( 877, 413, 41 , 41 ):       
+                                if posicion_cuadrado_reserva == ( 877, 413, 41 , 41 ):      
+
                                     alter_mouse = True                         
                                     fondo_actual[0] = "menu habitaciones"
                                     gracias = True
                                     texto_seleccionado = [(-100,-100),""]
+                                    MarcarReservacionHabitacion(usuario, servicio_pagar , texto2[1] , texto3[1])
                                     reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
 
                                 elif posicion_cuadrado_reserva == ( 960 , 490 , 41 , 41 ):
@@ -1774,6 +1776,7 @@ while running:
 
                     if mouse_pos[0] < 842 and mouse_pos[0] > 437 and mouse_pos[1] < 647 and mouse_pos[1] > 243: #QR
                         if servicio_pagar != "" and servicio_pagar != "Estacionamiento":
+
                             print ("Pago habitacion con mercado pago")
                             alter_mouse = True
                             fondo_actual[0] = "menu habitaciones"
@@ -1782,14 +1785,19 @@ while running:
                             MarcarReservacionHabitacion(usuario, servicio_pagar , texto2[1] , texto3[1])
                             habitaciones_libres = Filtros((""),0,9999999999)
                             reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+
                         elif servicio_pagar == "Estacionamiento": 
+
                             print ("Pago estacionamiento con mercado pago")
                             alter_mouse = True
                             fondo_actual[0] = "menu parking"
+                            fondo_actual[1] = 2
                             ReservarEstacionamiento(usuario , texto3[1])
                             texto_seleccionado = [(-100,-100),""]
                             reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
+
                         else:
+
                             print("Pago un amenitie con mercado pago")
                             alter_mouse = True
                             fondo_actual[0] = "menu habitaciones"
@@ -2032,10 +2040,11 @@ while running:
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         
 
-                if gracias == True:
+                if gracias == True and alter_mouse == False:
 
                     if mouse_pos[0] < 1130 and mouse_pos[0] > 898 and mouse_pos[1] < 664 and mouse_pos[1] > 598:#continuar
                         gracias = False
+                        alter_mouuse = True
 
         
 
@@ -2056,13 +2065,25 @@ while running:
 
 
                     elif mouse_pos[0] < 560 and mouse_pos[0] > 435 and mouse_pos[1] < 100 and mouse_pos[1] > 15 and fondo_actual != "menu parking" :#Parking
-                        fondo_actual[0] = "menu parking"
-                        fondo_actual[1] = 2
-                        texto_seleccionado = [(-100,-100),""]
-                        gracias = False
-                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
-                        pagina = 0
-                        
+                        print(len(VerNumeroEstacionamiento(usuario)) == 0)
+                        if len(VerNumeroEstacionamiento(usuario)) != 0:
+
+                            fondo_actual[0] = "menu parking"
+                            fondo_actual[1] = 2
+                            texto_seleccionado = [(-100,-100),""]
+                            gracias = False
+                            reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                            pagina = 0
+
+                        else:
+
+                            
+                            fondo_actual[0] = "menu parking"
+                            fondo_actual[1] = 28
+                            texto_seleccionado = [(-100,-100),""]
+                            gracias = False
+                            reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                            pagina = 0
 
 
 
@@ -2210,44 +2231,52 @@ while running:
 
 
         elif fondo_actual[0] == "menu parking":
-            #print (len(VerNumeroEstacionamiento(usuario)) , pagina)
+           
+            if pagina == len(VerNumeroEstacionamiento(usuario)):               
+                fondo_actual[1] = 28
+            else:
+                fondo_actual[1] = 2
+
             screen.blit (fondos[fondo_actual[1]] , (0, 0))
+
             if VerNumeroEstacionamiento(usuario) != False:
-                if len(VerNumeroEstacionamiento(usuario)) > 0: #abigail
+                if len(VerNumeroEstacionamiento(usuario)) > 0: 
                     if texto2[1] != (VerNumeroEstacionamiento(usuario).pop( 0 )) or pagina != (len(VerNumeroEstacionamiento(usuario))):
                         if pagina != (len(VerNumeroEstacionamiento(usuario))):
                             screen.blit (flecha_derecha , (1130 , 308) )
 
                 if len(VerNumeroEstacionamiento(usuario)) > 0 and texto2[1] != (VerNumeroEstacionamiento(usuario).pop( -1 )):
                     screen.blit (flecha_izquierda , (55, 308) )
-   
+
+            
+            texto1[0] = (375, 351)  
             texto2[0] = (822, 350) 
             texto3[0] = (535, 473)    
             reset_textos(texto1,texto2)
             
             try:
-
+                
                 for i in range(len(VerNumeroHabitacion(usuario))):
                     texto1[1] += str(VerNumeroHabitacion(usuario).pop(-1 - i))
-                    if i != len(VerNumeroHabitacion(usuario) - 1):
+                    if i != (len(VerNumeroHabitacion(usuario)) -1):
                         texto1[1] += ","    
                 
             except:
-                texto1[1] = "   -"
+                texto1[1] = " -"
                 
             
-            try:            
+            try:       
+
                 texto2[1] = str(VerNumeroEstacionamiento(usuario).pop( -1 - pagina))
                 texto3[1] = str(VencimientoEstacionamiento((VerNumeroEstacionamiento(usuario).pop( -1 - pagina))))
-                texto1[0] = (345, 351)  
-                fondo_actual[1] = 2
+                  
+                
 
             except:
+
                 texto2[1] = "-"
-                texto3[1] = "    ---"
-                fondo_actual[1] = 28
-                texto3[1] = ""
-                texto1[0] = (375, 351)  
+                texto3[1] = "    ---"                
+              
 
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
             screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )
@@ -2269,16 +2298,17 @@ while running:
                     screen.blit (flecha_izquierda , (55, 308) )
 
 
-            try:
-                for i in range(len(VerNumeroEstacionamiento(usuario))):
-                    texto2[1] += str(VerNumeroEstacionamiento(usuario).pop(-1 - i))
-                    if i != len(VerNumeroEstacionamiento(usuario) ) - 1:
-                        texto2[1] += ","
-            except:
+        
+            for i in range(len(VerNumeroEstacionamiento(usuario))):
+                texto2[1] += str(VerNumeroEstacionamiento(usuario).pop(-1 - i))
+                if i != len(VerNumeroEstacionamiento(usuario) ) - 1:
+                    texto2[1] += ","
+            if len(VerNumeroEstacionamiento(usuario)) == 0:
                 texto2[1] = "  -"
+            
 
             for i in range(1,4):
-                print(TieneServicio(usuario))
+                
                 if TieneServicio(usuario)[i-1][0]:
                     pygame.draw.rect(screen, (98,69,49) , ( 351 + 306 * ( i - 1 ) ,   496 , 41 , 41 )) #310
 
@@ -2521,9 +2551,9 @@ while running:
 
 
         elif fondo_actual[0] == "pagar mercado pago":
+
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
-            texto1[0] = (151, 298)
-    
+            texto1[0] = (164, 612)    
             screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
             screen.blit( fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
 

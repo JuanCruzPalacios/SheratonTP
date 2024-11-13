@@ -593,8 +593,8 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
     chequeadormaximo = []
     
     if contenido[usuario]["Nombre"] == " ":
-        contenido[usuario]["Nombre"] = Nombre
-        ActualizarJson("Usuario.json", contenido[usuario]["Nombre"])
+        contenido = contenido[usuario]["Nombre"] = Nombre
+        ActualizarJson("Usuario.json", contenido)
     elif Nombre != contenido[usuario]["Nombre"]:
          print("El nombre del usuario es incorrecto")
          return False 
@@ -602,8 +602,8 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         chequeadormaximo.append(1)
     
     if contenido[usuario]["Direccion"] == " ":
-        contenido[usuario]["Direccion"] = direccion
-        ActualizarJson("Usuario.json", contenido[usuario]["Direccion"])
+        contenido = contenido[usuario]["Direccion"] = direccion
+        ActualizarJson("Usuario.json", contenido)
     elif direccion != contenido[usuario]["Direccion"]:
          print("La direccion del usuario es incorrecto")
          return False 
@@ -612,8 +612,8 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
     
     
     if contenido[usuario]["Correo"] == " ":
-        contenido[usuario]["Correo"] = mail  
-        ActualizarJson("Usuario.json", contenido[usuario]["Correo"])  
+        contenido = contenido[usuario]["Correo"] = mail
+        ActualizarJson("Usuario.json", contenido)  
     elif mail != contenido[usuario]["Correo"]:
          print("El correo del usuario es incorrecto")
          return False 
@@ -627,7 +627,8 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
             if len(str(int(dni))) == 8 or len(int(dni)) == 1:
 
                 contenido[usuario]["DNI"] = dni 
-            ActualizarJson("Usuario.json", contenido[usuario]["DNI"])
+            contenido = contenido[usuario]["DNI"] = dni
+            ActualizarJson("Usuario.json", contenido)
         except:
             return "Error al cargar dni"
         
@@ -647,7 +648,8 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
             if len(str(int(codigo_postal))) == 4:
 
                 contenido[usuario]["CodigoPostal"] = codigo_postal 
-            ActualizarJson("Usuario.json", contenido[usuario]["CodigoPostal"])
+            contenido = contenido[usuario]["CodigoPostal"] = codigo_postal
+            ActualizarJson("Usuario.json", contenido)
         except:
             return "error al ingresar codigo postal"
 
@@ -672,7 +674,8 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
             
                     
                 contenido[usuario]["NumeroTelefono"] = telefono
-            ActualizarJson("Usuario.json", contenido[usuario]["NumeroTelefono"])
+            contenido = contenido[usuario]["NumeroTelefono"] = Nombre
+            ActualizarJson("Usuario.json", contenido)
         except:
             return "Error al ingresar telefono"
 

@@ -1880,10 +1880,9 @@ while running:
                         alter_mouse = True
                         print(ChequearDatosTarjeta (texto2[1],texto4[1],texto5[1]))
                         if ChequearDatosTarjeta (texto2[1],texto4[1],texto5[1])[0] :
-                            #fondo_actual[0] = "menu habitaciones"
-                            #fondo_actual[1] = 6
-                            #gracias = True
-                            print("Yeye")
+                            fondo_actual[0] = "menu habitaciones"
+                            fondo_actual[1] = 6
+                            gracias = True
                             texto_seleccionado = [(-100,-100),""]
                             reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
                         

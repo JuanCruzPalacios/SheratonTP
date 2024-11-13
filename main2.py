@@ -66,7 +66,6 @@ suite_jacuzzi_sola = pygame.image.load("imagenes/habitaciones_solas/8.jpg")
 suite_estandar_sola = pygame.image.load("imagenes/habitaciones_solas/9.jpg")
 
 flecha_derecha = pygame.image.load("imagenes/flecha_adelante.png")
-flecha_izquierda = pygame.transform.flip ( flecha_derecha , True , False ) 
 
 notificiaciones_mantenimiento = pygame.image.load("imagenes/notificacion_mantenimiento.jpg")
 fondo_gracias = pygame.image.load("imagenes/gracias.png")

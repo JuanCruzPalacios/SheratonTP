@@ -793,5 +793,5 @@ def ChequearDatosTarjeta(numero_tarjeta,vencimiento,codigo):
     else:
         chequeadormaximo.append(1)
     
-    return chequeadormaximo
+    return True
         

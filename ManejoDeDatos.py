@@ -627,7 +627,7 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
                 contenido[usuario]["DNI"] = dni 
 
         except:
-            """"""
+            return "Error al cargar dni"
         
     
     
@@ -647,7 +647,7 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
                 contenido[usuario]["CodigoPostal"] = codigo_postal 
 
         except:
-            """"""
+            return "error al ingresar codigo postal"
 
     elif codigo_postal != contenido[usuario]["CodigoPostal"]:
          print("El codigo postal ingresado es incorrecto")
@@ -672,7 +672,7 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
                 contenido[usuario]["NumeroTelefono"] = telefono
 
         except:
-            """"""
+            return "Error al ingresar telefono"
 
 
 
@@ -769,6 +769,8 @@ def ChequearDatosReservaEventos(usuario,mail, hora1, hora2 , asistentes , person
     
 
     return True
+     
+print(ChequearDatosUsuario("sigurd","sigurd","12/12/2024","12/12/2025","sss","sss","sss","sss","sss"))     
      
 def VerRegistrosEstacionamiento(usuario):
 

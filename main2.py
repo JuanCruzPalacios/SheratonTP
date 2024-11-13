@@ -572,10 +572,24 @@ def cursor(mouse_pos,alter_usuario , gracias):
 
     elif fondo_actual[0] == "mantenimiento notificaciones":
 
-        if mouse_pos[0] < 400 and mouse_pos[0] > 170 and mouse_pos[1] < 555 and mouse_pos[1] > 505: #archivadas
+        if mouse_pos[0] < 400 and mouse_pos[0] > 170 and mouse_pos[1] < 630 and mouse_pos[1] > 575: #volver
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-        elif mouse_pos[0] < 400 and mouse_pos[0] > 170 and mouse_pos[1] < 630 and mouse_pos[1] > 575: #volver
+
+        
+        elif len(VerNotificacion()) > 0 and mouse_pos[0] < 1105 and mouse_pos[0] > 1066 and mouse_pos[1] < 192 and mouse_pos[1] > 155: #boton 1
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+        elif len(VerNotificacion()) > 1 and mouse_pos[0] < 1105 and mouse_pos[0] > 1066 and mouse_pos[1] < 338 and mouse_pos[1] > 296: #boton 2
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+        elif len(VerNotificacion()) > 2 and mouse_pos[0] < 1105 and mouse_pos[0] > 1066 and mouse_pos[1] < 480 and mouse_pos[1] > 442: #boton 3
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+        elif len(VerNotificacion()) > 3 and mouse_pos[0] < 1105 and mouse_pos[0] > 1066 and mouse_pos[1] < 626 and mouse_pos[1] > 586: #boton 4
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+            
+
+
         
 
         else:
@@ -1724,11 +1738,28 @@ while running:
                 
 
                 elif fondo_actual[0] == "mantenimiento notificaciones":
+
                     if mouse_pos[0] < 400 and mouse_pos[0] > 170 and mouse_pos[1] < 630 and mouse_pos[1] > 575: #volver
 
                         fondo_actual[0] = "menu mantenimiento"
                         fondo_actual[1] = 10
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                    
+
+                    elif len(VerNotificacion()) > 0 and mouse_pos[0] < 1105 and mouse_pos[0] > 1066 and mouse_pos[1] < 192 and mouse_pos[1] > 155: #boton 1
+                        ArchivarDesarchivarNotificaciones(VerNotificacion()[0][2])
+                    
+                    elif len(VerNotificacion()) > 1 and mouse_pos[0] < 1105 and mouse_pos[0] > 1066 and mouse_pos[1] < 338 and mouse_pos[1] > 296: #boton 2
+                        ArchivarDesarchivarNotificaciones(VerNotificacion()[1][2])
+                    
+                    elif len(VerNotificacion()) > 2 and mouse_pos[0] < 1105 and mouse_pos[0] > 1066 and mouse_pos[1] < 480 and mouse_pos[1] > 442: #boton 3
+                        ArchivarDesarchivarNotificaciones(VerNotificacion()[2][2])
+                    
+                    elif len(VerNotificacion()) > 3 and mouse_pos[0] < 1105 and mouse_pos[0] > 1066 and mouse_pos[1] < 626 and mouse_pos[1] > 586: #boton 4
+                        ArchivarDesarchivarNotificaciones(VerNotificacion()[3][2])
+
+
+
 
 
                 elif fondo_actual[0] == "mantenimiento stock":
@@ -2387,7 +2418,7 @@ while running:
 
 
             
-            screen.blit (fondos[fondo_actual[1]] , (0 , 0))  
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0))
             screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
             screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
             screen.blit(fuente.render(texto2[1], True, (0, 0, 0)), texto2[0])
@@ -2403,7 +2434,7 @@ while running:
 
         elif fondo_actual[0] == "menu mantenimiento":
 
-            screen.blit (fondos[fondo_actual[1]] , (0 , 0))  
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0))
 
 
         elif fondo_actual[0] == "mantenimiento notificaciones":
@@ -2418,50 +2449,62 @@ while running:
 
                     screen.blit (notificiaciones_mantenimiento , (562 , 145 * i))
 
-                
 
 
-            texto1[0] = (578 , 145)
-            texto1[1] = VerNotificacion() [0][0]
-
-            texto2[0] = (980 , 145)
-            texto2[1] = VerNotificacion() [0][1]
-
-
-
-            texto3[0] = (578 , 290)
-            texto3[1] = VerNotificacion() [0][0]
-
-            texto4[0] = (980 , 290)
-            texto4[1] = VerNotificacion() [0][1]
         
+            try:
 
-            texto5[0] = (578 , 145 * 3)
-            texto5[1] = VerNotificacion() [2][0]
+                texto1[0] = (578 , 152)
+                texto1[1] = VerNotificacion() [0][0]
 
-            texto6[0] = (980 , 145 * 3)
-            texto6[1] = VerNotificacion() [2][1]
-        
-
-
-            texto7[0] = (578 , 145 * 4)
-            texto7[1] = VerNotificacion() [3][0]
-
-            texto8[0] = (980 , 145 * 4)
-            texto8[1] = VerNotificacion() [3][1]
+                texto2[0] = (986 , 152)
+                texto2[1] = VerNotificacion() [0][1]
 
 
 
+                texto3[0] = (578 , 297)
+                texto3[1] = VerNotificacion() [1][0]
+
+                texto4[0] = (986 , 297)
+                texto4[1] = VerNotificacion() [1][1]
+            
+
+                texto5[0] = (578 , 442)
+                texto5[1] = VerNotificacion() [2][0]
+
+                texto6[0] = (986 , 442)
+                texto6[1] = VerNotificacion() [2][1]
+            
 
 
-            screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
-            screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )
-            screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )
-            screen.blit( fuente.render(texto4[1] , True , (0,0,0) ), texto1[0] )
-            screen.blit( fuente.render(texto5[1] , True , (0,0,0) ), texto2[0] )
-            screen.blit( fuente.render(texto6[1] , True , (0,0,0) ), texto3[0] )
-            screen.blit( fuente.render(texto7[1] , True , (0,0,0) ), texto1[0] )
-            screen.blit( fuente.render(texto8[1] , True , (0,0,0) ), texto2[0] )
+                texto7[0] = (578 , 587)
+                texto7[1] = VerNotificacion() [3][0]
+
+                texto8[0] = (986 , 587)
+                texto8[1] = VerNotificacion() [3][1]
+            
+
+            except:
+                """"""
+
+
+
+            if len(VerNotificacion()) > 0:
+
+                screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
+                screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )
+            
+            if len(VerNotificacion()) > 1:
+                screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )
+                screen.blit( fuente.render(texto4[1] , True , (0,0,0) ), texto4[0] )
+            
+            if len(VerNotificacion()) > 2:
+                screen.blit( fuente.render(texto5[1] , True , (0,0,0) ), texto5[0] )
+                screen.blit( fuente.render(texto6[1] , True , (0,0,0) ), texto6[0] )
+            
+            if len(VerNotificacion()) > 3:
+                screen.blit( fuente.render(texto7[1] , True , (0,0,0) ), texto7[0] )
+                screen.blit( fuente.render(texto8[1] , True , (0,0,0) ), texto8[0] )
 
 
 

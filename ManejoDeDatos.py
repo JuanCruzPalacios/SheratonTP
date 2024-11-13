@@ -681,7 +681,8 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
 
     try:
         fecha_actual = datetime.now()
-        fecha_ingresada = datetime.strptime(dia1, "%d/%m/%Y")
+        fecha_ingresada = dia1
+        fecha_ingresada = fecha_ingresada.datetime.strptime("%d/%m/%Y")
         fecha_actual = fecha_actual.strftime("%d/%m/%Y")
         fecha_ingresada = fecha_ingresada.strftime("%d/%m/%Y")
 

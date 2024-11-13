@@ -1,23 +1,28 @@
 {
     "suite_balcon": {
         "ID": 0,
-        "Ocupada": "No",
+        "Ocupada": "Si",
         "UltimaLimpieza": "19/09/2024",
         "Estado": "Ninguno",
         "ServiciosIncluidos": [
             ""
         ],
-        "EstadoActual": "", 
-        "IdClienteOcupante": "" ,
+        "EstadoActual": "",
+        "IdClienteOcupante": 4,
         "Fechas": [
-
+            [
+                "12/12/2024"
+            ],
+            [
+                "15/12/2024"
+            ]
         ],
         "Precio": 240,
         "RangoHuespedes": 2
     },
     "habitacion_triple": {
         "ID": 1,
-        "Ocupada": "No",
+        "Ocupada": "Si",
         "UltimaLimpieza": "02/10/2024",
         "Estado": "No molestar",
         "ServiciosIncluidos": [
@@ -26,11 +31,14 @@
         "EstadoActual": [
             ""
         ],
-        "IdClienteOcupante":  ""
-        
-        ,
+        "IdClienteOcupante": 4,
         "Fechas": [
-
+            [
+                "12/12/2024"
+            ],
+            [
+                "15/12/2024"
+            ]
         ],
         "Precio": 255,
         "RangoHuespedes": 3
@@ -46,10 +54,8 @@
         "EstadoActual": [
             ""
         ],
-        "IdClienteOcupante":  "",
-        "Fechas": [
-
-        ],
+        "IdClienteOcupante": "",
+        "Fechas": [],
         "Precio": 200,
         "RangoHuespedes": 2
     },
@@ -64,10 +70,8 @@
         "EstadoActual": [
             ""
         ],
-        "IdClienteOcupante":  "",
-        "Fechas": [
-
-        ],
+        "IdClienteOcupante": "",
+        "Fechas": [],
         "Precio": 410,
         "RangoHuespedes": 2
     },
@@ -79,9 +83,7 @@
         "ServiciosIncluidos": [],
         "EstadoActual": "",
         "IdClienteOcupante": "",
-        "Fechas": [
-
-        ],
+        "Fechas": [],
         "Precio": 297,
         "RangoHuespedes": 4
     },
@@ -111,9 +113,7 @@
         ],
         "EstadoActual": "",
         "IdClienteOcupante": "",
-        "Fechas": [
-
-        ],
+        "Fechas": [],
         "Precio": 180,
         "RangoHuespedes": 1
     },
@@ -127,9 +127,7 @@
         ],
         "EstadoActual": "",
         "IdClienteOcupante": "",
-        "Fechas": [
-
-        ],
+        "Fechas": [],
         "Precio": 325,
         "RangoHuespedes": 2
     },

@@ -87,7 +87,10 @@
             ]
         ],
         "IdEstacionamiento": [],
-        "IdHabitacion": []
+        "IdHabitacion": [
+            0,
+            1
+        ]
     },
     "sigurd": {
         "Correo": "sss",

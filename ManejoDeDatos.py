@@ -771,9 +771,7 @@ def ChequearDatosReservaEventos(usuario,mail, hora1, hora2 , asistentes , person
     
 
     return True
-     
-print(ChequearDatosUsuario("sigurd","sigurd","12/12/2024","12/12/2025","sss","sss","sss","sss","sss"))     
-     
+          
 def VerRegistrosEstacionamiento(usuario):
 
     contenido = LeerJson("Estacionamiento.json")

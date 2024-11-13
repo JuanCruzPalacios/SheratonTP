@@ -1415,7 +1415,7 @@ while running:
                     elif mouse_pos[0] < 528 and mouse_pos[0] > 307 and mouse_pos[1] < 670 and mouse_pos[1] > 615: #pagar
 
 
-                        if ChequearDatosUsuario(usuario,texto1[1],texto2[1], texto3[1], texto4[1], texto5[1], texto6[1], texto7[1], texto8[1]) != False:
+                        if ChequearDatosUsuario(usuario,texto1[1],texto2[1], texto3[1], texto4[1], texto5[1], texto6[1], texto7[1], texto8[1]):
                             
                             
                             if servicio_pagar != "" and servicio_pagar != "Estacionamiento":
@@ -2308,7 +2308,7 @@ while running:
             
 
             for i in range(1,4):
-                
+                print(TieneServicio(usuario))
                 if TieneServicio(usuario)[i-1][0]:
                     pygame.draw.rect(screen, (98,69,49) , ( 351 + 306 * ( i - 1 ) ,   496 , 41 , 41 )) #310
 

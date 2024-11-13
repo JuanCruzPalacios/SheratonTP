@@ -484,7 +484,7 @@ def CrearActualizarUsuario(Usuario, Correo , Apellido , Contraseña , DNI , Nume
     try: 
         nueva_clave = contenido_actual[Usuario]["NumeroDeCliente"]
     except:
-        nueva_clave = str(len(contenido_actual)+1) 
+        nueva_clave = int(len(contenido_actual)+1) 
 
     nuevo_usuario = {
         "Correo" : Correo , 

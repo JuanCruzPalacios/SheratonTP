@@ -99,8 +99,11 @@ def VerFechaFinal(id_habitacion):
         return None
 
 def VerRolUsuario(usuario):
-    contenido = LeerJson("Usuario.json")
-    return contenido[usuario]["Tipo"]
+    try:
+        contenido = LeerJson("Usuario.json")
+        return contenido[usuario]["Tipo"]
+    except:
+        return "Error al detectar el tipo de usuario"
 
 def TieneHabitacion(usuario): 
     try:
@@ -685,10 +688,8 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         fecha_actual = datetime.now()
         fecha_ingresada = dia1
         fecha_ingresada = datetime.strptime(dia1,"%d/%m/%Y")
-        print(fecha_ingresada)
         fecha_actual = fecha_actual.strftime("%d/%m/%Y")
         fecha_actual = datetime.strptime(fecha_actual,"%d/%m/%Y")
-        print(fecha_actual)
 
         if fecha_ingresada < fecha_actual:
             print("la fecha ya paso")

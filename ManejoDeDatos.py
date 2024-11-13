@@ -675,6 +675,7 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
 
     elif telefono != contenido[usuario]["NumeroTelefono"]:
         print("El numero ingresado es incorrecto")
+        ActualizarJson("Usuario.json" , contenido)
         return False 
     else:
         chequeadormaximo.append(1)

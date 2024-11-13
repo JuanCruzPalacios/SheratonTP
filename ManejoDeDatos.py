@@ -557,7 +557,7 @@ def CalcularPrecioAmenities(dia_inicio,dia_final,cantidad_amenities):
     return precio_final
 
 def CalcularPrecioEstacionamiento(dia_inicio , dia_final):
-    precio_final = 4*diferencia_dias(dia_inicio,dia_final)
+    precio_final = 15*diferencia_dias(dia_inicio,dia_final)
     print("Precio final: " , precio_final)
     return precio_final
 

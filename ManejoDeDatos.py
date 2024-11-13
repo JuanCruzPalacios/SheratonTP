@@ -594,6 +594,7 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
     
     if contenido[usuario]["Nombre"] == " ":
         contenido[usuario]["Nombre"] = Nombre
+        ActualizarJson("Usuario.json", contenido[usuario]["Nombre"])
     elif Nombre != contenido[usuario]["Nombre"]:
          print("El nombre del usuario es incorrecto")
          return False 
@@ -601,8 +602,8 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         chequeadormaximo.append(1)
     
     if contenido[usuario]["Direccion"] == " ":
-        
         contenido[usuario]["Direccion"] = direccion
+        ActualizarJson("Usuario.json", contenido[usuario]["Direccion"])
     elif direccion != contenido[usuario]["Direccion"]:
          print("La direccion del usuario es incorrecto")
          return False 
@@ -611,7 +612,8 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
     
     
     if contenido[usuario]["Correo"] == " ":
-        contenido[usuario]["Correo"] = mail    
+        contenido[usuario]["Correo"] = mail  
+        ActualizarJson("Usuario.json", contenido[usuario]["Correo"])  
     elif mail != contenido[usuario]["Correo"]:
          print("El correo del usuario es incorrecto")
          return False 
@@ -625,7 +627,7 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
             if len(str(int(dni))) == 8 or len(int(dni)) == 1:
 
                 contenido[usuario]["DNI"] = dni 
-
+            ActualizarJson("Usuario.json", contenido[usuario]["DNI"])
         except:
             return "Error al cargar dni"
         
@@ -645,7 +647,7 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
             if len(str(int(codigo_postal))) == 4:
 
                 contenido[usuario]["CodigoPostal"] = codigo_postal 
-
+            ActualizarJson("Usuario.json", contenido[usuario]["CodigoPostal"])
         except:
             return "error al ingresar codigo postal"
 
@@ -667,10 +669,10 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
             
 
             if str(int(tel_aux)) == 13:
-
+            
                     
                 contenido[usuario]["NumeroTelefono"] = telefono
-
+            ActualizarJson("Usuario.json", contenido[usuario]["NumeroTelefono"])
         except:
             return "Error al ingresar telefono"
 
@@ -711,7 +713,7 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
     if chequeadormaximo == [1,1,1,1,1,1,1]:
         print("Los datos ingresados son correctos.")
         return True
-           
+        
 def ChequearDatosReservaEventos(usuario,mail, hora1, hora2 , asistentes , personal , fecha):
     contenido = LeerJson("Usuario.json")
     hora1_str = hora1  

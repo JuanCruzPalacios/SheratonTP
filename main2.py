@@ -2381,46 +2381,34 @@ while running:
 
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
 
+            texto1[0] = (200 , 330)
+            texto2[0] = (200 , 400)
+            texto3[0] = (200 , 470)
+            texto4[0] = (200 , 540)
+            texto5[0] = (200 , 610)
 
-    
+            texto1[1] = "         ---                      ---"
+            texto2[1] = "         ---                      ---"
+            texto3[1] = "         ---                      ---"
+            texto4[1] = "         ---                      ---"
+            texto5[1] = "         ---                      ---"
+  
+
             try:
+                          
+                texto1[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [0] [0] + " - " + VerRegistrosEstacionamiento (usuario , pagina) [0] [0] [1]) + "    " +str ( VerRegistrosEstacionamiento (usuario , pagina) [1] [0] [0] + " - " + VerRegistrosEstacionamiento (usuario , pagina) [1] [0] [1] )
                 
-                texto1[0] = (285 , 320)
-                texto1[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [0] [0] + " ; " + VerRegistrosEstacionamiento (usuario , pagina) [0] [0] [1])
-
-
-                texto2[0] = (287, 350)
-                texto2[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [1] [0])
-
-
-                texto3[0] = (287, 370)
-                texto3[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [2] [0])
-
-
-                texto4[0] = (287, 320 + 40 * 4)
-                texto4[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [3] [0])
-
-
-                texto5[0] = (287, 320 + 40 * 5)
-                texto5[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [4] [0])
-
-
-                texto6[0] = (287, 320 + 40 * 6)
-                texto6[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [5] [0])
-
-
-                texto7[0] = (287, 320 * 7)
-                texto7[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [6] [0])
-
-
-                texto8[0] = (287, 320 * 8)
-                texto8[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [7] [0])
-
-
+                texto2[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [1] [0] + " - " + VerRegistrosEstacionamiento (usuario , pagina) [0] [1] [1] + "    " +str ( VerRegistrosEstacionamiento (usuario , pagina) [1] [1] [0] + " - " + VerRegistrosEstacionamiento (usuario , pagina) [1] [1] [1] ))
+                
+                texto3[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [2] [0] + " - " + VerRegistrosEstacionamiento (usuario , pagina) [0] [2] [1] + "    " +str ( VerRegistrosEstacionamiento (usuario , pagina) [1] [2] [0] + " - " + VerRegistrosEstacionamiento (usuario , pagina) [1] [2] [1] ))
+          
+                texto4[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [3] [0] + " - " + VerRegistrosEstacionamiento (usuario , pagina) [0] [3] [1]) + "    " +str ( VerRegistrosEstacionamiento (usuario , pagina) [1] [3] [0] + " - " + VerRegistrosEstacionamiento (usuario , pagina) [1] [3] [1] )
+            
+                texto5[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [4] [0] + " - " + VerRegistrosEstacionamiento (usuario , pagina) [0] [4] [1]) + "    " +str ( VerRegistrosEstacionamiento (usuario , pagina) [1] [4] [0] + " - " + VerRegistrosEstacionamiento (usuario , pagina) [1] [4] [1] )
 
             except:
-
                 """"""
+                
 
             screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
             screen.blit(fuente.render(texto2[1], True, (0, 0, 0)), texto2[0])

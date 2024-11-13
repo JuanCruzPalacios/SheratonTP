@@ -700,7 +700,9 @@ def cursor(mouse_pos,alter_usuario , gracias):
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
 
+    elif fondo_actual[0] == "registros":
 
+        pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
     
 
@@ -876,7 +878,7 @@ while running:
                                 if chequeo_contraseña(texto3[1]) == "aprobado":
 
                                     usuario = texto1[1]
-                                    CrearActualizarUsuario(texto1[1] , texto2[1] , " " , " " , " " , texto3[1] , " " , " " , " " ," " )
+                                    CrearActualizarUsuario(texto1[1] , texto2[1] , " " , texto3[1] , " " , " " , " " ," " )
                                     fondo_actual[0] = "menu habitaciones"
                                     fondo_actual[1] = 6
                                     texto_seleccionado = [(-100,-100),""]
@@ -1160,7 +1162,7 @@ while running:
 
                                     if chequeo_contraseña(texto3[1]) == "aprobado":
 
-                                        CrearActualizarUsuario(texto1[1] , texto2[1] , "Cliente" , " " , " " , texto3[1], " " , " " , " " , " " )
+                                        CrearActualizarUsuario(texto1[1] , texto2[1]  , " " , texto3[1], " " , " " , " " , " " )
                                         usuario = texto1[1]
                                         fondo_actual[0] = "menu habitaciones"
                                         fondo_actual[1] = 6
@@ -1878,11 +1880,14 @@ while running:
 
                     elif mouse_pos[0] < 1128 and mouse_pos[0] > 906 and mouse_pos[1] < 665 and mouse_pos[1] > 605: #Pagar
                         alter_mouse = True
-                        fondo_actual[0] = "menu habitaciones"
-                        gracias = True
-                        texto_seleccionado = [(-100,-100),""]
-                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
-
+                        print(ChequearDatosTarjeta (texto2[1],texto4[1],texto5[1]))
+                        if ChequearDatosTarjeta (texto2[1],texto4[1],texto5[1])[0] :
+                            fondo_actual[0] = "menu habitaciones"
+                            fondo_actual[1] = 6
+                            gracias = True
+                            texto_seleccionado = [(-100,-100),""]
+                            reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
+                        
 
 
                 elif fondo_actual[0] == "menu recepcionista":
@@ -2357,7 +2362,69 @@ while running:
 
 
         elif fondo_actual[0] == "registros":
+
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
+
+
+    
+            try:
+                
+                texto1[0] = (287 , 320 * 1)
+                texto1[1] = VerRegistrosEstacionamiento (usuario) [0] [0] + "       " + VerRegistrosEstacionamiento (usuario) [1] [0]
+
+
+                texto2[0] = (287, 320 * 2)
+                texto2[1] = VerRegistrosEstacionamiento (usuario) [0] [1] + "       " + VerRegistrosEstacionamiento (usuario) [1] [1]
+
+
+                texto3[0] = (287, 320 * 3)
+                texto3[1] = VerRegistrosEstacionamiento (usuario) [0] [2] + "       " + VerRegistrosEstacionamiento (usuario) [1] [2]
+
+
+                texto4[0] = (287, 320 * 4)
+                texto4[1] = VerRegistrosEstacionamiento (usuario) [0] [3] + "       " + VerRegistrosEstacionamiento (usuario) [1] [3]
+
+
+                texto5[0] = (287, 320 * 5)
+                texto5[1] = VerRegistrosEstacionamiento (usuario) [0] [4] + "       " + VerRegistrosEstacionamiento (usuario) [1] [4]
+
+
+                texto6[0] = (287, 320 * 6)
+                texto6[1] = VerRegistrosEstacionamiento (usuario) [0] [5] + "       " + VerRegistrosEstacionamiento (usuario) [1] [5]
+
+
+                texto7[0] = (287, 320 * 7)
+                texto7[1] = VerRegistrosEstacionamiento (usuario) [0] [6] + "       " + VerRegistrosEstacionamiento (usuario) [1] [6]
+
+
+                texto8[0] = (287, 320 * 8)
+                texto8[1] = VerRegistrosEstacionamiento (usuario) [0] [7] + "       " + VerRegistrosEstacionamiento (usuario) [1] [7]
+
+
+
+            except:
+                """"""
+
+            screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
+            screen.blit(fuente.render(texto2[1], True, (0, 0, 0)), texto2[0])
+            screen.blit(fuente.render(texto3[1], True, (0, 0, 0)), texto3[0])
+            screen.blit(fuente.render(texto4[1], True, (0, 0, 0)), texto4[0])
+            screen.blit(fuente.render(texto5[1], True, (0, 0, 0)), texto5[0])
+            screen.blit(fuente.render(texto6[1], True, (0, 0, 0)), texto6[0])
+            screen.blit(fuente.render(texto7[1], True, (0, 0, 0)), texto7[0])
+            screen.blit(fuente.render(texto8[1], True, (0, 0, 0)), texto8[0])
+
+
+
+
+
+
+
+           
+
+
+
+
 
 
         elif fondo_actual[0] == "reservar eventos":

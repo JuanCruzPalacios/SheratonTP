@@ -99,8 +99,11 @@ def VerFechaFinal(id_habitacion):
         return None
 
 def VerRolUsuario(usuario):
-    contenido = LeerJson("Usuario.json")
-    return contenido[usuario]["Tipo"]
+    try:
+        contenido = LeerJson("Usuario.json")
+        return contenido[usuario]["Tipo"]
+    except:
+        return "Error al detectar el tipo de usuario"
 
 def TieneHabitacion(usuario): 
     try:
@@ -475,7 +478,7 @@ def ReservarEvento(precio,cliente,salon,asistentes,hora,dia,cantidad_personal,ma
     contenido[nueva_clave]["Usuario"] = cliente
     ActualizarJson("ContratacionEventos.json", contenido)
 
-def CrearActualizarUsuario(Usuario, Correo , Tipo , Nombre , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal, Direccion):    
+def CrearActualizarUsuario(Usuario, Correo , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal, Direccion):    
     contenido_actual = LeerJson("Usuario.json")
 
     try: 
@@ -675,6 +678,7 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
 
     elif telefono != contenido[usuario]["NumeroTelefono"]:
         print("El numero ingresado es incorrecto")
+        ActualizarJson("Usuario.json" , contenido)
         return False 
     else:
         chequeadormaximo.append(1)
@@ -684,10 +688,8 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         fecha_actual = datetime.now()
         fecha_ingresada = dia1
         fecha_ingresada = datetime.strptime(dia1,"%d/%m/%Y")
-        print(fecha_ingresada)
         fecha_actual = fecha_actual.strftime("%d/%m/%Y")
         fecha_actual = datetime.strptime(fecha_actual,"%d/%m/%Y")
-        print(fecha_actual)
 
         if fecha_ingresada < fecha_actual:
             print("la fecha ya paso")
@@ -768,10 +770,37 @@ def ChequearDatosReservaEventos(usuario,mail, hora1, hora2 , asistentes , person
 
     return True
      
-def VerRegistrosEstacionamiento(id_estacionamiento):
-    id_estacionamiento = str(id_estacionamiento)
+def VerRegistrosEstacionamiento(usuario):
+
     contenido = LeerJson("Estacionamiento.json")
-    return contenido[id_estacionamiento]["UltimoIngreso"], contenido[id_estacionamiento]["UltimoEgreso"]
+
+    lista_ingreso = []
+    lista_egreso = []
+
+    
+
+    for clave , valores in contenido.items():
+
+        if contenido[clave]["Ocupante"] == usuario:
+
+            id_estacionamiento = clave
+
+    
+    try:
+
+        for i in range (0 , 8):
+
+            lista_ingreso.append (contenido[id_estacionamiento]["UltimoIngreso"] [len ( contenido[id_estacionamiento]["UltimoIngreso"] ) - i ])
+            
+            lista_egreso.append (contenido[id_estacionamiento]["UltimoEgreso"] [len ( contenido[id_estacionamiento]["UltimoEgreso"] ) - i ])
+
+    except:
+        """"""
+
+    
+
+
+    return lista_ingreso, lista_egreso
 
 def ChequearDatosTarjeta(numero_tarjeta,vencimiento,codigo):  
     chequeadormaximo = []
@@ -782,10 +811,10 @@ def ChequearDatosTarjeta(numero_tarjeta,vencimiento,codigo):
      
     try:
         fecha_actual = datetime.now()
-        fecha_ingresada = datetime.strptime(vencimiento, "%m/%Y")
+        fecha_ingresada = datetime.strptime(vencimiento, "%m-%Y")
 
         if fecha_ingresada < fecha_actual:
-            return False, "La tarjeta vencio"
+           return False, "La tarjeta vencio"
         else:
             chequeadormaximo.append(1)
     except:
@@ -797,20 +826,5 @@ def ChequearDatosTarjeta(numero_tarjeta,vencimiento,codigo):
     else:
         chequeadormaximo.append(1)
     
-    return True
-
-def PedirLimpieza(numero_habitacion): 
-    habitaciones = LeerJson("habitaciones.json")
-    try: 
-        for habitacion in habitaciones: 
-            if habitaciones[habitacion]["ID"] == numero_habitacion: 
-                break
-        fecha_actual = datetime.now()
-        fecha_actual = datetime.strftime(fecha_actual , "%d/%m/%Y")
-        habitaciones[habitacion]["UltimaLimpieza"] = fecha_actual
-        ActualizarJson("habitaciones.json" , habitaciones)
-    except Exception as e:
-        print ("Error al solicitar limpieza")
-        print(f"Se ha producido un error: {type(e).__name__}")
-
-
+    return chequeadormaximo
+        

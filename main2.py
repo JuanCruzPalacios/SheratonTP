@@ -2001,10 +2001,11 @@ while running:
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         
 
-                if gracias == True:
+                if gracias == True and alter_mouse == False:
 
                     if mouse_pos[0] < 1130 and mouse_pos[0] > 898 and mouse_pos[1] < 664 and mouse_pos[1] > 598:#continuar
                         gracias = False
+                        alter_mouuse = True
 
         
 

@@ -572,10 +572,24 @@ def cursor(mouse_pos,alter_usuario , gracias):
 
     elif fondo_actual[0] == "mantenimiento notificaciones":
 
-        if mouse_pos[0] < 400 and mouse_pos[0] > 170 and mouse_pos[1] < 555 and mouse_pos[1] > 505: #archivadas
+        if mouse_pos[0] < 400 and mouse_pos[0] > 170 and mouse_pos[1] < 630 and mouse_pos[1] > 575: #volver
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-        elif mouse_pos[0] < 400 and mouse_pos[0] > 170 and mouse_pos[1] < 630 and mouse_pos[1] > 575: #volver
+
+        
+        elif len(VerNotificacion()) > 0 and mouse_pos[0] < 1105 and mouse_pos[0] > 1066 and mouse_pos[1] < 192 and mouse_pos[1] > 155: #boton 1
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+        elif len(VerNotificacion()) > 1 and mouse_pos[0] < 1105 and mouse_pos[0] > 1066 and mouse_pos[1] < 338 and mouse_pos[1] > 296: #boton 2
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+        elif len(VerNotificacion()) > 2 and mouse_pos[0] < 1105 and mouse_pos[0] > 1066 and mouse_pos[1] < 480 and mouse_pos[1] > 442: #boton 3
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+        elif len(VerNotificacion()) > 3 and mouse_pos[0] < 1105 and mouse_pos[0] > 1066 and mouse_pos[1] < 626 and mouse_pos[1] > 586: #boton 4
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+            
+
+
         
 
         else:
@@ -1146,7 +1160,7 @@ while running:
 
                                     if chequeo_contraseña(texto3[1]) == "aprobado":
 
-                                        CrearActualizarUsuario(texto1[1] , texto2[1] , "Cliente" , " " , " " , texto3[1], " " , " " , " " , " " , " " , " " , " ")
+                                        CrearActualizarUsuario(texto1[1] , texto2[1] , "Cliente" , " " , " " , texto3[1], " " , " " , " " , " " )
                                         usuario = texto1[1]
                                         fondo_actual[0] = "menu habitaciones"
                                         fondo_actual[1] = 6
@@ -1401,7 +1415,7 @@ while running:
                     elif mouse_pos[0] < 528 and mouse_pos[0] > 307 and mouse_pos[1] < 670 and mouse_pos[1] > 615: #pagar
 
 
-                        if ChequearDatosUsuario(usuario,texto1[1],texto2[1], texto3[1], texto4[1], texto5[1], texto6[1], texto7[1], texto8[1])[0] != False:
+                        if ChequearDatosUsuario(usuario,texto1[1],texto2[1], texto3[1], texto4[1], texto5[1], texto6[1], texto7[1], texto8[1]) != False:
                             
                             
                             if servicio_pagar != "" and servicio_pagar != "Estacionamiento":
@@ -1726,11 +1740,28 @@ while running:
                 
 
                 elif fondo_actual[0] == "mantenimiento notificaciones":
+
                     if mouse_pos[0] < 400 and mouse_pos[0] > 170 and mouse_pos[1] < 630 and mouse_pos[1] > 575: #volver
 
                         fondo_actual[0] = "menu mantenimiento"
                         fondo_actual[1] = 10
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                    
+
+                    elif len(VerNotificacion()) > 0 and mouse_pos[0] < 1105 and mouse_pos[0] > 1066 and mouse_pos[1] < 192 and mouse_pos[1] > 155: #boton 1
+                        ArchivarDesarchivarNotificaciones(VerNotificacion()[0][2])
+                    
+                    elif len(VerNotificacion()) > 1 and mouse_pos[0] < 1105 and mouse_pos[0] > 1066 and mouse_pos[1] < 338 and mouse_pos[1] > 296: #boton 2
+                        ArchivarDesarchivarNotificaciones(VerNotificacion()[1][2])
+                    
+                    elif len(VerNotificacion()) > 2 and mouse_pos[0] < 1105 and mouse_pos[0] > 1066 and mouse_pos[1] < 480 and mouse_pos[1] > 442: #boton 3
+                        ArchivarDesarchivarNotificaciones(VerNotificacion()[2][2])
+                    
+                    elif len(VerNotificacion()) > 3 and mouse_pos[0] < 1105 and mouse_pos[0] > 1066 and mouse_pos[1] < 626 and mouse_pos[1] > 586: #boton 4
+                        ArchivarDesarchivarNotificaciones(VerNotificacion()[3][2])
+
+
+
 
 
                 elif fondo_actual[0] == "mantenimiento stock":
@@ -1745,6 +1776,7 @@ while running:
 
                     if mouse_pos[0] < 842 and mouse_pos[0] > 437 and mouse_pos[1] < 647 and mouse_pos[1] > 243: #QR
                         if servicio_pagar != "" and servicio_pagar != "Estacionamiento":
+
                             print ("Pago habitacion con mercado pago")
                             alter_mouse = True
                             fondo_actual[0] = "menu habitaciones"
@@ -1753,14 +1785,19 @@ while running:
                             MarcarReservacionHabitacion(usuario, servicio_pagar , texto2[1] , texto3[1])
                             habitaciones_libres = Filtros((""),0,9999999999)
                             reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+
                         elif servicio_pagar == "Estacionamiento": 
+
                             print ("Pago estacionamiento con mercado pago")
                             alter_mouse = True
                             fondo_actual[0] = "menu parking"
+                            fondo_actual[1] = 2
                             ReservarEstacionamiento(usuario , texto3[1])
                             texto_seleccionado = [(-100,-100),""]
                             reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
+
                         else:
+
                             print("Pago un amenitie con mercado pago")
                             alter_mouse = True
                             fondo_actual[0] = "menu habitaciones"
@@ -2198,26 +2235,34 @@ while running:
 
 
         elif fondo_actual[0] == "menu parking":
-            #print (len(VerNumeroEstacionamiento(usuario)) , pagina)
+           
+            if pagina == len(VerNumeroEstacionamiento(usuario)):               
+                fondo_actual[1] = 28
+            else:
+                fondo_actual[1] = 2
+
             screen.blit (fondos[fondo_actual[1]] , (0, 0))
+
             if VerNumeroEstacionamiento(usuario) != False:
-                if len(VerNumeroEstacionamiento(usuario)) > 0: #abigail
+                if len(VerNumeroEstacionamiento(usuario)) > 0: 
                     if texto2[1] != (VerNumeroEstacionamiento(usuario).pop( 0 )) or pagina != (len(VerNumeroEstacionamiento(usuario))):
                         if pagina != (len(VerNumeroEstacionamiento(usuario))):
                             screen.blit (flecha_derecha , (1130 , 308) )
 
                 if len(VerNumeroEstacionamiento(usuario)) > 0 and texto2[1] != (VerNumeroEstacionamiento(usuario).pop( -1 )):
                     screen.blit (flecha_izquierda , (55, 308) )
-   
+
+            
+            texto1[0] = (375, 351)  
             texto2[0] = (822, 350) 
             texto3[0] = (535, 473)    
             reset_textos(texto1,texto2)
             
             try:
-
+                
                 for i in range(len(VerNumeroHabitacion(usuario))):
                     texto1[1] += str(VerNumeroHabitacion(usuario).pop(-1 - i))
-                    if i != len(VerNumeroHabitacion(usuario) - 1):
+                    if i != (len(VerNumeroHabitacion(usuario)) -1):
                         texto1[1] += ","    
                 
             except:
@@ -2228,14 +2273,14 @@ while running:
 
                 texto2[1] = str(VerNumeroEstacionamiento(usuario).pop( -1 - pagina))
                 texto3[1] = str(VencimientoEstacionamiento((VerNumeroEstacionamiento(usuario).pop( -1 - pagina))))
-                texto1[0] = (345, 351)  
+                  
                 
 
             except:
 
                 texto2[1] = "-"
                 texto3[1] = "    ---"                
-                texto1[0] = (375, 351)  
+              
 
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
             screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )
@@ -2407,7 +2452,7 @@ while running:
 
 
             
-            screen.blit (fondos[fondo_actual[1]] , (0 , 0))  
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0))
             screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
             screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
             screen.blit(fuente.render(texto2[1], True, (0, 0, 0)), texto2[0])
@@ -2423,7 +2468,7 @@ while running:
 
         elif fondo_actual[0] == "menu mantenimiento":
 
-            screen.blit (fondos[fondo_actual[1]] , (0 , 0))  
+            screen.blit (fondos[fondo_actual[1]] , (0 , 0))
 
 
         elif fondo_actual[0] == "mantenimiento notificaciones":
@@ -2438,50 +2483,62 @@ while running:
 
                     screen.blit (notificiaciones_mantenimiento , (562 , 145 * i))
 
-                
 
 
-            texto1[0] = (578 , 145)
-            texto1[1] = VerNotificacion() [0][0]
-
-            texto2[0] = (980 , 145)
-            texto2[1] = VerNotificacion() [0][1]
-
-
-
-            texto3[0] = (578 , 290)
-            texto3[1] = VerNotificacion() [0][0]
-
-            texto4[0] = (980 , 290)
-            texto4[1] = VerNotificacion() [0][1]
         
+            try:
 
-            texto5[0] = (578 , 145 * 3)
-            texto5[1] = VerNotificacion() [2][0]
+                texto1[0] = (578 , 152)
+                texto1[1] = VerNotificacion() [0][0]
 
-            texto6[0] = (980 , 145 * 3)
-            texto6[1] = VerNotificacion() [2][1]
-        
-
-
-            texto7[0] = (578 , 145 * 4)
-            texto7[1] = VerNotificacion() [3][0]
-
-            texto8[0] = (980 , 145 * 4)
-            texto8[1] = VerNotificacion() [3][1]
+                texto2[0] = (986 , 152)
+                texto2[1] = VerNotificacion() [0][1]
 
 
 
+                texto3[0] = (578 , 297)
+                texto3[1] = VerNotificacion() [1][0]
+
+                texto4[0] = (986 , 297)
+                texto4[1] = VerNotificacion() [1][1]
+            
+
+                texto5[0] = (578 , 442)
+                texto5[1] = VerNotificacion() [2][0]
+
+                texto6[0] = (986 , 442)
+                texto6[1] = VerNotificacion() [2][1]
+            
 
 
-            screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
-            screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )
-            screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )
-            screen.blit( fuente.render(texto4[1] , True , (0,0,0) ), texto1[0] )
-            screen.blit( fuente.render(texto5[1] , True , (0,0,0) ), texto2[0] )
-            screen.blit( fuente.render(texto6[1] , True , (0,0,0) ), texto3[0] )
-            screen.blit( fuente.render(texto7[1] , True , (0,0,0) ), texto1[0] )
-            screen.blit( fuente.render(texto8[1] , True , (0,0,0) ), texto2[0] )
+                texto7[0] = (578 , 587)
+                texto7[1] = VerNotificacion() [3][0]
+
+                texto8[0] = (986 , 587)
+                texto8[1] = VerNotificacion() [3][1]
+            
+
+            except:
+                """"""
+
+
+
+            if len(VerNotificacion()) > 0:
+
+                screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
+                screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )
+            
+            if len(VerNotificacion()) > 1:
+                screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )
+                screen.blit( fuente.render(texto4[1] , True , (0,0,0) ), texto4[0] )
+            
+            if len(VerNotificacion()) > 2:
+                screen.blit( fuente.render(texto5[1] , True , (0,0,0) ), texto5[0] )
+                screen.blit( fuente.render(texto6[1] , True , (0,0,0) ), texto6[0] )
+            
+            if len(VerNotificacion()) > 3:
+                screen.blit( fuente.render(texto7[1] , True , (0,0,0) ), texto7[0] )
+                screen.blit( fuente.render(texto8[1] , True , (0,0,0) ), texto8[0] )
 
 
 
@@ -2498,9 +2555,9 @@ while running:
 
 
         elif fondo_actual[0] == "pagar mercado pago":
+
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
-            texto1[0] = (151, 298)
-    
+            texto1[0] = (164, 612)    
             screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
             screen.blit( fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
 

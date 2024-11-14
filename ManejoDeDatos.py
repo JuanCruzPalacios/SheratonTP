@@ -41,7 +41,7 @@ def TieneServicio(usuario):
     contrataciones = usuarios_json[usuario]["Contrataciones"]
     try: 
         for i in range (0, len(contrataciones)):
-            if contrataciones[i][0] == "GYM":
+            if contrataciones[i][0] == "SPA":
                 contr.append([True , contrataciones[i][1]])
                 n += 1
             
@@ -51,7 +51,7 @@ def TieneServicio(usuario):
         n = 0
 
         for i in range (0, len(contrataciones)):
-            if contrataciones[i][0] == "SPA":
+            if contrataciones[i][0] == "PISCINA":
                 contr.append([True , contrataciones[i][1]])
                 n += 1
             
@@ -61,7 +61,7 @@ def TieneServicio(usuario):
         n = 0
         
         for i in range (0, len(contrataciones)):
-            if contrataciones[i][0] == "PISCINA":
+            if contrataciones[i][0] == "GYM":
                 contr.append([True , contrataciones[i][1]])
                 n += 1
             
@@ -128,7 +128,9 @@ def CambiarEstadoAmenitie(id):
     ActualizarJson("Usuario.json", contenido2)
 
 def AgregarNotificacion(objeto , cantidad , habitacion):
-   
+    
+    error = "Se ha notificado correctamente"
+
     contenido_actual = LeerJson("Notificaciones.json")
     
     nueva_clave = str(len(contenido_actual))  
@@ -138,21 +140,31 @@ def AgregarNotificacion(objeto , cantidad , habitacion):
 
     try:
 
+        if int(habitacion) >= 0 and int (habitacion) <= 8:
 
-        nueva_notificacion = {
-            "Archivada": 0,
-            "Objeto": objeto,
-            "Cantidad": str(int(cantidad)),
-            "Id_habitacion": str(int(habitacion)),
-            "FechaEnviada": fecha_enviada
-        }
 
-        contenido_actual[nueva_clave] = nueva_notificacion
+            nueva_notificacion = {
+                "Archivada": 0,
+                "Objeto": objeto,
+                "Cantidad": str(int(cantidad)),
+                "Id_habitacion": str(int(habitacion)),
+                "FechaEnviada": fecha_enviada
+            }
 
-        ActualizarJson("Notificaciones.json", contenido_actual)
+            contenido_actual[nueva_clave] = nueva_notificacion
+
+            ActualizarJson("Notificaciones.json", contenido_actual)
+        
+        else:
+            error = "Error en la cantidad o habitacion"
     
     except:
-        """"""
+        error = "Error en la cantidad o habitacion"
+
+
+    
+
+    return error
 
 def VerNumeroHabitacion(cliente):
 
@@ -189,6 +201,7 @@ def VerNumeroEstacionamiento(cliente):
 
 def VerNotificacion():
     lista_notificaciones = []
+    lista_aux = []
     Notificaciones = LeerJson("Notificaciones.json")
 
     for clave , valores in Notificaciones.items():
@@ -197,15 +210,19 @@ def VerNotificacion():
 
 
         if str(Notificaciones[clave]["Archivada"]) == "0":
+
             
             lista_aux.append (Notificaciones[clave]["Objeto"])
             lista_aux.append (Notificaciones[clave]["Cantidad"])
             lista_aux.append (clave)
             lista_notificaciones.append(lista_aux)
-        
+
         if len (lista_notificaciones) > 4:
 
-            lista_notificaciones = lista_notificaciones.pop(0)
+            lista_notificaciones.pop(0)
+
+            
+
         
 
     
@@ -843,9 +860,24 @@ def VerDatosEvento(id_evento):
 def SolicitarLimpieza(id_habitacion):
     data_limpieza = LeerJson("Limpieza.json") 
     LimpiezasSolicitadas = data_limpieza["LimpiezasSolicitadas"]
-    data_limpieza["LimpiezasSolicitadas"] = LimpiezasSolicitadas.append
+    LimpiezasSolicitadas.append(id_habitacion)
+    data_limpieza["LimpiezasSolicitadas"] = LimpiezasSolicitadas
     ActualizarJson("Limpieza.json" , data_limpieza)  
 
-SolicitarLimpieza(1)
+def VerLimpieza(): 
+    data_limpieza = LeerJson("Limpieza.json")
+    data_habitaciones = LeerJson("habitaciones.json")
+    try:
+        id_habitacion = data_limpieza["LimpiezasSolicitadas"][0]
+    except: 
+        return "Ninguna" , "-" , "-"
+    for habitacion in data_habitaciones: 
+        if data_habitaciones[habitacion]["ID"] == id_habitacion: 
+            break
+    ultima_limpieza = data_habitaciones[habitacion]["UltimaLimpieza"]
+    estado = data_habitaciones[habitacion]["Estado"]
+    return id_habitacion , estado , ultima_limpieza
+    
+
 
 # Enviar limpieza devuelve numero de habitacion, estado y fecha de ultima limpieza

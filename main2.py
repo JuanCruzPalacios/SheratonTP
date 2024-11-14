@@ -878,7 +878,7 @@ while running:
                                 if chequeo_contraseña(texto3[1]) == "aprobado":
 
                                     usuario = texto1[1]
-                                    CrearActualizarUsuario(texto1[1] , texto2[1] , texto3[1] , " " , " " , " " ," " )
+                                    CrearActualizarUsuario(texto1[1] , texto2[1] , " " , texto3[1] , " " , " " , " " ," " )
                                     fondo_actual[0] = "menu habitaciones"
                                     fondo_actual[1] = 6
                                     texto_seleccionado = [(-100,-100),""]
@@ -1177,7 +1177,7 @@ while running:
 
                                     if chequeo_contraseña(texto3[1]) == "aprobado":
 
-                                        CrearActualizarUsuario(texto1[1] , texto2[1]  , texto3[1], " " , " " , " " , " " )
+                                        CrearActualizarUsuario(texto1[1] , texto2[1]  , " " , texto3[1], " " , " " , " " , " " )
                                         usuario = texto1[1]
                                         fondo_actual[0] = "menu habitaciones"
                                         fondo_actual[1] = 6
@@ -1435,9 +1435,11 @@ while running:
                         if ChequearDatosUsuario(usuario,texto1[1],texto2[1], texto3[1], texto4[1], texto5[1], texto6[1], texto7[1], texto8[1]):
                             
                             
-                            if servicio_pagar != "" and servicio_pagar != "Estacionamiento":
+                            if servicio_pagar in ["0","1","2","3","4","5","6","7","8"]:#id de habitaciones
+                                
                                 print("reservando habitacion")
-                                if posicion_cuadrado_reserva == ( 877, 413, 41 , 41 ):      
+
+                                if posicion_cuadrado_reserva == ( 877, 413, 41 , 41 ):  #efectivo    
 
                                     alter_mouse = True                         
                                     fondo_actual[0] = "menu habitaciones"
@@ -1446,7 +1448,7 @@ while running:
                                     MarcarReservacionHabitacion(usuario, servicio_pagar , texto2[1] , texto3[1])
                                     reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
 
-                                elif posicion_cuadrado_reserva == ( 960 , 490 , 41 , 41 ):
+                                elif posicion_cuadrado_reserva == ( 960 , 490 , 41 , 41 ): #mercado pago
                                     alter_mouse = True
                                     fondo_actual[0] = "pagar mercado pago"
                                     fondo_actual[1] = 4
@@ -1454,7 +1456,7 @@ while running:
                                     texto1[1] = "total: " + str(CalcularPrecioHabitacion(servicio_pagar, texto2[1],texto3[1]))
                                     
 
-                                elif posicion_cuadrado_reserva == ( 1062, 415, 41 , 41  ):
+                                elif posicion_cuadrado_reserva == ( 1062, 415, 41 , 41  ): #tarjeta
                                     alter_mouse = True
                                     fondo_actual[0] = "pagar tarjeta"
                                     fondo_actual[1] = 6
@@ -1464,15 +1466,17 @@ while running:
                                     reset_textos(texto1, texto2, texto3, texto4, texto5, texto7, texto8) 
 
                             elif servicio_pagar == "Estacionamiento" :
+
                                 print("reservando estacionamiento")
-                                if posicion_cuadrado_reserva == ( 877, 413, 41 , 41 ):       
+
+                                if posicion_cuadrado_reserva == ( 877, 413, 41 , 41 ):  #efectivo     
                                     alter_mouse = True                         
                                     fondo_actual[0] = "menu parking"
                                     ReservarEstacionamiento(usuario, texto3[1])
                                     texto_seleccionado = [(-100,-100),""]
                                     reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
 
-                                elif posicion_cuadrado_reserva == ( 960 , 490 , 41 , 41 ):
+                                elif posicion_cuadrado_reserva == ( 960 , 490 , 41 , 41 ): #mercado pago
                                     alter_mouse = True
                                     fondo_actual[0] = "pagar mercado pago"
                                     fondo_actual[1] = 4
@@ -1481,7 +1485,7 @@ while running:
                                     servicio_pagar = "Estacionamiento"
                                         
 
-                                elif posicion_cuadrado_reserva == ( 1062, 415, 41 , 41  ):
+                                elif posicion_cuadrado_reserva == ( 1062, 415, 41 , 41  ): #tarjeta
                                     alter_mouse = True
                                     fondo_actual[0] = "pagar tarjeta"
                                     fondo_actual[1] = 6
@@ -1490,16 +1494,63 @@ while running:
                                     servicio_pagar = "Estacionamiento"
                                     reset_textos(texto1, texto2, texto3, texto4, texto5, texto7, texto8) 
 
-                            else:
-                                print("reservando amenities")
-                                if posicion_cuadrado_reserva == ( 877, 413, 41 , 41 ):       
+                            elif servicio_pagar == "evento":
+
+                                print("reservando eventos")
+
+                                if posicion_cuadrado_reserva == ( 877, 413, 41 , 41 ):  #efectivo    
+
                                     alter_mouse = True                         
+                                    fondo_actual[0] = "menu habitaciones"
+                                    gracias = True
+                                    texto_seleccionado = [(-100,-100),""]
+                                    MarcarReservacionHabitacion(usuario, servicio_pagar , texto2[1] , texto3[1])
+                                    reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+
+                                elif posicion_cuadrado_reserva == ( 960 , 490 , 41 , 41 ): #mercado pago
+
+                                    alter_mouse = True
+                                    fondo_actual[0] = "pagar mercado pago"
+                                    fondo_actual[1] = 4
+                                    texto_seleccionado = [(-100,-100),""]
+                                    texto1[1] = "total: " + str(CalcularPrecioHabitacion(servicio_pagar, texto2[1],texto3[1]))
+                                    
+
+                                elif posicion_cuadrado_reserva == ( 1062, 415, 41 , 41  ): #tarjeta
+                                    alter_mouse = True
+                                    fondo_actual[0] = "pagar tarjeta"
+                                    fondo_actual[1] = 6
+                                    texto_seleccionado = [(-100,-100),""]
+                                    texto6[1] = "total: " + str(CalcularPrecioHabitacion(servicio_pagar, texto2[1],texto3[1]))
+                                    
+                                    reset_textos(texto1, texto2, texto3, texto4, texto5, texto7, texto8) 
+
+                            else:
+                                
+                                print("reservando amenities")
+
+                                if posicion_cuadrado_reserva == ( 877, 413, 41 , 41 ):  #efectivo     
+
+                                    alter_mouse = True 
+                                    if posicion_cuadrado[1] == 298:
+                                        print("SPA reservado")
+                                        ContratarAmenities(usuario, "SPA", (texto2[1],texto3[1]),texto1[1])
+
+                                    if posicion_cuadrado_3[1] == 298:
+                                        print("Piscina reservado")
+                                        ContratarAmenities(usuario, "PISCINA", (texto2[1],texto3[1]),texto1[1])
+                                    
+                                    if posicion_cuadrado_2[1] == 298:
+                                        print("Gimnasio reservado")
+                                        ContratarAmenities(usuario, "GYM", (texto2[1],texto3[1]),texto1[1])   
+
                                     fondo_actual[0] = "menu habitaciones"
                                     gracias = True
                                     texto_seleccionado = [(-100,-100),""]
                                     reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
 
-                                elif posicion_cuadrado_reserva == ( 960 , 490 , 41 , 41 ):
+                                elif posicion_cuadrado_reserva == ( 960 , 490 , 41 , 41 ): #mercado pago
+                                    
                                     alter_mouse = True
                                     fondo_actual[0] = "pagar mercado pago"
                                     fondo_actual[1] = 4
@@ -1516,7 +1567,8 @@ while running:
                                     servicio_pagar = ""
                                         
 
-                                elif posicion_cuadrado_reserva == ( 1062, 415, 41 , 41  ): 
+                                elif posicion_cuadrado_reserva == ( 1062, 415, 41 , 41  ): #tarjeta 
+
                                     alter_mouse = True
                                     fondo_actual[0] = "pagar tarjeta"
                                     fondo_actual[1] = 6
@@ -1637,24 +1689,7 @@ while running:
                         limite = 24
 
                                         
-                    elif  mouse_pos[0] < 480 and mouse_pos[0] > 260 and mouse_pos[1] < 690 and mouse_pos[1] > 620: #reservar salon de eventos 
-
-                        alter_mouse = True
-                        if ChequearDatosReservaEventos(usuario , texto6[1] , texto2[1] , texto3[1] , texto1[1] , texto5[1] , texto4[1]) == True:
-
-                            if posicion_cuadrado_salon == ( 956, 494, 41 , 41  ):
-
-                                fondo_actual[0] = "pagar mercado pago"
-                                fondo_actual[1] = 4
-                                texto_seleccionado = [(-100,-100),""]
-                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
-                            
-                            elif posicion_cuadrado_salon == ( 1058 , 421 , 41 , 41 ):
-
-                                fondo_actual[0] = "pagar tarjeta"
-                                fondo_actual[1] = 6
-                                texto_seleccionado = [(-100,-100),""]
-                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
+                    
 
 
                     elif  mouse_pos[0] < 1140 and mouse_pos[0] > 730 and mouse_pos[1] < 408 and mouse_pos[1] > 215: #especificaciones
@@ -1686,6 +1721,36 @@ while running:
 
 
                         posicion_cuadrado_salon = ( 956, 494, 41 , 41  ) 
+
+
+                    elif  mouse_pos[0] < 480 and mouse_pos[0] > 260 and mouse_pos[1] < 690 and mouse_pos[1] > 620: #reservar salon de eventos 
+
+                        alter_mouse = True
+                        if ChequearDatosReservaEventos(usuario , texto6[1] , texto2[1] , texto3[1] , texto1[1] , texto5[1] , texto4[1]) == True:
+
+                            if posicion_cuadrado_salon == ( 956, 494, 41 , 41  ):#mercado pago
+
+                                fondo_actual[0] = "pagar mercado pago"
+                                servicio_pagar = "evento"
+                                fondo_actual[1] = 4
+                                texto_seleccionado = [(-100,-100),""]
+                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
+                            
+                            elif posicion_cuadrado_salon == ( 1058 , 421 , 41 , 41 ):#tarjeta
+
+                                fondo_actual[0] = "pagar tarjeta"
+                                fondo_actual[1] = 6
+                                servicio_pagar = "evento"
+                                texto_seleccionado = [(-100,-100),""]
+                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
+
+                            elif posicion_cuadrado_salon == ( 873, 421, 41 , 41  ):
+
+                                fondo_actual[0] = "menu habitaciones"
+                                servicio_pagar = "evento"
+                                texto_seleccionado = [(-100,-100),""]
+                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
+
 
 
 
@@ -1795,6 +1860,7 @@ while running:
 
 
                 elif fondo_actual[0] == "mantenimiento stock":
+
                     if mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: #volver
 
                         fondo_actual[0] = "menu mantenimiento"
@@ -1805,8 +1871,10 @@ while running:
                 elif fondo_actual[0] == "pagar mercado pago" and alter_mouse == False:
 
                     if mouse_pos[0] < 842 and mouse_pos[0] > 437 and mouse_pos[1] < 647 and mouse_pos[1] > 243: #QR
-                        if servicio_pagar != "" and servicio_pagar != "Estacionamiento":
+                        print(servicio_pagar)
+                        if servicio_pagar in ["0","1","2","3","4","5","6","7","8"]:#id de habitaciones
 
+                            print("wsasd")
                             print ("Pago habitacion con mercado pago")
                             alter_mouse = True
                             fondo_actual[0] = "menu habitaciones"
@@ -1823,6 +1891,15 @@ while running:
                             fondo_actual[0] = "menu parking"
                             fondo_actual[1] = 2
                             ReservarEstacionamiento(usuario , texto3[1])
+                            texto_seleccionado = [(-100,-100),""]
+                            reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
+
+                        elif servicio_pagar == "evento":
+
+                            print("pago evento con mercado pago")
+                            alter_mouse = True
+                            fondo_actual[0] = "menu habitaciones"
+                            ReservarEvento(usuario , )#reservar el evento :)
                             texto_seleccionado = [(-100,-100),""]
                             reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
 

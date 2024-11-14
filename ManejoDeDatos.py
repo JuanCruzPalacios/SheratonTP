@@ -488,20 +488,36 @@ def MarcarReservacionHabitacion(usuario,idhabitacion,fecha_inicio, fecha_final):
     except:
         print ("Error al reservar la habitacion")
 
-def ReservarEvento(cliente,asistentes,hora,dia,cantidad_personal,mail,especificaciones):
-    contenido = LeerJson("ContratacionEventos")
+def ReservarEvento(cliente,asistentes,hora,dia,cantidad_personal,mail,especificaciones):#hola
+    contenido = LeerJson("ContratacionEventos.json")
     precio = CalcularPrecioEventos(hora[0] , hora[1] , cantidad_personal)
-    nueva_clave = str(len(contenido))
-    contenido[nueva_clave]["IdSalon"] = 1
-    contenido[nueva_clave]["FechaContratada"] = dia
-    contenido[nueva_clave]["Hora"] = hora
-    contenido[nueva_clave]["Estado"] = "No realizado"
-    contenido[nueva_clave]["Mail"] = mail
-    contenido[nueva_clave]["Especificaciones"] = especificaciones
-    contenido[nueva_clave]["Precio"] = precio
-    contenido[nueva_clave]["Personal"] = cantidad_personal
-    contenido[nueva_clave]["Asistentes"] = asistentes
-    contenido[nueva_clave]["Usuario"] = cliente
+    nueva_clave = str(len(contenido)+1)
+    #contenido[nueva_clave]["IdSalon"] = 1
+    #contenido[nueva_clave]["FechaContratada"] = dia
+    #contenido[nueva_clave]["Hora"] = hora
+    #contenido[nueva_clave]["Estado"] = "No realizado"
+    #contenido[nueva_clave]["Mail"] = mail
+    #contenido[nueva_clave]["Especificaciones"] = especificaciones
+    #contenido[nueva_clave]["Precio"] = precio
+    #contenido[nueva_clave]["Personal"] = cantidad_personal
+    #contenido[nueva_clave]["Asistentes"] = asistentes
+    #contenido[nueva_clave]["Usuario"] = cliente
+
+    nuevo_evento = {
+            "IdSalon" : 1, 
+            "FechaContratada" : dia,  
+            "Hora" : hora , 
+            "Estado" : "No realizado" , 
+            "Mail" : mail , 
+            "Especificaciones" : especificaciones , 
+            "Precio": precio , 
+            "Personal" : cantidad_personal ,
+            "Asistentes": asistentes,
+            "Usuario": cliente
+        }
+
+    contenido[nueva_clave] = nuevo_evento
+
     ActualizarJson("ContratacionEventos.json", contenido)
 
 def CrearActualizarUsuario(Usuario, Correo , Contraseña , DNI , NumeroTelefono , CodigoPostal, Direccion):    
@@ -597,7 +613,7 @@ def CalcularPrecioEventos(hora1,hora2,empleados):
     minutos = diferencia.total_seconds()/60
     precio = 0
     for i in range(int(minutos)):
-        precio = (precio + (0.5 * empleados)) 
+        precio = (precio + (1 * int(empleados))) 
  
     return precio
     

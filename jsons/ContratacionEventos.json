@@ -1,16 +1,32 @@
 {
-    "-1":
-    {"IdSalon": "1",
-     "FechaContratada": "",
-     "Hora":["",""],
-     "Estado": "",
-     "Mail": "",
-     "Especificaciones": "",
-     "Precio": "",
-     "Personal":"",
-     "Asistentes":"",
-     "Usuario":""
+    "1": {
+        "IdSalon": 1,
+        "FechaContratada": "12/12/2024",
+        "Hora": [
+            "12:00",
+            "12:05"
+        ],
+        "Estado": "No realizado",
+        "Mail": "www",
+        "Especificaciones": "",
+        "Precio": 50,
+        "Personal": "10",
+        "Asistentes": "132",
+        "Usuario": ""
+    },
+    "2": {
+        "IdSalon": 1,
+        "FechaContratada": "12/12/2024",
+        "Hora": [
+            "12:00",
+            "12:07"
+        ],
+        "Estado": "No realizado",
+        "Mail": "www",
+        "Especificaciones": "",
+        "Precio": 70,
+        "Personal": "10",
+        "Asistentes": "120",
+        "Usuario": ""
     }
-
-
 }

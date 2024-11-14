@@ -478,7 +478,7 @@ def ReservarEvento(precio,cliente,salon,asistentes,hora,dia,cantidad_personal,ma
     contenido[nueva_clave]["Usuario"] = cliente
     ActualizarJson("ContratacionEventos.json", contenido)
 
-def CrearActualizarUsuario(Usuario, Correo , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal, Direccion):    
+def CrearActualizarUsuario(Usuario, Correo , Contraseña , DNI , NumeroTelefono , CodigoPostal, Direccion):    
     contenido_actual = LeerJson("Usuario.json")
 
     try: 
@@ -489,8 +489,7 @@ def CrearActualizarUsuario(Usuario, Correo , Apellido , Contraseña , DNI , Nume
     nuevo_usuario = {
         "Correo" : Correo , 
         "Tipo" : "Cliente",  
-        "Nombre" : Usuario ,
-        "Apellido" : Apellido , 
+        "Nombre" : Usuario , 
         "Password" : Contraseña , 
         "DNI" : DNI , 
         "NumeroTelefono" : NumeroTelefono , 
@@ -592,18 +591,23 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
     contenido = LeerJson("Usuario.json")
     chequeadormaximo = []
     
+    
+    
     if contenido[usuario]["Nombre"] == " ":
-        contenido2 = contenido[usuario]["Nombre"] = Nombre
-        ActualizarJson("Usuario.json", contenido2)
+        contenido[usuario]["Nombre"] = Nombre
+        chequeadormaximo.append(1)
     elif Nombre != contenido[usuario]["Nombre"]:
          print("El nombre del usuario es incorrecto")
          return False 
     else:
         chequeadormaximo.append(1)
     
+    
+    
+    
     if contenido[usuario]["Direccion"] == " ":
-        contenido2 = contenido[usuario]["Direccion"] = direccion
-        ActualizarJson("Usuario.json", contenido2)
+        contenido[usuario]["Direccion"] = direccion
+        chequeadormaximo.append(1)
     elif direccion != contenido[usuario]["Direccion"]:
          print("La direccion del usuario es incorrecto")
          return False 
@@ -611,14 +615,17 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         chequeadormaximo.append(1)
     
     
+    
+    
     if contenido[usuario]["Correo"] == " ":
-        contenido2 = contenido[usuario]["Correo"] = mail
-        ActualizarJson("Usuario.json", contenido2)  
+        contenido[usuario]["Correo"] = mail
+        chequeadormaximo.append(1)
     elif mail != contenido[usuario]["Correo"]:
          print("El correo del usuario es incorrecto")
          return False 
     else:
         chequeadormaximo.append(1)
+    
     
     if contenido[usuario]["DNI"] == " ":
 
@@ -627,13 +634,10 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
             if len(str(int(dni))) == 8 or len(int(dni)) == 1:
 
                 contenido[usuario]["DNI"] = dni 
-            contenido2 = contenido[usuario]["DNI"] = dni
-            ActualizarJson("Usuario.json", contenido2)
+                chequeadormaximo.append(1)
         except:
             return "Error al cargar dni"
         
-    
-    
     elif dni != contenido[usuario]["DNI"]:
          print("El dni ingresado es incorrecto")
          return False 
@@ -646,10 +650,8 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         try:
 
             if len(str(int(codigo_postal))) == 4:
-                contenido[usuario]["CodigoPostal"] = codigo_postal 
-                
-            contenido2 = contenido[usuario]["CodigoPostal"] = codigo_postal
-            ActualizarJson("Usuario.json", contenido2)
+                contenido[usuario]["CodigoPostal"] = codigo_postal
+                chequeadormaximo.append(1)
         except:
             return "error al ingresar codigo postal"
 
@@ -660,30 +662,18 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         chequeadormaximo.append(1)
      
     if contenido[usuario]["NumeroTelefono"] == " ":
-
+        
         try:
-
-            for i in telefono:
-
-                if i.isdigit():
-
-                    tel_aux += i 
             
-
-            if str(int(tel_aux)) == 13:
-            
-                    
-                contenido[usuario]["NumeroTelefono"] = telefono
-            contenido2 = contenido[usuario]["NumeroTelefono"] = Nombre
-            ActualizarJson("Usuario.json", contenido2)
+            if (len(str(telefono)) == 13) and type(telefono) == int:
+                print(telefono)
+                contenido[usuario]["NumeroTelefono"] = str(telefono)
+                chequeadormaximo.append(1)
         except:
             return "Error al ingresar telefono"
 
-
-
     elif telefono != contenido[usuario]["NumeroTelefono"]:
         print("El numero ingresado es incorrecto")
-        ActualizarJson("Usuario.json" , contenido)
         return False 
     else:
         chequeadormaximo.append(1)
@@ -702,7 +692,6 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
     except:
        print("error")
        print(TypeError)
-        
     try: 
         if diferencia_dias(dia1,dia2) >= 1:
             chequeadormaximo.append(1)
@@ -713,10 +702,12 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         print("El formato de dias esta mal enviado")
         return False
 
+    
     if chequeadormaximo == [1,1,1,1,1,1,1]:
         print("Los datos ingresados son correctos.")
+        ActualizarJson("Usuario.json", contenido)
         return True
-        
+
 def ChequearDatosReservaEventos(usuario,mail, hora1, hora2 , asistentes , personal , fecha):
     contenido = LeerJson("Usuario.json")
     hora1_str = hora1  

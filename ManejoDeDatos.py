@@ -403,17 +403,25 @@ def VencimientoEstacionamiento(id_estacionamiento):
     contenido = LeerJson("Estacionamiento.json")
     return(contenido[id_estacionamiento]["Vencimiento"])
 
-def AgregarEliminarStock (nombre_stock , cantidad) : 
+def AgregarEliminarStock (nombre_objeto , operacion) : 
+
     Stock = LeerJson("Stock.json")
     try: 
-        cantidad_actual = Stock[nombre_stock]["Cantidad"] 
-        Stock[nombre_stock]["Cantidad"] = int(cantidad_actual) + int(cantidad) 
-        ActualizarJson("Stock.json" , Stock)
-        print (nombre_stock , "añadio" , cantidad , " de stock.")
-        return True
+        cantidad_actual = Stock[nombre_objeto]["Cantidad"] 
+
+        if operacion == "suma":
+
+            Stock[nombre_objeto]["Cantidad"] = str (int(cantidad_actual) + 1 )
+            ActualizarJson("Stock.json" , Stock)
+        
+        else:
+
+            Stock[nombre_objeto]["Cantidad"] = str(int(cantidad_actual) - 1)
+            ActualizarJson("Stock.json" , Stock)
     except:
-        print ("Hubo un error al agregar o eliminar el stock, verifique que el stock ingresado exista.")
-        return False
+        """"""
+   
+
 
 def ContratarAmenities(usuario,amenitie,fecha,precio):
     contenido = LeerJson("Contrataciones.json")

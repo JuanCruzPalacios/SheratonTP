@@ -980,6 +980,21 @@ while running:
                                     
                                     texto_ingresado += event.unicode
 
+                elif fondo_actual[0] == "pagar tarjeta" and (texto_seleccionado ==  texto4):
+                    
+                        if len(texto_ingresado) == 1 :
+
+                            if event.unicode .isprintable():      
+                                texto_ingresado += event.unicode
+                                texto_ingresado += "-"
+                        else:
+                            if len(texto_ingresado) < limite:           
+                            # Agregar caracteres al texto ingresado
+
+                                if event.unicode .isprintable():
+                                    
+                                    texto_ingresado += event.unicode
+
 
 
 
@@ -1444,7 +1459,9 @@ while running:
                                     fondo_actual[0] = "pagar tarjeta"
                                     fondo_actual[1] = 6
                                     texto_seleccionado = [(-100,-100),""]
-                                    reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                                    texto6[1] = "total: " + str(CalcularPrecioHabitacion(servicio_pagar, texto2[1],texto3[1]))
+                                    
+                                    reset_textos(texto1, texto2, texto3, texto4, texto5, texto7, texto8) 
 
                             elif servicio_pagar == "Estacionamiento" :
                                 print("reservando estacionamiento")
@@ -1469,7 +1486,9 @@ while running:
                                     fondo_actual[0] = "pagar tarjeta"
                                     fondo_actual[1] = 6
                                     texto_seleccionado = [(-100,-100),""]
-                                    reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                                    texto6[1] = "total: " + str(CalcularPrecioEstacionamiento(texto2[1],texto3[1]))
+                                    servicio_pagar = "Estacionamiento"
+                                    reset_textos(texto1, texto2, texto3, texto4, texto5, texto7, texto8) 
 
                             else:
                                 print("reservando amenities")
@@ -1497,12 +1516,21 @@ while running:
                                     servicio_pagar = ""
                                         
 
-                                elif posicion_cuadrado_reserva == ( 1062, 415, 41 , 41  ):
+                                elif posicion_cuadrado_reserva == ( 1062, 415, 41 , 41  ): 
                                     alter_mouse = True
                                     fondo_actual[0] = "pagar tarjeta"
                                     fondo_actual[1] = 6
                                     texto_seleccionado = [(-100,-100),""]
-                                    reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+                                    servicio_pagar = 0 
+                                    if posicion_cuadrado[1] == 298:
+                                        servicio_pagar += 1
+                                    if posicion_cuadrado_2[1] == 298:
+                                        servicio_pagar += 1
+                                    if posicion_cuadrado_3[1] == 298:
+                                        servicio_pagar += 1
+                                    texto6[1] = "total: " + str(CalcularPrecioAmenities(texto2[1],texto3[1],servicio_pagar))
+                                    servicio_pagar = ""
+                                    reset_textos(texto1, texto2, texto3, texto4, texto5, texto7, texto8)
 
 
 
@@ -1836,10 +1864,12 @@ while running:
 
                 elif fondo_actual[0] == "pagar tarjeta" and alter_mouse == False:
 
+
+
                     if mouse_pos[0] < 1022 and mouse_pos[0] > 485 and mouse_pos[1] < 305 and mouse_pos[1] > 270: #Nombre del titular
                         alter_mouse = True
                         texto_ingresado = texto1[1]
-                        texto_seleccionado = texto1 #Usuario / iniciar sesion   
+                        texto_seleccionado = texto1 
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
                         limite = 27
@@ -1847,7 +1877,7 @@ while running:
                     elif mouse_pos[0] < 1022 and mouse_pos[0] > 485 and mouse_pos[1] < 375 and mouse_pos[1] > 335: #Numero de tarjeta
                         alter_mouse = True
                         texto_ingresado = texto2[1]
-                        texto_seleccionado = texto2 #Usuario / iniciar sesion   
+                        texto_seleccionado = texto2   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
                         limite = 20 
@@ -1856,7 +1886,7 @@ while running:
                     elif mouse_pos[0] < 1018 and mouse_pos[0] > 485 and mouse_pos[1] < 445 and mouse_pos[1] > 405: #Documento
                         alter_mouse = True
                         texto_ingresado = texto3[1]
-                        texto_seleccionado = texto3 #Usuario / iniciar sesion   
+                        texto_seleccionado = texto3   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
                         limite = 8
@@ -1864,8 +1894,9 @@ while running:
                     
                     elif mouse_pos[0] < 737 and mouse_pos[0] > 485 and mouse_pos[1] < 515 and mouse_pos[1] > 475: #Vencimiento
                         alter_mouse = True
+                        texto4[1] = ""
                         texto_ingresado = texto4[1]
-                        texto_seleccionado = texto4 #Usuario / iniciar sesion   
+                        texto_seleccionado = texto4  
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
                         limite = 8 
@@ -1873,22 +1904,63 @@ while running:
                     elif mouse_pos[0] < 740 and mouse_pos[0] > 483 and mouse_pos[1] < 584 and mouse_pos[1] > 542: #Codigo de seguridad
                         alter_mouse = True
                         texto_ingresado = texto5[1]
-                        texto_seleccionado = texto5 #Usuario / iniciar sesion   
+                        texto_seleccionado = texto5 
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
                         limite = 3 
 
-                    elif mouse_pos[0] < 1128 and mouse_pos[0] > 906 and mouse_pos[1] < 665 and mouse_pos[1] > 605: #Pagar
+                    elif mouse_pos[0] < 1128 and mouse_pos[0] > 906 and mouse_pos[1] < 665 and mouse_pos[1] > 605: #Pagar   
                         alter_mouse = True
                         print(ChequearDatosTarjeta (texto2[1],texto4[1],texto5[1]))
                         if ChequearDatosTarjeta (texto2[1],texto4[1],texto5[1])[0] :
-                            fondo_actual[0] = "menu habitaciones"
-                            fondo_actual[1] = 6
-                            gracias = True
-                            texto_seleccionado = [(-100,-100),""]
-                            reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
                         
+                            if servicio_pagar != "" and servicio_pagar != "Estacionamiento":
 
+                                print ("Pago habitacion con tarjeta")
+                                alter_mouse = True
+                                fondo_actual[0] = "menu habitaciones"
+                                gracias = True
+                                texto_seleccionado = [(-100,-100),""]
+                                MarcarReservacionHabitacion(usuario, servicio_pagar , texto2[1] , texto3[1])
+                                habitaciones_libres = Filtros((""),0,9999999999)
+                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+
+                            elif servicio_pagar == "Estacionamiento": 
+
+                                print ("Pago estacionamiento con tarjeta")
+                                alter_mouse = True
+                                fondo_actual[0] = "menu parking"
+                                fondo_actual[1] = 2
+                                ReservarEstacionamiento(usuario , texto3[1])
+                                texto_seleccionado = [(-100,-100),""]
+                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
+
+                            else:
+
+                                print("Pago un amenitie con tarjeta")
+                                alter_mouse = True
+                                fondo_actual[0] = "menu habitaciones"
+                                gracias = True
+                                texto_seleccionado = [(-100,-100),""]
+                                
+
+                                if posicion_cuadrado[1] == 298:
+                                    print("SPA reservado")
+                                    ContratarAmenities(usuario, "SPA", (texto2[1],texto3[1]),texto1[1])
+
+                                if posicion_cuadrado_3[1] == 298:
+                                    print("Piscina reservado")
+                                    ContratarAmenities(usuario, "PISCINA", (texto2[1],texto3[1]),texto1[1])
+                                
+                                if posicion_cuadrado_2[1] == 298:
+                                    print("Gimnasio reservado")
+                                    ContratarAmenities(usuario, "GYM", (texto2[1],texto3[1]),texto1[1])
+
+                                habitaciones_libres = Filtros((""),0,9999999999)
+                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
+
+
+                        
 
                 elif fondo_actual[0] == "menu recepcionista":
 
@@ -2365,45 +2437,34 @@ while running:
 
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
 
+            texto1[0] = (200 , 325)
+            texto2[0] = (200 , 400)
+            texto3[0] = (200 , 470)
+            texto4[0] = (200 , 540)
+            texto5[0] = (200 , 610)
 
-    
+            texto1[1] = "         ---                      ---"
+            texto2[1] = "         ---                      ---"
+            texto3[1] = "         ---                      ---"
+            texto4[1] = "         ---                      ---"
+            texto5[1] = "         ---                      ---"
+  
+
             try:
+                          
+                texto1[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [0] [0] + " - " + VerRegistrosEstacionamiento (usuario , pagina) [0] [0] [1]) + "    " +str ( VerRegistrosEstacionamiento (usuario , pagina) [1] [0] [0] + " - " + VerRegistrosEstacionamiento (usuario , pagina) [1] [0] [1] )
                 
-                texto1[0] = (287 , 320 * 1)
-                texto1[1] = VerRegistrosEstacionamiento (usuario) [0] [0] + "       " + VerRegistrosEstacionamiento (usuario) [1] [0]
-
-
-                texto2[0] = (287, 320 * 2)
-                texto2[1] = VerRegistrosEstacionamiento (usuario) [0] [1] + "       " + VerRegistrosEstacionamiento (usuario) [1] [1]
-
-
-                texto3[0] = (287, 320 * 3)
-                texto3[1] = VerRegistrosEstacionamiento (usuario) [0] [2] + "       " + VerRegistrosEstacionamiento (usuario) [1] [2]
-
-
-                texto4[0] = (287, 320 * 4)
-                texto4[1] = VerRegistrosEstacionamiento (usuario) [0] [3] + "       " + VerRegistrosEstacionamiento (usuario) [1] [3]
-
-
-                texto5[0] = (287, 320 * 5)
-                texto5[1] = VerRegistrosEstacionamiento (usuario) [0] [4] + "       " + VerRegistrosEstacionamiento (usuario) [1] [4]
-
-
-                texto6[0] = (287, 320 * 6)
-                texto6[1] = VerRegistrosEstacionamiento (usuario) [0] [5] + "       " + VerRegistrosEstacionamiento (usuario) [1] [5]
-
-
-                texto7[0] = (287, 320 * 7)
-                texto7[1] = VerRegistrosEstacionamiento (usuario) [0] [6] + "       " + VerRegistrosEstacionamiento (usuario) [1] [6]
-
-
-                texto8[0] = (287, 320 * 8)
-                texto8[1] = VerRegistrosEstacionamiento (usuario) [0] [7] + "       " + VerRegistrosEstacionamiento (usuario) [1] [7]
-
-
+                texto2[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [1] [0] + " - " + VerRegistrosEstacionamiento (usuario , pagina) [0] [1] [1] + "    " +str ( VerRegistrosEstacionamiento (usuario , pagina) [1] [1] [0] + " - " + VerRegistrosEstacionamiento (usuario , pagina) [1] [1] [1] ))
+                
+                texto3[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [2] [0] + " - " + VerRegistrosEstacionamiento (usuario , pagina) [0] [2] [1] + "    " +str ( VerRegistrosEstacionamiento (usuario , pagina) [1] [2] [0] + " - " + VerRegistrosEstacionamiento (usuario , pagina) [1] [2] [1] ))
+          
+                texto4[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [3] [0] + " - " + VerRegistrosEstacionamiento (usuario , pagina) [0] [3] [1]) + "    " +str ( VerRegistrosEstacionamiento (usuario , pagina) [1] [3] [0] + " - " + VerRegistrosEstacionamiento (usuario , pagina) [1] [3] [1] )
+            
+                texto5[1] = str (VerRegistrosEstacionamiento (usuario , pagina) [0] [4] [0] + " - " + VerRegistrosEstacionamiento (usuario , pagina) [0] [4] [1]) + "    " +str ( VerRegistrosEstacionamiento (usuario , pagina) [1] [4] [0] + " - " + VerRegistrosEstacionamiento (usuario , pagina) [1] [4] [1] )
 
             except:
                 """"""
+                
 
             screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
             screen.blit(fuente.render(texto2[1], True, (0, 0, 0)), texto2[0])
@@ -2632,12 +2693,23 @@ while running:
             texto3[0] = (489, 409)
             texto4[0] = (489, 476)
             texto5[0] = (489, 544)
+            texto6[0] = (164,612)
+
+            if texto_seleccionado != texto4 :
+                if texto4[1] == "" or texto4[1] == "MM-AAAA" :
+                    texto4[1] = "MM-AAAA"
+            else:
+                texto4[1] = texto_seleccionado[1]
+                barra = texto4[1] + "|"
+                ultimo_cambio_barra = pygame.time.get_ticks()
+
             screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
             screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
             screen.blit(fuente.render(texto2[1], True, (0, 0, 0)), texto2[0])
             screen.blit(fuente.render(texto3[1], True, (0, 0, 0)), texto3[0])
             screen.blit(fuente.render(texto4[1], True, (0, 0, 0)), texto4[0])
             screen.blit(fuente.render(texto5[1], True, (0, 0, 0)), texto5[0])
+            screen.blit(fuente.render(texto6[1], True, (0, 0, 0)), texto6[0])
 
 
 

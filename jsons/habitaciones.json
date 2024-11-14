@@ -8,13 +8,13 @@
             ""
         ],
         "EstadoActual": "",
-        "IdClienteOcupante": 5,
+        "IdClienteOcupante": 4,
         "Fechas": [
             [
                 "12/12/2024"
             ],
             [
-                "13/12/2024"
+                "15/12/2024"
             ]
         ],
         "Precio": 240,
@@ -22,7 +22,7 @@
     },
     "habitacion_triple": {
         "ID": 1,
-        "Ocupada": "No",
+        "Ocupada": "Si",
         "UltimaLimpieza": "02/10/2024",
         "Estado": "No molestar",
         "ServiciosIncluidos": [
@@ -31,8 +31,15 @@
         "EstadoActual": [
             ""
         ],
-        "IdClienteOcupante": "",
-        "Fechas": [],
+        "IdClienteOcupante": 4,
+        "Fechas": [
+            [
+                "12/12/2024"
+            ],
+            [
+                "15/12/2024"
+            ]
+        ],
         "Precio": 255,
         "RangoHuespedes": 3
     },

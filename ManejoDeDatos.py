@@ -463,10 +463,11 @@ def MarcarReservacionHabitacion(usuario,idhabitacion,fecha_inicio, fecha_final):
     except:
         print ("Error al reservar la habitacion")
 
-def ReservarEvento(precio,cliente,salon,asistentes,hora,dia,cantidad_personal,mail,especificaciones):
+def ReservarEvento(cliente,asistentes,hora,dia,cantidad_personal,mail,especificaciones):
     contenido = LeerJson("ContratacionEventos")
+    precio = 200
     nueva_clave = str(len(contenido))
-    contenido[nueva_clave]["IdSalon"] = salon
+    contenido[nueva_clave]["IdSalon"] = 1
     contenido[nueva_clave]["FechaContratada"] = dia
     contenido[nueva_clave]["Hora"] = hora
     contenido[nueva_clave]["Estado"] = "No realizado"
@@ -765,38 +766,30 @@ def ChequearDatosReservaEventos(usuario,mail, hora1, hora2 , asistentes , person
     
 
     return True
-          
-def VerRegistrosEstacionamiento(usuario):
+     
+def VerRegistrosEstacionamiento(usuario , pagina):
 
     contenido = LeerJson("Estacionamiento.json")
 
-    lista_ingreso = []
-    lista_egreso = []
+    lista_estacionamientos = []
 
-    
 
     for clave , valores in contenido.items():
 
+        lista_aux = []
+
         if contenido[clave]["Ocupante"] == usuario:
 
-            id_estacionamiento = clave
 
-    
-    try:
-
-        for i in range (0 , 8):
-
-            lista_ingreso.append (contenido[id_estacionamiento]["UltimoIngreso"] [len ( contenido[id_estacionamiento]["UltimoIngreso"] ) - i ])
+            lista_aux.append (contenido[clave]["UltimoIngreso"])
+            lista_aux.append (contenido[clave]["UltimoEgreso"])
             
-            lista_egreso.append (contenido[id_estacionamiento]["UltimoEgreso"] [len ( contenido[id_estacionamiento]["UltimoEgreso"] ) - i ])
+            lista_estacionamientos.append (lista_aux)
 
-    except:
-        """"""
-
+            
     
+    return lista_estacionamientos[pagina]
 
-
-    return lista_ingreso, lista_egreso
 
 def ChequearDatosTarjeta(numero_tarjeta,vencimiento,codigo):  
     chequeadormaximo = []
@@ -806,15 +799,15 @@ def ChequearDatosTarjeta(numero_tarjeta,vencimiento,codigo):
         chequeadormaximo.append(1)
      
     try:
-        fecha_actual = datetime.now()
-        fecha_ingresada = datetime.strptime(vencimiento, "%m-%Y")
+        fecha_actual = datetime.now().replace(day=1)
+        fecha_ingresada = datetime.strptime(str(vencimiento), "%m-%Y")
 
         if fecha_ingresada < fecha_actual:
-           return False, "La tarjeta vencio"
+            return False, "La tarjeta venció"
         else:
             chequeadormaximo.append(1)
-    except:
-        return False, "hubo un error"
+    except Exception as e:
+        return False, f"Hubo un error: {str(e)}"
 
             
     if len(codigo) != 3:
@@ -824,3 +817,25 @@ def ChequearDatosTarjeta(numero_tarjeta,vencimiento,codigo):
     
     return chequeadormaximo
         
+def VerDatosEvento(id_evento): 
+    data_eventos = LeerJson("ContratacionEventos.json")
+    try:
+        FechaContratada = data_eventos[str(id_evento)]["FechaContratada"]
+        Hora = data_eventos[str(id_evento)]["Hora"]
+        Estado = data_eventos[str(id_evento)]["Estado"]
+        Mail = data_eventos[str(id_evento)]["Mail"]
+        Especificaciones = data_eventos[str(id_evento)]["Especificaciones"]
+
+        return FechaContratada, Hora ,Estado ,Mail , Especificaciones
+    except:
+        print("El evento no existe o hubo un error al buscarlo.")
+
+def SolicitarLimpieza(id_habitacion):
+    data_limpieza = LeerJson("Limpieza.json") 
+    LimpiezasSolicitadas = data_limpieza["LimpiezasSolicitadas"]
+    data_limpieza["LimpiezasSolicitadas"] = LimpiezasSolicitadas.append
+    ActualizarJson("Limpieza.json" , data_limpieza)  
+
+SolicitarLimpieza(1)
+
+# Enviar limpieza devuelve numero de habitacion, estado y fecha de ultima limpieza

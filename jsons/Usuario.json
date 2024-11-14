@@ -83,7 +83,10 @@
             ]
         ],
         "IdEstacionamiento": [],
-        "IdHabitacion": []
+        "IdHabitacion": [
+            0,
+            1
+        ]
     },
     "pipa": {
         "Correo": "pip@a",

@@ -565,6 +565,17 @@ def CalcularPrecioEstacionamiento(dia_inicio , dia_final):
     print("Precio final: " , precio_final)
     return precio_final
 
+def CalcularPrecioEventos(hora1,hora2,empleados):
+    hora1 = datetime.strptime(hora1, "%H:%M")
+    hora2 = datetime.strptime(hora2, "%H:%M")
+    diferencia = hora2 - hora1
+    minutos = diferencia.total_seconds()/60
+    precio = 0
+    for i in range(int(minutos)):
+        precio = (precio + (0.5 * empleados)) 
+ 
+    return precio
+    
 def ReservarEstacionamiento(usuario , dia_final):
     contenido = LeerJson("Estacionamiento.json")
     data_usuario = LeerJson("Usuario.json")
@@ -789,7 +800,6 @@ def VerRegistrosEstacionamiento(usuario , pagina):
             
     
     return lista_estacionamientos[pagina]
-
 
 def ChequearDatosTarjeta(numero_tarjeta,vencimiento,codigo):  
     chequeadormaximo = []

@@ -2731,7 +2731,7 @@ while running:
             texto1[0] = (162, 270) #objeto a reponer
             texto2[0] = (185, 378) #cantidad
             texto3[0] = (535, 378) #habitacion
-            texto4[0] = (100 , 142)
+            texto4[0] = (82 , 142) #error
 
 
             screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )

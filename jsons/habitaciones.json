@@ -45,7 +45,7 @@
     },
     "habitacion_doble": {
         "ID": 2,
-        "Ocupada": "No",
+        "Ocupada": "Si",
         "UltimaLimpieza": "01 /10/2024",
         "Estado": "Ninguno",
         "ServiciosIncluidos": [
@@ -54,14 +54,21 @@
         "EstadoActual": [
             ""
         ],
-        "IdClienteOcupante": "",
-        "Fechas": [],
+        "IdClienteOcupante": 4,
+        "Fechas": [
+            [
+                ""
+            ],
+            [
+                ""
+            ]
+        ],
         "Precio": 200,
         "RangoHuespedes": 2
     },
     "habitacion_lujo": {
         "ID": 3,
-        "Ocupada": "No",
+        "Ocupada": "Si",
         "UltimaLimpieza": "19/09/2024",
         "Estado": "Ninguno",
         "ServiciosIncluidos": [
@@ -70,35 +77,54 @@
         "EstadoActual": [
             ""
         ],
-        "IdClienteOcupante": "",
-        "Fechas": [],
+        "IdClienteOcupante": 4,
+        "Fechas": [
+            [
+                "12/12/2024"
+            ],
+            [
+                "13/12/2024"
+            ]
+        ],
         "Precio": 410,
         "RangoHuespedes": 2
     },
     "habitacion_cuadruple": {
         "ID": 4,
-        "Ocupada": "No",
+        "Ocupada": "Si",
         "UltimaLimpieza": "19/09/2024",
         "Estado": "No molestar",
         "ServiciosIncluidos": [],
         "EstadoActual": "",
-        "IdClienteOcupante": "",
-        "Fechas": [],
+        "IdClienteOcupante": 4,
+        "Fechas": [
+            [
+                ""
+            ],
+            [
+                ""
+            ]
+        ],
         "Precio": 297,
         "RangoHuespedes": 4
     },
     "suite_rio": {
         "ID": 5,
-        "Ocupada": "No",
+        "Ocupada": "Si",
         "UltimaLimpieza": "02/10/2024",
         "Estado": "Ninguno",
         "ServiciosIncluidos": [
             "PISCINA"
         ],
         "EstadoActual": "",
-        "IdClienteOcupante": "",
+        "IdClienteOcupante": 4,
         "Fechas": [
-            ""
+            [
+                "12/12/2024"
+            ],
+            [
+                "13/12/2024"
+            ]
         ],
         "Precio": 290,
         "RangoHuespedes": 2

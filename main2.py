@@ -1460,7 +1460,7 @@ while running:
                                     fondo_actual[1] = 6
                                     texto_seleccionado = [(-100,-100),""]
                                     texto6[1] = "total: " + str(CalcularPrecioHabitacion(servicio_pagar, texto2[1],texto3[1]))
-                                    reset_textos(texto1, texto2, texto3, texto4, texto5, texto7, texto8) 
+                                    reset_textos(texto1, texto4, texto5, texto7, texto8) 
 
                             elif servicio_pagar == "Estacionamiento" :
                                 print("reservando estacionamiento")
@@ -1487,7 +1487,7 @@ while running:
                                     texto_seleccionado = [(-100,-100),""]
                                     texto6[1] = "total: " + str(CalcularPrecioEstacionamiento(texto2[1],texto3[1]))
                                     servicio_pagar = "Estacionamiento"
-                                    reset_textos(texto1, texto2, texto3, texto4, texto5, texto7, texto8) 
+                                    reset_textos(texto1, texto4, texto5, texto7, texto8) 
 
                             else:
                                 print("reservando amenities")
@@ -1529,7 +1529,7 @@ while running:
                                         servicio_pagar += 1
                                     texto6[1] = "total: " + str(CalcularPrecioAmenities(texto2[1],texto3[1],servicio_pagar))
                                     servicio_pagar = ""
-                                    reset_textos(texto1, texto2, texto3, texto4, texto5, texto7, texto8)
+                                    reset_textos(texto1, texto4, texto5, texto7, texto8)
 
 
 
@@ -1874,8 +1874,8 @@ while running:
 
                     elif mouse_pos[0] < 1022 and mouse_pos[0] > 485 and mouse_pos[1] < 375 and mouse_pos[1] > 335: #Numero de tarjeta
                         alter_mouse = True
-                        texto_ingresado = texto2[1]
-                        texto_seleccionado = texto2   
+                        texto_ingresado = texto7[1]
+                        texto_seleccionado = texto7   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
                         limite = 20 
@@ -1883,8 +1883,8 @@ while running:
                 
                     elif mouse_pos[0] < 1018 and mouse_pos[0] > 485 and mouse_pos[1] < 445 and mouse_pos[1] > 405: #Documento
                         alter_mouse = True
-                        texto_ingresado = texto3[1]
-                        texto_seleccionado = texto3   
+                        texto_ingresado = texto8[1]
+                        texto_seleccionado = texto8 
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
                         limite = 8
@@ -1909,8 +1909,8 @@ while running:
 
                     elif mouse_pos[0] < 1128 and mouse_pos[0] > 906 and mouse_pos[1] < 665 and mouse_pos[1] > 605: #Pagar   
                         alter_mouse = True
-                        print(ChequearDatosTarjeta (texto2[1],texto4[1],texto5[1]))
-                        if ChequearDatosTarjeta (texto2[1],texto4[1],texto5[1])[0] :
+                        print(ChequearDatosTarjeta (texto7[1],texto4[1],texto5[1]))
+                        if ChequearDatosTarjeta (texto7[1],texto4[1],texto5[1])[0] :
                         
                             if servicio_pagar != "" and servicio_pagar != "Estacionamiento":
 
@@ -2382,7 +2382,7 @@ while running:
                 texto2[1] = "  -"
             
 
-            for i in range(1,4):
+            for i in range(1,4): 
                 print(TieneServicio(usuario))
                 if TieneServicio(usuario)[i-1][0]:
                     pygame.draw.rect(screen, (98,69,49) , ( 351 + 306 * ( i - 1 ) ,   496 , 41 , 41 )) #310
@@ -2687,8 +2687,8 @@ while running:
         elif fondo_actual[0] == "pagar tarjeta":
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
             texto1[0] = (489, 271)
-            texto2[0] = (489, 340)
-            texto3[0] = (489, 409)
+            texto7[0] = (489, 340)
+            texto8[0] = (489, 409)
             texto4[0] = (489, 476)
             texto5[0] = (489, 544)
             texto6[0] = (164,612)
@@ -2703,8 +2703,8 @@ while running:
 
             screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
             screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
-            screen.blit(fuente.render(texto2[1], True, (0, 0, 0)), texto2[0])
-            screen.blit(fuente.render(texto3[1], True, (0, 0, 0)), texto3[0])
+            screen.blit(fuente.render(texto7[1], True, (0, 0, 0)), texto7[0])
+            screen.blit(fuente.render(texto8[1], True, (0, 0, 0)), texto8[0])
             screen.blit(fuente.render(texto4[1], True, (0, 0, 0)), texto4[0])
             screen.blit(fuente.render(texto5[1], True, (0, 0, 0)), texto5[0])
             screen.blit(fuente.render(texto6[1], True, (0, 0, 0)), texto6[0])

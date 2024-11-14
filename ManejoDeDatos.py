@@ -41,7 +41,7 @@ def TieneServicio(usuario):
     contrataciones = usuarios_json[usuario]["Contrataciones"]
     try: 
         for i in range (0, len(contrataciones)):
-            if contrataciones[i][0] == "GYM":
+            if contrataciones[i][0] == "SPA":
                 contr.append([True , contrataciones[i][1]])
                 n += 1
             
@@ -51,7 +51,7 @@ def TieneServicio(usuario):
         n = 0
 
         for i in range (0, len(contrataciones)):
-            if contrataciones[i][0] == "SPA":
+            if contrataciones[i][0] == "PISCINA":
                 contr.append([True , contrataciones[i][1]])
                 n += 1
             
@@ -61,7 +61,7 @@ def TieneServicio(usuario):
         n = 0
         
         for i in range (0, len(contrataciones)):
-            if contrataciones[i][0] == "PISCINA":
+            if contrataciones[i][0] == "GYM":
                 contr.append([True , contrataciones[i][1]])
                 n += 1
             

@@ -1304,7 +1304,8 @@ while running:
                         
                     if mouse_pos[0] < 481 and mouse_pos[0] > 250 and mouse_pos[1] < 655 and mouse_pos[1] > 576: #pedir limpieza
 
-                        print("Limpieza pedida.")
+                        print(VerNumeroHabitacion(usuario)[pagina])
+                        SolicitarLimpieza(VerNumeroHabitacion(usuario)[pagina])
                         alter_mouse = True
                     
 
@@ -2164,7 +2165,7 @@ while running:
 
                     elif mouse_pos[0] < 500 and mouse_pos[0] > 332 and mouse_pos[1] < 660 and mouse_pos[1] > 612: # enviar limpieza
 
-                        pass
+                        EnviarLimpieza()
 
 
 
@@ -2832,9 +2833,21 @@ while running:
 
         elif fondo_actual[0] == "recepcionista limpieza":
 
+            texto1[0] = (420 , 218)
+            texto2[0] = (420 , 325)
+            texto3[0] = (420 , 420)
+
+            texto1[1] = str(VerLimpieza()[0])
+            texto2[1] = str(VerLimpieza()[1])
+            texto3[1] = str(VerLimpieza()[2])
+
+
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))  
 
-        
+
+            screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
+            screen.blit(fuente.render(texto2[1], True, (0, 0, 0)), texto2[0])
+            screen.blit(fuente.render(texto3[1], True, (0, 0, 0)), texto3[0])
             
 
         

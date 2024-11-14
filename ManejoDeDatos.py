@@ -128,7 +128,9 @@ def CambiarEstadoAmenitie(id):
     ActualizarJson("Usuario.json", contenido2)
 
 def AgregarNotificacion(objeto , cantidad , habitacion):
-   
+    
+    error = "Se ha notificado correctamente"
+
     contenido_actual = LeerJson("Notificaciones.json")
     
     nueva_clave = str(len(contenido_actual))  
@@ -138,21 +140,31 @@ def AgregarNotificacion(objeto , cantidad , habitacion):
 
     try:
 
+        if int(habitacion) >= 0 and int (habitacion) <= 8:
 
-        nueva_notificacion = {
-            "Archivada": 0,
-            "Objeto": objeto,
-            "Cantidad": str(int(cantidad)),
-            "Id_habitacion": str(int(habitacion)),
-            "FechaEnviada": fecha_enviada
-        }
 
-        contenido_actual[nueva_clave] = nueva_notificacion
+            nueva_notificacion = {
+                "Archivada": 0,
+                "Objeto": objeto,
+                "Cantidad": str(int(cantidad)),
+                "Id_habitacion": str(int(habitacion)),
+                "FechaEnviada": fecha_enviada
+            }
 
-        ActualizarJson("Notificaciones.json", contenido_actual)
+            contenido_actual[nueva_clave] = nueva_notificacion
+
+            ActualizarJson("Notificaciones.json", contenido_actual)
+        
+        else:
+            error = "Error en la cantidad o habitacion"
     
     except:
-        """"""
+        error = "Error en la cantidad o habitacion"
+
+
+    
+
+    return error
 
 def VerNumeroHabitacion(cliente):
 
@@ -189,6 +201,7 @@ def VerNumeroEstacionamiento(cliente):
 
 def VerNotificacion():
     lista_notificaciones = []
+    lista_aux = []
     Notificaciones = LeerJson("Notificaciones.json")
 
     for clave , valores in Notificaciones.items():
@@ -197,15 +210,19 @@ def VerNotificacion():
 
 
         if str(Notificaciones[clave]["Archivada"]) == "0":
+
             
             lista_aux.append (Notificaciones[clave]["Objeto"])
             lista_aux.append (Notificaciones[clave]["Cantidad"])
             lista_aux.append (clave)
             lista_notificaciones.append(lista_aux)
-        
+
         if len (lista_notificaciones) > 4:
 
-            lista_notificaciones = lista_notificaciones.pop(0)
+            lista_notificaciones.pop(0)
+
+            
+
         
 
     

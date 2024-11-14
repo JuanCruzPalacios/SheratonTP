@@ -1,8 +1,14 @@
 {
-    "Stock1": {
-        "Cantidad": 32
+    "lampara": {
+        "Cantidad": 30
     },
-    "Stock2": {
-        "Cantidad": 321
+    "toalla": {
+        "Cantidad": 30
+    },
+    "jabon": {
+        "Cantidad": 50
+
+    },"shampoo": {
+        "Cantidad": 30
     }
 }

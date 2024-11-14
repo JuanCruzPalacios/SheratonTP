@@ -1304,7 +1304,7 @@ while running:
                         
                     if mouse_pos[0] < 481 and mouse_pos[0] > 250 and mouse_pos[1] < 655 and mouse_pos[1] > 576: #pedir limpieza
 
-                        print(VerNumeroHabitacion(usuario)[pagina])
+                        
                         SolicitarLimpieza(VerNumeroHabitacion(usuario)[pagina])
                         alter_mouse = True
                     
@@ -1962,7 +1962,7 @@ while running:
                         texto_seleccionado = texto2   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 20 
+                        limite = 16 
 
                 
                     elif mouse_pos[0] < 1018 and mouse_pos[0] > 485 and mouse_pos[1] < 445 and mouse_pos[1] > 405: #Documento
@@ -1981,7 +1981,7 @@ while running:
                         texto_seleccionado = texto4  
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 8 
+                        limite = 7 
 
                     elif mouse_pos[0] < 740 and mouse_pos[0] > 483 and mouse_pos[1] < 584 and mouse_pos[1] > 542: #Codigo de seguridad
                         alter_mouse = True

@@ -738,6 +738,8 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         return True
 
 
+
+
 def ChequearDatosReservaEventos(usuario,mail, hora1, hora2 , asistentes , personal , fecha):
     contenido = LeerJson("Usuario.json")
     hora1_str = hora1  
@@ -900,4 +902,4 @@ def EnviarLimpieza():
     return True
 
 
-print(ChequearDatosUsuario("nick","nick","12/12/2024", "12/12/2025", " wdsa", 1234567890123, "@@@@", "12345678", "1234"))
+print(ChequearDatosUsuario("nick","nick","12/12/2024", "12/12/2025", " wdsa", "1234567890123", "@@@@", "12345678", "1234"))

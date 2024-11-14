@@ -1871,6 +1871,53 @@ while running:
                         fondo_actual[1] = 10
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
 
+                    
+                    
+                    elif mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: # lampara suna
+                    
+                        AgregarEliminarStock ("lampara" ,"suma")
+
+                    elif mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: # lampara resta
+                        
+                        AgregarEliminarStock ("lampara" ,"resta")
+
+
+                    
+                    elif mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: # toalla suma
+                        
+                        AgregarEliminarStock ("toalla" ,"suma")
+
+                    elif mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: # toalla resta
+
+                        AgregarEliminarStock ("toalla" ,"resta")
+
+
+
+                    elif mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: # jabon suma
+                        
+                        AgregarEliminarStock ("jabon" ,"suma")
+                    
+                    elif mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: # jabon resta
+                        
+                        AgregarEliminarStock ("jabon" ,"resta")
+                    
+
+
+                    elif mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: # shampoo suma
+                        
+                        AgregarEliminarStock ("shampoo" ,"suma")
+                    
+
+                    elif mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: # shampoo suma
+                        
+                        AgregarEliminarStock ("shampoo" ,"resta")
+
+
+
+
+
+
+
 
                 elif fondo_actual[0] == "pagar mercado pago" and alter_mouse == False:
 
@@ -2763,9 +2810,49 @@ while running:
 
         elif fondo_actual[0] == "mantenimiento stock":
 
+            texto1[0] = (240 , 431)
+            texto2[0] = (500 , 431)
+            texto3[0] = (240 , 500)
+            texto4[0] = (500 , 431)
+            texto5[0] = (240 , 431)
+            texto6[0] = (240 , 431)
+            texto7[0] = (240 , 431)
+            texto8[0] = (240 , 431)
+
+
+
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))
 
 
+
+            for i in range (1 , 5):
+
+                pass
+                #screen.blit (barra_stock , (562 , 145 * i))
+                
+            texto1[1] = VerStock()[0][0]
+            texto2[1] = VerStock()[0][1]
+
+            texto3[1] = VerStock()[1][0]
+            texto4[1] = VerStock()[1][1]
+
+            texto5[1] = VerStock()[2][0]
+            texto6[1] = VerStock()[2][1]
+
+            texto7[1] = VerStock()[3][0]
+            texto8[1] = VerStock()[3][1]
+
+
+
+
+            screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
+            screen.blit(fuente.render(texto2[1], True, (0, 0, 0)), texto2[0])
+            screen.blit(fuente.render(texto3[1], True, (0, 0, 0)), texto3[0])
+            screen.blit(fuente.render(texto4[1], True, (0, 0, 0)), texto4[0])
+            screen.blit(fuente.render(texto5[1], True, (0, 0, 0)), texto5[0])
+            screen.blit(fuente.render(texto6[1], True, (0, 0, 0)), texto6[0])
+            screen.blit(fuente.render(texto7[1], True, (0, 0, 0)), texto7[0])
+            screen.blit(fuente.render(texto8[1], True, (0, 0, 0)), texto8[0])
 
 
 

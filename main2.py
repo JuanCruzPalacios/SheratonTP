@@ -1280,6 +1280,7 @@ while running:
                                     fondo_actual[1] = i[1] + 18
                                     fondo_actual[0] = "habitacion balcon"
                                     texto_seleccionado = [(-100,-100),""]
+                                    print(i[1])
                                     servicio_pagar = i[1]
 
                             
@@ -1434,8 +1435,9 @@ while running:
 
                         if ChequearDatosUsuario(usuario,texto1[1],texto2[1], texto3[1], texto4[1], texto5[1], texto6[1], texto7[1], texto8[1]):
                             
-                            
-                            if servicio_pagar in ["0","1","2","3","4","5","6","7","8"]:#id de habitaciones
+                            print("hola",servicio_pagar)
+
+                            if servicio_pagar != "" and servicio_pagar != "Estacionamiento":#id de habitaciones
                                 
                                 print("reservando habitacion")
 
@@ -1504,7 +1506,7 @@ while running:
                                     fondo_actual[0] = "menu habitaciones"
                                     gracias = True
                                     texto_seleccionado = [(-100,-100),""]
-                                    MarcarReservacionHabitacion(usuario, servicio_pagar , texto2[1] , texto3[1])
+                                    ReservarEvento(usuario,texto1[1],(texto2[1],texto3[1]),texto4[1],texto5[1],texto6[1],(texto7[1] + texto8[1]))
                                     reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
 
                                 elif posicion_cuadrado_reserva == ( 960 , 490 , 41 , 41 ): #mercado pago
@@ -1513,7 +1515,7 @@ while running:
                                     fondo_actual[0] = "pagar mercado pago"
                                     fondo_actual[1] = 4
                                     texto_seleccionado = [(-100,-100),""]
-                                    texto1[1] = "total: " + str(CalcularPrecioHabitacion(servicio_pagar, texto2[1],texto3[1]))
+                                    texto1[1] = "total: " + str(CalcularPrecioEventos(texto2[1], texto3[1],texto1[1]))
                                     
 
                                 elif posicion_cuadrado_reserva == ( 1062, 415, 41 , 41  ): #tarjeta
@@ -1521,12 +1523,12 @@ while running:
                                     fondo_actual[0] = "pagar tarjeta"
                                     fondo_actual[1] = 6
                                     texto_seleccionado = [(-100,-100),""]
-                                    texto6[1] = "total: " + str(CalcularPrecioHabitacion(servicio_pagar, texto2[1],texto3[1]))
+                                    texto6[1] = "total: " + str(CalcularPrecioEventos(texto2[1], texto3[1],texto1[1]))
                                     
                                     reset_textos(texto1, texto2, texto3, texto4, texto5, texto7, texto8) 
 
                             else:
-                                
+
                                 print("reservando amenities")
 
                                 if posicion_cuadrado_reserva == ( 877, 413, 41 , 41 ):  #efectivo     
@@ -1871,10 +1873,11 @@ while running:
                 elif fondo_actual[0] == "pagar mercado pago" and alter_mouse == False:
 
                     if mouse_pos[0] < 842 and mouse_pos[0] > 437 and mouse_pos[1] < 647 and mouse_pos[1] > 243: #QR
-                        print(servicio_pagar)
-                        if servicio_pagar in ["0","1","2","3","4","5","6","7","8"]:#id de habitaciones
+                        
+                        print("hola",servicio_pagar)
 
-                            print("wsasd")
+                        if servicio_pagar != " " and servicio_pagar != "Estacionamiento":#id de habitaciones
+
                             print ("Pago habitacion con mercado pago")
                             alter_mouse = True
                             fondo_actual[0] = "menu habitaciones"
@@ -1899,7 +1902,7 @@ while running:
                             print("pago evento con mercado pago")
                             alter_mouse = True
                             fondo_actual[0] = "menu habitaciones"
-                            ReservarEvento(usuario , )#reservar el evento :)
+                            ReservarEvento(usuario,texto1[1],(texto2[1],texto3[1]),texto4[1],texto5[1],texto6[1],(texto7[1] + texto8[1]))              
                             texto_seleccionado = [(-100,-100),""]
                             reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
 
@@ -2009,6 +2012,15 @@ while running:
                                 fondo_actual[0] = "menu parking"
                                 fondo_actual[1] = 2
                                 ReservarEstacionamiento(usuario , texto3[1])
+                                texto_seleccionado = [(-100,-100),""]
+                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
+
+                            elif servicio_pagar == "evento":
+
+                                print("pago evento con tarjeta")
+                                alter_mouse = True
+                                fondo_actual[0] = "menu habitaciones"
+                                ReservarEvento(usuario,texto1[1],(texto2[1],texto3[1]),texto4[1],texto5[1],texto6[1],(texto7[1] + texto8[1]))
                                 texto_seleccionado = [(-100,-100),""]
                                 reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
 

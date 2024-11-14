@@ -84,12 +84,8 @@
         ],
         "IdEstacionamiento": [],
         "IdHabitacion": [
-            0,
             1,
-            2,
-            3,
-            4,
-            5
+            0
         ]
     },
     "pipa": {
@@ -118,6 +114,20 @@
         "NumeroDeCliente": 6,
         "CodigoPostal": " ",
         "Direccion": " ",
+        "Contrataciones": [],
+        "IdEstacionamiento": [],
+        "IdHabitacion": []
+    },
+    "nick": {
+        "Correo": "@@@@",
+        "Tipo": "Cliente",
+        "Nombre": "nick",
+        "Password": "@@@@1234",
+        "DNI": "12345678",
+        "NumeroTelefono": "1234567890123",
+        "NumeroDeCliente": 7,
+        "CodigoPostal": "1234",
+        "Direccion": " wdsa",
         "Contrataciones": [],
         "IdEstacionamiento": [],
         "IdHabitacion": []

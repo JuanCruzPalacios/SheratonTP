@@ -578,7 +578,7 @@ def CalcularPrecioAmenities(dia_inicio,dia_final,cantidad_amenities):
     return precio_final
 
 def CalcularPrecioEstacionamiento(dia_inicio , dia_final):
-    precio_final = 15*diferencia_dias(dia_inicio,dia_final)
+    precio_final = 30*diferencia_dias(dia_inicio,dia_final)
     print("Precio final: " , precio_final)
     return precio_final
 
@@ -738,6 +738,8 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         return True
 
 
+
+
 def ChequearDatosReservaEventos(usuario,mail, hora1, hora2 , asistentes , personal , fecha):
     contenido = LeerJson("Usuario.json")
     hora1_str = hora1  
@@ -871,7 +873,7 @@ def VerLimpieza():
     try:
         id_habitacion = data_limpieza["LimpiezasSolicitadas"][0]
     except: 
-        return "Ninguna" , "-" , "-"
+        return "Ninguna" , "    -" , "    -"
     for habitacion in data_habitaciones: 
         if data_habitaciones[habitacion]["ID"] == id_habitacion: 
             break
@@ -898,3 +900,6 @@ def EnviarLimpieza():
     ActualizarJson("habitaciones.json" , data_habitaciones) 
     ActualizarJson("Limpieza.json" , data_limpieza)
     return True
+
+
+print(ChequearDatosUsuario("nick","nick","12/12/2024", "12/12/2025", " wdsa", "1234567890123", "@@@@", "12345678", "1234"))

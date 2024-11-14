@@ -878,7 +878,7 @@ while running:
                                 if chequeo_contraseña(texto3[1]) == "aprobado":
 
                                     usuario = texto1[1]
-                                    CrearActualizarUsuario(texto1[1] , texto2[1] , " " , texto3[1] , " " , " " , " " ," " )
+                                    CrearActualizarUsuario(texto1[1] , texto2[1] , texto3[1] , " " , " " , " " ," " )
                                     fondo_actual[0] = "menu habitaciones"
                                     fondo_actual[1] = 6
                                     texto_seleccionado = [(-100,-100),""]

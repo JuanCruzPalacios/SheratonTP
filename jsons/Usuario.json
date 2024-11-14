@@ -131,29 +131,5 @@
         "Contrataciones": [],
         "IdEstacionamiento": [],
         "IdHabitacion": []
-    },
-    "p": {
-        "Correo": "p",
-        "Tipo": "Cliente",
-        "Nombre": "p",
-        "Password": "p",
-        "DNI": "p",
-        "NumeroTelefono": "p",
-        "NumeroDeCliente": 7,
-        "CodigoPostal": "p",
-        "Direccion": "p",
-        "Contrataciones": [
-            [
-                "GYM",
-                "4"
-            ]
-        ],
-        "IdEstacionamiento": [
-            "4"
-        ],
-        "IdHabitacion": [
-            2,
-            8
-        ]
     }
 }

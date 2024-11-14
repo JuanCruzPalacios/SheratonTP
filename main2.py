@@ -1452,6 +1452,7 @@ while running:
                                     reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
 
                                 elif posicion_cuadrado_reserva == ( 960 , 490 , 41 , 41 ): #mercado pago
+                                    
                                     alter_mouse = True
                                     fondo_actual[0] = "pagar mercado pago"
                                     fondo_actual[1] = 4

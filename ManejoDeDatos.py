@@ -868,6 +868,24 @@ def VerLimpieza():
     estado = data_habitaciones[habitacion]["Estado"]
     return id_habitacion , estado , ultima_limpieza
     
+def EnviarLimpieza():
+    data_limpieza = LeerJson("Limpieza.json")
+    data_habitaciones = LeerJson("habitaciones.json")
+    try:
+        id_habitacion = data_limpieza["LimpiezasSolicitadas"][0]
+        lista_limpieza = data_limpieza["LimpiezasSolicitadas"]
+    except: 
+        return "No hay habitacion que limpiar"
+    for habitacion in data_habitaciones: 
+        if data_habitaciones[habitacion]["ID"] == id_habitacion: 
+            break
+
+    lista_limpieza.pop(0)
+    data_limpieza["LimpiezasSolicitadas"] = lista_limpieza
+    data_habitaciones[habitacion]["UltimaLimpieza"] = datetime.now().strftime("%d/%m/%Y")
+
+    ActualizarJson("habitaciones.json" , data_habitaciones) 
+    ActualizarJson("Limpieza.json" , data_limpieza)
+    return True
 
 
-# Enviar limpieza devuelve numero de habitacion, estado y fecha de ultima limpieza

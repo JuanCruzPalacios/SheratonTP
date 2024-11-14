@@ -737,6 +737,9 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         ActualizarJson("Usuario.json", contenido)
         return True
 
+
+
+
 def ChequearDatosReservaEventos(usuario,mail, hora1, hora2 , asistentes , personal , fecha):
     contenido = LeerJson("Usuario.json")
     hora1_str = hora1  

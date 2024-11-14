@@ -131,5 +131,19 @@
         "Contrataciones": [],
         "IdEstacionamiento": [],
         "IdHabitacion": []
+    },
+    "nico": {
+        "Correo": "nico@gmail.com",
+        "Tipo": "Cliente",
+        "Nombre": "nico",
+        "Password": "@@@@1234",
+        "DNI": " ",
+        "NumeroTelefono": " ",
+        "NumeroDeCliente": 8,
+        "CodigoPostal": " ",
+        "Direccion": " ",
+        "Contrataciones": [],
+        "IdEstacionamiento": [],
+        "IdHabitacion": []
     }
 }

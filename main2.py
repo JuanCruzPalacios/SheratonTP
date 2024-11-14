@@ -2382,15 +2382,21 @@ while running:
                 else:
                     i[0][0] = 1000 #posicion del rect en x
                     i[0][1] = 1000 #posicion del rect en y
-                
+
+            if len(habitaciones_libres) == 0:
+                texto4[1] = "No hemos encontrado lo que buscabas. :("
+            else:
+                texto4[1] = ""
 
             screen.blit (imagen_filtro , ( 30, 160 ))        
             texto1[0] = ( 192 , 265 )
             texto2[0] = ( 52 , 412 )    
             texto3[0] = ( 192 , 412 )
+            texto4[0] = ( 389 , 214 )
             screen.blit( fuente.render(texto1[1] , True , (0,0,0) ), texto1[0] )
             screen.blit( fuente.render(texto2[1] , True , (0,0,0) ), texto2[0] )  
             screen.blit( fuente.render(texto3[1] , True , (0,0,0) ), texto3[0] )   
+            screen.blit( fuente.render(texto4[1] , True , (0,0,0) ), texto4[0] )  
             screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
 
 

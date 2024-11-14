@@ -463,8 +463,9 @@ def MarcarReservacionHabitacion(usuario,idhabitacion,fecha_inicio, fecha_final):
     except:
         print ("Error al reservar la habitacion")
 
-def ReservarEvento(precio,cliente,asistentes,hora,dia,cantidad_personal,mail,especificaciones):
+def ReservarEvento(cliente,asistentes,hora,dia,cantidad_personal,mail,especificaciones):
     contenido = LeerJson("ContratacionEventos")
+    precio = 200
     nueva_clave = str(len(contenido))
     contenido[nueva_clave]["IdSalon"] = 1
     contenido[nueva_clave]["FechaContratada"] = dia
@@ -840,8 +841,8 @@ def VerDatosEvento(id_evento):
 
 def SolicitarLimpieza(id_habitacion):
     data_limpieza = LeerJson("Limpieza.json") 
-    print(data_limpieza["LimpiezasSolicitadas"])
-    data_limpieza["LimpiezasSolicitadas"] = data_limpieza["LimpiezasSolicitadas"].append(str(id_habitacion))
+    LimpiezasSolicitadas = data_limpieza["LimpiezasSolicitadas"]
+    data_limpieza["LimpiezasSolicitadas"] = LimpiezasSolicitadas.append
     ActualizarJson("Limpieza.json" , data_limpieza)  
 
 SolicitarLimpieza(1)

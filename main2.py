@@ -1636,24 +1636,7 @@ while running:
                         limite = 24
 
                                         
-                    elif  mouse_pos[0] < 480 and mouse_pos[0] > 260 and mouse_pos[1] < 690 and mouse_pos[1] > 620: #reservar salon de eventos 
-
-                        alter_mouse = True
-                        if ChequearDatosReservaEventos(usuario , texto6[1] , texto2[1] , texto3[1] , texto1[1] , texto5[1] , texto4[1]) == True:
-
-                            if posicion_cuadrado_salon == ( 956, 494, 41 , 41  ):
-
-                                fondo_actual[0] = "pagar mercado pago"
-                                fondo_actual[1] = 4
-                                texto_seleccionado = [(-100,-100),""]
-                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
-                            
-                            elif posicion_cuadrado_salon == ( 1058 , 421 , 41 , 41 ):
-
-                                fondo_actual[0] = "pagar tarjeta"
-                                fondo_actual[1] = 6
-                                texto_seleccionado = [(-100,-100),""]
-                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
+                    
 
 
                     elif  mouse_pos[0] < 1140 and mouse_pos[0] > 730 and mouse_pos[1] < 408 and mouse_pos[1] > 215: #especificaciones
@@ -1685,6 +1668,36 @@ while running:
 
 
                         posicion_cuadrado_salon = ( 956, 494, 41 , 41  ) 
+
+
+                    elif  mouse_pos[0] < 480 and mouse_pos[0] > 260 and mouse_pos[1] < 690 and mouse_pos[1] > 620: #reservar salon de eventos 
+
+                        alter_mouse = True
+                        if ChequearDatosReservaEventos(usuario , texto6[1] , texto2[1] , texto3[1] , texto1[1] , texto5[1] , texto4[1]) == True:
+
+                            if posicion_cuadrado_salon == ( 956, 494, 41 , 41  ):#mercado pago
+
+                                fondo_actual[0] = "pagar mercado pago"
+                                servicio_pagar = "evento"
+                                fondo_actual[1] = 4
+                                texto_seleccionado = [(-100,-100),""]
+                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
+                            
+                            elif posicion_cuadrado_salon == ( 1058 , 421 , 41 , 41 ):#tarjeta
+
+                                fondo_actual[0] = "pagar tarjeta"
+                                fondo_actual[1] = 6
+                                servicio_pagar = "evento"
+                                texto_seleccionado = [(-100,-100),""]
+                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
+
+                            elif posicion_cuadrado_salon == ( 873, 421, 41 , 41  ):
+
+                                fondo_actual[0] = "menu habitaciones"
+                                servicio_pagar = "evento"
+                                texto_seleccionado = [(-100,-100),""]
+                                reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
+
 
 
 
@@ -1778,6 +1791,7 @@ while running:
                     
 
                     elif len(VerNotificacion()) > 0 and mouse_pos[0] < 1105 and mouse_pos[0] > 1066 and mouse_pos[1] < 192 and mouse_pos[1] > 155: #boton 1
+                        
                         ArchivarDesarchivarNotificaciones(VerNotificacion()[0][2])
                     
                     elif len(VerNotificacion()) > 1 and mouse_pos[0] < 1105 and mouse_pos[0] > 1066 and mouse_pos[1] < 338 and mouse_pos[1] > 296: #boton 2
@@ -1794,6 +1808,7 @@ while running:
 
 
                 elif fondo_actual[0] == "mantenimiento stock":
+
                     if mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: #volver
 
                         fondo_actual[0] = "menu mantenimiento"
@@ -1804,8 +1819,9 @@ while running:
                 elif fondo_actual[0] == "pagar mercado pago" and alter_mouse == False:
 
                     if mouse_pos[0] < 842 and mouse_pos[0] > 437 and mouse_pos[1] < 647 and mouse_pos[1] > 243: #QR
-                        if servicio_pagar != "" and servicio_pagar != "Estacionamiento":
-
+                        print(servicio_pagar)
+                        if servicio_pagar in ["0","1","2","3","4","5","6","7","8"]:#id de habitaciones
+                            print("wsasd")
                             print ("Pago habitacion con mercado pago")
                             alter_mouse = True
                             fondo_actual[0] = "menu habitaciones"
@@ -1822,6 +1838,26 @@ while running:
                             fondo_actual[0] = "menu parking"
                             fondo_actual[1] = 2
                             ReservarEstacionamiento(usuario , texto3[1])
+                            texto_seleccionado = [(-100,-100),""]
+                            reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
+
+                        elif servicio_pagar == "evento":
+
+
+
+
+
+
+
+
+
+
+                            
+
+                            print("pago evento con mercado pago")
+                            alter_mouse = True
+                            fondo_actual[0] = "menu habitaciones"
+                            ReservarEvento(usuario , )
                             texto_seleccionado = [(-100,-100),""]
                             reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
 
@@ -1862,6 +1898,7 @@ while running:
 
 
                 elif fondo_actual[0] == "pagar tarjeta" and alter_mouse == False:
+
 
 
                     if mouse_pos[0] < 1022 and mouse_pos[0] > 485 and mouse_pos[1] < 305 and mouse_pos[1] > 270: #Nombre del titular
@@ -2000,16 +2037,21 @@ while running:
 
         
                     if mouse_pos[0] < 1250 and mouse_pos[0] > 1189 and mouse_pos[1] < 702 and mouse_pos[1] > 645: # salir
-
+                        
+                        alter_mouse = True
                         fondo_actual[0] = "menu recepcionista"
                         fondo_actual[1] = 14
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                     
 
                     elif mouse_pos[0] < 514 and mouse_pos[0] > 264 and mouse_pos[1] < 578 and mouse_pos[1] > 515: # enviar notificacion
-                    
                         
-                        AgregarNotificacion(texto1[1] , texto2[1] , texto3[1])
+                        alter_mouse = True
+           
+                        texto4[1] = AgregarNotificacion(texto1[1] , texto2[1] , texto3[1])
+
+                        
+                        
 
 
                     elif mouse_pos[0] < 630 and mouse_pos[0] > 148 and mouse_pos[1] < 318 and mouse_pos[1] > 264: # objeto a reponer
@@ -2723,12 +2765,14 @@ while running:
             texto1[0] = (162, 270) #objeto a reponer
             texto2[0] = (185, 378) #cantidad
             texto3[0] = (535, 378) #habitacion
+            texto4[0] = (100 , 142)
 
 
             screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
             screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
             screen.blit(fuente.render(texto2[1], True, (0, 0, 0)), texto2[0])
             screen.blit(fuente.render(texto3[1], True, (0, 0, 0)), texto3[0])
+            screen.blit(fuente.render(texto4[1], True, (0, 0, 0)), texto4[0])
 
         
         elif fondo_actual[0] == "recepcionista eventos":

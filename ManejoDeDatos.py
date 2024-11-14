@@ -128,7 +128,9 @@ def CambiarEstadoAmenitie(id):
     ActualizarJson("Usuario.json", contenido2)
 
 def AgregarNotificacion(objeto , cantidad , habitacion):
-   
+    
+    error = "Se ha notificado correctamente"
+
     contenido_actual = LeerJson("Notificaciones.json")
     
     nueva_clave = str(len(contenido_actual))  
@@ -138,21 +140,31 @@ def AgregarNotificacion(objeto , cantidad , habitacion):
 
     try:
 
+        if int(habitacion) >= 0 and int (habitacion) <= 8:
 
-        nueva_notificacion = {
-            "Archivada": 0,
-            "Objeto": objeto,
-            "Cantidad": str(int(cantidad)),
-            "Id_habitacion": str(int(habitacion)),
-            "FechaEnviada": fecha_enviada
-        }
 
-        contenido_actual[nueva_clave] = nueva_notificacion
+            nueva_notificacion = {
+                "Archivada": 0,
+                "Objeto": objeto,
+                "Cantidad": str(int(cantidad)),
+                "Id_habitacion": str(int(habitacion)),
+                "FechaEnviada": fecha_enviada
+            }
 
-        ActualizarJson("Notificaciones.json", contenido_actual)
+            contenido_actual[nueva_clave] = nueva_notificacion
+
+            ActualizarJson("Notificaciones.json", contenido_actual)
+        
+        else:
+            error = "Error en la cantidad o habitacion"
     
     except:
-        """"""
+        error = "Error en la cantidad o habitacion"
+
+
+    
+
+    return error
 
 def VerNumeroHabitacion(cliente):
 
@@ -189,6 +201,7 @@ def VerNumeroEstacionamiento(cliente):
 
 def VerNotificacion():
     lista_notificaciones = []
+    lista_aux = []
     Notificaciones = LeerJson("Notificaciones.json")
 
     for clave , valores in Notificaciones.items():
@@ -197,15 +210,19 @@ def VerNotificacion():
 
 
         if str(Notificaciones[clave]["Archivada"]) == "0":
+
             
             lista_aux.append (Notificaciones[clave]["Objeto"])
             lista_aux.append (Notificaciones[clave]["Cantidad"])
             lista_aux.append (clave)
             lista_notificaciones.append(lista_aux)
-        
+
         if len (lista_notificaciones) > 4:
 
-            lista_notificaciones = lista_notificaciones.pop(0)
+            lista_notificaciones.pop(0)
+
+            
+
         
 
     
@@ -463,10 +480,11 @@ def MarcarReservacionHabitacion(usuario,idhabitacion,fecha_inicio, fecha_final):
     except:
         print ("Error al reservar la habitacion")
 
-def ReservarEvento(precio,cliente,salon,asistentes,hora,dia,cantidad_personal,mail,especificaciones):
+def ReservarEvento(cliente,asistentes,hora,dia,cantidad_personal,mail,especificaciones):
     contenido = LeerJson("ContratacionEventos")
+    precio = 200
     nueva_clave = str(len(contenido))
-    contenido[nueva_clave]["IdSalon"] = salon
+    contenido[nueva_clave]["IdSalon"] = 1
     contenido[nueva_clave]["FechaContratada"] = dia
     contenido[nueva_clave]["Hora"] = hora
     contenido[nueva_clave]["Estado"] = "No realizado"
@@ -478,7 +496,7 @@ def ReservarEvento(precio,cliente,salon,asistentes,hora,dia,cantidad_personal,ma
     contenido[nueva_clave]["Usuario"] = cliente
     ActualizarJson("ContratacionEventos.json", contenido)
 
-def CrearActualizarUsuario(Usuario, Correo , Apellido , Contraseña , DNI , NumeroTelefono , CodigoPostal, Direccion):    
+def CrearActualizarUsuario(Usuario, Correo , Contraseña , DNI , NumeroTelefono , CodigoPostal, Direccion):    
     contenido_actual = LeerJson("Usuario.json")
 
     try: 
@@ -489,8 +507,7 @@ def CrearActualizarUsuario(Usuario, Correo , Apellido , Contraseña , DNI , Nume
     nuevo_usuario = {
         "Correo" : Correo , 
         "Tipo" : "Cliente",  
-        "Nombre" : Usuario ,
-        "Apellido" : Apellido , 
+        "Nombre" : Usuario , 
         "Password" : Contraseña , 
         "DNI" : DNI , 
         "NumeroTelefono" : NumeroTelefono , 
@@ -592,18 +609,23 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
     contenido = LeerJson("Usuario.json")
     chequeadormaximo = []
     
+    
+    
     if contenido[usuario]["Nombre"] == " ":
-        contenido2 = contenido[usuario]["Nombre"] = Nombre
-        ActualizarJson("Usuario.json", contenido2)
+        contenido[usuario]["Nombre"] = Nombre
+        chequeadormaximo.append(1)
     elif Nombre != contenido[usuario]["Nombre"]:
          print("El nombre del usuario es incorrecto")
          return False 
     else:
         chequeadormaximo.append(1)
     
+    
+    
+    
     if contenido[usuario]["Direccion"] == " ":
-        contenido2 = contenido[usuario]["Direccion"] = direccion
-        ActualizarJson("Usuario.json", contenido2)
+        contenido[usuario]["Direccion"] = direccion
+        chequeadormaximo.append(1)
     elif direccion != contenido[usuario]["Direccion"]:
          print("La direccion del usuario es incorrecto")
          return False 
@@ -611,14 +633,17 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         chequeadormaximo.append(1)
     
     
+    
+    
     if contenido[usuario]["Correo"] == " ":
-        contenido2 = contenido[usuario]["Correo"] = mail
-        ActualizarJson("Usuario.json", contenido2)  
+        contenido[usuario]["Correo"] = mail
+        chequeadormaximo.append(1)
     elif mail != contenido[usuario]["Correo"]:
          print("El correo del usuario es incorrecto")
          return False 
     else:
         chequeadormaximo.append(1)
+    
     
     if contenido[usuario]["DNI"] == " ":
 
@@ -627,13 +652,10 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
             if len(str(int(dni))) == 8 or len(int(dni)) == 1:
 
                 contenido[usuario]["DNI"] = dni 
-            contenido2 = contenido[usuario]["DNI"] = dni
-            ActualizarJson("Usuario.json", contenido2)
+                chequeadormaximo.append(1)
         except:
             return "Error al cargar dni"
         
-    
-    
     elif dni != contenido[usuario]["DNI"]:
          print("El dni ingresado es incorrecto")
          return False 
@@ -646,10 +668,8 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         try:
 
             if len(str(int(codigo_postal))) == 4:
-                contenido[usuario]["CodigoPostal"] = codigo_postal 
-                
-            contenido2 = contenido[usuario]["CodigoPostal"] = codigo_postal
-            ActualizarJson("Usuario.json", contenido2)
+                contenido[usuario]["CodigoPostal"] = codigo_postal
+                chequeadormaximo.append(1)
         except:
             return "error al ingresar codigo postal"
 
@@ -660,30 +680,18 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         chequeadormaximo.append(1)
      
     if contenido[usuario]["NumeroTelefono"] == " ":
-
+        
         try:
-
-            for i in telefono:
-
-                if i.isdigit():
-
-                    tel_aux += i 
             
-
-            if str(int(tel_aux)) == 13:
-            
-                    
-                contenido[usuario]["NumeroTelefono"] = telefono
-            contenido2 = contenido[usuario]["NumeroTelefono"] = Nombre
-            ActualizarJson("Usuario.json", contenido2)
+            if (len(str(telefono)) == 13) and type(telefono) == int:
+                print(telefono)
+                contenido[usuario]["NumeroTelefono"] = str(telefono)
+                chequeadormaximo.append(1)
         except:
             return "Error al ingresar telefono"
 
-
-
     elif telefono != contenido[usuario]["NumeroTelefono"]:
         print("El numero ingresado es incorrecto")
-        ActualizarJson("Usuario.json" , contenido)
         return False 
     else:
         chequeadormaximo.append(1)
@@ -702,7 +710,6 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
     except:
        print("error")
        print(TypeError)
-        
     try: 
         if diferencia_dias(dia1,dia2) >= 1:
             chequeadormaximo.append(1)
@@ -713,10 +720,12 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         print("El formato de dias esta mal enviado")
         return False
 
+    
     if chequeadormaximo == [1,1,1,1,1,1,1]:
         print("Los datos ingresados son correctos.")
+        ActualizarJson("Usuario.json", contenido)
         return True
-        
+
 def ChequearDatosReservaEventos(usuario,mail, hora1, hora2 , asistentes , personal , fecha):
     contenido = LeerJson("Usuario.json")
     hora1_str = hora1  
@@ -807,15 +816,15 @@ def ChequearDatosTarjeta(numero_tarjeta,vencimiento,codigo):
         chequeadormaximo.append(1)
      
     try:
-        fecha_actual = datetime.now()
-        fecha_ingresada = datetime.strptime(vencimiento, "%m-%Y")
+        fecha_actual = datetime.now().replace(day=1)
+        fecha_ingresada = datetime.strptime(str(vencimiento), "%m-%Y")
 
         if fecha_ingresada < fecha_actual:
-           return False, "La tarjeta vencio"
+            return False, "La tarjeta venció"
         else:
             chequeadormaximo.append(1)
-    except:
-        return False, "hubo un error"
+    except Exception as e:
+        return False, f"Hubo un error: {str(e)}"
 
             
     if len(codigo) != 3:
@@ -825,3 +834,40 @@ def ChequearDatosTarjeta(numero_tarjeta,vencimiento,codigo):
     
     return chequeadormaximo
         
+def VerDatosEvento(id_evento): 
+    data_eventos = LeerJson("ContratacionEventos.json")
+    try:
+        FechaContratada = data_eventos[str(id_evento)]["FechaContratada"]
+        Hora = data_eventos[str(id_evento)]["Hora"]
+        Estado = data_eventos[str(id_evento)]["Estado"]
+        Mail = data_eventos[str(id_evento)]["Mail"]
+        Especificaciones = data_eventos[str(id_evento)]["Especificaciones"]
+
+        return FechaContratada, Hora ,Estado ,Mail , Especificaciones
+    except:
+        print("El evento no existe o hubo un error al buscarlo.")
+
+def SolicitarLimpieza(id_habitacion):
+    data_limpieza = LeerJson("Limpieza.json") 
+    LimpiezasSolicitadas = data_limpieza["LimpiezasSolicitadas"]
+    LimpiezasSolicitadas.append(id_habitacion)
+    data_limpieza["LimpiezasSolicitadas"] = LimpiezasSolicitadas
+    ActualizarJson("Limpieza.json" , data_limpieza)  
+
+def VerLimpieza(): 
+    data_limpieza = LeerJson("Limpieza.json")
+    data_habitaciones = LeerJson("habitaciones.json")
+    try:
+        id_habitacion = data_limpieza["LimpiezasSolicitadas"][0]
+    except: 
+        return "Ninguna" , "-" , "-"
+    for habitacion in data_habitaciones: 
+        if data_habitaciones[habitacion]["ID"] == id_habitacion: 
+            break
+    ultima_limpieza = data_habitaciones[habitacion]["UltimaLimpieza"]
+    estado = data_habitaciones[habitacion]["Estado"]
+    return id_habitacion , estado , ultima_limpieza
+    
+
+
+# Enviar limpieza devuelve numero de habitacion, estado y fecha de ultima limpieza

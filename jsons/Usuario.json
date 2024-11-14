@@ -3,7 +3,6 @@
         "Correo": "pepito123@gmail.com",
         "Tipo": "Cliente",
         "Nombre": "pepe",
-        "Apellido": "Palacios",
         "Password": "pepito123",
         "DNI": "47873319",
         "NumeroTelefono": "+54 9 11 5920-3842",
@@ -35,7 +34,6 @@
         "Correo": "marco123@gmail.com",
         "Tipo": "Mantenimiento",
         "Nombre": "marco",
-        "Apellido": "Ougust",
         "Password": "marco123",
         "DNI": "48696969",
         "NumeroTelefono": "+54 9 11 0303-4560",
@@ -50,7 +48,6 @@
         "Correo": "ezequiel123@gmail.com",
         "Tipo": "Recepcionista",
         "Nombre": "ezequiel",
-        "Apellido": "Lavezzi",
         "Password": "ezequiel123",
         "DNI": "48116344",
         "NumeroTelefono": "+54 9 11 0334-4560",
@@ -65,7 +62,6 @@
         "Correo": "www",
         "Tipo": "Cliente",
         "Nombre": "www",
-        "Apellido": "www",
         "Password": "",
         "DNI": "www",
         "NumeroTelefono": "www",
@@ -92,19 +88,20 @@
             1
         ]
     },
-    "sigurd": {
-        "Correo": "sss",
+    "pipa": {
+        "Correo": "pip@a",
         "Tipo": "Cliente",
-        "Nombre": "sigurd",
-        "Apellido": " ",
-        "Password": "sigurd123",
-        "DNI": " ",
-        "NumeroTelefono": " ",
-        "NumeroDeCliente": "5",
-        "CodigoPostal": " ",
-        "Direccion": " ",
+        "Nombre": "pipa",
+        "Password": "pipa123!",
+        "DNI": "12345678",
+        "NumeroTelefono": "1234567890123",
+        "NumeroDeCliente": 5,
+        "CodigoPostal": "6969",
+        "Direccion": "pipa",
         "Contrataciones": [],
         "IdEstacionamiento": [],
-        "IdHabitacion": []
+        "IdHabitacion": [
+            0
+        ]
     }
 }

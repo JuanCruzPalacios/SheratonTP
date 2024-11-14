@@ -878,7 +878,7 @@ while running:
                                 if chequeo_contraseña(texto3[1]) == "aprobado":
 
                                     usuario = texto1[1]
-                                    CrearActualizarUsuario(texto1[1] , texto2[1] , " " , texto3[1] , " " , " " , " " ," " )
+                                    CrearActualizarUsuario(texto1[1] , texto2[1] , texto3[1] , " " , " " , " " ," " )
                                     fondo_actual[0] = "menu habitaciones"
                                     fondo_actual[1] = 6
                                     texto_seleccionado = [(-100,-100),""]
@@ -1177,7 +1177,7 @@ while running:
 
                                     if chequeo_contraseña(texto3[1]) == "aprobado":
 
-                                        CrearActualizarUsuario(texto1[1] , texto2[1]  , " " , texto3[1], " " , " " , " " , " " )
+                                        CrearActualizarUsuario(texto1[1] , texto2[1] , texto3[1], " " , " " , " " , " " )
                                         usuario = texto1[1]
                                         fondo_actual[0] = "menu habitaciones"
                                         fondo_actual[1] = 6
@@ -2092,6 +2092,7 @@ while running:
         
                     if mouse_pos[0] < 1250 and mouse_pos[0] > 1189 and mouse_pos[1] < 702 and mouse_pos[1] > 645: # salir
 
+                        alter_mouse = True  
                         fondo_actual[0] = "menu recepcionista"
                         fondo_actual[1] = 14
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
@@ -2099,8 +2100,8 @@ while running:
 
                     elif mouse_pos[0] < 514 and mouse_pos[0] > 264 and mouse_pos[1] < 578 and mouse_pos[1] > 515: # enviar notificacion
                     
-                        
-                        AgregarNotificacion(texto1[1] , texto2[1] , texto3[1])
+                        alter_mouse = True  
+                        texto4[1] = AgregarNotificacion(texto1[1] , texto2[1] , texto3[1])
 
 
                     elif mouse_pos[0] < 630 and mouse_pos[0] > 148 and mouse_pos[1] < 318 and mouse_pos[1] > 264: # objeto a reponer
@@ -2814,12 +2815,14 @@ while running:
             texto1[0] = (162, 270) #objeto a reponer
             texto2[0] = (185, 378) #cantidad
             texto3[0] = (535, 378) #habitacion
+            texto4[0] = (86, 144) #error
 
 
             screen.blit( fuente.render(barra , True , (0,0,0) ), texto_seleccionado[0] )
             screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
             screen.blit(fuente.render(texto2[1], True, (0, 0, 0)), texto2[0])
             screen.blit(fuente.render(texto3[1], True, (0, 0, 0)), texto3[0])
+            screen.blit(fuente.render(texto4[1], True, (0, 0, 0)), texto4[0])
 
         
         elif fondo_actual[0] == "recepcionista eventos":

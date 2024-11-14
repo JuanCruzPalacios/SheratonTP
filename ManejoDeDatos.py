@@ -809,7 +809,7 @@ def ChequearDatosTarjeta(numero_tarjeta,vencimiento,codigo):
     try:
         fecha_actual = datetime.now().replace(day=1)
         fecha_ingresada = datetime.strptime(str(vencimiento), "%m-%Y")
-        
+
         if fecha_ingresada < fecha_actual:
             return False, "La tarjeta venció"
         else:
@@ -825,3 +825,18 @@ def ChequearDatosTarjeta(numero_tarjeta,vencimiento,codigo):
     
     return chequeadormaximo
         
+def VerDatosEvento(id_evento): 
+    data_eventos = LeerJson("ContratacionEventos.json")
+    try:
+        FechaContratada = data_eventos[str(id_evento)]["FechaContratada"]
+        Hora = data_eventos[str(id_evento)]["Hora"]
+        Estado = data_eventos[str(id_evento)]["Estado"]
+        Mail = data_eventos[str(id_evento)]["Mail"]
+        Especificaciones = data_eventos[str(id_evento)]["Especificaciones"]
+
+        return FechaContratada, Hora ,Estado ,Mail , Especificaciones
+    except:
+        print("El evento no existe o hubo un error al buscarlo.")
+
+
+# Enviar limpieza devuelve numero de habitacion, estado y fecha de ultima limpieza

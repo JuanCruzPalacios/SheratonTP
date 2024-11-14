@@ -694,7 +694,7 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         
         try:
             
-            if (len(str(telefono)) == 13) and type(telefono) == int:
+            if (len(str(telefono)) == 13):
                 print(telefono)
                 contenido[usuario]["NumeroTelefono"] = str(telefono)
                 chequeadormaximo.append(1)
@@ -736,8 +736,6 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         print("Los datos ingresados son correctos.")
         ActualizarJson("Usuario.json", contenido)
         return True
-
-
 
 
 def ChequearDatosReservaEventos(usuario,mail, hora1, hora2 , asistentes , personal , fecha):

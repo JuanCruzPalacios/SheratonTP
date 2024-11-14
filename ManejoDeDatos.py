@@ -482,7 +482,7 @@ def MarcarReservacionHabitacion(usuario,idhabitacion,fecha_inicio, fecha_final):
 
 def ReservarEvento(cliente,asistentes,hora,dia,cantidad_personal,mail,especificaciones):
     contenido = LeerJson("ContratacionEventos")
-    precio = 200
+    precio = CalcularPrecioEventos(hora[0] , hora[1] , cantidad_personal)
     nueva_clave = str(len(contenido))
     contenido[nueva_clave]["IdSalon"] = 1
     contenido[nueva_clave]["FechaContratada"] = dia
@@ -878,6 +878,22 @@ def VerLimpieza():
     estado = data_habitaciones[habitacion]["Estado"]
     return id_habitacion , estado , ultima_limpieza
     
+def EnviarLimpieza():
+    data_limpieza = LeerJson("Limpieza.json")
+    data_habitaciones = LeerJson("habitaciones.json")
+    try:
+        id_habitacion = data_limpieza["LimpiezasSolicitadas"][0]
+        lista_limpieza = data_limpieza["LimpiezasSolicitadas"]
+    except: 
+        return "No hay habitacion que limpiar"
+    for habitacion in data_habitaciones: 
+        if data_habitaciones[habitacion]["ID"] == id_habitacion: 
+            break
 
+    lista_limpieza.pop(0)
+    data_limpieza["LimpiezasSolicitadas"] = lista_limpieza
+    data_habitaciones[habitacion]["UltimaLimpieza"] = datetime.now().strftime("%d/%m/%Y")
 
-# Enviar limpieza devuelve numero de habitacion, estado y fecha de ultima limpieza
+    ActualizarJson("habitaciones.json" , data_habitaciones) 
+    ActualizarJson("Limpieza.json" , data_limpieza)
+    return True

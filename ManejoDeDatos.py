@@ -463,10 +463,10 @@ def MarcarReservacionHabitacion(usuario,idhabitacion,fecha_inicio, fecha_final):
     except:
         print ("Error al reservar la habitacion")
 
-def ReservarEvento(precio,cliente,salon,asistentes,hora,dia,cantidad_personal,mail,especificaciones):
+def ReservarEvento(precio,cliente,asistentes,hora,dia,cantidad_personal,mail,especificaciones):
     contenido = LeerJson("ContratacionEventos")
     nueva_clave = str(len(contenido))
-    contenido[nueva_clave]["IdSalon"] = salon
+    contenido[nueva_clave]["IdSalon"] = 1
     contenido[nueva_clave]["FechaContratada"] = dia
     contenido[nueva_clave]["Hora"] = hora
     contenido[nueva_clave]["Estado"] = "No realizado"
@@ -838,5 +838,12 @@ def VerDatosEvento(id_evento):
     except:
         print("El evento no existe o hubo un error al buscarlo.")
 
+def SolicitarLimpieza(id_habitacion):
+    data_limpieza = LeerJson("Limpieza.json") 
+    print(data_limpieza["LimpiezasSolicitadas"])
+    data_limpieza["LimpiezasSolicitadas"] = data_limpieza["LimpiezasSolicitadas"].append(str(id_habitacion))
+    ActualizarJson("Limpieza.json" , data_limpieza)  
+
+SolicitarLimpieza(1)
 
 # Enviar limpieza devuelve numero de habitacion, estado y fecha de ultima limpieza

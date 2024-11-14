@@ -482,7 +482,7 @@ def MarcarReservacionHabitacion(usuario,idhabitacion,fecha_inicio, fecha_final):
 
 def ReservarEvento(cliente,asistentes,hora,dia,cantidad_personal,mail,especificaciones):
     contenido = LeerJson("ContratacionEventos")
-    precio = 200
+    precio = CalcularPrecioEventos(hora[0] , hora[1] , cantidad_personal)
     nueva_clave = str(len(contenido))
     contenido[nueva_clave]["IdSalon"] = 1
     contenido[nueva_clave]["FechaContratada"] = dia
@@ -737,6 +737,9 @@ def ChequearDatosUsuario(usuario,Nombre, dia1, dia2, direccion, telefono, mail, 
         ActualizarJson("Usuario.json", contenido)
         return True
 
+
+
+
 def ChequearDatosReservaEventos(usuario,mail, hora1, hora2 , asistentes , personal , fecha):
     contenido = LeerJson("Usuario.json")
     hora1_str = hora1  
@@ -897,5 +900,3 @@ def EnviarLimpieza():
     ActualizarJson("habitaciones.json" , data_habitaciones) 
     ActualizarJson("Limpieza.json" , data_limpieza)
     return True
-
-

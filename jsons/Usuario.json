@@ -103,5 +103,19 @@
         "IdHabitacion": [
             0
         ]
+    },
+    "rochu": {
+        "Correo": "ro@gmail.com",
+        "Tipo": "Cliente",
+        "Nombre": "rochu",
+        "Password": "ro@2007@ro",
+        "DNI": " ",
+        "NumeroTelefono": " ",
+        "NumeroDeCliente": 6,
+        "CodigoPostal": " ",
+        "Direccion": " ",
+        "Contrataciones": [],
+        "IdEstacionamiento": [],
+        "IdHabitacion": []
     }
 }

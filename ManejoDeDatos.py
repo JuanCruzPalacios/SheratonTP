@@ -41,7 +41,7 @@ def TieneServicio(usuario):
     contrataciones = usuarios_json[usuario]["Contrataciones"]
     try: 
         for i in range (0, len(contrataciones)):
-            if contrataciones[i][0] == "GYM":
+            if contrataciones[i][0] == "SPA":
                 contr.append([True , contrataciones[i][1]])
                 n += 1
             
@@ -51,7 +51,7 @@ def TieneServicio(usuario):
         n = 0
 
         for i in range (0, len(contrataciones)):
-            if contrataciones[i][0] == "SPA":
+            if contrataciones[i][0] == "PISCINA":
                 contr.append([True , contrataciones[i][1]])
                 n += 1
             
@@ -61,7 +61,7 @@ def TieneServicio(usuario):
         n = 0
         
         for i in range (0, len(contrataciones)):
-            if contrataciones[i][0] == "PISCINA":
+            if contrataciones[i][0] == "GYM":
                 contr.append([True , contrataciones[i][1]])
                 n += 1
             
@@ -482,7 +482,7 @@ def MarcarReservacionHabitacion(usuario,idhabitacion,fecha_inicio, fecha_final):
 
 def ReservarEvento(cliente,asistentes,hora,dia,cantidad_personal,mail,especificaciones):
     contenido = LeerJson("ContratacionEventos")
-    precio = 200
+    precio = CalcularPrecioEventos(hora[0] , hora[1] , cantidad_personal)
     nueva_clave = str(len(contenido))
     contenido[nueva_clave]["IdSalon"] = 1
     contenido[nueva_clave]["FechaContratada"] = dia
@@ -582,6 +582,17 @@ def CalcularPrecioEstacionamiento(dia_inicio , dia_final):
     print("Precio final: " , precio_final)
     return precio_final
 
+def CalcularPrecioEventos(hora1,hora2,empleados):
+    hora1 = datetime.strptime(hora1, "%H:%M")
+    hora2 = datetime.strptime(hora2, "%H:%M")
+    diferencia = hora2 - hora1
+    minutos = diferencia.total_seconds()/60
+    precio = 0
+    for i in range(int(minutos)):
+        precio = (precio + (0.5 * empleados)) 
+ 
+    return precio
+    
 def ReservarEstacionamiento(usuario , dia_final):
     contenido = LeerJson("Estacionamiento.json")
     data_usuario = LeerJson("Usuario.json")
@@ -807,7 +818,6 @@ def VerRegistrosEstacionamiento(usuario , pagina):
     
     return lista_estacionamientos[pagina]
 
-
 def ChequearDatosTarjeta(numero_tarjeta,vencimiento,codigo):  
     chequeadormaximo = []
     if len(numero_tarjeta) != 16:
@@ -850,9 +860,40 @@ def VerDatosEvento(id_evento):
 def SolicitarLimpieza(id_habitacion):
     data_limpieza = LeerJson("Limpieza.json") 
     LimpiezasSolicitadas = data_limpieza["LimpiezasSolicitadas"]
-    data_limpieza["LimpiezasSolicitadas"] = LimpiezasSolicitadas.append
+    LimpiezasSolicitadas.append(id_habitacion)
+    data_limpieza["LimpiezasSolicitadas"] = LimpiezasSolicitadas
     ActualizarJson("Limpieza.json" , data_limpieza)  
 
-SolicitarLimpieza(1)
+def VerLimpieza(): 
+    data_limpieza = LeerJson("Limpieza.json")
+    data_habitaciones = LeerJson("habitaciones.json")
+    try:
+        id_habitacion = data_limpieza["LimpiezasSolicitadas"][0]
+    except: 
+        return "Ninguna" , "-" , "-"
+    for habitacion in data_habitaciones: 
+        if data_habitaciones[habitacion]["ID"] == id_habitacion: 
+            break
+    ultima_limpieza = data_habitaciones[habitacion]["UltimaLimpieza"]
+    estado = data_habitaciones[habitacion]["Estado"]
+    return id_habitacion , estado , ultima_limpieza
+    
+def EnviarLimpieza():
+    data_limpieza = LeerJson("Limpieza.json")
+    data_habitaciones = LeerJson("habitaciones.json")
+    try:
+        id_habitacion = data_limpieza["LimpiezasSolicitadas"][0]
+        lista_limpieza = data_limpieza["LimpiezasSolicitadas"]
+    except: 
+        return "No hay habitacion que limpiar"
+    for habitacion in data_habitaciones: 
+        if data_habitaciones[habitacion]["ID"] == id_habitacion: 
+            break
 
-# Enviar limpieza devuelve numero de habitacion, estado y fecha de ultima limpieza
+    lista_limpieza.pop(0)
+    data_limpieza["LimpiezasSolicitadas"] = lista_limpieza
+    data_habitaciones[habitacion]["UltimaLimpieza"] = datetime.now().strftime("%d/%m/%Y")
+
+    ActualizarJson("habitaciones.json" , data_habitaciones) 
+    ActualizarJson("Limpieza.json" , data_limpieza)
+    return True

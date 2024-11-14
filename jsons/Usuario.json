@@ -117,5 +117,19 @@
         "Contrataciones": [],
         "IdEstacionamiento": [],
         "IdHabitacion": []
+    },
+    "nick": {
+        "Correo": "@@@@",
+        "Tipo": "Cliente",
+        "Nombre": "nick",
+        "Password": "@@@@1234",
+        "DNI": "12345678",
+        "NumeroTelefono": "1234567890123",
+        "NumeroDeCliente": 7,
+        "CodigoPostal": "1234",
+        "Direccion": " wdsa",
+        "Contrataciones": [],
+        "IdEstacionamiento": [],
+        "IdHabitacion": []
     }
 }

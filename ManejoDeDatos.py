@@ -900,3 +900,6 @@ def EnviarLimpieza():
     ActualizarJson("habitaciones.json" , data_habitaciones) 
     ActualizarJson("Limpieza.json" , data_limpieza)
     return True
+
+
+print(ChequearDatosUsuario("nick","nick","12/12/2024", "12/12/2025", " wdsa", 1234567890123, "@@@@", "12345678", "1234"))

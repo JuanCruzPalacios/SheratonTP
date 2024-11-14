@@ -1304,7 +1304,8 @@ while running:
                         
                     if mouse_pos[0] < 481 and mouse_pos[0] > 250 and mouse_pos[1] < 655 and mouse_pos[1] > 576: #pedir limpieza
 
-                        print("Limpieza pedida.")
+                        
+                        SolicitarLimpieza(VerNumeroHabitacion(usuario)[pagina])
                         alter_mouse = True
                     
 
@@ -1961,7 +1962,7 @@ while running:
                         texto_seleccionado = texto2   
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 20 
+                        limite = 16 
 
                 
                     elif mouse_pos[0] < 1018 and mouse_pos[0] > 485 and mouse_pos[1] < 445 and mouse_pos[1] > 405: #Documento
@@ -1980,7 +1981,7 @@ while running:
                         texto_seleccionado = texto4  
                         barra = texto_seleccionado[1] + "|"  
                         ultimo_cambio_barra  = pygame.time.get_ticks()                   
-                        limite = 8 
+                        limite = 7 
 
                     elif mouse_pos[0] < 740 and mouse_pos[0] > 483 and mouse_pos[1] < 584 and mouse_pos[1] > 542: #Codigo de seguridad
                         alter_mouse = True
@@ -2164,7 +2165,7 @@ while running:
 
                     elif mouse_pos[0] < 500 and mouse_pos[0] > 332 and mouse_pos[1] < 660 and mouse_pos[1] > 612: # enviar limpieza
 
-                        pass
+                        EnviarLimpieza()
 
 
 
@@ -2832,9 +2833,21 @@ while running:
 
         elif fondo_actual[0] == "recepcionista limpieza":
 
+            texto1[0] = (420 , 218)
+            texto2[0] = (420 , 325)
+            texto3[0] = (420 , 420)
+
+            texto1[1] = str(VerLimpieza()[0])
+            texto2[1] = str(VerLimpieza()[1])
+            texto3[1] = str(VerLimpieza()[2])
+
+
             screen.blit (fondos[fondo_actual[1]] , (0 , 0))  
 
-        
+
+            screen.blit(fuente.render(texto1[1], True, (0, 0, 0)), texto1[0])
+            screen.blit(fuente.render(texto2[1], True, (0, 0, 0)), texto2[0])
+            screen.blit(fuente.render(texto3[1], True, (0, 0, 0)), texto3[0])
             
 
         

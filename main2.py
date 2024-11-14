@@ -1460,6 +1460,7 @@ while running:
                                     fondo_actual[1] = 6
                                     texto_seleccionado = [(-100,-100),""]
                                     texto6[1] = "total: " + str(CalcularPrecioHabitacion(servicio_pagar, texto2[1],texto3[1]))
+                                    
                                     reset_textos(texto1, texto2, texto3, texto4, texto5, texto7, texto8) 
 
                             elif servicio_pagar == "Estacionamiento" :
@@ -1862,6 +1863,7 @@ while running:
 
 
                 elif fondo_actual[0] == "pagar tarjeta" and alter_mouse == False:
+
 
 
                     if mouse_pos[0] < 1022 and mouse_pos[0] > 485 and mouse_pos[1] < 305 and mouse_pos[1] > 270: #Nombre del titular

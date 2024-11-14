@@ -807,15 +807,15 @@ def ChequearDatosTarjeta(numero_tarjeta,vencimiento,codigo):
         chequeadormaximo.append(1)
      
     try:
-        fecha_actual = datetime.now()
-        fecha_ingresada = datetime.strptime(vencimiento, "%m-%Y")
-
+        fecha_actual = datetime.now().replace(day=1)
+        fecha_ingresada = datetime.strptime(str(vencimiento), "%m-%Y")
+        
         if fecha_ingresada < fecha_actual:
-           return False, "La tarjeta vencio"
+            return False, "La tarjeta venció"
         else:
             chequeadormaximo.append(1)
-    except:
-        return False, "hubo un error"
+    except Exception as e:
+        return False, f"Hubo un error: {str(e)}"
 
             
     if len(codigo) != 3:

@@ -842,9 +842,24 @@ def VerDatosEvento(id_evento):
 def SolicitarLimpieza(id_habitacion):
     data_limpieza = LeerJson("Limpieza.json") 
     LimpiezasSolicitadas = data_limpieza["LimpiezasSolicitadas"]
-    data_limpieza["LimpiezasSolicitadas"] = LimpiezasSolicitadas.append
+    LimpiezasSolicitadas.append(id_habitacion)
+    data_limpieza["LimpiezasSolicitadas"] = LimpiezasSolicitadas
     ActualizarJson("Limpieza.json" , data_limpieza)  
 
-SolicitarLimpieza(1)
+def VerLimpieza(): 
+    data_limpieza = LeerJson("Limpieza.json")
+    data_habitaciones = LeerJson("habitaciones.json")
+    try:
+        id_habitacion = data_limpieza["LimpiezasSolicitadas"][0]
+    except: 
+        return "Ninguna" , "-" , "-"
+    for habitacion in data_habitaciones: 
+        if data_habitaciones[habitacion]["ID"] == id_habitacion: 
+            break
+    ultima_limpieza = data_habitaciones[habitacion]["UltimaLimpieza"]
+    estado = data_habitaciones[habitacion]["Estado"]
+    return id_habitacion , estado , ultima_limpieza
+    
+
 
 # Enviar limpieza devuelve numero de habitacion, estado y fecha de ultima limpieza

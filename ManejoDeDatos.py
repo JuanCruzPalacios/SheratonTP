@@ -873,7 +873,7 @@ def VerLimpieza():
     try:
         id_habitacion = data_limpieza["LimpiezasSolicitadas"][0]
     except: 
-        return "Ninguna" , "-" , "-"
+        return "Ninguna" , "    -" , "    -"
     for habitacion in data_habitaciones: 
         if data_habitaciones[habitacion]["ID"] == id_habitacion: 
             break

@@ -9,25 +9,8 @@
         "NumeroDeCliente": 1,
         "CodigoPostal": "1993",
         "Direccion": "Facaclocket 777",
-        "Contrataciones": [
-            [
-                "SPA",
-                "0"
-            ],
-            [
-                "PISCINA",
-                "0"
-            ],
-            [
-                "GYM",
-                "0"
-            ]
-        ],
-        "IdEstacionamiento": [
-            "1",
-            "2",
-            "3"
-        ],
+        "Contrataciones": [],
+        "IdEstacionamiento": [],
         "IdHabitacion": []
     },
     "marco": {
@@ -68,25 +51,9 @@
         "NumeroDeCliente": 4,
         "CodigoPostal": "www",
         "Direccion": "www",
-        "Contrataciones": [
-            [
-                "GYM",
-                "1"
-            ],
-            [
-                "SPA",
-                "2"
-            ],
-            [
-                "PISCINA",
-                "3"
-            ]
-        ],
+        "Contrataciones": [],
         "IdEstacionamiento": [],
-        "IdHabitacion": [
-            1,
-            0
-        ]
+        "IdHabitacion": []
     },
     "pipa": {
         "Correo": "pip@a",
@@ -100,9 +67,7 @@
         "Direccion": "pipa",
         "Contrataciones": [],
         "IdEstacionamiento": [],
-        "IdHabitacion": [
-            0
-        ]
+        "IdHabitacion": []
     },
     "rochu": {
         "Correo": "ro@gmail.com",

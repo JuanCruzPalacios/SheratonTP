@@ -1,29 +1,26 @@
 {
     "suite_balcon": {
         "ID": 0,
-        "Ocupada": "Si",
-        "UltimaLimpieza": "19/09/2024",
+        "Ocupada": "No",
+        "UltimaLimpieza": "14/11/2024",
         "Estado": "Ninguno",
         "ServiciosIncluidos": [
             ""
         ],
-        "EstadoActual": "",
-        "IdClienteOcupante": 4,
+        "EstadoActual": [
+            ""
+        ],
+        "IdClienteOcupante": "",
         "Fechas": [
-            [
-                "12/12/2024"
-            ],
-            [
-                "15/12/2024"
-            ]
+            ""
         ],
         "Precio": 240,
         "RangoHuespedes": 2
     },
     "habitacion_triple": {
         "ID": 1,
-        "Ocupada": "Si",
-        "UltimaLimpieza": "02/10/2024",
+        "Ocupada": "No",
+        "UltimaLimpieza": "14/11/2024",
         "Estado": "No molestar",
         "ServiciosIncluidos": [
             ""
@@ -31,14 +28,9 @@
         "EstadoActual": [
             ""
         ],
-        "IdClienteOcupante": 4,
+        "IdClienteOcupante": "",
         "Fechas": [
-            [
-                "12/12/2024"
-            ],
-            [
-                "15/12/2024"
-            ]
+            ""
         ],
         "Precio": 255,
         "RangoHuespedes": 3
@@ -135,11 +127,15 @@
         "UltimaLimpieza": "02/10/2024",
         "Estado": "Ninguno",
         "ServiciosIncluidos": [
-            "PISCINA"
+            ""
         ],
-        "EstadoActual": "",
+        "EstadoActual": [
+            ""
+        ],
         "IdClienteOcupante": "",
-        "Fechas": [],
+        "Fechas": [
+            ""
+        ],
         "Precio": 180,
         "RangoHuespedes": 1
     },

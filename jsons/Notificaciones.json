@@ -1,9 +1,23 @@
 {
     "0": {
-        "Archivada": 0,
+        "Archivada": 1,
         "Objeto": "lampara",
         "Cantidad": "1",
         "Id_habitacion": "2",
+        "FechaEnviada": "14/11/2024"
+    },
+    "1": {
+        "Archivada": 1,
+        "Objeto": "almohada",
+        "Cantidad": "1",
+        "Id_habitacion": "2",
+        "FechaEnviada": "14/11/2024"
+    },
+    "2": {
+        "Archivada": 1,
+        "Objeto": "prueba",
+        "Cantidad": "1",
+        "Id_habitacion": "1",
         "FechaEnviada": "14/11/2024"
     }
 }

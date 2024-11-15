@@ -1305,8 +1305,10 @@ while running:
                         
                     if mouse_pos[0] < 481 and mouse_pos[0] > 250 and mouse_pos[1] < 655 and mouse_pos[1] > 576: #pedir limpieza
 
-                        
-                        SolicitarLimpieza(VerNumeroHabitacion(usuario)[pagina])
+                        try:
+                            SolicitarLimpieza(VerNumeroHabitacion(usuario)[pagina])
+                        except:
+                            print("Error al pedir limpieza")
                         alter_mouse = True
                     
 
@@ -1320,7 +1322,10 @@ while running:
 
                     elif mouse_pos[0] < 1018 and mouse_pos[0] > 785 and mouse_pos[1] < 655 and mouse_pos[1] > 576: #cancelar reserva
                         if TieneHabitacion(usuario)[0]:
-                            CancelarReservaHabitaciones(usuario , VerNumeroHabitacion(usuario).pop( -1 - pagina ) )
+                            try: 
+                                CancelarReservaHabitaciones(usuario , VerNumeroHabitacion(usuario).pop( -1 - pagina ) )
+                            except:
+                                print("Error al cancelar reserva")
                         else:
                             print("El usuario no tiene habitacion de la cual cancelar la reserva.")
                         alter_mouse = True

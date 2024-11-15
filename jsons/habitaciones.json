@@ -2,7 +2,7 @@
     "suite_balcon": {
         "ID": 0,
         "Ocupada": "No",
-        "UltimaLimpieza": "19/09/2024",
+        "UltimaLimpieza": "14/11/2024",
         "Estado": "Ninguno",
         "ServiciosIncluidos": [
             ""
@@ -85,11 +85,15 @@
         "UltimaLimpieza": "02/10/2024",
         "Estado": "Ninguno",
         "ServiciosIncluidos": [
-            "PISCINA"
+            ""
         ],
-        "EstadoActual": "",
+        "EstadoActual": [
+            ""
+        ],
         "IdClienteOcupante": "",
-        "Fechas": [],
+        "Fechas": [
+            ""
+        ],
         "Precio": 180,
         "RangoHuespedes": 1
     },

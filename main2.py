@@ -33,7 +33,7 @@ fondo_mantenimiento_stock = pygame.image.load("imagenes/stock_mantenimiento.jpg"
 fondo_mantenimiento_notificaciones = pygame.image.load("imagenes/notificaciones_mantenimiento.jpg")
 fondo_mantenimiento_notificaciones_archivadas = pygame.image.load("imagenes/mantenimiento_notificaciones_archivadas.jpg")
 
-fondo_menu_recepcionista = pygame.image.load("imagenes/menu_recepcionista.jpg")
+fondo_menu_recepcionista = pygame.image.load("imagenes/menu_recepcionista(1).jpg")
 fondo_recepcionista_notificar = pygame.image.load("imagenes/recepcionista_notificar.jpg")
 fondo_recepcinista_eventos = pygame.image.load("imagenes/recepcionista_eventos.jpg")
 fondo_recepcinista_limpieza = pygame.image.load("imagenes/recepcionista_limpieza.jpg")
@@ -601,11 +601,11 @@ def cursor(mouse_pos,alter_usuario , gracias):
 
     elif fondo_actual[0] == "menu recepcionista":
 
-        if mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 294 and mouse_pos[1] > 229: # notificar
+        #if mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 294 and mouse_pos[1] > 229: # notificar
 
-            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+            #pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         
-        elif mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 373 and mouse_pos[1] > 312: # ver eventos
+        if mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 373 and mouse_pos[1] > 312: # notificar (ver eventos)
 
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         
@@ -2160,18 +2160,19 @@ while running:
 
                 elif fondo_actual[0] == "menu recepcionista":
 
-                    if mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 294 and mouse_pos[1] > 229: # notificar
+                    #if mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 294 and mouse_pos[1] > 229: # notificar
+                    if mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 373 and mouse_pos[1] > 312: # ver eventos
                         
                         fondo_actual[0] = "recepcionista notificar"
                         fondo_actual[1] = 15
                         reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
                         
                     
-                    elif mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 373 and mouse_pos[1] > 312: # ver eventos
+                    #elif mouse_pos[0] < 378 and mouse_pos[0] > 145 and mouse_pos[1] < 373 and mouse_pos[1] > 312: # ver eventos
                                              
-                        fondo_actual[0] = "recepcionista eventos"
-                        fondo_actual[1] = 16
-                        reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
+                        #fondo_actual[0] = "recepcionista eventos"
+                        #fondo_actual[1] = 16
+                        #reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
                         
                     
 

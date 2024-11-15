@@ -1443,13 +1443,14 @@ while running:
                                 
                                 print("reservando habitacion")
 
-                                if posicion_cuadrado_reserva == ( 877, 413, 41 , 41 ):  #efectivo    
+                                if posicion_cuadrado_reserva == ( 877, 413, 41 , 41 ):  #efectivo    rooo 
 
                                     alter_mouse = True                         
                                     fondo_actual[0] = "menu habitaciones"
                                     gracias = True
                                     texto_seleccionado = [(-100,-100),""]
                                     MarcarReservacionHabitacion(usuario, servicio_pagar , texto2[1] , texto3[1])
+                                    habitaciones_libres = Filtros((""),0,9999999999)
                                     reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
 
                                 elif posicion_cuadrado_reserva == ( 960 , 490 , 41 , 41 ): #mercado pago chau

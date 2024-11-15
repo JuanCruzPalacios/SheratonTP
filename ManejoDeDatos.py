@@ -7,7 +7,6 @@ def VerStock():
     Stock = LeerJson("Stock.json")
     lista_stock = []
     for clave  in Stock: 
-        print (clave)
         lista_stock.append([clave , Stock[clave]["Cantidad"]])
         
     return lista_stock
@@ -411,12 +410,12 @@ def AgregarEliminarStock (nombre_objeto , operacion) :
 
         if operacion == "suma":
 
-            Stock[nombre_objeto]["Cantidad"] = str (int(cantidad_actual) + 1 )
+            Stock[nombre_objeto]["Cantidad"] = str (int(cantidad_actual) + 5 )
             ActualizarJson("Stock.json" , Stock)
         
         else:
 
-            Stock[nombre_objeto]["Cantidad"] = str(int(cantidad_actual) - 1)
+            Stock[nombre_objeto]["Cantidad"] = str(int(cantidad_actual) - 5)
             ActualizarJson("Stock.json" , Stock)
     except:
         """"""

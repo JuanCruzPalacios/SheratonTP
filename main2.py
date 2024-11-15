@@ -38,6 +38,7 @@ fondo_recepcionista_notificar = pygame.image.load("imagenes/recepcionista_notifi
 fondo_recepcinista_eventos = pygame.image.load("imagenes/recepcionista_eventos.jpg")
 fondo_recepcinista_limpieza = pygame.image.load("imagenes/recepcionista_limpieza.jpg")
 
+barra_stock = pygame.image.load("imagenes/barra_stock.jpg")
 barra_arriba = pygame.image.load("imagenes/barra_arriba.jpg")
 
 imagen_usuario = pygame.image.load("imagenes/usuario.png")
@@ -561,7 +562,7 @@ def cursor(mouse_pos,alter_usuario , gracias):
         if mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 342 and mouse_pos[1] > 285: #notificaciones
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
-        elif mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 440 and mouse_pos[1] > 378: #ver stcok
+        elif mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 440 and mouse_pos[1] > 378: #ver stock
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
 
         elif mouse_pos[0] < 374 and mouse_pos[0] > 144 and mouse_pos[1] < 535 and mouse_pos[1] > 470: #salir
@@ -691,12 +692,48 @@ def cursor(mouse_pos,alter_usuario , gracias):
 
         
     elif fondo_actual[0] == "mantenimiento stock":
+
         if mouse_pos[0] < 465 and mouse_pos[0] > 330 and mouse_pos[1] < 665 and mouse_pos[1] > 625: #añadir
+
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         
         elif mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: #volver
+
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
         
+        elif mouse_pos[0] < 664 and mouse_pos[0] > 627 and mouse_pos[1] < 192 and mouse_pos[1] > 157: # lampara suma
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+            
+
+        elif mouse_pos[0] < 707 and mouse_pos[0] > 671 and mouse_pos[1] < 192 and mouse_pos[1] > 159: # lampara resta
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+   
+        elif mouse_pos[0] < 662 and mouse_pos[0] > 626 and mouse_pos[1] < 262 and mouse_pos[1] > 228: # toalla suma
+            
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+        elif mouse_pos[0] < 708 and mouse_pos[0] > 671 and mouse_pos[1] < 263 and mouse_pos[1] > 227: # toalla resta
+
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
+        elif mouse_pos[0] < 663 and mouse_pos[0] > 626 and mouse_pos[1] < 331 and mouse_pos[1] > 296: # jabon suma
+            
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+        elif mouse_pos[0] < 708 and mouse_pos[0] > 671 and mouse_pos[1] < 332 and mouse_pos[1] > 296: # jabon resta
+            
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+        elif mouse_pos[0] < 663 and mouse_pos[0] > 626 and mouse_pos[1] < 401 and mouse_pos[1] > 368: # shampoo suma
+            
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+        
+        elif mouse_pos[0] < 708 and mouse_pos[0] > 671 and mouse_pos[1] < 403 and mouse_pos[1] > 367: # shampoo suma
+            
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+
         else:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
@@ -1888,42 +1925,43 @@ while running:
 
                     
                     
-                    elif mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: # lampara suna
+                    elif mouse_pos[0] < 664 and mouse_pos[0] > 627 and mouse_pos[1] < 192 and mouse_pos[1] > 157: # lampara suma
                     
                         AgregarEliminarStock ("lampara" ,"suma")
+                        
 
-                    elif mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: # lampara resta
+                    elif mouse_pos[0] < 707 and mouse_pos[0] > 671 and mouse_pos[1] < 192 and mouse_pos[1] > 159: # lampara resta
                         
                         AgregarEliminarStock ("lampara" ,"resta")
 
 
                     
-                    elif mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: # toalla suma
+                    elif mouse_pos[0] < 662 and mouse_pos[0] > 626 and mouse_pos[1] < 262 and mouse_pos[1] > 228: # toalla suma
                         
                         AgregarEliminarStock ("toalla" ,"suma")
 
-                    elif mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: # toalla resta
+                    elif mouse_pos[0] < 708 and mouse_pos[0] > 671 and mouse_pos[1] < 263 and mouse_pos[1] > 227: # toalla resta
 
                         AgregarEliminarStock ("toalla" ,"resta")
 
 
 
-                    elif mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: # jabon suma
+                    elif mouse_pos[0] < 663 and mouse_pos[0] > 626 and mouse_pos[1] < 331 and mouse_pos[1] > 296: # jabon suma
                         
                         AgregarEliminarStock ("jabon" ,"suma")
                     
-                    elif mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: # jabon resta
+                    elif mouse_pos[0] < 708 and mouse_pos[0] > 671 and mouse_pos[1] < 332 and mouse_pos[1] > 296: # jabon resta
                         
                         AgregarEliminarStock ("jabon" ,"resta")
                     
 
 
-                    elif mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: # shampoo suma
+                    elif mouse_pos[0] < 663 and mouse_pos[0] > 626 and mouse_pos[1] < 401 and mouse_pos[1] > 368: # shampoo suma
                         
                         AgregarEliminarStock ("shampoo" ,"suma")
                     
 
-                    elif mouse_pos[0] < 1245 and mouse_pos[0] > 1185 and mouse_pos[1] < 695 and mouse_pos[1] > 640: # shampoo suma
+                    elif mouse_pos[0] < 708 and mouse_pos[0] > 671 and mouse_pos[1] < 403 and mouse_pos[1] > 367: # shampoo suma
                         
                         AgregarEliminarStock ("shampoo" ,"resta")
 
@@ -2836,14 +2874,14 @@ while running:
 
         elif fondo_actual[0] == "mantenimiento stock":
 
-            texto1[0] = (240 , 431)
-            texto2[0] = (500 , 431)
-            texto3[0] = (240 , 500)
-            texto4[0] = (500 , 431)
-            texto5[0] = (240 , 431)
-            texto6[0] = (240 , 431)
-            texto7[0] = (240 , 431)
-            texto8[0] = (240 , 431)
+            texto1[0] = (197, 154)
+            texto2[0] = (516, 157)
+            texto3[0] = (197, 224)
+            texto4[0] = (516, 227)
+            texto5[0] = (197, 294)
+            texto6[0] = (516, 297)
+            texto7[0] = (197, 364)
+            texto8[0] = (516, 367)
 
 
 
@@ -2851,22 +2889,24 @@ while running:
 
 
 
-            for i in range (1 , 5):
+            for i in range (0 , 4):
 
                 pass
-                #screen.blit (barra_stock , (562 , 145 * i))
-                
-            texto1[1] = VerStock()[0][0]
-            texto2[1] = VerStock()[0][1]
+                screen.blit (barra_stock , (188 , 145 + 70 * i))
+        
+            
 
-            texto3[1] = VerStock()[1][0]
-            texto4[1] = VerStock()[1][1]
+            texto1[1] = str(VerStock()[0][0])
+            texto2[1] = str(VerStock()[0][1])
 
-            texto5[1] = VerStock()[2][0]
-            texto6[1] = VerStock()[2][1]
+            texto3[1] = str(VerStock()[1][0])
+            texto4[1] = str(VerStock()[1][1])
 
-            texto7[1] = VerStock()[3][0]
-            texto8[1] = VerStock()[3][1]
+            texto5[1] = str(VerStock()[2][0])
+            texto6[1] = str(VerStock()[2][1])
+
+            texto7[1] = str(VerStock()[3][0])
+            texto8[1] = str(VerStock()[3][1])
 
 
 

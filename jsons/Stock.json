@@ -1,14 +1,14 @@
 {
     "lampara": {
-        "Cantidad": 30
+        "Cantidad": "30"
     },
     "toalla": {
-        "Cantidad": 30
+        "Cantidad": "30"
     },
     "jabon": {
-        "Cantidad": 50
-
-    },"shampoo": {
-        "Cantidad": 30
+        "Cantidad": "50"
+    },
+    "shampoo": {
+        "Cantidad": "30"
     }
 }

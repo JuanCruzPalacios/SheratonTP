@@ -1485,7 +1485,7 @@ while running:
                                 
                                 print("reservando habitacion")
 
-                                if posicion_cuadrado_reserva == ( 877, 413, 41 , 41 ):  #efectivo    rooo 
+                                if posicion_cuadrado_reserva == ( 877, 413, 41 , 41 ):  #efectivo  
 
                                     alter_mouse = True                         
                                     fondo_actual[0] = "menu habitaciones"
@@ -1495,7 +1495,7 @@ while running:
                                     habitaciones_libres = Filtros((""),0,9999999999)
                                     reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8) 
 
-                                elif posicion_cuadrado_reserva == ( 960 , 490 , 41 , 41 ): #mercado pago chau
+                                elif posicion_cuadrado_reserva == ( 960 , 490 , 41 , 41 ): #mercado pago 
 
                                     alter_mouse = True
                                     fondo_actual[0] = "pagar mercado pago"
@@ -1565,7 +1565,7 @@ while running:
                                     #texto1[1] = "total: " + str(CalcularPrecioEventos(texto2[1], texto3[1],texto1[1]))
                                     
 
-                                #elif posicion_cuadrado_reserva == ( 1062, 415, 41 , 41  ): #tarjeta chau
+                                #elif posicion_cuadrado_reserva == ( 1062, 415, 41 , 41  ): #tarjeta
                                     #print("hola, pago con tarjeta un evento")
                                     #alter_mouse = True
                                     #fondo_actual[0] = "pagar tarjeta"
@@ -1778,7 +1778,7 @@ while running:
                         alter_mouse = True
                         if ChequearDatosReservaEventos(usuario , texto6[1] , texto2[1] , texto3[1] , texto1[1] , texto5[1] , texto4[1]) == True:
 
-                            if posicion_cuadrado_salon == ( 956, 494, 41 , 41  ):#mercado pago chau
+                            if posicion_cuadrado_salon == ( 956, 494, 41 , 41  ):#mercado pago 
 
                                 fondo_actual[0] = "pagar mercado pago"
                                 servicio_pagar = "evento"
@@ -1788,7 +1788,7 @@ while running:
                                 texto1[1] = "total: " + str(CalcularPrecioEventos(texto2[1], texto3[1],texto5[1]))
                                 #reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
                             
-                            elif posicion_cuadrado_salon == ( 1058 , 421 , 41 , 41 ):#tarjeta chau
+                            elif posicion_cuadrado_salon == ( 1058 , 421 , 41 , 41 ):#tarjeta 
                                 print("voy a pagar el evento con tarjeta")
                                 fondo_actual[0] = "pagar tarjeta"
                                 fondo_actual[1] = 6
@@ -1999,7 +1999,7 @@ while running:
                             texto_seleccionado = [(-100,-100),""]
                             reset_textos(texto1, texto2, texto3, texto4, texto5, texto6, texto7, texto8)
 
-                        elif servicio_pagar == "evento": #chau
+                        elif servicio_pagar == "evento": 
 
                             print("pago evento con mercado pago")
                             alter_mouse = True

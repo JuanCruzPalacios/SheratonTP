@@ -19,5 +19,12 @@
         "Cantidad": "1",
         "Id_habitacion": "1",
         "FechaEnviada": "14/11/2024"
+    },
+    "3": {
+        "Archivada": 1,
+        "Objeto": "lampara",
+        "Cantidad": "5",
+        "Id_habitacion": "3",
+        "FechaEnviada": "14/11/2024"
     }
 }
